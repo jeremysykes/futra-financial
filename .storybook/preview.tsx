@@ -41,14 +41,14 @@ const preview: Preview = {
   },
   initialGlobals: {
     theme: 'light',
-    businessUnit: 'unit-a',
+    businessUnit: 'none',
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme;
       const businessUnit = context.globals.businessUnit;
       return (
-        <div className={theme === 'dark' ? 'dark' : ''} data-business-unit={businessUnit}>
+        <div className={theme === 'dark' ? 'dark' : ''} {...(businessUnit !== 'none' && { 'data-business-unit': businessUnit })}>
           {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
           <Story />
         </div>

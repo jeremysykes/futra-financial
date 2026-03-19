@@ -9,8 +9,8 @@ const buttonVariants = cva(
   `, {
   variants: {
     intent: {
-      primary: ['bg-blue-500', 'text-white', 'border-transparent not-disabled:hover:bg-blue-600'],
-      secondary: ['bg-white', 'text-gray-800', 'border-gray-400 not-disabled:hover:bg-gray-100'],
+      primary: ['bg-primary', 'text-primary-foreground', 'border-transparent not-disabled:hover:bg-primary-hover'],
+      secondary: ['bg-secondary', 'text-secondary-foreground', 'border-border not-disabled:hover:bg-secondary-hover'],
     },
     size: {
       small: ['text-sm', 'py-1', 'px-2'],
