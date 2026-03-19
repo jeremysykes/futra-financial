@@ -30,6 +30,7 @@ const preview: Preview = {
         title: 'Business Unit',
         icon: 'component',
         items: [
+          { value: 'none', title: 'None' },
           { value: 'unit-a', title: 'Unit A' },
           { value: 'unit-b', title: 'Unit B' },
           { value: 'unit-c', title: 'Unit C' },
@@ -37,15 +38,15 @@ const preview: Preview = {
       },
       dynamicTitle: true,
     },
-    initialGlobals: {
-      theme: 'light',
-      businessUnit: 'unit-a'
-    }
+  },
+  initialGlobals: {
+    theme: 'light',
+    businessUnit: 'unit-a',
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme;
-      const businessUnit = context.globals.theme;
+      const businessUnit = context.globals.businessUnit;
       return (
         <div className={theme === 'dark' ? 'dark' : ''} data-business-unit={businessUnit}>
           {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}

@@ -1,1 +1,135 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Default / White-label theme (light) ─── */
+@theme {
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.15 0 0);
+
+  --color-primary: oklch(0.45 0 0);
+  --color-primary-hover: oklch(0.35 0 0);
+  --color-primary-foreground: oklch(1 0 0);
+
+  --color-secondary: oklch(0.96 0 0);
+  --color-secondary-hover: oklch(0.91 0 0);
+  --color-secondary-foreground: oklch(0.2 0 0);
+
+  --color-muted: oklch(0.95 0 0);
+  --color-muted-foreground: oklch(0.55 0 0);
+
+  --color-border: oklch(0.88 0 0);
+  --color-ring: oklch(0.45 0 0);
+
+  --color-destructive: oklch(0.55 0.22 25);
+  --color-destructive-foreground: oklch(1 0 0);
+}
+
+@layer base {
+  /* ─── Default / White-label (dark) ─── */
+  .dark {
+    --color-background: oklch(0.13 0 0);
+    --color-foreground: oklch(0.95 0 0);
+
+    --color-primary: oklch(0.85 0 0);
+    --color-primary-hover: oklch(0.92 0 0);
+    --color-primary-foreground: oklch(0.13 0 0);
+
+    --color-secondary: oklch(0.22 0 0);
+    --color-secondary-hover: oklch(0.28 0 0);
+    --color-secondary-foreground: oklch(0.9 0 0);
+
+    --color-muted: oklch(0.22 0 0);
+    --color-muted-foreground: oklch(0.6 0 0);
+
+    --color-border: oklch(0.3 0 0);
+    --color-ring: oklch(0.85 0 0);
+
+    --color-destructive: oklch(0.6 0.22 25);
+    --color-destructive-foreground: oklch(1 0 0);
+  }
+
+  /* ─── Unit A — Indigo ─── */
+
+  /* Unit A (light) */
+  [data-business-unit='unit-a'] {
+    --color-primary: oklch(0.5 0.2 265);
+    --color-primary-hover: oklch(0.43 0.22 265);
+    --color-primary-foreground: oklch(1 0 0);
+
+    --color-secondary: oklch(0.96 0.02 265);
+    --color-secondary-hover: oklch(0.91 0.04 265);
+    --color-secondary-foreground: oklch(0.3 0.1 265);
+
+    --color-ring: oklch(0.5 0.2 265);
+  }
+
+  /* Unit A (dark) */
+  [data-business-unit='unit-a'].dark {
+    --color-primary: oklch(0.7 0.18 265);
+    --color-primary-hover: oklch(0.76 0.16 265);
+    --color-primary-foreground: oklch(0.13 0 0);
+
+    --color-secondary: oklch(0.25 0.06 265);
+    --color-secondary-hover: oklch(0.3 0.08 265);
+    --color-secondary-foreground: oklch(0.85 0.06 265);
+
+    --color-ring: oklch(0.7 0.18 265);
+  }
+
+  /* ─── Unit B — Teal ─── */
+
+  /* Unit B (light) */
+  [data-business-unit='unit-b'] {
+    --color-primary: oklch(0.55 0.14 175);
+    --color-primary-hover: oklch(0.48 0.16 175);
+    --color-primary-foreground: oklch(1 0 0);
+
+    --color-secondary: oklch(0.96 0.02 175);
+    --color-secondary-hover: oklch(0.91 0.04 175);
+    --color-secondary-foreground: oklch(0.3 0.08 175);
+
+    --color-ring: oklch(0.55 0.14 175);
+  }
+
+  /* Unit B (dark) */
+  [data-business-unit='unit-b'].dark {
+    --color-primary: oklch(0.72 0.12 175);
+    --color-primary-hover: oklch(0.78 0.1 175);
+    --color-primary-foreground: oklch(0.13 0 0);
+
+    --color-secondary: oklch(0.25 0.05 175);
+    --color-secondary-hover: oklch(0.3 0.07 175);
+    --color-secondary-foreground: oklch(0.85 0.05 175);
+
+    --color-ring: oklch(0.72 0.12 175);
+  }
+
+  /* ─── Unit C — Amber ─── */
+
+  /* Unit C (light) */
+  [data-business-unit='unit-c'] {
+    --color-primary: oklch(0.6 0.16 70);
+    --color-primary-hover: oklch(0.53 0.18 70);
+    --color-primary-foreground: oklch(0.15 0 0);
+
+    --color-secondary: oklch(0.96 0.02 70);
+    --color-secondary-hover: oklch(0.91 0.04 70);
+    --color-secondary-foreground: oklch(0.35 0.08 70);
+
+    --color-ring: oklch(0.6 0.16 70);
+  }
+
+  /* Unit C (dark) */
+  [data-business-unit='unit-c'].dark {
+    --color-primary: oklch(0.75 0.14 70);
+    --color-primary-hover: oklch(0.8 0.12 70);
+    --color-primary-foreground: oklch(0.13 0 0);
+
+    --color-secondary: oklch(0.25 0.05 70);
+    --color-secondary-hover: oklch(0.3 0.07 70);
+    --color-secondary-foreground: oklch(0.85 0.05 70);
+
+    --color-ring: oklch(0.75 0.14 70);
+  }
+}
