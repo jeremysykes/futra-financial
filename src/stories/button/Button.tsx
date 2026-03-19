@@ -3,7 +3,10 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
 import { cn } from '../../lib/utils';
 
-const buttonVariants = cva('button', {
+const buttonVariants = cva(
+  `
+  inline-flex items-center justify-center cursor-pointer
+  `, {
   variants: {
     intent: {
       primary: ['bg-blue-500', 'text-white', 'border-transparent not-disabled:hover:bg-blue-600'],
@@ -35,7 +38,7 @@ const Button = ({
   intent,
   size,
   asChild,
-  disabled,
+  disabled = false,
   ...props
 }: ButtonProps) => {
   const Comp = asChild ? Slot.Root : 'button';
@@ -44,7 +47,7 @@ const Button = ({
       disabled={disabled ?? undefined}
       className={cn(
         buttonVariants({ intent, size }),
-        disabled && 'opacity-50', 'cursor-not-allowed',
+        disabled && 'opacity-50 cursor-not-allowed',
         className
       )}
       {...props}
