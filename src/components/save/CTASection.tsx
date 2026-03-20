@@ -1,0 +1,18 @@
+export function CTASection() {
+  return (
+    <section className="py-24 md:py-32 bg-gradient-to-br from-muted to-secondary">
+      <div className="max-w-[600px] mx-auto px-6 text-center">
+        <h2 className="mb-4 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">
+          Your first goal is waiting
+        </h2>
+        <p className="mb-10 font-sans text-lg leading-[1.7] text-muted-foreground">
+          No minimum amounts. No fees. Just a calm, focused way to build toward
+          something that matters to you.
+        </p>
+        <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-base hover:bg-primary-hover transition-opacity cursor-pointer">
+          Start Saving
+        </button>
+      </div>
+    </section>
+  );
+}
