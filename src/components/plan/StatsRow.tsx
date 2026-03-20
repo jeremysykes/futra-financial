@@ -15,7 +15,7 @@ export function StatsRow() {
           {stats.map((s) => (
             <div
               key={s.label}
-              className="rounded-xl p-6 bg-secondary border border-border text-center"
+              className="rounded-xl p-6 bg-secondary border border-border border-l-2 border-l-primary text-center"
             >
               <span className="block mb-1 font-mono font-semibold text-foreground text-[clamp(28px,4vw,40px)]">
                 {s.value}

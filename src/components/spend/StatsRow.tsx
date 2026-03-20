@@ -7,10 +7,10 @@ const stats = [
 
 export function StatsRow() {
   return (
-    <section className="bg-surface py-16 border-y border-border">
+    <section className="bg-surface py-16 border-y border-border" style={{ backgroundColor: 'rgba(108,111,228,0.04)' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-2 lg:grid-cols-4 gap-8">
-        {stats.map((s) => (
-          <div key={s.label} className="text-center">
+        {stats.map((s, i) => (
+          <div key={s.label} className="text-center animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
             <p
               className="text-[28px] sm:text-[32px] text-foreground mb-1 font-mono font-medium"
             >

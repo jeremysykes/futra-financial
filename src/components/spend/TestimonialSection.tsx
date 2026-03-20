@@ -21,7 +21,7 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section className="bg-background py-20">
+    <section className="bg-secondary py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <p
           className="text-[12px] uppercase tracking-[0.08em] text-accent mb-3 font-sans font-medium"
@@ -34,10 +34,11 @@ export function TestimonialSection() {
           Real users, real talk.
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {testimonials.map((t) => (
+          {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className="bg-surface border border-border rounded-xl p-6"
+              className="bg-surface border border-border rounded-xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <p
                 className="text-[15px] text-muted-foreground leading-[1.6] italic mb-6 font-sans font-normal"

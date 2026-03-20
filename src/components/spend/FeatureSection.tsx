@@ -40,10 +40,11 @@ export function FeatureSection() {
           nothing you don't.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((f) => (
+          {features.map((f, i) => (
             <div
               key={f.title}
-              className="bg-surface border border-border rounded-xl p-6"
+              className="bg-surface border border-border border-l-4 border-l-primary rounded-xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <f.icon size={20} className="text-accent" />

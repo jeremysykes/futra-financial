@@ -45,7 +45,7 @@ export function FAQSection() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent"
               >
-                <span className="font-sans font-semibold text-foreground text-base pr-4">
+                <span className={`font-sans font-semibold text-base pr-4 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>
                   {faq.question}
                 </span>
                 <ChevronDown

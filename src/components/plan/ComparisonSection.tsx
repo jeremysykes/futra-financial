@@ -42,7 +42,7 @@ export function ComparisonSection() {
                   <th
                     key={c.name}
                     className={`py-4 px-4 text-center font-sans font-semibold text-sm ${
-                      i === 0 ? 'text-primary' : 'text-foreground'
+                      i === 0 ? 'text-primary bg-primary/5' : 'text-foreground'
                     }`}
                   >
                     {c.name}
@@ -57,7 +57,7 @@ export function ComparisonSection() {
                     {feat}
                   </td>
                   {competitors.map((c, ci) => (
-                    <td key={c.name} className="py-4 px-4 text-center">
+                    <td key={c.name} className={`py-4 px-4 text-center ${ci === 0 ? 'bg-primary/5' : ''}`}>
                       {c.support[fi] ? (
                         <Check
                           size={18}

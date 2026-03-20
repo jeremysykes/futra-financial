@@ -1,6 +1,6 @@
 export function CTASection() {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-br from-muted to-secondary">
+    <section className="py-24 md:py-32 bg-gradient-to-br from-muted to-accent/10">
       <div className="max-w-[600px] mx-auto px-6 text-center">
         <h2 className="mb-4 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">
           Your first goal is waiting

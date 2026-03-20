@@ -5,7 +5,7 @@ export function CTASection() {
       className="py-24 md:py-32"
       style={{
         background:
-          'linear-gradient(135deg, rgba(108,111,228,0.08) 0%, rgba(42,191,163,0.04) 50%, rgba(108,111,228,0.06) 100%)',
+          'linear-gradient(135deg, rgba(108,111,228,0.12) 0%, rgba(42,191,163,0.06) 50%, rgba(108,111,228,0.10) 100%)',
       }}
     >
       <div className="max-w-[600px] mx-auto px-6 text-center">

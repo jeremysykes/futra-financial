@@ -25,7 +25,7 @@ const features = [
 
 export function FeatureSection() {
   return (
-    <section id="features" className="py-20 md:py-28 bg-background">
+    <section id="features" className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/30">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center mb-16">
           <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">

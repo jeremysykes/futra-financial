@@ -34,8 +34,8 @@ export function TestimonialSection() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.name} className="rounded-xl p-6 bg-surface border border-border shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          {testimonials.map((t, i) => (
+            <div key={t.name} className="rounded-xl p-6 bg-surface border border-border shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
               <p className="mb-6 font-sans text-base leading-[1.7] text-foreground italic">
                 &ldquo;{t.quote}&rdquo;
               </p>

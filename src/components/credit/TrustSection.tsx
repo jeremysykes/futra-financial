@@ -9,7 +9,7 @@ const signals = [
 
 export function TrustSection() {
   return (
-    <section className="bg-background border-y border-border">
+    <section className="bg-secondary/20 border-y border-border">
       <div className="max-w-[1200px] mx-auto px-6 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {signals.map((signal, i) => (

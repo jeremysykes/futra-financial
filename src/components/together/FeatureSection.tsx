@@ -41,7 +41,7 @@ export function FeatureSection() {
               key={feature.title}
               className="rounded-[14px] bg-surface border border-border p-6 flex flex-col"
             >
-              <div className="w-12 h-12 rounded-[10px] bg-secondary flex items-center justify-center mb-5">
+              <div className="w-12 h-12 rounded-[10px] flex items-center justify-center mb-5" style={{ backgroundColor: feature.iconColor === '#C4622D' ? 'rgba(196,98,45,0.10)' : 'rgba(108,111,228,0.10)' }}>
                 <feature.icon size={22} style={{ color: feature.iconColor }} />
               </div>
               <h3 className="font-sans font-semibold text-base text-foreground mb-2">

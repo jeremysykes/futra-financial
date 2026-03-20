@@ -1,6 +1,6 @@
 export function CTASection() {
   return (
-    <section className="py-20 md:py-28 bg-secondary">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-secondary to-secondary/50">
       <div className="max-w-[700px] mx-auto px-6 text-center">
         <h2 className="font-sans font-bold text-foreground text-3xl md:text-4xl tracking-[-0.01em] mb-6">
           Take the first step toward credit clarity
