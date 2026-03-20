@@ -4,11 +4,13 @@ import { Sun, Moon, BookOpen } from 'lucide-react';
 const UNITS = [
   { id: 'spend', label: 'Spend' },
   { id: 'save', label: 'Save' },
+  { id: 'credit', label: 'Credit' },
 ];
 
 const STORYBOOK_STORY_PATHS: Record<string, string> = {
   spend: '/story/pages-futra-spend--default',
   save: '/story/pages-futra-save--default',
+  credit: '/story/pages-futra-credit--default',
 };
 
 function getStorybookUrl(unit: string, theme: string): string {
