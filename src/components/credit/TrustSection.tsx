@@ -9,8 +9,11 @@ const signals = [
 
 export function TrustSection() {
   return (
-    <section className="bg-secondary/20 border-y border-border">
-      <div className="max-w-[1200px] mx-auto px-6 py-8">
+    <section className="relative overflow-hidden bg-secondary/20 border-y border-border">
+      <div className="absolute inset-0 z-0">
+        <img src="/images/IMG-CREDIT-02.png" alt="" className="w-full h-full object-cover opacity-[0.05]" />
+      </div>
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {signals.map((signal, i) => (
             <div key={signal.text} className="flex items-center gap-6">

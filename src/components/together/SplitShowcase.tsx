@@ -28,8 +28,11 @@ const EXAMPLES = [
 
 export function SplitShowcase() {
   return (
-    <section className="py-20 bg-secondary/40">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section className="relative overflow-hidden py-20 bg-secondary/40">
+      <div className="absolute inset-0 z-0">
+        <img src="/images/IMG-TOGETHER-03.png" alt="" className="w-full h-full object-cover opacity-[0.08]" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <h2 className="font-sans font-bold text-3xl text-foreground text-center mb-4">
           Split it any way you want
         </h2>

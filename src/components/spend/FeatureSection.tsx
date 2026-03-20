@@ -39,6 +39,9 @@ export function FeatureSection() {
           <br />
           nothing you don't.
         </h2>
+        <div className="mb-12 rounded-xl overflow-hidden max-h-[200px]">
+          <img src="/images/IMG-SPEND-02.png" alt="Contactless payment" className="w-full h-full object-cover" />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((f, i) => (
             <div

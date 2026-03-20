@@ -21,8 +21,12 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section className="bg-secondary py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="relative overflow-hidden bg-secondary py-20">
+      {/* Background texture */}
+      <div className="absolute inset-0 z-0">
+        <img src="/images/IMG-SPEND-03.png" alt="" className="w-full h-full object-cover opacity-[0.06]" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         <p
           className="text-[12px] uppercase tracking-[0.08em] text-accent mb-3 font-sans font-medium"
         >

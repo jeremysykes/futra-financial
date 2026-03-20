@@ -35,6 +35,10 @@ export function FeatureSection() {
           Built for sharing
         </h2>
 
+        <div className="mb-12 rounded-xl overflow-hidden max-h-[200px]">
+          <img src="/images/IMG-TOGETHER-02.png" alt="Shared life" className="w-full h-full object-cover" />
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURES.map((feature, i) => (
             <div

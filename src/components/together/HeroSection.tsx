@@ -2,8 +2,12 @@ import { SplitDisplay } from './SplitDisplay';
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <section className="relative overflow-hidden min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
+      <div className="absolute inset-0 z-0">
+        <img src="/images/IMG-TOGETHER-01.png" alt="" className="w-full h-full object-cover opacity-[0.08]" />
+        <div className="absolute inset-0 bg-background/70" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         {/* Left: copy */}
         <div className="flex-1 max-w-xl">
           <h1 className="font-sans font-bold text-4xl md:text-5xl leading-tight text-foreground mb-6">

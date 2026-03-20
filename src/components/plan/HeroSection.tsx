@@ -2,8 +2,12 @@ import { DashboardPreview } from './DashboardPreview';
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
-      <div className="max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full">
+    <section className="relative overflow-hidden min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
+      <div className="absolute inset-0 z-0">
+        <img src="/images/IMG-PLAN-01.png" alt="" className="w-full h-full object-cover opacity-[0.12]" />
+        <div className="absolute inset-0 bg-background/80" />
+      </div>
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           <div className="flex-1 max-w-xl">
             <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">

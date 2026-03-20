@@ -34,6 +34,10 @@ export function FeatureSection() {
           Tools that fit your life
         </h2>
 
+        <div className="mb-12 rounded-xl overflow-hidden max-h-[200px]">
+          <img src="/images/IMG-SAVE-02.png" alt="Travel destination" className="w-full h-full object-cover" />
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f, i) => (
             <div key={f.title} className="rounded-xl p-6 bg-surface border border-border border-t-2 border-t-accent shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>

@@ -28,8 +28,11 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-background">
-      <div className="max-w-[700px] mx-auto px-6">
+    <section id="faq" className="relative overflow-hidden py-20 md:py-28 bg-background">
+      <div className="absolute inset-0 z-0">
+        <img src="/images/IMG-CREDIT-03.png" alt="" className="w-full h-full object-cover opacity-[0.06]" />
+      </div>
+      <div className="relative z-10 max-w-[700px] mx-auto px-6">
         <div className="text-center mb-16">
           <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
             FAQ
