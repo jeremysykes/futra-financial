@@ -25,7 +25,7 @@ const features = [
 
 export function FeatureSection() {
   return (
-    <section id="features" className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/30">
+    <section id="features" className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/40">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center mb-16">
           <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
@@ -39,7 +39,7 @@ export function FeatureSection() {
           {features.map((feature, i) => (
             <div
               key={feature.title}
-              className="p-6 rounded-xl bg-surface border border-border hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              className="p-6 rounded-xl bg-surface border border-border border-t-2 border-t-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">

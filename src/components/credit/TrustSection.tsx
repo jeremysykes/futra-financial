@@ -9,7 +9,7 @@ const signals = [
 
 export function TrustSection() {
   return (
-    <section className="relative overflow-hidden bg-secondary/20 border-y border-border">
+    <section className="relative overflow-hidden bg-secondary/30 border-y border-border">
       <div className="absolute inset-0 z-0">
         <img src="/images/IMG-CREDIT-02.png" alt="" className="w-full h-full object-cover opacity-[0.05]" />
       </div>
