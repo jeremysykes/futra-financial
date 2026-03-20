@@ -16,7 +16,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-9 left-0 right-0 z-50 h-16 transition-colors duration-300 ${
+      className={`fixed top-[var(--nav-top,0px)] left-0 right-0 z-50 h-16 transition-colors duration-300 ${
         scrolled ? 'bg-surface/95 backdrop-blur-sm' : 'bg-transparent'
       }`}
     >

@@ -2,7 +2,7 @@ import { SplitDisplay } from './SplitDisplay';
 
 export function HeroSection() {
   return (
-    <section className="pt-[100px] pb-20 bg-background">
+    <section className="pt-[calc(var(--nav-top,0px)+64px)] pb-20 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         {/* Left: copy */}
         <div className="flex-1 max-w-xl">

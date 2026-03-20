@@ -2,7 +2,7 @@ import { ScoreDisplay } from './ScoreDisplay';
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center pt-[100px] bg-background">
+    <section className="min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
       <div className="max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           <div className="flex-1 max-w-xl">

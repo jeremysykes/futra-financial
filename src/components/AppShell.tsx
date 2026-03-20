@@ -57,6 +57,7 @@ export function AppShell() {
       <div
         className={`${theme === 'dark' ? 'dark' : ''}`}
         data-business-unit={unit}
+        style={{ '--nav-top': '36px' } as React.CSSProperties}
       >
         <Routes>
           <Route path="/spend" element={<SpendPage />} />

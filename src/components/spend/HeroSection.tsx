@@ -2,7 +2,7 @@ import { PhoneMockup } from './PhoneMockup';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-background flex items-center overflow-hidden pt-16">
+    <section className="relative min-h-screen bg-background flex items-center overflow-hidden pt-[calc(var(--nav-top,0px)+64px)]">
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         <div className="flex-1 text-center lg:text-left">
           <h1

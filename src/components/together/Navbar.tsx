@@ -16,7 +16,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-9 left-0 right-0 z-50 h-16 transition-colors ${
+      className={`fixed top-[var(--nav-top,0px)] left-0 right-0 z-50 h-16 transition-colors ${
         scrolled ? 'bg-surface/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
@@ -34,8 +34,10 @@ export function Navbar() {
             {link}
           </a>
         ))}
+      </div>
+      <div className="hidden md:block">
         <button className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2 rounded-[10px] hover:bg-primary-hover transition-colors">
-          Get Started Together
+          Get Started
         </button>
       </div>
 
@@ -62,7 +64,7 @@ export function Navbar() {
             </a>
           ))}
           <button className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2 rounded-[10px] hover:bg-primary-hover transition-colors w-full">
-            Get Started Together
+            Get Started
           </button>
         </div>
       )}

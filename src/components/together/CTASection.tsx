@@ -9,7 +9,7 @@ export function CTASection() {
           Free for both users. No hidden fees, no awkward conversations.
         </p>
         <button className="bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-[10px] hover:bg-primary-hover transition-colors text-base">
-          Get Started Together
+          Get Started
         </button>
       </div>
     </section>
