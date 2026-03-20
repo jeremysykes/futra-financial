@@ -6,6 +6,7 @@
 @theme {
   --color-background: oklch(1 0 0);
   --color-foreground: oklch(0.15 0 0);
+  --color-surface: oklch(1 0 0);
 
   --color-primary: oklch(0.45 0 0);
   --color-primary-hover: oklch(0.35 0 0);
@@ -21,6 +22,11 @@
   --color-border: oklch(0.88 0 0);
   --color-ring: oklch(0.45 0 0);
 
+  --color-accent: oklch(0.5 0.2 265);
+  --color-positive: oklch(0.6 0.15 170);
+  --color-negative: oklch(0.65 0.16 25);
+  --color-caution: oklch(0.75 0.15 75);
+
   --color-destructive: oklch(0.55 0.22 25);
   --color-destructive-foreground: oklch(1 0 0);
 }
@@ -30,6 +36,7 @@
   .dark {
     --color-background: oklch(0.13 0 0);
     --color-foreground: oklch(0.95 0 0);
+    --color-surface: oklch(0.18 0 0);
 
     --color-primary: oklch(0.85 0 0);
     --color-primary-hover: oklch(0.92 0 0);
@@ -45,91 +52,277 @@
     --color-border: oklch(0.3 0 0);
     --color-ring: oklch(0.85 0 0);
 
+    --color-accent: oklch(0.65 0.18 265);
+    --color-positive: oklch(0.7 0.13 170);
+    --color-negative: oklch(0.7 0.14 25);
+    --color-caution: oklch(0.8 0.13 75);
+
     --color-destructive: oklch(0.6 0.22 25);
     --color-destructive-foreground: oklch(1 0 0);
   }
 
-  /* ─── Unit A — Indigo ─── */
+  /* ─── Futra Spend — Indigo/Dark ─── */
 
-  /* Unit A (light) */
-  [data-business-unit='unit-a'] {
-    --color-primary: oklch(0.5 0.2 265);
-    --color-primary-hover: oklch(0.43 0.22 265);
-    --color-primary-foreground: oklch(1 0 0);
+  [data-business-unit='spend'] {
+    --color-background: #F5F5F8;
+    --color-foreground: #1A1A1F;
+    --color-surface: #FFFFFF;
 
-    --color-secondary: oklch(0.96 0.02 265);
-    --color-secondary-hover: oklch(0.91 0.04 265);
-    --color-secondary-foreground: oklch(0.3 0.1 265);
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
 
-    --color-ring: oklch(0.5 0.2 265);
+    --color-secondary: #F0F0F5;
+    --color-secondary-hover: #E5E5EE;
+    --color-secondary-foreground: #1A1A1F;
+
+    --color-muted: #F0F0F5;
+    --color-muted-foreground: #8B8B9A;
+
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-ring: #6C6FE4;
+
+    --color-accent: #6C6FE4;
+    --color-positive: #2ABFA3;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
   }
 
-  /* Unit A (dark) */
-  [data-business-unit='unit-a'].dark {
-    --color-primary: oklch(0.7 0.18 265);
-    --color-primary-hover: oklch(0.76 0.16 265);
-    --color-primary-foreground: oklch(0.13 0 0);
+  [data-business-unit='spend'].dark,
+  .dark [data-business-unit='spend'] {
+    --color-background: #0F0F12;
+    --color-foreground: #FFFFFF;
+    --color-surface: #1A1A1F;
 
-    --color-secondary: oklch(0.25 0.06 265);
-    --color-secondary-hover: oklch(0.3 0.08 265);
-    --color-secondary-foreground: oklch(0.85 0.06 265);
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
 
-    --color-ring: oklch(0.7 0.18 265);
+    --color-secondary: #1A1A1F;
+    --color-secondary-hover: #252530;
+    --color-secondary-foreground: #FFFFFF;
+
+    --color-muted: #1A1A1F;
+    --color-muted-foreground: #8B8B9A;
+
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-ring: #6C6FE4;
+
+    --color-accent: #6C6FE4;
+    --color-positive: #2ABFA3;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
   }
 
-  /* ─── Unit B — Teal ─── */
+  /* ─── Futra Save — Grove Green ─── */
 
-  /* Unit B (light) */
-  [data-business-unit='unit-b'] {
-    --color-primary: oklch(0.55 0.14 175);
-    --color-primary-hover: oklch(0.48 0.16 175);
-    --color-primary-foreground: oklch(1 0 0);
+  [data-business-unit='save'] {
+    --color-background: #F7F5F0;
+    --color-foreground: #1C1C1A;
+    --color-surface: #FFFFFF;
 
-    --color-secondary: oklch(0.96 0.02 175);
-    --color-secondary-hover: oklch(0.91 0.04 175);
-    --color-secondary-foreground: oklch(0.3 0.08 175);
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
 
-    --color-ring: oklch(0.55 0.14 175);
+    --color-secondary: #E8F0EB;
+    --color-secondary-hover: #D8E8DD;
+    --color-secondary-foreground: #1C1C1A;
+
+    --color-muted: #E8F0EB;
+    --color-muted-foreground: #7A7A72;
+
+    --color-border: rgba(74, 124, 89, 0.15);
+    --color-ring: #4A7C59;
+
+    --color-accent: #4A7C59;
+    --color-positive: #4A7C59;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
   }
 
-  /* Unit B (dark) */
-  [data-business-unit='unit-b'].dark {
-    --color-primary: oklch(0.72 0.12 175);
-    --color-primary-hover: oklch(0.78 0.1 175);
-    --color-primary-foreground: oklch(0.13 0 0);
+  [data-business-unit='save'].dark,
+  .dark [data-business-unit='save'] {
+    --color-background: #1C1C1A;
+    --color-foreground: #F7F5F0;
+    --color-surface: #2A2A26;
 
-    --color-secondary: oklch(0.25 0.05 175);
-    --color-secondary-hover: oklch(0.3 0.07 175);
-    --color-secondary-foreground: oklch(0.85 0.05 175);
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
 
-    --color-ring: oklch(0.72 0.12 175);
+    --color-secondary: #2A3A2E;
+    --color-secondary-hover: #354538;
+    --color-secondary-foreground: #F7F5F0;
+
+    --color-muted: #2A3A2E;
+    --color-muted-foreground: #9A9A90;
+
+    --color-border: rgba(74, 124, 89, 0.2);
+    --color-ring: #5A8C69;
+
+    --color-accent: #5A8C69;
+    --color-positive: #5A8C69;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
   }
 
-  /* ─── Unit C — Amber ─── */
+  /* ─── Futra Credit — Lavender/Indigo ─── */
 
-  /* Unit C (light) */
-  [data-business-unit='unit-c'] {
-    --color-primary: oklch(0.6 0.16 70);
-    --color-primary-hover: oklch(0.53 0.18 70);
-    --color-primary-foreground: oklch(0.15 0 0);
+  [data-business-unit='credit'] {
+    --color-background: #F9F7FF;
+    --color-foreground: #1A1830;
+    --color-surface: #EEEAFF;
 
-    --color-secondary: oklch(0.96 0.02 70);
-    --color-secondary-hover: oklch(0.91 0.04 70);
-    --color-secondary-foreground: oklch(0.35 0.08 70);
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
 
-    --color-ring: oklch(0.6 0.16 70);
+    --color-secondary: #EEEAFF;
+    --color-secondary-hover: #E0DAFF;
+    --color-secondary-foreground: #1A1830;
+
+    --color-muted: #D4D2EE;
+    --color-muted-foreground: #6B6880;
+
+    --color-border: rgba(108, 111, 228, 0.15);
+    --color-ring: #6C6FE4;
+
+    --color-accent: #9896C8;
+    --color-positive: #6C6FE4;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
   }
 
-  /* Unit C (dark) */
-  [data-business-unit='unit-c'].dark {
-    --color-primary: oklch(0.75 0.14 70);
-    --color-primary-hover: oklch(0.8 0.12 70);
-    --color-primary-foreground: oklch(0.13 0 0);
+  [data-business-unit='credit'].dark,
+  .dark [data-business-unit='credit'] {
+    --color-background: #1A1830;
+    --color-foreground: #F9F7FF;
+    --color-surface: #252340;
 
-    --color-secondary: oklch(0.25 0.05 70);
-    --color-secondary-hover: oklch(0.3 0.07 70);
-    --color-secondary-foreground: oklch(0.85 0.05 70);
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #7B7EEE;
+    --color-primary-foreground: #FFFFFF;
 
-    --color-ring: oklch(0.75 0.14 70);
+    --color-secondary: #3A3860;
+    --color-secondary-hover: #454370;
+    --color-secondary-foreground: #F9F7FF;
+
+    --color-muted: #3A3860;
+    --color-muted-foreground: #9896C8;
+
+    --color-border: rgba(108, 111, 228, 0.2);
+    --color-ring: #6C6FE4;
+
+    --color-accent: #7B79B0;
+    --color-positive: #6C6FE4;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
+  }
+
+  /* ─── Futra Plan — Deep Blue/Dark ─── */
+
+  [data-business-unit='plan'] {
+    --color-background: #F0F4F8;
+    --color-foreground: #0C1017;
+    --color-surface: #FFFFFF;
+
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
+
+    --color-secondary: #E8EDF2;
+    --color-secondary-hover: #D8DFE8;
+    --color-secondary-foreground: #0C1017;
+
+    --color-muted: #E8EDF2;
+    --color-muted-foreground: #64748B;
+
+    --color-border: rgba(12, 16, 23, 0.1);
+    --color-ring: #6C6FE4;
+
+    --color-accent: #6C6FE4;
+    --color-positive: #1FA88E;
+    --color-negative: #E4746C;
+    --color-caution: #D4962E;
+  }
+
+  [data-business-unit='plan'].dark,
+  .dark [data-business-unit='plan'] {
+    --color-background: #0C1017;
+    --color-foreground: #E2E8F0;
+    --color-surface: #151E2B;
+
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #7B7EEE;
+    --color-primary-foreground: #FFFFFF;
+
+    --color-secondary: #1F2D3D;
+    --color-secondary-hover: #2A3A4D;
+    --color-secondary-foreground: #E2E8F0;
+
+    --color-muted: #1F2D3D;
+    --color-muted-foreground: #A0AEC0;
+
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-ring: #6C6FE4;
+
+    --color-accent: #6C6FE4;
+    --color-positive: #2ABFA3;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
+  }
+
+  /* ─── Futra Together — Warm Terracotta ─── */
+
+  [data-business-unit='together'] {
+    --color-background: #FFF9F5;
+    --color-foreground: #1C1A18;
+    --color-surface: #FFFFFF;
+
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #5B5ED0;
+    --color-primary-foreground: #FFFFFF;
+
+    --color-secondary: #F2E4DA;
+    --color-secondary-hover: #E8D6CA;
+    --color-secondary-foreground: #1C1A18;
+
+    --color-muted: #F2E4DA;
+    --color-muted-foreground: #9E8E84;
+
+    --color-border: rgba(196, 98, 45, 0.15);
+    --color-ring: #C4622D;
+
+    --color-accent: #C4622D;
+    --color-positive: #4A7C59;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
+  }
+
+  [data-business-unit='together'].dark,
+  .dark [data-business-unit='together'] {
+    --color-background: #1C1A18;
+    --color-foreground: #FFF9F5;
+    --color-surface: #2A2622;
+
+    --color-primary: #6C6FE4;
+    --color-primary-hover: #7B7EEE;
+    --color-primary-foreground: #FFFFFF;
+
+    --color-secondary: #3A322C;
+    --color-secondary-hover: #453C35;
+    --color-secondary-foreground: #FFF9F5;
+
+    --color-muted: #3A322C;
+    --color-muted-foreground: #9E8E84;
+
+    --color-border: rgba(196, 98, 45, 0.2);
+    --color-ring: #D4724A;
+
+    --color-accent: #D4724A;
+    --color-positive: #5A8C69;
+    --color-negative: #E4746C;
+    --color-caution: #E8A838;
   }
 }

@@ -47,7 +47,7 @@ export function DashboardPreview() {
         {/* Metrics row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
           {[
-            { label: 'Net Worth', value: '$184,230', trend: '+12.4%' },
+            { label: 'Net Worth', value: '$184K', trend: '+12.4%' },
             { label: 'Monthly Savings', value: '$2,140', trend: '+3.2%' },
             { label: 'Runway', value: '34 yrs', trend: 'On track' },
           ].map((m) => (
