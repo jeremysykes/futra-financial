@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 // @ts-expect-error css side-effect import
 import '../src/tailwind.css';
+import '../src/index.css';
 
 const preview: Preview = {
   parameters: {
@@ -19,8 +20,8 @@ const preview: Preview = {
         icon: 'sun',
         items: [
           { value: 'light', title: 'Light', icon: 'sun' },
-          { value: 'dark', title: 'Dark', icon: 'moon' }
-        ]
+          { value: 'dark', title: 'Dark', icon: 'moon' },
+        ],
       },
       dynamicTitle: true,
     },
@@ -30,29 +31,35 @@ const preview: Preview = {
         title: 'Business Unit',
         icon: 'component',
         items: [
-          { value: 'none', title: 'None' },
-          { value: 'unit-a', title: 'Unit A' },
-          { value: 'unit-b', title: 'Unit B' },
-          { value: 'unit-c', title: 'Unit C' },
-        ]
+          { value: 'none', title: 'White Label' },
+          { value: 'spend', title: 'Futra Spend' },
+          { value: 'save', title: 'Futra Save' },
+          { value: 'credit', title: 'Futra Credit' },
+          { value: 'plan', title: 'Futra Plan' },
+          { value: 'together', title: 'Futra Together' },
+        ],
       },
       dynamicTitle: true,
     },
   },
   initialGlobals: {
-    theme: 'light',
-    businessUnit: 'none',
+    theme: 'dark',
+    businessUnit: 'spend',
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme;
       const businessUnit = context.globals.businessUnit;
       return (
-        <div className={theme === 'dark' ? 'dark' : ''} {...(businessUnit !== 'none' && { 'data-business-unit': businessUnit })}>
-          {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+        <div
+          className={`${theme === 'dark' ? 'dark' : ''} bg-background text-foreground`}
+          {...(businessUnit !== 'none' && {
+            'data-business-unit': businessUnit,
+          })}
+        >
           <Story />
         </div>
-      )
+      );
     },
   ],
 };

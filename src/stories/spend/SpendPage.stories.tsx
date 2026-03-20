@@ -8,7 +8,6 @@ const meta = {
     layout: 'fullscreen',
   },
   globals: {
-    theme: 'dark',
     businessUnit: 'spend',
   },
 } satisfies Meta<typeof SpendPage>;

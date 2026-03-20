@@ -8,7 +8,6 @@ const meta = {
     layout: 'fullscreen',
   },
   globals: {
-    theme: 'light',
     businessUnit: 'save',
   },
 } satisfies Meta<typeof SavePage>;
