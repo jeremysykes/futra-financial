@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { SpendPage } from './spend/SpendPage';
+import { SavePage } from './save/SavePage';
 import { DemoSwitcher } from './DemoSwitcher';
 
 const UNIT_DEFAULTS: Record<string, 'light' | 'dark'> = {
@@ -53,6 +54,7 @@ export function AppShell() {
       >
         <Routes>
           <Route path="/spend" element={<SpendPage />} />
+          <Route path="/save" element={<SavePage />} />
           <Route path="/" element={<Navigate to="/spend" replace />} />
         </Routes>
       </div>
