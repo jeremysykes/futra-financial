@@ -1,6 +1,6 @@
 # Agent Roles & Division of Labour
 
-This document defines the specialized agent roles for the Futra Financial project. Each role has a clear scope, responsibilities, and the context it needs to do its work.
+This document defines the specialized agent roles for the Futra Financial project. Each role has a clear scope, responsibilities, the context it needs, and the Claude Code skills it should invoke to perform at a high level.
 
 ---
 
@@ -19,6 +19,14 @@ This document defines the specialized agent roles for the Futra Financial projec
 
 **Does not:** Write production code, manage routing, handle state management
 
+**Skills to invoke:**
+- `frontend-design:frontend-design` — Distinctive, production-grade UI design (invoke on every design task)
+- `figma:implement-design` — When translating Figma designs to code specifications
+- `figma:get-design-context` — When pulling design context from Figma files
+- `react-best-practices` — When reviewing TSX component quality
+- `agent-browser` — When visually inspecting and comparing BU pages
+- `superpowers:brainstorming` — Before proposing any design direction or visual overhaul
+
 ---
 
 ## Frontend Engineer
@@ -34,9 +42,22 @@ This document defines the specialized agent roles for the Futra Financial projec
 - Maintain Storybook stories with correct globals
 - Ensure TypeScript compiles cleanly and ESLint passes
 
-**Context needed:** DESIGN.md, Figma Make source files, existing component patterns, tailwind.css token definitions
+**Context needed:** DESIGN.md, ARCHITECTURE.md, Figma Make source files, existing component patterns, tailwind.css token definitions
 
 **Does not:** Make brand decisions, choose color palettes, alter DESIGN.md
+
+**Skills to invoke:**
+- `react-best-practices` — After editing TSX components, before shipping
+- `figma:implement-design` — When implementing UI from Figma files
+- `shadcn` — When using shadcn/ui components, Radix primitives, or CVA patterns
+- `superpowers:test-driven-development` — When implementing features or fixing bugs
+- `superpowers:writing-plans` — Before multi-step implementation work
+- `superpowers:subagent-driven-development` — When executing plans with independent tasks
+- `superpowers:verification-before-completion` — Before claiming work is done
+- `superpowers:systematic-debugging` — When encountering bugs or test failures
+- `agent-browser` — When verifying dev server output visually
+- `agent-browser-verify` — After starting dev server, before continuing development
+- `simplify` — After implementation, review for reuse, quality, and efficiency
 
 ---
 
@@ -55,6 +76,11 @@ This document defines the specialized agent roles for the Futra Financial projec
 
 **Does not:** Write code, implement designs, manage the build system
 
+**Skills to invoke:**
+- `superpowers:brainstorming` — Before any brand identity decision or palette change
+- `frontend-design:frontend-design` — For visual direction and aesthetic guidance
+- `geist` — When considering typography decisions and font configuration
+
 ---
 
 ## Design System Engineer
@@ -69,9 +95,15 @@ This document defines the specialized agent roles for the Futra Financial projec
 - Maintain the `data-business-unit` switching mechanism
 - Ensure Storybook decorator applies tokens correctly
 
-**Context needed:** DESIGN.md, tailwind.css, .storybook/preview.tsx
+**Context needed:** DESIGN.md, ARCHITECTURE.md, tailwind.css, .storybook/preview.tsx
 
 **Does not:** Build page components, make visual design decisions, write copy
+
+**Skills to invoke:**
+- `shadcn` — For theming patterns, CSS variable conventions, and Tailwind integration
+- `react-best-practices` — When reviewing decorator and provider patterns
+- `superpowers:systematic-debugging` — When theme switching or token resolution fails
+- `agent-browser` — When verifying theme switching across BUs and modes
 
 ---
 
@@ -87,9 +119,16 @@ This document defines the specialized agent roles for the Futra Financial projec
 - Flag visual regressions or inconsistencies
 - Run TypeScript and lint checks
 
-**Context needed:** Current dev server, Storybook, browser automation (agent-browser)
+**Context needed:** Current dev server, Storybook, browser automation
 
 **Does not:** Write code or make design decisions — only reports issues
+
+**Skills to invoke:**
+- `agent-browser` — Primary tool for all visual verification (screenshots, interaction, navigation)
+- `agent-browser-verify` — Automated dev-server verification checklist
+- `verification` — Full end-to-end verification orchestrator
+- `superpowers:requesting-code-review` — When a major feature is complete and needs review
+- `superpowers:verification-before-completion` — Before signing off on any implementation
 
 ---
 
@@ -104,9 +143,13 @@ This document defines the specialized agent roles for the Futra Financial projec
 - Ensure copy is concise and action-oriented
 - Source or specify image requirements (subject matter, mood, dimensions)
 
-**Context needed:** DESIGN.md (demographics, emotional register), docs/prompts/ (Figma Make prompts)
+**Context needed:** DESIGN.md (demographics, emotional register), docs/prompts/ (Figma Make prompts), docs/image-requirements.md
 
 **Does not:** Make code changes, choose colors, alter the design system
+
+**Skills to invoke:**
+- `superpowers:brainstorming` — Before writing copy for a new BU or section
+- `frontend-design:frontend-design` — When copy needs to complement a specific visual direction
 
 ---
 
@@ -122,6 +165,8 @@ This document defines the specialized agent roles for the Futra Financial projec
 | Visual verification | QA / Visual Reviewer | Frontend Engineer |
 | Image sourcing | Content / Copy Writer | Frontend Designer |
 | Storybook maintenance | Frontend Engineer | Design System Engineer |
+| Bug fixing | Frontend Engineer | QA / Visual Reviewer |
+| Design system refactor | Design System Engineer | Frontend Engineer, Brand Strategist |
 
 ---
 
@@ -133,3 +178,13 @@ This document defines the specialized agent roles for the Futra Financial projec
 4. **Frontend Engineer** implements changes using DESIGN.md as the source of truth
 5. **Design System Engineer** maintains the token infrastructure
 6. **QA / Visual Reviewer** verifies the result across all BUs and modes
+
+---
+
+## Skill Invocation Rules
+
+- **Always invoke relevant skills BEFORE starting work** — not after
+- If in doubt whether a skill applies, invoke it — a false positive costs less than a missed insight
+- Process skills (brainstorming, debugging, TDD) come before implementation skills
+- `DESIGN.md` is always the source of truth for visual decisions — skills inform execution, not brand identity
+- `ARCHITECTURE.md` is the source of truth for technical decisions
