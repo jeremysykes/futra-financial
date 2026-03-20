@@ -49,9 +49,17 @@ Futra Spend is the surface users live in — a real-time transaction feed, debit
 
 #### Color palette — Spend
 
-| `#0F0F12` | `#1A1A1F` | `#6C6FE4` | `#FFFFFF` | `#8B8B9A` | `#E4746C` | `#2ABFA3` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Void** | **Surface** | **Indigo** | **Primary** | **Muted** | **Debit** | **Credit** |
+<table>
+  <tr>
+    <td bgcolor="#0F0F12" align="center" width="100"><code style="color:#ffffff">#0F0F12</code><br><strong style="color:#ffffff">Void</strong></td>
+    <td bgcolor="#1A1A1F" align="center" width="100"><code style="color:#ffffff">#1A1A1F</code><br><strong style="color:#ffffff">Surface</strong></td>
+    <td bgcolor="#6C6FE4" align="center" width="100"><code style="color:#ffffff">#6C6FE4</code><br><strong style="color:#ffffff">Indigo</strong></td>
+    <td bgcolor="#FFFFFF" align="center" width="100"><code style="color:#c9b379">#FFFFFF</code><br><strong style="color:#c9b379">Primary</strong></td>
+    <td bgcolor="#8B8B9A" align="center" width="100"><code style="color:#ffffff">#8B8B9A</code><br><strong style="color:#ffffff">Muted</strong></td>
+    <td bgcolor="#E4746C" align="center" width="100"><code style="color:#ffffff">#E4746C</code><br><strong style="color:#ffffff">Debit</strong></td>
+    <td bgcolor="#2ABFA3" align="center" width="100"><code style="color:#ffffff">#2ABFA3</code><br><strong style="color:#ffffff">Credit</strong></td>
+  </tr>
+</table>
 
 > *Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is borrowed from terminal interfaces and professional audio tools: high contrast, zero decoration, total clarity at a glance.*
 
@@ -71,9 +79,17 @@ Futra Save is goal-based savings with visual progress mechanics. Users name thei
 
 #### Color palette — Save
 
-| `#F7F5F0` | `#FFFFFF` | `#4A7C59` | `#A8C5B0` | `#E8F0EB` | `#1C1C1A` | `#6C6FE4` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Linen** | **Card** | **Grove** | **Sage** | **Mist** | **Ink** | **Indigo** |
+<table>
+  <tr>
+    <td bgcolor="#F7F5F0" align="center" width="100"><code style="color:#c9b379">#F7F5F0</code><br><strong style="color:#c9b379">Linen</strong></td>
+    <td bgcolor="#FFFFFF" align="center" width="100"><code style="color:#c9b379">#FFFFFF</code><br><strong style="color:#c9b379">Card</strong></td>
+    <td bgcolor="#4A7C59" align="center" width="100"><code style="color:#ffffff">#4A7C59</code><br><strong style="color:#ffffff">Grove</strong></td>
+    <td bgcolor="#A8C5B0" align="center" width="100"><code style="color:#ffffff">#A8C5B0</code><br><strong style="color:#ffffff">Sage</strong></td>
+    <td bgcolor="#E8F0EB" align="center" width="100"><code style="color:#c9b379">#E8F0EB</code><br><strong style="color:#c9b379">Mist</strong></td>
+    <td bgcolor="#1C1C1A" align="center" width="100"><code style="color:#ffffff">#1C1C1A</code><br><strong style="color:#ffffff">Ink</strong></td>
+    <td bgcolor="#6C6FE4" align="center" width="100"><code style="color:#ffffff">#6C6FE4</code><br><strong style="color:#ffffff">Indigo</strong></td>
+  </tr>
+</table>
 
 > *Warm off-white and earthy sage greens. The green palette evokes cultivation and slow growth — the emotional opposite of a trading dashboard. Indigo carries over from the core system as the action color; here it sits alongside Grove green rather than against pure black, softening its energy. Progress bars never use red or amber — percentage fill alone communicates momentum.*
 
@@ -93,9 +109,17 @@ Futra Credit is a credit score monitor, credit card manager, and debt payoff pla
 
 #### Color palette — Credit
 
-| `#F9F7FF` | `#EEEAFF` | `#6C6FE4` | `#9896C8` | `#E8A838` | `#1A1830` | `#D4D2EE` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Iris White** | **Lavender** | **Indigo** | **Slate** | **Amber** | **Midnight** | **Periwinkle** |
+<table>
+  <tr>
+    <td bgcolor="#F9F7FF" align="center" width="100"><code style="color:#c9b379">#F9F7FF</code><br><strong style="color:#c9b379">Iris White</strong></td>
+    <td bgcolor="#EEEAFF" align="center" width="100"><code style="color:#c9b379">#EEEAFF</code><br><strong style="color:#c9b379">Lavender</strong></td>
+    <td bgcolor="#6C6FE4" align="center" width="100"><code style="color:#ffffff">#6C6FE4</code><br><strong style="color:#ffffff">Indigo</strong></td>
+    <td bgcolor="#9896C8" align="center" width="100"><code style="color:#ffffff">#9896C8</code><br><strong style="color:#ffffff">Slate</strong></td>
+    <td bgcolor="#E8A838" align="center" width="100"><code style="color:#ffffff">#E8A838</code><br><strong style="color:#ffffff">Amber</strong></td>
+    <td bgcolor="#1A1830" align="center" width="100"><code style="color:#ffffff">#1A1830</code><br><strong style="color:#ffffff">Midnight</strong></td>
+    <td bgcolor="#D4D2EE" align="center" width="100"><code style="color:#ffffff">#D4D2EE</code><br><strong style="color:#ffffff">Periwinkle</strong></td>
+  </tr>
+</table>
 
 > *Soft lavender-whites and deep indigo-navy. The palette reads clinical but not cold — closer to a well-designed health app than a banking portal. Amber is the only warm accent, reserved strictly for caution states. The absence of red is a deliberate product decision: this demographic already carries financial anxiety, and the color system should not amplify it.*
 
@@ -115,9 +139,17 @@ Futra Plan is the web-first financial planning surface: net worth tracking, mont
 
 #### Color palette — Plan
 
-| `#0C1017` | `#151E2B` | `#1F2D3D` | `#6C6FE4` | `#2ABFA3` | `#E8A838` | `#A0AEC0` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Abyss** | **Deep** | **Surface** | **Indigo** | **Teal** | **Amber** | **Steel** |
+<table>
+  <tr>
+    <td bgcolor="#0C1017" align="center" width="100"><code style="color:#ffffff">#0C1017</code><br><strong style="color:#ffffff">Abyss</strong></td>
+    <td bgcolor="#151E2B" align="center" width="100"><code style="color:#ffffff">#151E2B</code><br><strong style="color:#ffffff">Deep</strong></td>
+    <td bgcolor="#1F2D3D" align="center" width="100"><code style="color:#ffffff">#1F2D3D</code><br><strong style="color:#ffffff">Surface</strong></td>
+    <td bgcolor="#6C6FE4" align="center" width="100"><code style="color:#ffffff">#6C6FE4</code><br><strong style="color:#ffffff">Indigo</strong></td>
+    <td bgcolor="#2ABFA3" align="center" width="100"><code style="color:#ffffff">#2ABFA3</code><br><strong style="color:#ffffff">Teal</strong></td>
+    <td bgcolor="#E8A838" align="center" width="100"><code style="color:#ffffff">#E8A838</code><br><strong style="color:#ffffff">Amber</strong></td>
+    <td bgcolor="#A0AEC0" align="center" width="100"><code style="color:#ffffff">#A0AEC0</code><br><strong style="color:#ffffff">Steel</strong></td>
+  </tr>
+</table>
 
 > *Deep blue-blacks with a three-color data vocabulary: indigo for primary series and interactive elements, teal for secondary data and positive variance, amber for caution and negative variance. Steel gray handles secondary text and axis labels. The palette is borrowed from professional data tools — Bloomberg terminal energy, without the chaos. Chart readability at high density is the primary constraint every color decision is made against.*
 
@@ -137,9 +169,17 @@ Futra Together is a shared finances surface for households — joint accounts, s
 
 #### Color palette — Together
 
-| `#FFF9F5` | `#FFFFFF` | `#C4622D` | `#6C6FE4` | `#F2E4DA` | `#1C1A18` | `#9E8E84` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Warm White** | **Card** | **Terracotta** | **Indigo** | **Blush** | **Espresso** | **Clay** |
+<table>
+  <tr>
+    <td bgcolor="#FFF9F5" align="center" width="100"><code style="color:#c9b379">#FFF9F5</code><br><strong style="color:#c9b379">Warm White</strong></td>
+    <td bgcolor="#FFFFFF" align="center" width="100"><code style="color:#c9b379">#FFFFFF</code><br><strong style="color:#c9b379">Card</strong></td>
+    <td bgcolor="#C4622D" align="center" width="100"><code style="color:#ffffff">#C4622D</code><br><strong style="color:#ffffff">Terracotta</strong></td>
+    <td bgcolor="#6C6FE4" align="center" width="100"><code style="color:#ffffff">#6C6FE4</code><br><strong style="color:#ffffff">Indigo</strong></td>
+    <td bgcolor="#F2E4DA" align="center" width="100"><code style="color:#c9b379">#F2E4DA</code><br><strong style="color:#c9b379">Blush</strong></td>
+    <td bgcolor="#1C1A18" align="center" width="100"><code style="color:#ffffff">#1C1A18</code><br><strong style="color:#ffffff">Espresso</strong></td>
+    <td bgcolor="#9E8E84" align="center" width="100"><code style="color:#ffffff">#9E8E84</code><br><strong style="color:#ffffff">Clay</strong></td>
+  </tr>
+</table>
 
 > *Warm whites and terracotta — the only Futra surface that moves away from cool neutrals. The warmth signals domesticity and shared life rather than individual financial management. User attribution uses indigo for one person and terracotta for the other — two equally weighted, visually distinct colors with no warm/cool implication of positive/negative.*
 

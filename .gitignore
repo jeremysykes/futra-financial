@@ -25,3 +25,7 @@ dist-ssr
 
 # Storybook
 storybook-static
+
+# Screenshots & browser test artifacts
+screenshots/
+.superpowers/
