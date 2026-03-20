@@ -28,13 +28,13 @@ export function HeroSection() {
 
           <div className="flex-1 relative w-full max-w-md lg:max-w-lg">
             <div className="relative" style={{ minHeight: 380 }}>
-              <div className="absolute top-0 left-0 w-[280px] sm:w-[300px] z-10">
+              <div className="absolute top-0 left-0 w-[280px] sm:w-[300px] z-10 shadow-xl -rotate-2">
                 <ProgressCard goalName="Trip to Japan" targetAmount="$4,500" currentAmount="$3,015" percentage={67} />
               </div>
-              <div className="absolute top-28 left-16 sm:left-24 w-[280px] sm:w-[300px] z-20">
+              <div className="absolute top-28 left-16 sm:left-24 w-[280px] sm:w-[300px] z-20 shadow-xl rotate-1">
                 <ProgressCard goalName="Emergency Fund" targetAmount="$10,000" currentAmount="$4,300" percentage={43} />
               </div>
-              <div className="absolute top-56 left-8 sm:left-12 w-[280px] sm:w-[300px] z-30">
+              <div className="absolute top-56 left-8 sm:left-12 w-[280px] sm:w-[300px] z-30 shadow-2xl -rotate-1">
                 <ProgressCard goalName="New Laptop" targetAmount="$2,200" currentAmount="$1,958" percentage={89} />
               </div>
             </div>
