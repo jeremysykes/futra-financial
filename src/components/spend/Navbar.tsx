@@ -16,10 +16,11 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-9 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 lg:px-12 transition-colors duration-300 ${
+      className={`fixed top-9 left-0 right-0 z-50 h-16 transition-colors duration-300 ${
         scrolled ? 'bg-surface/95 backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
+      <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
       <Logo className="text-foreground" />
       <div className="hidden md:flex items-center gap-8">
         {links.map((l) => (
@@ -66,6 +67,7 @@ export function Navbar() {
           </a>
         </div>
       )}
+      </div>
     </nav>
   );
 }

@@ -16,10 +16,11 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-9 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 lg:px-10 transition-colors ${
+      className={`fixed top-9 left-0 right-0 z-50 h-16 transition-colors ${
         scrolled ? 'bg-surface/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
+      <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
       <Logo />
 
       {/* Desktop links */}
@@ -65,6 +66,7 @@ export function Navbar() {
           </button>
         </div>
       )}
+      </div>
     </nav>
   );
 }
