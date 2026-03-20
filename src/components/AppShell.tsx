@@ -4,6 +4,7 @@ import { SpendPage } from './spend/SpendPage';
 import { SavePage } from './save/SavePage';
 import { CreditPage } from './credit/CreditPage';
 import { PlanPage } from './plan/PlanPage';
+import { TogetherPage } from './together/TogetherPage';
 import { DemoSwitcher } from './DemoSwitcher';
 
 const UNIT_DEFAULTS: Record<string, 'light' | 'dark'> = {
@@ -11,6 +12,7 @@ const UNIT_DEFAULTS: Record<string, 'light' | 'dark'> = {
   save: 'light',
   credit: 'light',
   plan: 'dark',
+  together: 'light',
 };
 
 function getUnitFromPath(pathname: string): string {
@@ -61,6 +63,7 @@ export function AppShell() {
           <Route path="/save" element={<SavePage />} />
           <Route path="/credit" element={<CreditPage />} />
           <Route path="/plan" element={<PlanPage />} />
+          <Route path="/together" element={<TogetherPage />} />
           <Route path="/" element={<Navigate to="/spend" replace />} />
         </Routes>
       </div>

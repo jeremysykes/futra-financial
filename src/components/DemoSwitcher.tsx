@@ -6,6 +6,7 @@ const UNITS = [
   { id: 'save', label: 'Save' },
   { id: 'credit', label: 'Credit' },
   { id: 'plan', label: 'Plan' },
+  { id: 'together', label: 'Together' },
 ];
 
 const STORYBOOK_STORY_PATHS: Record<string, string> = {
@@ -13,6 +14,7 @@ const STORYBOOK_STORY_PATHS: Record<string, string> = {
   save: '/story/pages-futra-save--default',
   credit: '/story/pages-futra-credit--default',
   plan: '/story/pages-futra-plan--default',
+  together: '/story/pages-futra-together--default',
 };
 
 function getStorybookUrl(unit: string, theme: string): string {
