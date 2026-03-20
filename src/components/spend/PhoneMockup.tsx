@@ -9,9 +9,9 @@ export function PhoneMockup() {
 
   return (
     <div className="relative mx-auto w-[280px] sm:w-[300px]">
-      <div className="rounded-[40px] border-[3px] border-[#2A2A32] bg-background p-3 shadow-2xl shadow-[#6C6FE4]/10">
-        <div className="mx-auto mb-3 h-[24px] w-[100px] rounded-full bg-surface" />
-        <div className="rounded-[28px] bg-background px-4 pb-4">
+      <div className="rounded-[40px] border-[3px] border-border bg-surface p-3 shadow-2xl shadow-primary/10">
+        <div className="mx-auto mb-3 h-[24px] w-[100px] rounded-full bg-secondary" />
+        <div className="rounded-[28px] bg-surface px-4 pb-4">
           <div className="mb-1 text-center">
             <p className="text-[11px] uppercase tracking-[0.08em] text-muted-foreground font-sans font-medium">
               Available Balance
