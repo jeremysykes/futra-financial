@@ -36,10 +36,11 @@ export function FeatureSection() {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => (
+          {features.map((feature, i) => (
             <div
               key={feature.title}
-              className="p-6 rounded-xl bg-surface border border-border"
+              className="p-6 rounded-xl bg-surface border border-border hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <feature.icon size={20} className="text-primary" />

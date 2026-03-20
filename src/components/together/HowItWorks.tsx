@@ -18,8 +18,8 @@ export function HowItWorks() {
           {/* Connecting line on desktop */}
           <div className="hidden md:block absolute top-12 left-[16.67%] right-[16.67%] h-px bg-border" />
 
-          {STEPS.map((step) => (
-            <div key={step.number} className="flex flex-col items-center text-center relative">
+          {STEPS.map((step, i) => (
+            <div key={step.number} className="flex flex-col items-center text-center relative animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="w-16 h-16 rounded-[10px] bg-secondary flex items-center justify-center mb-5 relative z-10">
                 <step.icon size={24} className="text-foreground" />
               </div>

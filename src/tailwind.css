@@ -326,3 +326,40 @@
     --color-caution: #E8A838;
   }
 }
+
+/* ─── Animations ─── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes score-fill {
+  from {
+    stroke-dasharray: 0 1000;
+  }
+}
+
+@keyframes bar-fill {
+  from {
+    width: 0%;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-score-fill {
+  animation: score-fill 1.2s ease-out both;
+}
+
+.animate-bar-fill {
+  animation: bar-fill 0.8s ease-out both;
+}

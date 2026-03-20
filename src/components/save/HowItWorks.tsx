@@ -37,8 +37,8 @@ export function HowItWorks() {
             className="hidden md:block absolute top-12 left-[20%] right-[20%] h-px"
             style={{ borderTop: '2px dashed var(--color-border)' }}
           />
-          {steps.map((step) => (
-            <div key={step.num} className="text-center relative">
+          {steps.map((step, i) => (
+            <div key={step.num} className="text-center relative animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-muted">
                 <step.icon size={28} className="text-accent" strokeWidth={1.5} />
               </div>

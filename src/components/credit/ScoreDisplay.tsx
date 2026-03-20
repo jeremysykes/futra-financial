@@ -25,7 +25,7 @@ export function ScoreDisplay({ score, label, percentage = 0.75, size = 220 }: Sc
         />
         <circle
           cx={center} cy={center} r={radius}
-          fill="none" className="stroke-primary"
+          fill="none" className="stroke-primary animate-score-fill"
           strokeWidth={strokeWidth} strokeLinecap="round"
           strokeDasharray={`${filled} ${2 * Math.PI * radius}`}
           transform={`rotate(${startAngle} ${center} ${center})`}

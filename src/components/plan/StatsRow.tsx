@@ -12,10 +12,11 @@ export function StatsRow() {
     <section className="py-20 md:py-28 bg-surface">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((s) => (
+          {stats.map((s, i) => (
             <div
               key={s.label}
-              className="rounded-xl p-6 bg-secondary border border-border border-l-2 border-l-primary text-center"
+              className="rounded-xl p-6 bg-secondary border border-border border-l-2 border-l-primary text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <span className="block mb-1 font-mono font-semibold text-foreground text-[clamp(28px,4vw,40px)]">
                 {s.value}

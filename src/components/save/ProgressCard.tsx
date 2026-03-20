@@ -18,7 +18,7 @@ export function ProgressCard({
         <span className="font-mono font-medium text-[13px] text-accent">{percentage}%</span>
       </div>
       <div className="w-full h-2 rounded-full bg-muted mb-3">
-        <div className="h-full rounded-full bg-accent transition-all duration-700" style={{ width: `${percentage}%` }} />
+        <div className="h-full rounded-full bg-accent transition-all duration-700 animate-bar-fill" style={{ width: `${percentage}%` }} />
       </div>
       <div className="flex items-center justify-between">
         <span className="font-mono font-medium text-sm text-foreground">{currentAmount}</span>

@@ -31,10 +31,11 @@ export function TestimonialSection() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((t) => (
+          {TESTIMONIALS.map((t, i) => (
             <div
               key={t.names}
-              className="rounded-[14px] bg-surface border border-border p-6 flex flex-col"
+              className="rounded-[14px] bg-surface border border-border p-6 flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               {/* Paired avatars */}
               <div className="flex items-center gap-3 mb-5">
