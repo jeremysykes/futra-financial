@@ -1,0 +1,28 @@
+# Claude Code Instructions
+
+## Canonical Documents
+
+**DESIGN.md** is the canonical brand identity and design system document. It defines palettes, typography, token architecture, and component patterns for all 5 business units. When making any visual design decision, consult DESIGN.md first.
+
+Rules for DESIGN.md:
+- Do not add audit findings, improvement plans, task lists, or temporary content
+- Do not add image requirements, brainstorming notes, or operational content
+- Only add content that defines the official brand identity and design system
+- Operational docs belong in `docs/` (e.g., `docs/design-audit.md`, `docs/image-requirements.md`)
+- If DESIGN.md needs updating, the change must reflect a real brand decision — not a work-in-progress
+
+## Design System
+
+- All components must use CSS variable token classes (`bg-background`, `text-foreground`, etc.) — never hardcoded hex colors (except in always-dark footers)
+- Consult `DESIGN.md` for the correct palette, typography, and component patterns per business unit
+- Each BU has its own component directory: `src/components/{spend,save,credit,plan,together}/`
+- Theme switching is handled by `data-business-unit` attributes and `.dark` class in `tailwind.css`
+
+## Project Structure
+
+- `src/components/{bu}/` — BU-specific page components
+- `src/components/AppShell.tsx` — Router, theme state, DemoSwitcher wrapper
+- `src/components/DemoSwitcher.tsx` — Global demo navigation bar
+- `src/stories/{bu}/` — Storybook stories per BU
+- `docs/` — Operational documents (audit, specs, plans, image requirements)
+- `.claude/skills/` — Project-specific Claude skills

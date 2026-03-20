@@ -1,5 +1,7 @@
 # FUTRA FINANCIAL — Design System & Visual Identity Guide
 
+> **This is a canonical document.** Do not add audit findings, improvement plans, task lists, or temporary content here. This file defines the official brand identity and design system. Operational documents belong in `docs/`.
+
 ---
 
 ## Brand Foundation
@@ -30,6 +32,8 @@ The theme system uses CSS custom properties in `tailwind.css`, switched via `dat
 Primitive values → Semantic tokens → Component classes
 (raw hex)         (--color-*)        (bg-background, text-accent)
 ```
+
+**Never use hardcoded hex colors in components.** Always use semantic token classes so themes switch automatically between light/dark and across business units. The only exception is footers (always dark, hardcoded).
 
 ---
 
@@ -150,220 +154,41 @@ Primitive values → Semantic tokens → Component classes
 
 ---
 
-## Design Audit Findings
-
-### What Works
-- Token architecture is solid — 5 distinct palettes, light/dark variants
-- Together sets the standard for bold accent color usage
-- Credit's ScoreDisplay is the most polished hero element
-- Plan's recharts integration gives it genuine data credibility
-- DemoSwitcher + routing infrastructure is clean
-
-### What Needs Improvement
-
-| Issue | Severity | Description |
-|-------|----------|-------------|
-| Visual sameness | Critical | 4/5 BUs look like recolored versions of the same template |
-| Dormant color tokens | Critical | Accent colors defined but barely used in components |
-| No imagery | Critical | Zero photos, illustrations, or custom graphics across all 5 BUs |
-| Identical layouts | High | All BUs follow the same section order and grid patterns |
-| No motion | High | Almost no entrance animations, scroll effects, or micro-interactions |
-| Uniform typography | Medium | All BUs use identical font treatments despite different audiences |
-| Identical card styles | Medium | Same `rounded-xl p-6 bg-surface border border-border` everywhere |
-| Flat section backgrounds | High | Only 2 alternating backgrounds per BU; no gradients or texture |
-
----
-
-## Improvement Plan
-
-### Phase 1: Visual Differentiation (Accent Color Usage)
-
-Make each BU's accent color visible and bold — not just in buttons but in:
-- Section background tints (accent at 5-8% opacity)
-- Card accent borders (left border or top border in accent color)
-- Hero section decorative elements
-- Overline text and section labels
-- Icon container backgrounds
-
-### Phase 2: Imagery Integration
-
-Each BU needs photography and/or illustration to break up the text-heavy sections and create emotional connection. See **Image Requirements** below.
-
-### Phase 3: Motion & Polish
-
-- Entrance animations (fade-up on scroll) for cards and sections
-- Animated hero elements (progress bar fills, chart draws, score gauge animates)
-- Hover states for all interactive cards
-- Smooth page transitions between BU routes
-
-### Phase 4: Layout Distinctiveness
-
-- Vary section ordering per BU (not all need the same 8-section template)
-- Use different grid configurations (2-col, 3-col, asymmetric)
-- Introduce full-bleed accent sections unique to each BU
-
----
-
-## Image Requirements
-
-### Spend — 3 images needed
-
-**IMG-SPEND-01: Hero lifestyle**
-- **Subject:** Young professional (22-28) glancing at their phone in an urban setting — subway, cafe, or walking. Natural, candid, not posed. Dark/evening lighting preferred.
-- **Dimensions:** 1200 x 800px (landscape)
-- **Placement:** Hero section, behind or alongside the PhoneMockup
-- **Tone:** Fast, urban, confident. The "checking my balance at 11pm" moment.
-- **Prompt:** "Candid photo of a young professional in their mid-20s casually checking their phone while walking through a dimly lit urban street at night. City lights in the background, natural and relaxed posture. Shot in a cinematic style with shallow depth of field. Cool blue and purple tones."
-
-**IMG-SPEND-02: Feature section accent**
-- **Subject:** Close-up of a hand holding a debit card, tapping a payment terminal. Modern, clean aesthetic.
-- **Dimensions:** 800 x 600px (landscape)
-- **Placement:** Feature section, accompanying the "Real-Time Feed" or "Card Controls" card
-- **Prompt:** "Close-up macro shot of a modern matte black debit card being tapped against a contactless payment terminal. Soft bokeh background, clean minimal aesthetic. Cool indigo accent lighting. Professional product photography style."
-
-**IMG-SPEND-03: Testimonial section background**
-- **Subject:** Abstract urban texture — concrete, glass, or steel. Moody, dark, textural.
-- **Dimensions:** 1920 x 600px (wide banner)
-- **Placement:** Testimonial section background at low opacity
-- **Prompt:** "Abstract close-up of polished dark concrete or brushed steel surface. Subtle indigo light reflection. Minimal, textural, architectural. Dark moody tone suitable as a background overlay."
-
----
-
-### Save — 3 images needed
-
-**IMG-SAVE-01: Hero lifestyle**
-- **Subject:** Person (24-32) in a calm, bright space — sitting with a planner/notebook, morning light, plants visible. Goal-setting mood.
-- **Dimensions:** 1200 x 800px (landscape)
-- **Placement:** Hero section, behind the ProgressCards cluster
-- **Tone:** Warm, intentional, calm. The "Saturday morning planning" moment.
-- **Prompt:** "Warm lifestyle photo of a person in their late 20s sitting at a clean wooden desk by a sunlit window, writing in a journal or planner. Indoor plants nearby, warm natural light, soft earth tones. Calm and intentional mood. Shot with natural lighting and a warm color grade."
-
-**IMG-SAVE-02: Savings goal visual**
-- **Subject:** Travel destination or aspirational scene — a coastline, mountain view, or charming street. Represents "what you're saving for."
-- **Dimensions:** 800 x 600px (landscape)
-- **Placement:** Feature section or alongside ProgressCards as a goal visualization
-- **Prompt:** "Beautiful coastal landscape with turquoise water and white sand, seen from a clifftop viewpoint. Golden hour lighting, warm tones. Aspirational travel photography style. Clean and bright with green foliage in the foreground."
-
-**IMG-SAVE-03: Growth/nature texture**
-- **Subject:** Close-up of leaves, growth rings in wood, or morning dew on grass. Organic, green-tinted.
-- **Dimensions:** 1920 x 600px (wide banner)
-- **Placement:** How It Works or CTA section background at low opacity
-- **Prompt:** "Macro photography of fresh green leaves with visible veins and morning dew drops. Soft natural light, shallow depth of field. Green and cream tones matching a calm, growth-oriented aesthetic. Suitable as a subtle background texture."
-
----
-
-### Credit — 3 images needed
-
-**IMG-CREDIT-01: Hero confidence**
-- **Subject:** Person (25-33) looking confident and relieved — standing in a doorway of a new apartment, or holding keys. The "I got approved" moment.
-- **Dimensions:** 1200 x 800px (landscape)
-- **Placement:** Hero section, alongside or behind the ScoreDisplay
-- **Tone:** Calm confidence, not celebration. Relief, not excitement.
-- **Prompt:** "Portrait of a young professional in their late 20s standing in the doorway of a bright, modern apartment, looking calm and confident. Holding a set of keys casually. Soft natural light from inside the apartment. Neutral, professional tones with subtle lavender/cool accents. Reassuring and composed mood."
-
-**IMG-CREDIT-02: Trust/security visual**
-- **Subject:** Abstract architectural detail — a vault door, a clean modern building facade, or security-related imagery. Clinical precision.
-- **Dimensions:** 800 x 600px (landscape)
-- **Placement:** Trust section or Feature section accent
-- **Prompt:** "Clean architectural photograph of a modern bank or financial building interior. Geometric lines, marble or polished concrete surfaces, soft ambient lighting. Cool lavender and white tones. Precise, trustworthy, institutional but not cold. Minimal and clinical aesthetic."
-
-**IMG-CREDIT-03: Calm texture**
-- **Subject:** Abstract gradient or soft texture — fabric, frosted glass, or water surface. Lavender-tinted.
-- **Dimensions:** 1920 x 600px (wide banner)
-- **Placement:** FAQ or CTA section background
-- **Prompt:** "Soft abstract texture of frosted glass or smooth marble surface with subtle lavender and white color tones. Gentle light diffusion, no hard edges. Calm, clinical, and sophisticated. Suitable as a low-opacity section background."
-
----
-
-### Plan — 3 images needed
-
-**IMG-PLAN-01: Analytical workspace**
-- **Subject:** Overhead or angled view of a clean desk with a laptop showing charts/data, coffee, notebook. Dark/evening lighting. The "midnight planning session."
-- **Dimensions:** 1200 x 800px (landscape)
-- **Placement:** Hero section, behind or alongside the DashboardPreview
-- **Tone:** Professional, focused, analytical. The "cup of tea and spreadsheets at midnight" moment.
-- **Prompt:** "Overhead photo of a clean modern desk at night. Laptop open showing financial charts and data visualizations (blurred on screen). A cup of coffee or tea beside it. Warm desk lamp creating contrast against dark surroundings. Dark blue and indigo tones. Professional, focused, analytical atmosphere. Cinematic lighting."
-
-**IMG-PLAN-02: Data visualization aesthetic**
-- **Subject:** Abstract data visualization — flowing lines, connected nodes, or geometric grid. Dark background with indigo/teal accents.
-- **Dimensions:** 800 x 600px (landscape)
-- **Placement:** Feature Deep-Dive section background or accent
-- **Prompt:** "Abstract data visualization artwork on a dark navy background. Flowing lines connecting data points in indigo blue (#6C6FE4) and teal (#2ABFA3). Subtle grid pattern. Geometric and precise. Bloomberg terminal meets modern data art. Clean, minimal, professional."
-
-**IMG-PLAN-03: Long-view texture**
-- **Subject:** Night sky, star trails, or long-exposure city lights. Represents long-term planning and horizon.
-- **Dimensions:** 1920 x 600px (wide banner)
-- **Placement:** Retirement Runway section or CTA background
-- **Prompt:** "Long-exposure night sky photograph showing star trails or subtle aurora. Deep navy and dark blue tones with hints of teal. Sense of vast time horizon and steady progress. Clean and atmospheric, suitable as a section background at low opacity."
-
----
-
-### Together — 3 images needed
-
-**IMG-TOGETHER-01: Couple/roommate lifestyle**
-- **Subject:** Two people (25-35) in a domestic setting — cooking together, sitting on a couch with laptops, or at a kitchen table. Warm, natural, collaborative.
-- **Dimensions:** 1200 x 800px (landscape)
-- **Placement:** Hero section, behind or alongside the SplitDisplay + avatars
-- **Tone:** Warm, domestic, real. The "Sunday morning planning our finances together" moment.
-- **Prompt:** "Warm lifestyle photo of a diverse couple or two roommates in their late 20s sitting at a kitchen table together, one with a laptop, both engaged and smiling naturally. Warm morning light from a nearby window, cozy domestic interior with plants and coffee mugs. Earth tones, terracotta and cream color palette. Genuine, collaborative, unhurried mood."
-
-**IMG-TOGETHER-02: Shared life moment**
-- **Subject:** Two people shopping together, moving into an apartment, or carrying grocery bags. Active shared moment.
-- **Dimensions:** 800 x 600px (landscape)
-- **Placement:** Feature section, accompanying "Shared savings goals" or "Smart bill splitting" card
-- **Prompt:** "Candid photo of two young adults carrying grocery bags together on a bright sidewalk, laughing naturally. Warm sunlight, urban residential neighborhood. Casual clothing, genuine interaction. Warm earth tones with terracotta and cream accents. Lifestyle editorial style."
-
-**IMG-TOGETHER-03: Warm texture**
-- **Subject:** Warm textile — linen, natural wood grain, or terracotta tile. Domestic warmth.
-- **Dimensions:** 1920 x 600px (wide banner)
-- **Placement:** Split Showcase or CTA section background
-- **Prompt:** "Close-up macro photograph of natural linen fabric or warm terracotta ceramic surface. Soft warm light, earth tones in cream and burnt orange. Gentle texture visible. Domestic, warm, and tactile. Suitable as a low-opacity section background."
-
----
-
-## Image Specifications Summary
-
-| ID | BU | Dimensions | Subject | Placement |
-|----|-----|------------|---------|-----------|
-| IMG-SPEND-01 | Spend | 1200x800 | Urban phone check, evening | Hero |
-| IMG-SPEND-02 | Spend | 800x600 | Contactless card tap | Feature section |
-| IMG-SPEND-03 | Spend | 1920x600 | Dark urban texture | Testimonial bg |
-| IMG-SAVE-01 | Save | 1200x800 | Journal/planner, morning light | Hero |
-| IMG-SAVE-02 | Save | 800x600 | Travel destination (coastline) | Feature/goal visual |
-| IMG-SAVE-03 | Save | 1920x600 | Green leaves/nature texture | Section bg |
-| IMG-CREDIT-01 | Credit | 1200x800 | New apartment keys, confident | Hero |
-| IMG-CREDIT-02 | Credit | 800x600 | Modern architecture, clean | Trust section |
-| IMG-CREDIT-03 | Credit | 1920x600 | Frosted glass, lavender tint | Section bg |
-| IMG-PLAN-01 | Plan | 1200x800 | Desk with charts, night | Hero |
-| IMG-PLAN-02 | Plan | 800x600 | Abstract data visualization | Feature bg |
-| IMG-PLAN-03 | Plan | 1920x600 | Night sky / star trails | CTA bg |
-| IMG-TOGETHER-01 | Together | 1200x800 | Couple at kitchen table | Hero |
-| IMG-TOGETHER-02 | Together | 800x600 | Shared grocery shopping | Feature section |
-| IMG-TOGETHER-03 | Together | 1920x600 | Linen/terracotta texture | Section bg |
-
-**Total: 15 images (3 per business unit)**
-
-**File naming convention:** Place in `src/assets/{bu}/` (e.g., `src/assets/spend/hero-lifestyle.jpg`)
-
-**Format:** JPG for photos, PNG for textures/illustrations with transparency. Optimize to <200KB each.
-
----
-
 ## Component Patterns
 
 ### Shared Across All BUs
+
 - **Wordmark:** `FUTRA | {unit}` — Inter Black (900) + thin bar + Inter Medium (500) lowercase
-- **Buttons:** Always `bg-primary text-primary-foreground` (Indigo). Never accent color for buttons.
+- **Buttons:** Always `bg-primary text-primary-foreground` (Indigo). Never use accent color for buttons.
 - **Navbars:** `fixed top-[var(--nav-top,0px)]`, scroll-aware `bg-surface/95 backdrop-blur-sm`, `max-w-[1200px]` inner container
 - **Footers:** Always dark, hardcoded backgrounds (not theme-responsive)
 - **Cards:** `bg-surface border border-border` with BU-tinted border colors
 
-### BU-Specific
-- **Spend:** PhoneMockup, teal/coral transaction colors
-- **Save:** ProgressCard (Grove fill, Mist track), `rounded-xl` cards
-- **Credit:** ScoreDisplay (SVG arc gauge), NO red/green, Amber caution only
-- **Plan:** DashboardPreview (recharts), three-color data vocabulary, `max-w-[1280px]` wider layout
-- **Together:** SplitDisplay (dual-color bars), paired avatars, `rounded-[14px]` warmer corners
+### BU-Specific Patterns
+
+| BU | Signature | Corner Radius | Max Width | Unique Elements |
+|----|-----------|---------------|-----------|-----------------|
+| **Spend** | PhoneMockup | `rounded-xl` (12px) | 1200px | Teal/Coral transaction colors |
+| **Save** | ProgressCard | `rounded-xl` (12px) | 1200px | Grove fill + Mist track progress bars |
+| **Credit** | ScoreDisplay | `rounded-xl` (12px) | 1200px | SVG arc gauge, NO red/green, Amber caution only |
+| **Plan** | DashboardPreview | `rounded-xl` (12px) | 1280px | Recharts, three-color data vocabulary |
+| **Together** | SplitDisplay | `rounded-[14px]` | 1200px | Dual-color bars, paired avatars, warmer corners |
+
+### Semantic Token Classes
+
+| Token | Tailwind Class | Usage |
+|-------|---------------|-------|
+| Background | `bg-background` | Page background |
+| Surface | `bg-surface` | Cards, elevated containers |
+| Secondary | `bg-secondary` | Highlight areas, elevated states |
+| Primary | `bg-primary` / `text-primary` | Action color (Indigo) |
+| Foreground | `text-foreground` | Primary text |
+| Muted foreground | `text-muted-foreground` | Secondary text |
+| Accent | `text-accent` | BU-specific accent color |
+| Positive | `text-positive` | Positive status |
+| Negative | `text-negative` | Negative status |
+| Caution | `text-caution` | Warning/caution |
+| Border | `border-border` | Borders (BU-tinted) |
 
 ---
 
