@@ -53,7 +53,7 @@ Futra Spend is the surface users live in — a real-time transaction feed, debit
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Void** | **Surface** | **Indigo** | **Primary** | **Muted** | **Debit** | **Credit** |
 
-> *Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is borrowed from terminal interfaces and professional audio tools: high contrast, zero decoration, total clarity at a glance.*
+> *Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is built for people who check balances between gigs: high contrast, zero decoration, total clarity at a glance.*
 
 ---
 

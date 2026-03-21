@@ -53,7 +53,7 @@ Futra Spend is the surface users live in — a real-time transaction feed, debit
 
 ![Void](https://img.shields.io/badge/Void-%230F0F12?style=for-the-badge&color=0F0F12) ![Surface](https://img.shields.io/badge/Surface-%231A1A1F?style=for-the-badge&color=1A1A1F) ![Indigo](https://img.shields.io/badge/Indigo-%236C6FE4?style=for-the-badge&color=6C6FE4) ![Primary](https://img.shields.io/badge/Primary-%23FFFFFF?style=for-the-badge&color=FFFFFF) ![Muted](https://img.shields.io/badge/Muted-%238B8B9A?style=for-the-badge&color=8B8B9A) ![Debit](https://img.shields.io/badge/Debit-%23E4746C?style=for-the-badge&color=E4746C) ![Credit](https://img.shields.io/badge/Credit-%232ABFA3?style=for-the-badge&color=2ABFA3)
 
-> *Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is borrowed from terminal interfaces and professional audio tools: high contrast, zero decoration, total clarity at a glance.*
+> *Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is built for people who check balances between gigs: high contrast, zero decoration, total clarity at a glance.*
 
 ---
 
