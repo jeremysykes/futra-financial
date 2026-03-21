@@ -1,63 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Logo } from './Logo';
-import { Menu, X } from 'lucide-react';
-import { Button } from '../../stories/button/Button';
+import { Navbar as SharedNavbar } from '../../stories/navbar/Navbar';
+
+const links = [
+  { label: 'Features', href: '#features' },
+  { label: 'Security', href: '#security' },
+  { label: 'Pricing', href: '#pricing' },
+];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const links = ['Features', 'Security', 'Pricing'];
-
-  return (
-    <nav
-      className={`fixed top-[var(--nav-top,0px)] left-0 right-0 z-50 h-16 transition-colors duration-300 ${
-        scrolled ? 'bg-surface/95 backdrop-blur-sm border-b border-border' : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
-      <Logo className="text-foreground" />
-      <div className="hidden md:flex items-center gap-8">
-        {links.map((l) => (
-          <a
-            key={l}
-            href={`#${l.toLowerCase()}`}
-            className="text-muted-foreground text-[14px] hover:text-accent transition-colors font-sans font-medium"
-          >
-            {l}
-          </a>
-        ))}
-      </div>
-      <Button size="sm" asChild className="hidden md:inline-flex"><a href="#cta">Get Started</a></Button>
-      <button
-        className="md:hidden text-foreground"
-        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-        onClick={() => setMobileOpen(!mobileOpen)}
-      >
-        {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-      {mobileOpen && (
-        <div className="absolute top-[64px] left-0 right-0 bg-surface border-t border-border flex flex-col p-6 gap-4 md:hidden">
-          {links.map((l) => (
-            <a
-              key={l}
-              href={`#${l.toLowerCase()}`}
-              className="text-muted-foreground text-[16px] hover:text-accent"
-              onClick={() => setMobileOpen(false)}
-            >
-              {l}
-            </a>
-          ))}
-          <Button size="sm" asChild className="w-full"><a href="#cta" onClick={() => setMobileOpen(false)}>Get Started</a></Button>
-        </div>
-      )}
-      </div>
-    </nav>
-  );
+  return <SharedNavbar unitName="spend" links={links} ctaText="Get Started" />;
 }

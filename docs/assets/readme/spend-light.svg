@@ -2,6 +2,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap');
   </style>
-  <text font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="#B8463E" y="30">Futra Spend</text>
+  <text font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="#1A8F7A" y="30">Futra Spend</text>
   <text font-family="Inter, sans-serif" font-weight="400" font-size="20" fill="#64748B" y="60">The daily driver.</text>
 </svg>

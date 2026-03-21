@@ -3,5 +3,5 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap');
   </style>
   <text font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="#2ABFA3" y="30">Futra Plan</text>
-  <text font-family="Inter, sans-serif" font-weight="400" font-size="20" fill="#E8A838" y="60">Your money, mapped.</text>
+  <text font-family="Inter, sans-serif" font-weight="400" font-size="20" fill="#A0AEC0" y="60">Your money, mapped.</text>
 </svg>

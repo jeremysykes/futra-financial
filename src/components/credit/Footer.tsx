@@ -1,4 +1,4 @@
-import { Logo } from './Logo';
+import { Logo } from '../../stories/logo/Logo';
 
 const columns = [
   { title: 'Product', links: ['Features', 'Score Factors', 'Debt Payoff'] },
@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="py-16 md:py-20 bg-[#1A1830]">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo dark />
+          <Logo unitName="credit" mode="dark" className="text-[#F9F7FF]" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {columns.map((col) => (
               <div key={col.title}>

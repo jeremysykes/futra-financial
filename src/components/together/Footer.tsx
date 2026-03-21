@@ -1,4 +1,4 @@
-import { Logo } from './Logo';
+import { Logo } from '../../stories/logo/Logo';
 
 const COLUMNS = [
   {
@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Logo column */}
           <div className="col-span-2 md:col-span-1">
-            <Logo dark />
+            <Logo unitName="together" mode="dark" className="text-[#FFF9F5]" />
             <p className="text-sm mt-4 leading-relaxed" style={{ color: '#9E8E84' }}>
               Shared finances,
               <br />
