@@ -36,7 +36,7 @@ export function FeatureSection() {
         </h2>
 
         <div className="mb-12 rounded-xl overflow-hidden max-h-[200px] relative">
-          <img src="/images/IMG-SAVE-02.png" alt="Travel destination" className="w-full h-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL}images/IMG-SAVE-02.png`} alt="Travel destination" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
         </div>
 

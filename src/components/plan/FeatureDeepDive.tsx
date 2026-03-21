@@ -102,7 +102,7 @@ export function FeatureDeepDive() {
   return (
     <section id="features" className="relative overflow-hidden py-20 md:py-32 bg-background">
       <div className="absolute inset-0 z-0">
-        <img src="/images/IMG-PLAN-02.png" alt="" className="w-full h-full object-cover opacity-[0.06]" />
+        <img src={`${import.meta.env.BASE_URL}images/IMG-PLAN-02.png`} alt="" className="w-full h-full object-cover opacity-[0.06]" />
       </div>
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 flex flex-col gap-24 md:gap-32">
         <FeatureBlock

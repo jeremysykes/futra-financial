@@ -41,7 +41,7 @@ export function FeatureSection() {
           nothing you don't.
         </h2>
         <div className="mb-12 rounded-xl overflow-hidden max-h-[200px] relative">
-          <img src="/images/IMG-SPEND-02.png" alt="Contactless payment" className="w-full h-full object-cover" />
+          <img src={`${import.meta.env.BASE_URL}images/IMG-SPEND-02.png`} alt="Contactless payment" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

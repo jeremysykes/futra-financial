@@ -5,7 +5,7 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
       <div className="absolute inset-0 z-0">
-        <img src="/images/IMG-TOGETHER-01.png" alt="" className="w-full h-full object-cover opacity-[0.08]" />
+        <img src={`${import.meta.env.BASE_URL}images/IMG-TOGETHER-01.png`} alt="" className="w-full h-full object-cover opacity-[0.08]" />
         <div className="absolute inset-0 bg-background/70" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -29,12 +29,12 @@ export function HeroSection() {
           {/* Overlapping avatars */}
           <div className="flex items-center gap-0 mb-2">
             <img
-              src="/images/IMG-TOGETHER-04.png"
+              src={`${import.meta.env.BASE_URL}images/IMG-TOGETHER-04.png`}
               alt="Alex"
               className="w-12 h-12 rounded-full border-[3px] border-primary object-cover z-10"
             />
             <img
-              src="/images/IMG-TOGETHER-05.png"
+              src={`${import.meta.env.BASE_URL}images/IMG-TOGETHER-05.png`}
               alt="Jordan"
               className="w-12 h-12 rounded-full border-[3px] border-accent object-cover -ml-3"
             />

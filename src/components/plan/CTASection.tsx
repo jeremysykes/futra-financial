@@ -11,7 +11,7 @@ export function CTASection() {
       }}
     >
       <div className="absolute inset-0 z-0">
-        <img src="/images/IMG-PLAN-03.png" alt="" className="w-full h-full object-cover opacity-[0.1]" />
+        <img src={`${import.meta.env.BASE_URL}images/IMG-PLAN-03.png`} alt="" className="w-full h-full object-cover opacity-[0.1]" />
       </div>
       <div className="relative z-10 max-w-[600px] mx-auto px-6 text-center">
         <h2 className="mb-4 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">

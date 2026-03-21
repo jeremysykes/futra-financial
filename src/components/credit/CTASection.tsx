@@ -4,7 +4,7 @@ export function CTASection() {
   return (
     <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-secondary/80 to-secondary/30">
       <div className="absolute inset-0 z-0">
-        <img src="/images/IMG-CREDIT-03.png" alt="" className="w-full h-full object-cover opacity-[0.06]" />
+        <img src={`${import.meta.env.BASE_URL}images/IMG-CREDIT-03.png`} alt="" className="w-full h-full object-cover opacity-[0.06]" />
       </div>
       <div className="relative z-10 max-w-[700px] mx-auto px-6 text-center">
         <h2 className="font-sans font-bold text-foreground text-3xl md:text-4xl tracking-[-0.01em] mb-6">
