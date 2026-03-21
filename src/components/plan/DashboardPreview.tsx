@@ -70,8 +70,8 @@ export function DashboardPreview() {
           <div className="mb-3 font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
             Net Worth — 12 Month Trend
           </div>
-          <div className="w-full h-[140px] md:h-[180px]">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="w-full min-w-0" style={{ height: 180 }}>
+            <ResponsiveContainer width="100%" height={180}>
               <AreaChart data={netWorthData}>
                 <defs>
                   <linearGradient id="nwGrad" x1="0" y1="0" x2="0" y2="1">

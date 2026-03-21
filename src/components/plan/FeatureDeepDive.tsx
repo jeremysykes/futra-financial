@@ -73,8 +73,8 @@ function FeatureBlock({ overline, title, desc, chart, reverse }: BlockProps) {
           {desc}
         </p>
       </div>
-      <div style={{ direction: 'ltr' }} className="rounded-xl p-4 md:p-6">
-        <div className="rounded-lg p-4 bg-surface border border-border">
+      <div style={{ direction: 'ltr' }} className="rounded-xl p-4 md:p-6 min-w-0">
+        <div className="rounded-lg p-4 bg-surface border border-border min-w-0">
           {chart}
         </div>
       </div>
@@ -94,8 +94,8 @@ export function FeatureDeepDive() {
           title="Net worth, tracked over time."
           desc="Watch your wealth compound with a precise, annotated timeline. Every asset, every liability, one clean chart you'll actually want to check."
           chart={
-            <div className="h-[200px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="w-full" style={{ height: 200 }}>
+              <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={netWorthLong}>
                   <defs>
                     <linearGradient id="nwg2" x1="0" y1="0" x2="0" y2="1">
@@ -119,8 +119,8 @@ export function FeatureDeepDive() {
           title="Budget vs actuals, no surprises."
           desc="See exactly where you overspend and where you save. Horizontal breakdowns by category with instant variance highlighting — Teal when you're under, Amber when you're over."
           chart={
-            <div className="h-[220px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="w-full" style={{ height: 220 }}>
+              <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={budgetData} layout="vertical" barGap={2} barSize={10}>
                   <CartesianGrid stroke="rgba(160,174,192,0.05)" horizontal={false} />
                   <XAxis type="number" tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${v}`} />
@@ -138,8 +138,8 @@ export function FeatureDeepDive() {
           title="Cash flow projections with confidence bands."
           desc="See your financial trajectory across optimistic, projected, and conservative scenarios. Data-driven projections that update as your habits evolve."
           chart={
-            <div className="h-[200px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="w-full" style={{ height: 200 }}>
+              <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={projectionData}>
                   <CartesianGrid stroke="rgba(160,174,192,0.05)" vertical={false} />
                   <XAxis dataKey="year" tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
@@ -166,8 +166,8 @@ export function FeatureDeepDive() {
                   Years to financial independence
                 </span>
               </div>
-              <div className="h-[140px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
+              <div className="w-full" style={{ height: 140 }}>
+                <ResponsiveContainer width="100%" height={140}>
                   <AreaChart data={retirementData}>
                     <defs>
                       <linearGradient id="retG" x1="0" y1="0" x2="0" y2="1">
