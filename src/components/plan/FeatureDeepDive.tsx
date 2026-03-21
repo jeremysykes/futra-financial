@@ -82,7 +82,23 @@ function FeatureBlock({ overline, title, desc, chart, reverse }: BlockProps) {
   );
 }
 
+function useChartColors() {
+  const style = typeof window !== 'undefined' ? getComputedStyle(document.documentElement) : null;
+  const get = (name: string, fallback: string) => style?.getPropertyValue(name).trim() || fallback;
+  return {
+    accent: get('--color-accent', '#6C6FE4'),
+    positive: get('--color-positive', '#2ABFA3'),
+    caution: get('--color-caution', '#E8A838'),
+    mutedFg: get('--color-muted-foreground', '#64748B'),
+    border: get('--color-border', 'rgba(160,174,192,0.1)'),
+  };
+}
+
 export function FeatureDeepDive() {
+  const c = useChartColors();
+  const gridStroke = 'var(--color-border)';
+  const tickFill = 'var(--color-muted-foreground)';
+
   return (
     <section id="features" className="relative overflow-hidden py-20 md:py-32 bg-background">
       <div className="absolute inset-0 z-0">
@@ -99,14 +115,14 @@ export function FeatureDeepDive() {
                 <AreaChart data={netWorthLong}>
                   <defs>
                     <linearGradient id="nwg2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#6C6FE4" stopOpacity={0.25} />
-                      <stop offset="100%" stopColor="#6C6FE4" stopOpacity={0} />
+                      <stop offset="0%" stopColor={c.accent} stopOpacity={0.25} />
+                      <stop offset="100%" stopColor={c.accent} stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid stroke="rgba(160,174,192,0.05)" vertical={false} />
-                  <XAxis dataKey="year" tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} width={50} />
-                  <Area type="monotone" dataKey="value" stroke="#6C6FE4" strokeWidth={2} fill="url(#nwg2)" />
+                  <CartesianGrid stroke={gridStroke} vertical={false} />
+                  <XAxis dataKey="year" tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`} width={50} />
+                  <Area type="monotone" dataKey="value" stroke={c.accent} strokeWidth={2} fill="url(#nwg2)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -122,11 +138,11 @@ export function FeatureDeepDive() {
             <div className="w-full" style={{ height: 220 }}>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={budgetData} layout="vertical" barGap={2} barSize={10}>
-                  <CartesianGrid stroke="rgba(160,174,192,0.05)" horizontal={false} />
-                  <XAxis type="number" tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${v}`} />
-                  <YAxis dataKey="cat" type="category" tick={{ fill: '#A0AEC0', fontFamily: sansFont, fontSize: 11 }} axisLine={false} tickLine={false} width={70} />
-                  <Bar dataKey="budget" fill="#6C6FE4" radius={[0, 4, 4, 0]} />
-                  <Bar dataKey="actual" fill="#2ABFA3" radius={[0, 4, 4, 0]} />
+                  <CartesianGrid stroke={gridStroke} horizontal={false} />
+                  <XAxis type="number" tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${v}`} />
+                  <YAxis dataKey="cat" type="category" tick={{ fill: tickFill, fontFamily: sansFont, fontSize: 11 }} axisLine={false} tickLine={false} width={70} />
+                  <Bar dataKey="budget" fill={c.accent} radius={[0, 4, 4, 0]} />
+                  <Bar dataKey="actual" fill={c.positive} radius={[0, 4, 4, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -141,12 +157,12 @@ export function FeatureDeepDive() {
             <div className="w-full" style={{ height: 200 }}>
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={projectionData}>
-                  <CartesianGrid stroke="rgba(160,174,192,0.05)" vertical={false} />
-                  <XAxis dataKey="year" tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`} width={50} />
-                  <Line type="monotone" dataKey="optimistic" stroke="#2ABFA3" strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
-                  <Line type="monotone" dataKey="projected" stroke="#6C6FE4" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="conservative" stroke="#A0AEC0" strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
+                  <CartesianGrid stroke={gridStroke} vertical={false} />
+                  <XAxis dataKey="year" tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`} width={50} />
+                  <Line type="monotone" dataKey="optimistic" stroke={c.positive} strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
+                  <Line type="monotone" dataKey="projected" stroke={c.accent} strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="conservative" stroke={c.mutedFg} strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -171,14 +187,14 @@ export function FeatureDeepDive() {
                   <AreaChart data={retirementData}>
                     <defs>
                       <linearGradient id="retG" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#2ABFA3" stopOpacity={0.2} />
-                        <stop offset="100%" stopColor="#2ABFA3" stopOpacity={0} />
+                        <stop offset="0%" stopColor={c.positive} stopOpacity={0.2} />
+                        <stop offset="100%" stopColor={c.positive} stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid stroke="rgba(160,174,192,0.05)" vertical={false} />
-                    <XAxis dataKey="year" tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fill: '#64748B', fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`} width={50} />
-                    <Area type="monotone" dataKey="balance" stroke="#2ABFA3" strokeWidth={2} fill="url(#retG)" />
+                    <CartesianGrid stroke={gridStroke} vertical={false} />
+                    <XAxis dataKey="year" tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fill: tickFill, fontFamily: monoFont, fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`} width={50} />
+                    <Area type="monotone" dataKey="balance" stroke={c.positive} strokeWidth={2} fill="url(#retG)" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

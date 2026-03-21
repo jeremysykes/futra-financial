@@ -4,27 +4,26 @@ import { Slot } from 'radix-ui';
 import { cn } from '../../lib/utils';
 
 const buttonVariants = cva(
-  `
-  inline-flex items-center justify-center cursor-pointer
-  `, {
-  variants: {
-    intent: {
-      primary: ['bg-primary', 'text-primary-foreground', 'border-transparent not-disabled:hover:bg-primary-hover'],
-      secondary: ['bg-secondary', 'text-secondary-foreground', 'border-border not-disabled:hover:bg-secondary-hover'],
+  'inline-flex items-center justify-center cursor-pointer font-sans font-semibold rounded-[10px] transition-colors not-disabled:active:scale-[0.98]',
+  {
+    variants: {
+      intent: {
+        primary:
+          'bg-primary text-primary-foreground hover:bg-primary-hover',
+        inverse:
+          'bg-white text-accent border-transparent hover:bg-white/90',
+      },
+      size: {
+        sm: 'text-sm px-5 py-2',
+        md: 'text-base px-8 py-3',
+      },
     },
-    size: {
-      small: ['text-sm', 'py-1', 'px-2'],
-      medium: ['text-base', 'py-2', 'px-4'],
-    }
-  },
-  compoundVariants: [
-    { intent: 'primary', size: 'medium', class: 'uppercase' },
-  ],
-  defaultVariants: {
-    intent: 'primary',
-    size: 'medium',
-  },
-});
+    defaultVariants: {
+      intent: 'primary',
+      size: 'md',
+    },
+  }
+);
 
 export interface ButtonProps
   extends
@@ -57,4 +56,4 @@ const Button = ({
 
 Button.displayName = 'Button';
 
-export { Button };
+export { Button, buttonVariants };

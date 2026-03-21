@@ -8,8 +8,10 @@ interface ScoreDisplayProps {
 export function ScoreDisplay({ score, label, percentage = 0.75, size = 220 }: ScoreDisplayProps) {
   const strokeWidth = 12;
   const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius * 0.75;
-  const filled = circumference * percentage;
+  const fullCircumference = 2 * Math.PI * radius;
+  const arcLength = fullCircumference * 0.75;
+  const filledLength = arcLength * percentage;
+  const gapLength = fullCircumference - arcLength;
   const center = size / 2;
   const startAngle = 135;
 
@@ -20,15 +22,20 @@ export function ScoreDisplay({ score, label, percentage = 0.75, size = 220 }: Sc
           cx={center} cy={center} r={radius}
           fill="none" className="stroke-border"
           strokeWidth={strokeWidth} strokeLinecap="round"
-          strokeDasharray={`${circumference} ${2 * Math.PI * radius}`}
+          strokeDasharray={`${arcLength} ${gapLength}`}
           transform={`rotate(${startAngle} ${center} ${center})`}
         />
         <circle
           cx={center} cy={center} r={radius}
-          fill="none" className="stroke-primary animate-score-fill"
+          fill="none" className="stroke-primary"
           strokeWidth={strokeWidth} strokeLinecap="round"
-          strokeDasharray={`${filled} ${2 * Math.PI * radius}`}
+          strokeDasharray={`${filledLength} ${fullCircumference - filledLength}`}
           transform={`rotate(${startAngle} ${center} ${center})`}
+          style={{
+            animation: 'score-fill 1.2s ease-out both',
+            '--score-target': `${filledLength}`,
+            '--score-gap': `${fullCircumference - filledLength}`,
+          } as React.CSSProperties}
         />
         <text
           x={center} y={center - 8}

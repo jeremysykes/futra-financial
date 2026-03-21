@@ -23,21 +23,27 @@ const netWorthData = [
 ];
 
 const budgetCategories = [
-  { name: 'Housing', budget: 2200, actual: 2200, color: '#6C6FE4' },
-  { name: 'Food', budget: 800, actual: 920, color: '#E8A838' },
-  { name: 'Transport', budget: 400, actual: 310, color: '#2ABFA3' },
-  { name: 'Savings', budget: 2500, actual: 2140, color: '#2ABFA3' },
-  { name: 'Utilities', budget: 350, actual: 380, color: '#E8A838' },
+  { name: 'Housing', budget: 2200, actual: 2200, status: 'on-budget' as const },
+  { name: 'Food', budget: 800, actual: 920, status: 'over' as const },
+  { name: 'Transport', budget: 400, actual: 310, status: 'under' as const },
+  { name: 'Savings', budget: 2500, actual: 2140, status: 'under' as const },
+  { name: 'Utilities', budget: 350, actual: 380, status: 'over' as const },
 ];
+
+const statusColors: Record<string, string> = {
+  'on-budget': 'var(--color-accent)',
+  over: 'var(--color-caution)',
+  under: 'var(--color-positive)',
+};
 
 export function DashboardPreview() {
   return (
     <div className="rounded-xl overflow-hidden w-full bg-surface border border-border">
       {/* Top bar */}
       <div className="flex items-center gap-2 px-4 py-2 bg-background border-b border-border">
-        <div className="w-3 h-3 rounded-full bg-[#E8A838]" />
-        <div className="w-3 h-3 rounded-full bg-[#2ABFA3]" />
-        <div className="w-3 h-3 rounded-full bg-[#6C6FE4]" />
+        <div className="w-3 h-3 rounded-full bg-negative" />
+        <div className="w-3 h-3 rounded-full bg-caution" />
+        <div className="w-3 h-3 rounded-full bg-positive" />
         <span className="ml-3 font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
           Futra Plan Dashboard
         </span>
@@ -75,19 +81,19 @@ export function DashboardPreview() {
               <AreaChart data={netWorthData}>
                 <defs>
                   <linearGradient id="nwGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#2ABFA3" stopOpacity={0.3} />
-                    <stop offset="100%" stopColor="#2ABFA3" stopOpacity={0} />
+                    <stop offset="0%" stopColor="var(--color-positive)" stopOpacity={0.3} />
+                    <stop offset="100%" stopColor="var(--color-positive)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid stroke="rgba(160,174,192,0.05)" vertical={false} />
+                <CartesianGrid stroke="var(--color-border)" vertical={false} />
                 <XAxis
                   dataKey="month"
-                  tick={{ fill: '#64748B', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}
+                  tick={{ fill: 'var(--color-muted-foreground)', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fill: '#64748B', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}
+                  tick={{ fill: 'var(--color-muted-foreground)', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}
                   axisLine={false}
                   tickLine={false}
                   tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`}
@@ -96,7 +102,7 @@ export function DashboardPreview() {
                 <Area
                   type="monotone"
                   dataKey="value"
-                  stroke="#6C6FE4"
+                  stroke="var(--color-accent)"
                   strokeWidth={2}
                   fill="url(#nwGrad)"
                 />
@@ -117,14 +123,14 @@ export function DashboardPreview() {
                 <div key={c.name}>
                   <div className="flex justify-between mb-1">
                     <span className="font-sans text-xs text-muted-foreground">{c.name}</span>
-                    <span className="font-mono text-xs font-medium" style={{ color: c.color }}>
+                    <span className="font-mono text-xs font-medium" style={{ color: statusColors[c.status] }}>
                       ${c.actual.toLocaleString()} / ${c.budget.toLocaleString()}
                     </span>
                   </div>
-                  <div className="w-full h-1.5 rounded-full" style={{ backgroundColor: 'rgba(160,174,192,0.1)' }}>
+                  <div className="w-full h-1.5 rounded-full bg-muted">
                     <div
                       className="h-full rounded-full transition-all"
-                      style={{ width: `${pct}%`, backgroundColor: c.color }}
+                      style={{ width: `${pct}%`, backgroundColor: statusColors[c.status] }}
                     />
                   </div>
                 </div>

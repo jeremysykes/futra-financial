@@ -342,7 +342,10 @@
 
 @keyframes score-fill {
   from {
-    stroke-dasharray: 0 1000;
+    stroke-dasharray: 0 9999;
+  }
+  to {
+    stroke-dasharray: var(--score-target) var(--score-gap);
   }
 }
 

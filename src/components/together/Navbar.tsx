@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
+import { Button } from '../../stories/button/Button';
 
 const NAV_LINKS = ['How It Works', 'Features', 'Pricing'];
 
@@ -36,9 +37,7 @@ export function Navbar() {
         ))}
       </div>
       <div className="hidden md:block">
-        <button className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2 rounded-[10px] hover:bg-primary-hover transition-colors">
-          Get Started
-        </button>
+        <Button size="sm">Get Started</Button>
       </div>
 
       {/* Mobile hamburger */}
@@ -63,9 +62,7 @@ export function Navbar() {
               {link}
             </a>
           ))}
-          <button className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2 rounded-[10px] hover:bg-primary-hover transition-colors w-full">
-            Get Started
-          </button>
+          <Button size="sm" className="w-full">Get Started</Button>
         </div>
       )}
       </div>

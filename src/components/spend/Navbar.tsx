@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
+import { Button } from '../../stories/button/Button';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,7 +18,7 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-[var(--nav-top,0px)] left-0 right-0 z-50 h-16 transition-colors duration-300 ${
-        scrolled ? 'bg-surface/95 backdrop-blur-sm' : 'bg-transparent'
+        scrolled ? 'bg-surface/95 backdrop-blur-sm border-b border-border' : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
@@ -33,12 +34,7 @@ export function Navbar() {
           </a>
         ))}
       </div>
-      <a
-        href="#cta"
-        className="hidden md:inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-[14px] rounded-lg hover:bg-primary-hover transition-colors font-sans font-medium"
-      >
-        Get Started
-      </a>
+      <Button size="sm" asChild className="hidden md:inline-flex"><a href="#cta">Get Started</a></Button>
       <button
         className="md:hidden text-foreground"
         aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -58,13 +54,7 @@ export function Navbar() {
               {l}
             </a>
           ))}
-          <a
-            href="#cta"
-            className="inline-flex items-center justify-center px-4 py-2 bg-primary text-primary-foreground rounded-lg"
-            onClick={() => setMobileOpen(false)}
-          >
-            Get Started
-          </a>
+          <Button size="sm" asChild className="w-full"><a href="#cta" onClick={() => setMobileOpen(false)}>Get Started</a></Button>
         </div>
       )}
       </div>

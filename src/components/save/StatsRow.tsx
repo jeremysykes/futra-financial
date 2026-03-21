@@ -7,7 +7,7 @@ const stats = [
 
 export function StatsRow() {
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-20 md:py-28 bg-muted">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((s, i) => (

@@ -1,4 +1,5 @@
 import { ScoreDisplay } from './ScoreDisplay';
+import { Button } from '../../stories/button/Button';
 
 export function HeroSection() {
   return (
@@ -22,9 +23,7 @@ export function HeroSection() {
               Understand your score, track your progress, and take control
               of your financial future.
             </p>
-            <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-base hover:bg-primary-hover transition-opacity cursor-pointer">
-              See Your Score Free
-            </button>
+            <Button>See Your Score Free</Button>
           </div>
 
           <div className="flex-1 flex justify-center w-full max-w-md lg:max-w-lg">

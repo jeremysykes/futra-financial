@@ -1,3 +1,5 @@
+import { Button } from '../../stories/button/Button';
+
 export function CTASection() {
   return (
     <section id="cta" className="py-20 bg-gradient-to-br from-primary to-primary-hover">
@@ -12,12 +14,7 @@ export function CTASection() {
         >
           No minimum balance. No hidden fees. No waiting. Open your account in under two minutes.
         </p>
-        <a
-          href="#"
-          className="inline-flex items-center px-8 py-3.5 bg-white text-accent text-[16px] rounded-lg hover:bg-white/90 transition-colors font-sans font-semibold"
-        >
-          Download the App
-        </a>
+        <Button intent="inverse" asChild><a href="#">Download the App</a></Button>
       </div>
     </section>
   );

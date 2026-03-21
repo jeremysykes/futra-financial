@@ -43,14 +43,7 @@ export function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm transition-colors"
-                      style={{ color: '#9E8E84' }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = '#C4B8AE')
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = '#9E8E84')
-                      }
+                      className="text-sm transition-colors text-[#9E8E84] hover:text-[#C4B8AE]"
                     >
                       {link}
                     </a>

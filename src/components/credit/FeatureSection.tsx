@@ -39,7 +39,7 @@ export function FeatureSection() {
           {features.map((feature, i) => (
             <div
               key={feature.title}
-              className="p-6 rounded-xl bg-surface border border-border border-t-2 border-t-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              className="p-6 rounded-xl bg-surface border border-border border-l-4 border-l-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">

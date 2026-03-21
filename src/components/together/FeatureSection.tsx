@@ -36,7 +36,7 @@ export function FeatureSection() {
         </h2>
 
         <div className="mb-12 rounded-xl overflow-hidden max-h-[200px] relative">
-          <img src="/images/IMG-TOGETHER-02.png" alt="Shared life" className="w-full h-full object-none" />
+          <img src="/images/IMG-TOGETHER-02.png" alt="Shared life" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
         </div>
 

@@ -43,12 +43,12 @@ export function FAQSection() {
         </div>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-border rounded-xl overflow-hidden">
+            <div key={i} className="border border-border rounded-xl">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent"
               >
-                <span className={`font-sans font-semibold text-base pr-4 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>
+                <span className={`font-sans font-semibold text-base pr-4 transition-colors duration-200 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>
                   {faq.question}
                 </span>
                 <ChevronDown
@@ -58,13 +58,18 @@ export function FAQSection() {
                   }`}
                 />
               </button>
-              {openIndex === i && (
-                <div className="px-6 pb-4">
-                  <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-                    {faq.answer}
-                  </p>
+              <div
+                className="grid transition-[grid-template-rows] duration-300 ease-out"
+                style={{ gridTemplateRows: openIndex === i ? '1fr' : '0fr' }}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-6 pb-4">
+                    <p className="font-sans text-sm leading-relaxed text-muted-foreground">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

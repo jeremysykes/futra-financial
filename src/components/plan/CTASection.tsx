@@ -1,3 +1,5 @@
+import { Button } from '../../stories/button/Button';
+
 export function CTASection() {
   return (
     <section
@@ -21,9 +23,7 @@ export function CTASection() {
           Free to start. No credit card required. Connect your accounts in under
           two minutes and see the full picture today.
         </p>
-        <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-base hover:bg-primary-hover transition-opacity cursor-pointer">
-          Start Planning Free
-        </button>
+        <Button>Start Planning Free</Button>
       </div>
     </section>
   );

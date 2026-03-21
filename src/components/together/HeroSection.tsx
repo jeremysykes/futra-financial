@@ -1,4 +1,5 @@
 import { SplitDisplay } from './SplitDisplay';
+import { Button } from '../../stories/button/Button';
 
 export function HeroSection() {
   return (
@@ -14,33 +15,31 @@ export function HeroSection() {
             Stop splitting hairs.{' '}
             <br />
             Start splitting{' '}
-            <span style={{ color: '#C4622D' }}>fairly</span>.
+            <span className="text-accent">fairly</span>.
           </h1>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
             Joint accounts, fair splits, and shared savings goals &mdash; designed for couples,
             roommates, and anyone sharing a financial life.
           </p>
-          <button className="bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-[10px] hover:bg-primary-hover transition-colors text-base">
-            Start Sharing
-          </button>
+          <Button>Start Sharing</Button>
         </div>
 
         {/* Right: visual */}
         <div className="flex-1 max-w-md w-full flex flex-col gap-5">
           {/* Overlapping avatars */}
           <div className="flex items-center gap-0 mb-2">
-            <div
-              className="w-12 h-12 rounded-full border-[3px] flex items-center justify-center font-sans font-bold text-sm text-white z-10"
-              style={{ borderColor: '#6C6FE4', backgroundColor: '#6C6FE4' }}
-            >
-              A
-            </div>
-            <div
-              className="w-12 h-12 rounded-full border-[3px] flex items-center justify-center font-sans font-bold text-sm text-white -ml-3"
-              style={{ borderColor: '#C4622D', backgroundColor: '#C4622D' }}
-            >
-              J
-            </div>
+            <img
+              src="/images/IMG-TOGETHER-04.png"
+              alt="Alex"
+              className="w-12 h-12 rounded-full border-[3px] object-cover z-10"
+              style={{ borderColor: '#6C6FE4' }}
+            />
+            <img
+              src="/images/IMG-TOGETHER-05.png"
+              alt="Jordan"
+              className="w-12 h-12 rounded-full border-[3px] object-cover -ml-3"
+              style={{ borderColor: '#C4622D' }}
+            />
             <span className="ml-3 text-sm text-muted-foreground font-medium">
               Alex &amp; Jordan
             </span>

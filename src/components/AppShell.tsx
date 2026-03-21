@@ -35,9 +35,20 @@ export function AppShell() {
   const unit = getUnitFromPath(location.pathname);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => getStoredTheme(unit));
 
+  // Sync <html> attributes whenever unit or theme changes
   useEffect(() => {
     setTheme(getStoredTheme(unit));
   }, [unit]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute('data-business-unit', unit);
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [unit, theme]);
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
@@ -55,8 +66,6 @@ export function AppShell() {
     <>
       <DemoSwitcher unit={unit} theme={theme} onToggleTheme={toggleTheme} />
       <div
-        className={`${theme === 'dark' ? 'dark' : ''}`}
-        data-business-unit={unit}
         style={{ '--nav-top': '36px' } as React.CSSProperties}
       >
         <Routes>

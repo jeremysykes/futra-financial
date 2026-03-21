@@ -11,7 +11,7 @@ const testimonials = [
     name: 'Jordan Ellis',
     role: 'Building an emergency fund',
     initials: 'JE',
-    color: '#6C6FE4',
+    color: '#3D8B5E',
   },
   {
     quote: "Other apps made saving feel like a chore. Futra makes it feel like I'm actually building something. The milestones are *chef's kiss*.",
@@ -24,7 +24,7 @@ const testimonials = [
 
 export function TestimonialSection() {
   return (
-    <section className="py-24 md:py-32 bg-surface">
+    <section className="py-24 md:py-32 bg-background">
       <div className="max-w-[1200px] mx-auto px-6">
         <p className="mb-3 uppercase text-center font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
           From our savers

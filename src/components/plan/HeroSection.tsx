@@ -1,4 +1,5 @@
 import { DashboardPreview } from './DashboardPreview';
+import { Button } from '../../stories/button/Button';
 
 export function HeroSection() {
   return (
@@ -22,9 +23,7 @@ export function HeroSection() {
               Track net worth, budget with precision, and project your financial
               future -- all from a single dashboard built for clarity.
             </p>
-            <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-base hover:bg-primary-hover transition-opacity cursor-pointer">
-              Map Your Finances
-            </button>
+            <Button>Map Your Finances</Button>
           </div>
 
           <div className="flex-1 relative w-full max-w-md lg:max-w-lg">

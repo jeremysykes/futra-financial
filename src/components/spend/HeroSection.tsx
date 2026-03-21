@@ -1,4 +1,5 @@
 import { PhoneMockup } from './PhoneMockup';
+import { Button } from '../../stories/button/Button';
 
 export function HeroSection() {
   return (
@@ -22,12 +23,7 @@ export function HeroSection() {
           >
             Instant transactions, zero fees, total control. See every dollar the second it moves — not hours later.
           </p>
-          <a
-            href="#cta"
-            className="inline-flex items-center px-8 py-3.5 bg-primary text-primary-foreground text-[16px] rounded-lg hover:bg-primary-hover transition-colors font-sans font-medium"
-          >
-            Open Your Account
-          </a>
+          <Button asChild><a href="#cta">Open Your Account</a></Button>
         </div>
         <div className="flex-shrink-0">
           <PhoneMockup />

@@ -1,3 +1,5 @@
+import { Button } from '../../stories/button/Button';
+
 export function CTASection() {
   return (
     <section className="relative overflow-hidden py-24 md:py-32 bg-gradient-to-br from-muted to-accent/10">
@@ -12,9 +14,7 @@ export function CTASection() {
           No minimum amounts. No fees. Just a calm, focused way to build toward
           something that matters to you.
         </p>
-        <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-base hover:bg-primary-hover transition-opacity cursor-pointer">
-          Start Saving
-        </button>
+        <Button>Start Saving</Button>
       </div>
     </section>
   );

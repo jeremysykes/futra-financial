@@ -1,4 +1,5 @@
 import { ProgressCard } from './ProgressCard';
+import { Button } from '../../stories/button/Button';
 
 export function HeroSection() {
   return (
@@ -21,9 +22,7 @@ export function HeroSection() {
               Automate your savings with round-ups and scheduled transfers.
               Watch your goals grow with beautiful, visual progress tracking.
             </p>
-            <button className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-base hover:bg-primary-hover transition-opacity cursor-pointer">
-              Create Your First Goal
-            </button>
+            <Button>Create Your First Goal</Button>
           </div>
 
           <div className="flex-1 relative w-full max-w-md lg:max-w-lg">

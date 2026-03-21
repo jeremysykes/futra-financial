@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
+import { Button } from '../../stories/button/Button';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -36,9 +37,7 @@ export function Navbar() {
           ))}
         </div>
         <div className="hidden md:block">
-          <button className="px-5 py-2 rounded-lg bg-primary text-primary-foreground font-sans font-medium text-sm hover:bg-primary-hover transition-colors cursor-pointer">
-            Start Planning
-          </button>
+          <Button size="sm">Start Planning</Button>
         </div>
         <button
           className="md:hidden text-foreground cursor-pointer"
@@ -59,9 +58,7 @@ export function Navbar() {
               {link}
             </a>
           ))}
-          <button className="mt-3 w-full px-5 py-3 rounded-lg bg-primary text-primary-foreground font-sans font-medium cursor-pointer">
-            Start Planning
-          </button>
+          <Button size="sm" className="mt-3 w-full">Start Planning</Button>
         </div>
       )}
     </nav>
