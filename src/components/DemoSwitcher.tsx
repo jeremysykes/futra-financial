@@ -20,7 +20,8 @@ const STORYBOOK_STORY_PATHS: Record<string, string> = {
 
 function getStorybookUrl(unit: string, theme: string): string {
   const storyPath = STORYBOOK_STORY_PATHS[unit] ?? STORYBOOK_STORY_PATHS.spend;
-  return `http://localhost:6006/?path=${storyPath}&globals=theme:${theme};businessUnit:${unit}`;
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return `${basePath}/storybook/?path=${storyPath}&globals=theme:${theme};businessUnit:${unit}`;
 }
 
 export function DemoSwitcher({
