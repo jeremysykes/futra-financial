@@ -7,7 +7,7 @@ export function CTASection() {
       className="relative overflow-hidden py-24 md:py-32"
       style={{
         background:
-          'linear-gradient(135deg, rgba(108,111,228,0.12) 0%, rgba(42,191,163,0.06) 50%, rgba(108,111,228,0.10) 100%)',
+          'linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 12%, transparent) 0%, color-mix(in srgb, var(--color-positive) 6%, transparent) 50%, color-mix(in srgb, var(--color-accent) 10%, transparent) 100%)',
       }}
     >
       <div className="absolute inset-0 z-0">

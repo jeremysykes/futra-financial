@@ -5,25 +5,25 @@ const FEATURES = [
     icon: Home,
     title: 'One view, all accounts',
     description: 'See both checking accounts, credit cards, and shared balances in a single dashboard.',
-    iconColor: '#C4622D',
+    colorType: 'accent' as const,
   },
   {
     icon: HandCoins,
     title: 'Smart bill splitting',
     description: 'Automatically divide recurring bills, one-off expenses, or custom ratios with zero effort.',
-    iconColor: '#6C6FE4',
+    colorType: 'primary' as const,
   },
   {
     icon: Heart,
     title: 'Shared savings goals',
     description: 'Set goals together and watch both contributions grow side by side in real time.',
-    iconColor: '#C4622D',
+    colorType: 'accent' as const,
   },
   {
     icon: Bell,
     title: 'Real-time for both',
     description: 'Instant notifications keep both users in the loop on every transaction and milestone.',
-    iconColor: '#6C6FE4',
+    colorType: 'primary' as const,
   },
 ];
 
@@ -47,8 +47,8 @@ export function FeatureSection() {
               className="rounded-[14px] bg-surface border border-border p-6 flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="w-12 h-12 rounded-[10px] flex items-center justify-center mb-5" style={{ backgroundColor: feature.iconColor === '#C4622D' ? 'rgba(196,98,45,0.10)' : 'rgba(108,111,228,0.10)' }}>
-                <feature.icon size={22} style={{ color: feature.iconColor }} />
+              <div className={`w-12 h-12 rounded-[10px] flex items-center justify-center mb-5 ${feature.colorType === 'accent' ? 'bg-accent/10' : 'bg-primary/10'}`}>
+                <feature.icon size={22} className={feature.colorType === 'accent' ? 'text-accent' : 'text-primary'} />
               </div>
               <h3 className="font-sans font-semibold text-base text-foreground mb-2">
                 {feature.title}

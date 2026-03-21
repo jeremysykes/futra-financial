@@ -5,7 +5,7 @@ const testimonials = [
     name: 'Sarah Chen',
     role: 'Software Engineer',
     initials: 'SC',
-    color: '#6C6FE4',
+    colorClass: 'bg-accent',
   },
   {
     quote:
@@ -13,7 +13,7 @@ const testimonials = [
     name: 'Marcus Webb',
     role: 'Product Manager',
     initials: 'MW',
-    color: '#2ABFA3',
+    colorClass: 'bg-positive',
   },
   {
     quote:
@@ -21,7 +21,7 @@ const testimonials = [
     name: 'Priya Kapoor',
     role: 'Data Analyst',
     initials: 'PK',
-    color: '#E8A838',
+    colorClass: 'bg-caution',
   },
 ];
 
@@ -48,8 +48,7 @@ export function TestimonialSection() {
               </p>
               <div className="flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-sans font-semibold text-[13px]"
-                  style={{ backgroundColor: t.color }}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-sans font-semibold text-[13px] ${t.colorClass}`}
                 >
                   {t.initials}
                 </div>

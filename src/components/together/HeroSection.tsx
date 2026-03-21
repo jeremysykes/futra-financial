@@ -31,14 +31,12 @@ export function HeroSection() {
             <img
               src="/images/IMG-TOGETHER-04.png"
               alt="Alex"
-              className="w-12 h-12 rounded-full border-[3px] object-cover z-10"
-              style={{ borderColor: '#6C6FE4' }}
+              className="w-12 h-12 rounded-full border-[3px] border-primary object-cover z-10"
             />
             <img
               src="/images/IMG-TOGETHER-05.png"
               alt="Jordan"
-              className="w-12 h-12 rounded-full border-[3px] object-cover -ml-3"
-              style={{ borderColor: '#C4622D' }}
+              className="w-12 h-12 rounded-full border-[3px] border-accent object-cover -ml-3"
             />
             <span className="ml-3 text-sm text-muted-foreground font-medium">
               Alex &amp; Jordan
@@ -64,8 +62,8 @@ export function HeroSection() {
               <span className="font-mono text-sm font-medium text-foreground">62%</span>
             </div>
             <div className="flex rounded-full overflow-hidden h-3">
-              <div style={{ width: '31%', backgroundColor: '#6C6FE4' }} />
-              <div style={{ width: '31%', backgroundColor: '#C4622D' }} />
+              <div className="bg-primary" style={{ width: '31%' }} />
+              <div className="bg-accent" style={{ width: '31%' }} />
               <div style={{ width: '38%' }} className="bg-secondary" />
             </div>
             <p className="text-xs text-muted-foreground mt-2">

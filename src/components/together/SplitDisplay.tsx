@@ -8,8 +8,8 @@ export function SplitDisplay({
   splits: { name: string; amount: string; percent: number; color: 'indigo' | 'terracotta' }[];
 }) {
   const colors = {
-    indigo: '#6C6FE4',
-    terracotta: '#C4622D',
+    indigo: 'var(--color-primary)',
+    terracotta: 'var(--color-accent)',
   };
 
   return (

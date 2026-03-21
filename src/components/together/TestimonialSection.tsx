@@ -41,14 +41,12 @@ export function TestimonialSection() {
               <div className="flex items-center gap-3 mb-5">
                 <div className="flex items-center">
                   <div
-                    className="w-10 h-10 rounded-full border-[2.5px] flex items-center justify-center font-sans font-bold text-xs text-white z-10"
-                    style={{ borderColor: '#6C6FE4', backgroundColor: '#6C6FE4' }}
+                    className="w-10 h-10 rounded-full border-[2.5px] border-primary bg-primary flex items-center justify-center font-sans font-bold text-xs text-white z-10"
                   >
                     {t.initials[0]}
                   </div>
                   <div
-                    className="w-10 h-10 rounded-full border-[2.5px] flex items-center justify-center font-sans font-bold text-xs text-white -ml-2.5"
-                    style={{ borderColor: '#C4622D', backgroundColor: '#C4622D' }}
+                    className="w-10 h-10 rounded-full border-[2.5px] border-accent bg-accent flex items-center justify-center font-sans font-bold text-xs text-white -ml-2.5"
                   >
                     {t.initials[1]}
                   </div>

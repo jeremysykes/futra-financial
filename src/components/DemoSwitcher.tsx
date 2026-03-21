@@ -33,8 +33,7 @@ export function DemoSwitcher({
 }) {
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[60] h-9 flex items-center justify-between px-4 lg:px-6"
-      style={{ backgroundColor: '#6C6FE4' }}
+      className="fixed top-0 left-0 right-0 z-[60] h-9 flex items-center justify-between px-4 lg:px-6 bg-primary"
     >
       <div className="flex items-center gap-3">
         <span
