@@ -15,7 +15,7 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/',
+  base: process.env.BASE_PATH ? `${process.env.BASE_PATH}/` : '/',
   plugins: [react(), tailwindcss()],
   test: {
     projects: [
