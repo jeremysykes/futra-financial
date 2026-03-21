@@ -35,9 +35,11 @@ Each business unit targets a distinct demographic, occupies a different emotiona
 
 ---
 
-### Futra Spend
-
-# The daily driver.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/readme/spend-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/readme/spend-light.svg">
+  <img alt="Futra Spend — The daily driver." src="./docs/assets/readme/spend-dark.svg">
+</picture>
 
 | | |
 |---|---|
@@ -55,9 +57,11 @@ Futra Spend is the surface users live in — a real-time transaction feed, debit
 
 ---
 
-### Futra Save
-
-# Build toward something.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/readme/save-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/readme/save-light.svg">
+  <img alt="Futra Save — Build toward something." src="./docs/assets/readme/save-dark.svg">
+</picture>
 
 | | |
 |---|---|
@@ -75,9 +79,11 @@ Futra Save is goal-based savings with visual progress mechanics. Users name thei
 
 ---
 
-### Futra Credit
-
-# Know where you stand.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/readme/credit-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/readme/credit-light.svg">
+  <img alt="Futra Credit — Know where you stand." src="./docs/assets/readme/credit-dark.svg">
+</picture>
 
 | | |
 |---|---|
@@ -95,9 +101,11 @@ Futra Credit is a credit score monitor, credit card manager, and debt payoff pla
 
 ---
 
-### Futra Plan
-
-# Your money, mapped.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/readme/plan-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/readme/plan-light.svg">
+  <img alt="Futra Plan — Your money, mapped." src="./docs/assets/readme/plan-dark.svg">
+</picture>
 
 | | |
 |---|---|
@@ -115,9 +123,11 @@ Futra Plan is the web-first financial planning surface: net worth tracking, mont
 
 ---
 
-### Futra Together
-
-# Shared money, shared life.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/readme/together-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/assets/readme/together-light.svg">
+  <img alt="Futra Together — Shared money, shared life." src="./docs/assets/readme/together-dark.svg">
+</picture>
 
 | | |
 |---|---|

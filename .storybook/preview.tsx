@@ -5,6 +5,11 @@ import '../src/index.css';
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ['Atoms', 'Molecules', 'Organisms', 'Templates', 'Pages'],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -31,7 +36,6 @@ const preview: Preview = {
         title: 'Business Unit',
         icon: 'component',
         items: [
-          { value: 'none', title: 'White Label' },
           { value: 'spend', title: 'Futra Spend' },
           { value: 'save', title: 'Futra Save' },
           { value: 'credit', title: 'Futra Credit' },
@@ -53,9 +57,7 @@ const preview: Preview = {
       return (
         <div
           className={`${theme === 'dark' ? 'dark' : ''} bg-background text-foreground`}
-          {...(businessUnit !== 'none' && {
-            'data-business-unit': businessUnit,
-          })}
+          data-business-unit={businessUnit}
         >
           <Story />
         </div>

@@ -1,3 +1,5 @@
+import { Card } from '../../stories/card/Card';
+
 const TESTIMONIALS = [
   {
     names: 'Sarah & Mike',
@@ -32,9 +34,10 @@ export function TestimonialSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TESTIMONIALS.map((t, i) => (
-            <div
+            <Card
               key={t.names}
-              className="rounded-[14px] bg-surface border border-border p-6 flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              interactive
+              className="flex flex-col animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               {/* Paired avatars */}
@@ -60,7 +63,7 @@ export function TestimonialSection() {
               <p className="text-sm text-muted-foreground leading-relaxed italic">
                 &ldquo;{t.quote}&rdquo;
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

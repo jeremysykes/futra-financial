@@ -1,4 +1,5 @@
 import { CircleDot, Coins, CalendarClock, Trophy } from 'lucide-react';
+import { Card } from '../../stories/card/Card';
 
 const features = [
   {
@@ -41,13 +42,13 @@ export function FeatureSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f, i) => (
-            <div key={f.title} className="rounded-xl p-6 bg-surface border border-border border-t-2 border-t-accent shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
+            <Card key={f.title} accent="top" interactive className="animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="w-12 h-12 rounded-xl mb-5 flex items-center justify-center bg-muted">
                 <f.icon size={22} className="text-accent" strokeWidth={1.5} />
               </div>
               <h4 className="mb-2 font-sans font-semibold text-[17px] text-foreground">{f.title}</h4>
               <p className="font-sans text-[15px] leading-[1.7] text-muted-foreground">{f.desc}</p>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

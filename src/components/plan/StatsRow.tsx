@@ -1,4 +1,5 @@
 import { TrendingUp } from 'lucide-react';
+import { Card } from '../../stories/card/Card';
 
 const stats = [
   { value: '12,400+', label: 'Accounts Synced', trend: '+18%' },
@@ -13,9 +14,11 @@ export function StatsRow() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((s, i) => (
-            <div
+            <Card
               key={s.label}
-              className="rounded-xl p-6 bg-secondary border border-border border-l-2 border-l-primary text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              accent="left"
+              interactive
+              className="bg-secondary text-center animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <span className="block mb-1 font-mono font-semibold text-foreground text-[clamp(28px,4vw,40px)]">
@@ -28,7 +31,7 @@ export function StatsRow() {
                 <TrendingUp size={12} />
                 {s.trend}
               </span>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Home, HandCoins, Heart, Bell } from 'lucide-react';
+import { Card } from '../../stories/card/Card';
 
 const FEATURES = [
   {
@@ -42,9 +43,11 @@ export function FeatureSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURES.map((feature, i) => (
-            <div
+            <Card
               key={feature.title}
-              className="rounded-[14px] bg-surface border border-border p-6 flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              accent="left"
+              interactive
+              className="flex flex-col animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className={`w-12 h-12 rounded-[10px] flex items-center justify-center mb-5 ${feature.colorType === 'accent' ? 'bg-accent/10' : 'bg-primary/10'}`}>
@@ -56,7 +59,7 @@ export function FeatureSection() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

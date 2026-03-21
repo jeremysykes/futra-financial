@@ -1,3 +1,5 @@
+import { Card } from '../../stories/card/Card';
+
 const testimonials = [
   {
     quote: "I got a notification before the barista even handed me my coffee. That's when I knew Futra was different.",
@@ -39,9 +41,10 @@ export function TestimonialSection() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
-            <div
+            <Card
               key={t.name}
-              className="bg-surface border border-border rounded-xl p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              interactive
+              className="animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <p
@@ -58,7 +61,7 @@ export function TestimonialSection() {
                   <p className="text-[12px] text-muted-foreground font-sans font-medium">{t.role}</p>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
