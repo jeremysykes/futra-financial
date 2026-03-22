@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router';
-import { SpendPage } from './spend/SpendPage';
-import { SavePage } from './save/SavePage';
-import { CreditPage } from './credit/CreditPage';
-import { PlanPage } from './plan/PlanPage';
-import { TogetherPage } from './together/TogetherPage';
+import { SpendPage } from '../stories/spend/SpendPage';
+import { SavePage } from '../stories/save/SavePage';
+import { CreditPage } from '../stories/credit/CreditPage';
+import { PlanPage } from '../stories/plan/PlanPage';
+import { TogetherPage } from '../stories/together/TogetherPage';
 import { DemoSwitcher } from './DemoSwitcher';
 
 const UNIT_DEFAULTS: Record<string, 'light' | 'dark'> = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { TogetherPage } from '../../components/together/TogetherPage';
+import { TogetherPage } from './TogetherPage';
 
 const meta = {
   title: 'Pages/Futra Together',

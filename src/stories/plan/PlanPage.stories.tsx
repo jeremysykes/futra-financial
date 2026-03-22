@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { PlanPage } from '../../components/plan/PlanPage';
+import { PlanPage } from './PlanPage';
 
 const meta = {
   title: 'Pages/Futra Plan',

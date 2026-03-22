@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { SpendPage } from '../../components/spend/SpendPage';
+import { SpendPage } from './SpendPage';
 
 const meta = {
   title: 'Pages/Futra Spend',

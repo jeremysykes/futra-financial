@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CreditPage } from '../../components/credit/CreditPage';
+import { CreditPage } from './CreditPage';
 
 const meta = {
   title: 'Pages/Futra Credit',

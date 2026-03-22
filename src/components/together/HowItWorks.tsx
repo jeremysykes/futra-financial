@@ -11,6 +11,7 @@ export function HowItWorks() {
           badgeShape="circle"
           badgeClassName="bg-surface border border-border"
           steps={TogetherSteps}
+          animated
         />
       </div>
     </section>

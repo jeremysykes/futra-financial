@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { SavePage } from '../../components/save/SavePage';
+import { SavePage } from './SavePage';
 
 const meta = {
   title: 'Pages/Futra Save',

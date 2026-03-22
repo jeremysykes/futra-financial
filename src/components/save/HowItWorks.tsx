@@ -18,6 +18,7 @@ export function HowItWorks() {
           badgeShape="rounded"
           iconStrokeWidth={1.5}
           steps={SaveSteps}
+          animated
         />
       </div>
     </section>
