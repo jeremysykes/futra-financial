@@ -6,15 +6,108 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '../../lib/utils';
 import {
   PlanBudgetCategories,
   PlanNetWorthData,
   PlanStatusColors,
 } from '../../mocks/plan.mock';
 
-export function DashboardPreview() {
+const dashboardVariants = cva(
+  'rounded-xl overflow-hidden w-full bg-surface border border-border',
+  {
+    variants: {
+      size: {
+        default: '',
+        compact: 'text-sm',
+      },
+    },
+    defaultVariants: {
+      size: 'default',
+    },
+  },
+);
+
+const panelVariants = cva(
+  'rounded-lg bg-secondary border border-border',
+  {
+    variants: {
+      padding: {
+        default: 'p-3 md:p-4',
+        compact: 'p-2 md:p-3',
+      },
+    },
+    defaultVariants: {
+      padding: 'default',
+    },
+  },
+);
+
+export interface DashboardPreviewProps
+  extends VariantProps<typeof dashboardVariants> {
+  className?: string;
+}
+
+const MetricCard = ({
+  label,
+  value,
+  trend,
+}: {
+  label: string;
+  value: string;
+  trend: string;
+}) => (
+  <div className={cn(panelVariants())}>
+    <div className="font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
+      {label}
+    </div>
+    <div className="mt-1 font-mono font-medium text-foreground text-[clamp(18px,3vw,32px)]">
+      {value}
+    </div>
+    <div className="mt-1 font-mono text-xs text-positive">↑ {trend}</div>
+  </div>
+);
+
+const BudgetBar = ({
+  name,
+  budget,
+  actual,
+  status,
+}: {
+  name: string;
+  budget: number;
+  actual: number;
+  status: string;
+}) => {
+  const pct = Math.min((actual / budget) * 100, 100);
   return (
-    <div className="rounded-xl overflow-hidden w-full bg-surface border border-border">
+    <div>
+      <div className="flex justify-between mb-1">
+        <span className="font-sans text-xs text-muted-foreground">{name}</span>
+        <span
+          className="font-mono text-xs font-medium"
+          style={{ color: PlanStatusColors[status] }}
+        >
+          ${actual.toLocaleString()} / ${budget.toLocaleString()}
+        </span>
+      </div>
+      <div className="w-full h-1.5 rounded-full bg-muted">
+        <div
+          className="h-full rounded-full transition-all"
+          style={{
+            width: `${pct}%`,
+            backgroundColor: PlanStatusColors[status],
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
+  return (
+    <div className={cn(dashboardVariants({ size }), className)}>
       {/* Top bar */}
       <div className="flex items-center gap-2 px-4 py-2 bg-background border-b border-border">
         <div className="w-3 h-3 rounded-full bg-negative" />
@@ -28,30 +121,13 @@ export function DashboardPreview() {
       <div className="p-4 md:p-6">
         {/* Metrics row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
-          {[
-            { label: 'Net Worth', value: '$184K', trend: '+12.4%' },
-            { label: 'Monthly Savings', value: '$2,140', trend: '+3.2%' },
-            { label: 'Runway', value: '34 yrs', trend: 'On track' },
-          ].map((m) => (
-            <div
-              key={m.label}
-              className="rounded-lg p-3 md:p-4 bg-secondary border border-border"
-            >
-              <div className="font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
-                {m.label}
-              </div>
-              <div className="mt-1 font-mono font-medium text-foreground text-[clamp(18px,3vw,32px)]">
-                {m.value}
-              </div>
-              <div className="mt-1 font-mono text-xs text-positive">
-                ↑ {m.trend}
-              </div>
-            </div>
-          ))}
+          <MetricCard label="Net Worth" value="$184K" trend="+12.4%" />
+          <MetricCard label="Monthly Savings" value="$2,140" trend="+3.2%" />
+          <MetricCard label="Runway" value="34 yrs" trend="On track" />
         </div>
 
         {/* Chart */}
-        <div className="rounded-lg p-3 md:p-4 mb-4 md:mb-6 bg-secondary border border-border">
+        <div className={cn(panelVariants(), 'mb-4 md:mb-6')}>
           <div className="mb-3 font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
             Net Worth — 12 Month Trend
           </div>
@@ -107,42 +183,21 @@ export function DashboardPreview() {
         </div>
 
         {/* Budget bars */}
-        <div className="rounded-lg p-3 md:p-4 bg-secondary border border-border">
+        <div className={cn(panelVariants())}>
           <div className="mb-3 font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
             Budget vs Actuals — This Month
           </div>
           <div className="flex flex-col gap-2.5">
-            {PlanBudgetCategories.map((c) => {
-              const pct = Math.min((c.actual / c.budget) * 100, 100);
-              return (
-                <div key={c.name}>
-                  <div className="flex justify-between mb-1">
-                    <span className="font-sans text-xs text-muted-foreground">
-                      {c.name}
-                    </span>
-                    <span
-                      className="font-mono text-xs font-medium"
-                      style={{ color: PlanStatusColors[c.status] }}
-                    >
-                      ${c.actual.toLocaleString()} / $
-                      {c.budget.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="w-full h-1.5 rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${pct}%`,
-                        backgroundColor: PlanStatusColors[c.status],
-                      }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+            {PlanBudgetCategories.map((c) => (
+              <BudgetBar key={c.name} {...c} />
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+DashboardPreview.displayName = 'DashboardPreview';
+
+export { DashboardPreview, dashboardVariants };
