@@ -1,7 +1,7 @@
 import { Navbar } from '../navbar/Navbar';
 import { HowItWorks } from '../how-it-works/HowItWorks';
 import { ProcessSteps } from '../process-steps/ProcessSteps';
-import { ProgressCard } from '../../components/save/ProgressCard';
+import { ProgressCard } from '../progress-card/ProgressCard';
 import { HeroSection } from '../hero-section/HeroSection';
 import { FeatureSection } from '../feature-section/FeatureSection';
 import { StatsRow } from '../stats-row/StatsRow';
