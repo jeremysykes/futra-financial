@@ -1,7 +1,7 @@
-import { useState, type ReactNode } from 'react';
-import { ChevronDown } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
+import { Accordion } from '../accordion/Accordion';
 
 const faqSectionVariants = cva(
   'relative overflow-hidden bg-background',
@@ -44,7 +44,14 @@ const FAQSection = ({
   sectionId = 'faq',
   className,
 }: FAQSectionProps) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const accordionItems = items.map((faq) => ({
+    trigger: faq.question,
+    content: (
+      <p className="font-sans text-sm leading-relaxed text-muted-foreground">
+        {faq.answer}
+      </p>
+    ),
+  }));
 
   return (
     <section
@@ -71,44 +78,7 @@ const FAQSection = ({
             {heading}
           </h2>
         </div>
-        <div className="space-y-3">
-          {items.map((faq, i) => (
-            <div key={i} className="border border-border rounded-xl">
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent"
-              >
-                <span
-                  className={cn(
-                    'font-sans font-semibold text-base pr-4 transition-colors duration-200',
-                    openIndex === i ? 'text-primary' : 'text-foreground',
-                  )}
-                >
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  size={18}
-                  className={cn(
-                    'text-muted-foreground shrink-0 transition-transform duration-200',
-                    openIndex === i && 'rotate-180',
-                  )}
-                />
-              </button>
-              <div
-                className="grid transition-[grid-template-rows] duration-300 ease-out"
-                style={{ gridTemplateRows: openIndex === i ? '1fr' : '0fr' }}
-              >
-                <div className="overflow-hidden">
-                  <div className="px-6 pb-4">
-                    <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Accordion items={accordionItems} />
       </div>
     </section>
   );
