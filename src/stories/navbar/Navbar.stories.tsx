@@ -1,21 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 import { Navbar } from './Navbar';
-
-const decorator = (Story: React.ComponentType) =>
-  React.createElement(
-    'div',
-    {
-      style: {
-        position: 'relative',
-        height: '100px',
-        overflow: 'hidden',
-        transform: 'translateZ(0)',
-        background: 'var(--color-background)',
-      },
-    },
-    React.createElement(Story),
-  );
+import { withStoryDisplay } from '../decorators';
 
 const meta = {
   title: 'Organisms/Navbar',
@@ -27,7 +12,7 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-  decorators: [decorator],
+  decorators: [withStoryDisplay({ containFixed: true, height: 100 })],
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
