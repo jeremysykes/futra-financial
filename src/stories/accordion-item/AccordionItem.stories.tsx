@@ -19,14 +19,20 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Closed: Story = {
-  args: {
-    trigger: 'Is checking my score really free?',
-    children: (
-      <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        Yes, completely free. We never charge for credit score access.
-      </p>
-    ),
+export const Default: StoryObj<typeof AccordionItem> = {
+  render: () => {
+    const [open, setOpen] = useState(false);
+    return (
+      <AccordionItem
+        trigger="Is checking my score really free?"
+        isOpen={open}
+        onToggle={() => setOpen(!open)}
+      >
+        <p className="font-sans text-sm leading-relaxed text-muted-foreground">
+          Yes, completely free. We never charge for credit score access.
+        </p>
+      </AccordionItem>
+    );
   },
   globals: { businessUnit: 'credit' },
 };
@@ -40,25 +46,6 @@ export const Open: Story = {
         Yes, completely free. We never charge for credit score access.
       </p>
     ),
-  },
-  globals: { businessUnit: 'credit' },
-};
-
-export const Interactive: StoryObj<typeof AccordionItem> = {
-  decorators: [withStoryDisplay({ maxWidth: 700 })],
-  render: () => {
-    const [open, setOpen] = useState(false);
-    return (
-      <AccordionItem
-        trigger="Will this affect my credit score?"
-        isOpen={open}
-        onToggle={() => setOpen(!open)}
-      >
-        <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-          No. We use a soft inquiry to check your score, which has zero impact on your credit.
-        </p>
-      </AccordionItem>
-    );
   },
   globals: { businessUnit: 'credit' },
 };
