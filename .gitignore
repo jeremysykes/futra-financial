@@ -29,3 +29,4 @@ storybook-static
 # Screenshots & browser test artifacts
 screenshots/
 .superpowers/
+.worktrees/
