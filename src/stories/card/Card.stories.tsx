@@ -22,19 +22,22 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  decorators: [withStoryDisplay({ maxWidth: 300 })],
 } satisfies Meta<typeof Card>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const constrainedCard = [withStoryDisplay({ maxWidth: 300 })];
+
 export const Default: Story = {
+  decorators: constrainedCard,
   args: {
     children: React.createElement(SampleContent),
   },
 };
 
 export const AccentLeft: Story = {
+  decorators: constrainedCard,
   args: {
     accent: 'left',
     children: React.createElement(SampleContent),
@@ -42,6 +45,7 @@ export const AccentLeft: Story = {
 };
 
 export const AccentTop: Story = {
+  decorators: constrainedCard,
   args: {
     accent: 'top',
     children: React.createElement(SampleContent),
@@ -49,6 +53,7 @@ export const AccentTop: Story = {
 };
 
 export const AccentRight: Story = {
+  decorators: constrainedCard,
   args: {
     accent: 'right',
     children: React.createElement(SampleContent),
@@ -56,6 +61,7 @@ export const AccentRight: Story = {
 };
 
 export const AccentBottom: Story = {
+  decorators: constrainedCard,
   args: {
     accent: 'bottom',
     children: React.createElement(SampleContent),
@@ -63,6 +69,7 @@ export const AccentBottom: Story = {
 };
 
 export const Hover: Story = {
+  decorators: constrainedCard,
   args: {
     accent: 'left',
     interactive: true,
@@ -71,7 +78,7 @@ export const Hover: Story = {
 };
 
 export const AllVariants: Story = {
-  decorators: [withStoryDisplay({ layout: 'grid', columns: 3 })],
+  decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
       <Card accent="none"><SampleContent /></Card>
