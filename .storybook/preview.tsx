@@ -2,6 +2,7 @@ import type { Preview } from '@storybook/react-vite';
 // @ts-expect-error css side-effect import
 import '../src/tailwind.css';
 import '../src/index.css';
+import { withThemeContext } from '../src/stories/decorators';
 
 const preview: Preview = {
   parameters: {
@@ -50,20 +51,7 @@ const preview: Preview = {
     theme: 'dark',
     businessUnit: 'spend',
   },
-  decorators: [
-    (Story, context) => {
-      const theme = context.globals.theme;
-      const businessUnit = context.globals.businessUnit;
-      return (
-        <div
-          className={`${theme === 'dark' ? 'dark' : ''} bg-background text-foreground`}
-          data-business-unit={businessUnit}
-        >
-          <Story />
-        </div>
-      );
-    },
-  ],
+  decorators: [withThemeContext],
 };
 
 export default preview;
