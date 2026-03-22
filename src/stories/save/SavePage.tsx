@@ -10,6 +10,7 @@ import { Footer } from '../footer/Footer';
 import { Button } from '../button/Button';
 import { Card } from '../card/Card';
 import { Logo } from '../logo/Logo';
+import { StatItem } from '../stat-item/StatItem';
 import {
   SaveFeatures,
   SaveFooter,
@@ -105,18 +106,13 @@ export function SavePage() {
 
       <StatsRow>
         {SaveStats.map((s, i) => (
-          <div
+          <StatItem
             key={s.label}
-            className="text-center animate-fade-in-up"
+            value={s.value}
+            label={s.label}
+            className="animate-fade-in-up"
             style={{ animationDelay: `${i * 100}ms` }}
-          >
-            <span className="block mb-2 font-mono font-medium text-accent text-[clamp(28px,4vw,40px)]">
-              {s.value}
-            </span>
-            <span className="uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
-              {s.label}
-            </span>
-          </div>
+          />
         ))}
       </StatsRow>
 

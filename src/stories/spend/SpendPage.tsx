@@ -9,6 +9,7 @@ import { Footer } from '../footer/Footer';
 import { Button } from '../button/Button';
 import { Card } from '../card/Card';
 import { Logo } from '../logo/Logo';
+import { StatItem } from '../stat-item/StatItem';
 import {
   SpendFeatures,
   SpendFooter,
@@ -45,18 +46,14 @@ export function SpendPage() {
 
       <StatsRow background="default" className="bg-primary/[0.04] border-y border-border py-16">
         {SpendStats.map((s, i) => (
-          <div
+          <StatItem
             key={s.label}
-            className="text-center animate-fade-in-up"
+            value={s.value}
+            label={s.label}
+            valueColor="foreground"
+            className="animate-fade-in-up"
             style={{ animationDelay: `${i * 100}ms` }}
-          >
-            <span className="block mb-1 font-mono font-medium text-foreground text-[28px] sm:text-[32px]">
-              {s.value}
-            </span>
-            <span className="uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
-              {s.label}
-            </span>
-          </div>
+          />
         ))}
       </StatsRow>
 

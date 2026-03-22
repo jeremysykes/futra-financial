@@ -1,17 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { StatsRow } from './StatsRow';
+import { StatItem } from '../stat-item/StatItem';
 import { withStoryDisplay } from '../decorators';
-
-const StatItem = ({ value, label }: { value: string; label: string }) => (
-  <div className="text-center animate-fade-in-up">
-    <span className="block mb-2 font-mono font-medium text-accent text-[clamp(28px,4vw,40px)]">
-      {value}
-    </span>
-    <span className="uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
-      {label}
-    </span>
-  </div>
-);
 
 const meta = {
   title: 'Templates/StatsRow',
@@ -48,9 +38,9 @@ export const ThreeColumns: Story = {
     columns: 3,
     children: (
       <>
-        <StatItem value="2.4M" label="Active users" />
-        <StatItem value="$18B" label="Transactions processed" />
-        <StatItem value="<1s" label="Average transaction time" />
+        <StatItem value="2.4M" label="Active users" valueColor="foreground" />
+        <StatItem value="$18B" label="Transactions processed" valueColor="foreground" />
+        <StatItem value="<1s" label="Average transaction time" valueColor="foreground" />
       </>
     ),
   },
