@@ -57,7 +57,7 @@ const HeroSection = ({
   backgroundImage,
   backgroundOpacity = 'opacity-[0.08]',
   overlayOpacity = 'bg-background/70',
-  layout,
+  layout = 'left-right',
   size,
   actions,
   children,
@@ -76,7 +76,7 @@ const HeroSection = ({
         </div>
       )}
       <div className={contentVariants({ layout })}>
-        {layout === 'left-right' ? (
+        {layout !== 'centered' ? (
           <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
             <div className="flex-1 max-w-xl">
               {eyebrow && (
@@ -93,7 +93,7 @@ const HeroSection = ({
               {actions}
             </div>
             {children && (
-              <div className="flex-1 flex justify-center w-full max-w-md lg:max-w-lg">
+              <div className="flex-1 relative w-full max-w-md lg:max-w-lg">
                 {children}
               </div>
             )}
