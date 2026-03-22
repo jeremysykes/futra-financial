@@ -17,6 +17,10 @@ Rules for DESIGN.md:
 - Consult `DESIGN.md` for the correct palette, typography, and component patterns per business unit
 - Each BU has its own component directory: `src/components/{spend,save,credit,plan,together}/`
 - Theme switching is handled by `data-business-unit` attributes and `.dark` class in `tailwind.css`
+- All Storybook decorators must be imported from `src/stories/decorators/`
+- Never define inline or local decorators in story files
+- Never use hardcoded colors or backgrounds in decorators — all visual properties derive from Tailwind CSS variable tokens
+- The `withStoryDisplay` decorator is the single tool for wrapping components in stories
 
 ## Project Structure
 
