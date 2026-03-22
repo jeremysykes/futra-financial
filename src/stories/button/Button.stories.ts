@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React from 'react';
 
 import { fn } from 'storybook/test';
 
 import { Button } from './Button';
+import { withStoryDisplay } from '../decorators';
 
 const meta = {
   title: 'Atoms/Button',
@@ -16,6 +16,7 @@ const meta = {
     asChild: { table: { disable: true } },
   },
   args: { onClick: fn() },
+  decorators: [withStoryDisplay()],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -33,11 +34,6 @@ export const Inverse: Story = {
     intent: 'inverse',
     children: 'Download the App',
   },
-  decorators: [
-    (Story) => React.createElement('div', {
-      style: { background: 'linear-gradient(135deg, #6C6FE4, #5B5ED0)', padding: '3rem', borderRadius: '12px' },
-    }, React.createElement(Story)),
-  ],
 };
 
 export const Medium: Story = {
