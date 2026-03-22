@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import { Card } from './Card';
+import { withStoryDisplay } from '../decorators';
 
 const SampleContent = () => (
   <>
@@ -14,13 +15,6 @@ const SampleContent = () => (
   </>
 );
 
-const singleCardDecorator = (Story: React.ComponentType) =>
-  React.createElement(
-    'div',
-    { style: { width: 300, padding: '2rem' } },
-    React.createElement(Story)
-  );
-
 const meta = {
   title: 'Molecules/Card',
   component: Card,
@@ -28,20 +22,19 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  decorators: [withStoryDisplay({ maxWidth: 300 })],
 } satisfies Meta<typeof Card>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  decorators: [singleCardDecorator],
   args: {
     children: React.createElement(SampleContent),
   },
 };
 
 export const AccentLeft: Story = {
-  decorators: [singleCardDecorator],
   args: {
     accent: 'left',
     children: React.createElement(SampleContent),
@@ -49,7 +42,6 @@ export const AccentLeft: Story = {
 };
 
 export const AccentTop: Story = {
-  decorators: [singleCardDecorator],
   args: {
     accent: 'top',
     children: React.createElement(SampleContent),
@@ -57,7 +49,6 @@ export const AccentTop: Story = {
 };
 
 export const AccentRight: Story = {
-  decorators: [singleCardDecorator],
   args: {
     accent: 'right',
     children: React.createElement(SampleContent),
@@ -65,7 +56,6 @@ export const AccentRight: Story = {
 };
 
 export const AccentBottom: Story = {
-  decorators: [singleCardDecorator],
   args: {
     accent: 'bottom',
     children: React.createElement(SampleContent),
@@ -73,7 +63,6 @@ export const AccentBottom: Story = {
 };
 
 export const Hover: Story = {
-  decorators: [singleCardDecorator],
   args: {
     accent: 'left',
     interactive: true,
@@ -82,17 +71,15 @@ export const Hover: Story = {
 };
 
 export const AllVariants: Story = {
-  decorators: [
-    () =>
-      React.createElement(
-        'div',
-        { className: 'grid grid-cols-3 gap-4', style: { padding: '2rem' } },
-        React.createElement(Card, { accent: 'none' }, React.createElement(SampleContent)),
-        React.createElement(Card, { accent: 'left' }, React.createElement(SampleContent)),
-        React.createElement(Card, { accent: 'top' }, React.createElement(SampleContent)),
-        React.createElement(Card, { accent: 'right' }, React.createElement(SampleContent)),
-        React.createElement(Card, { accent: 'bottom' }, React.createElement(SampleContent)),
-        React.createElement(Card, { accent: 'left', interactive: true }, React.createElement(SampleContent)),
-      ),
-  ],
+  decorators: [withStoryDisplay({ layout: 'grid', columns: 3 })],
+  render: () => (
+    <>
+      <Card accent="none"><SampleContent /></Card>
+      <Card accent="left"><SampleContent /></Card>
+      <Card accent="top"><SampleContent /></Card>
+      <Card accent="right"><SampleContent /></Card>
+      <Card accent="bottom"><SampleContent /></Card>
+      <Card accent="left" interactive><SampleContent /></Card>
+    </>
+  ),
 };
