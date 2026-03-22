@@ -163,7 +163,7 @@ const ProcessSteps = ({
             <step.icon
               size={iconSizeMap[resolvedSize]}
               className="text-accent"
-              {...(iconStrokeWidth && { strokeWidth: iconStrokeWidth })}
+              {...(iconStrokeWidth !== undefined && { strokeWidth: iconStrokeWidth })}
             />
           </Badge>
 
