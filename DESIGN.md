@@ -192,5 +192,16 @@ Primitive values → Semantic tokens → Component classes
 
 ---
 
+---
+
+## Storybook Presentation
+
+Storybook is part of the design system, not separate from it. Component presentation in stories follows the same rules as the application:
+
+- All backgrounds, colors, and spacing derive from design tokens
+- Theme switching (light/dark) and business unit switching work identically in stories and in the app
+- A single shared decorator (`withStoryDisplay`) controls all component presentation — there are no one-off wrappers, inline decorators, or hardcoded values
+- If a component doesn't render correctly in the standard decorator, the component needs fixing, not the decorator
+
 *Futra Financial — Design System & Visual Identity Guide*
 *Jeremy Sykes*
