@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 import { NavLink } from './NavLink';
+import { withStoryDisplay } from '../decorators';
 
 const meta = {
   title: 'Atoms/NavLink',
@@ -10,6 +11,7 @@ const meta = {
   },
   tags: ['autodocs'],
   args: { onClick: fn() },
+  decorators: [withStoryDisplay()],
 } satisfies Meta<typeof NavLink>;
 
 export default meta;
