@@ -1,21 +1,10 @@
 import type { ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const accordionItemVariants = cva(
   'border border-border rounded-xl',
-  {
-    variants: {
-      variant: {
-        default: '',
-        flush: 'border-x-0 rounded-none border-t-0 last:border-b-0',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  },
 );
 
 const triggerVariants = cva(
@@ -33,8 +22,7 @@ const triggerVariants = cva(
   },
 );
 
-export interface AccordionItemProps
-  extends VariantProps<typeof accordionItemVariants> {
+export interface AccordionItemProps {
   trigger: ReactNode;
   children: ReactNode;
   isOpen?: boolean;
@@ -47,11 +35,10 @@ const AccordionItem = ({
   children,
   isOpen = false,
   onToggle,
-  variant,
   className,
 }: AccordionItemProps) => {
   return (
-    <div className={cn(accordionItemVariants({ variant }), className)}>
+    <div className={cn(accordionItemVariants(), className)}>
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent"

@@ -10,7 +10,6 @@ const accordionVariants = cva(
       spacing: {
         default: 'space-y-3',
         compact: 'space-y-2',
-        none: '',
       },
     },
     defaultVariants: {
@@ -27,14 +26,12 @@ export interface AccordionItemData {
 export interface AccordionProps
   extends VariantProps<typeof accordionVariants> {
   items: AccordionItemData[];
-  itemVariant?: 'default' | 'flush';
   multiple?: boolean;
   className?: string;
 }
 
 const Accordion = ({
   items,
-  itemVariant = 'default',
   multiple = false,
   spacing,
   className,
@@ -61,7 +58,6 @@ const Accordion = ({
           trigger={item.trigger}
           isOpen={openIndices.has(i)}
           onToggle={() => handleToggle(i)}
-          variant={itemVariant}
         >
           {item.content}
         </AccordionItem>

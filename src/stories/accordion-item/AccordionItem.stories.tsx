@@ -50,16 +50,3 @@ export const Open: Story = {
   globals: { businessUnit: 'credit' },
 };
 
-export const Flush: Story = {
-  args: {
-    variant: 'flush',
-    trigger: 'How do I get started?',
-    isOpen: true,
-    children: (
-      <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        Sign up for free and connect your accounts.
-      </p>
-    ),
-  },
-  globals: { businessUnit: 'save' },
-};

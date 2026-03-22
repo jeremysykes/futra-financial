@@ -65,11 +65,3 @@ export const CompactSpacing: Story = {
   globals: { businessUnit: 'save' },
 };
 
-export const FlushVariant: Story = {
-  args: {
-    items: faqItems,
-    itemVariant: 'flush',
-    spacing: 'none',
-  },
-  globals: { businessUnit: 'plan' },
-};
