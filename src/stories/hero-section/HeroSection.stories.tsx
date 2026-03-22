@@ -10,6 +10,10 @@ const meta = {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
+  argTypes: {
+    children: { table: { disable: true } },
+    actions: { table: { disable: true } },
+  },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof HeroSection>;
 
