@@ -55,7 +55,12 @@ futra-financial/
 │   │   └── together/            # Futra Together components (11 files)
 │   │
 │   ├── stories/
+│   │   ├── decorators/          # Single source of truth for all Storybook decorators
 │   │   ├── button/              # Shared Button component stories
+│   │   ├── card/                # Shared Card component stories
+│   │   ├── logo/                # Shared Logo component stories
+│   │   ├── nav-link/            # Shared NavLink component stories
+│   │   ├── navbar/              # Shared Navbar component stories
 │   │   ├── spend/               # SpendPage.stories.tsx
 │   │   ├── save/                # SavePage.stories.tsx
 │   │   ├── credit/              # CreditPage.stories.tsx
@@ -224,9 +229,16 @@ When switching BUs, the stored preference is loaded (or the default is used on f
 
 Two toolbar selectors defined in `.storybook/preview.tsx`:
 - **Theme:** Light / Dark
-- **Business Unit:** White Label, Spend, Save, Credit, Plan, Together
+- **Business Unit:** Spend, Save, Credit, Plan, Together
 
-The decorator applies `data-business-unit` and `.dark` class to a wrapper div, mirroring how AppShell works in the app.
+### Decorators
+
+All decorators are defined in `src/stories/decorators/` — the single source of truth.
+
+- **`withThemeContext`** — Global decorator (registered in `preview.tsx`). Applies `data-business-unit`, `.dark` class, and `bg-background text-foreground` to every story.
+- **`withStoryDisplay(options?)`** — Per-story decorator for display presentation. Handles padding, token-derived backgrounds, layout modes (single/grid), fixed-position containment, and width constraints. See `src/stories/decorators/README.md` for full API.
+
+No decorator logic exists outside `src/stories/decorators/`.
 
 ### Page Story Globals
 
