@@ -1,5 +1,6 @@
-import { Navbar } from '../../components/save/Navbar';
-import { HowItWorks } from '../../components/save/HowItWorks';
+import { Navbar } from '../navbar/Navbar';
+import { HowItWorks } from '../how-it-works/HowItWorks';
+import { ProcessSteps } from '../process-steps/ProcessSteps';
 import { ProgressCard } from '../../components/save/ProgressCard';
 import { HeroSection } from '../hero-section/HeroSection';
 import { FeatureSection } from '../feature-section/FeatureSection';
@@ -14,14 +15,16 @@ import { StatItem } from '../stat-item/StatItem';
 import {
   SaveFeatures,
   SaveFooter,
+  SaveLinks,
   SaveStats,
+  SaveSteps,
   SaveTestimonials,
 } from '../../mocks/save.mock';
 
 export function SavePage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar unitName="save" links={SaveLinks} ctaText="Start Saving" />
 
       <HeroSection
         eyebrow="Goal-based savings"
@@ -63,7 +66,16 @@ export function SavePage() {
         </div>
       </HeroSection>
 
-      <HowItWorks />
+      <HowItWorks eyebrow="Three steps to start" heading="Simple by design">
+        <ProcessSteps
+          size="md"
+          connector="dashed"
+          badgeShape="rounded"
+          iconStrokeWidth={1.5}
+          steps={SaveSteps}
+          animated
+        />
+      </HowItWorks>
 
       <FeatureSection
         subtitle="Saving, your way"
