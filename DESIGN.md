@@ -193,6 +193,85 @@ Primitive values → Semantic tokens → Component classes
 
 ---
 
+## Component Architecture
+
+### Atomic Design Hierarchy
+
+All components follow atomic design methodology. The Storybook sidebar reflects this hierarchy through the `title` field in stories (e.g., `title: 'Atoms/Button'`). The file system stays flat — all shared components live in `src/stories/{component-name}/` colocated with their stories.
+
+| Tier | Purpose | Examples |
+|------|---------|----------|
+| **Atoms** | Smallest building blocks. Single responsibility. No composition. | Button, Badge, Avatar, Logo, NavLink, StatItem, AccordionItem |
+| **Molecules** | Small combinations of atoms. Reusable. Single purpose. | Card, ProcessSteps, ProgressCard, SplitDisplay, Accordion |
+| **Organisms** | Self-contained, fully realized components. They ARE the content. | Navbar, PhoneMockup, ScoreDisplay, DashboardPreview, ComparisonSection |
+| **Templates** | Structural section shells. Define layout patterns. Accept content via composition. | HeroSection, FeatureSection, StatsRow, TestimonialSection, CTASection, Footer, HowItWorks, FAQSection, TrustSection |
+| **Pages** | Compose templates with BU-specific data and organisms. | SpendPage, SavePage, CreditPage, PlanPage, TogetherPage |
+
+**Key distinction:** Organisms are the content (Navbar is always a navbar). Templates are the container (HeroSection defines the layout but BUs fill it with their own content and organisms).
+
+### Composition Over Configuration
+
+Shared components own structure (spacing, containers, headings). BUs own content arrangement via `children` slots. All text props that may contain inline formatting (headings, subheadings) use `ReactNode`, not `string`.
+
+```tsx
+// Correct: BU composes content into template slot
+<HeroSection heading={<>Your money, <span className="text-accent">in real time.</span></>}>
+  <PhoneMockup />
+</HeroSection>
+
+// Wrong: Template accepts data props and renders internally
+<HeroSection heading="Your money" accentText="in real time" visual="phone" />
+```
+
+### CVA Component Standard
+
+Every shared component uses Class Variance Authority (CVA) with the `cn()` utility from `src/lib/utils` for className merging. The pattern:
+
+```tsx
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '../../lib/utils';
+
+const componentVariants = cva('base-classes', {
+  variants: { /* ... */ },
+  defaultVariants: { /* ... */ },
+});
+
+// Always merge: cn(variants({ ...props }), className)
+// Always accept: className?: string
+// Always set: Component.displayName = 'Component';
+// Always export: both the component and its variants
+```
+
+**Rules:**
+- CVA `defaultVariants` only affect CSS classes, not prop values. Always add JS default parameters for props used in conditionals.
+- Composition slots (`children`, `actions`) must be hidden from Storybook docs: `argTypes: { children: { table: { disable: true } } }`
+- No speculative variants. If a variant isn't used by any BU, don't add it (YAGNI).
+
+### File Organization
+
+```
+src/
+  stories/           ← Shared component library (all atomic tiers)
+    button/          ← Atom
+      Button.tsx
+      Button.stories.ts
+    card/            ← Molecule
+      Card.tsx
+      Card.stories.tsx
+    navbar/          ← Organism
+      Navbar.tsx
+      Navbar.stories.tsx
+    hero-section/    ← Template
+      HeroSection.tsx
+      HeroSection.stories.tsx
+    spend/           ← Page
+      SpendPage.tsx
+      SpendPage.stories.tsx
+  components/        ← App infrastructure + deferred migrations
+    AppShell.tsx
+    DemoSwitcher.tsx
+```
+
 ---
 
 ## Storybook Presentation
