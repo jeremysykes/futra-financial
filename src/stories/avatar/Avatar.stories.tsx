@@ -69,7 +69,7 @@ export const Large: Story = {
   },
 };
 
-export const AllSizes: Story = {
+export const AllSizes: StoryObj<typeof Avatar> = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
@@ -95,7 +95,7 @@ export const AllSizes: Story = {
   ),
 };
 
-export const AllRings: Story = {
+export const AllRings: StoryObj<typeof Avatar> = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>

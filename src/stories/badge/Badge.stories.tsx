@@ -89,7 +89,7 @@ export const WithBorder: Story = {
   },
 };
 
-export const AllShapes: Story = {
+export const AllShapes: StoryObj<typeof Badge> = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
@@ -106,7 +106,7 @@ export const AllShapes: Story = {
   ),
 };
 
-export const AllSizes: Story = {
+export const AllSizes: StoryObj<typeof Badge> = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>

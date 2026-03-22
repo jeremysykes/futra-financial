@@ -28,7 +28,7 @@ const badgeVariants = cva('flex items-center justify-center bg-muted', {
 
 export interface BadgeProps
   extends
-    React.HTMLAttributes<HTMLDivElement>,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>,
     VariantProps<typeof badgeVariants> {
   children: React.ReactNode;
 }
