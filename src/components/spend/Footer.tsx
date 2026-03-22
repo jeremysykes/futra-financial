@@ -1,10 +1,5 @@
+import { SpendFooter } from '../../mocks/spend.mock';
 import { Logo } from '../../stories/logo/Logo';
-
-const columns = [
-  { title: 'Product', links: ['Features', 'Security', 'Pricing'] },
-  { title: 'Company', links: ['About', 'Careers', 'Press'] },
-  { title: 'Legal', links: ['Privacy', 'Terms'] },
-];
 
 export function Footer() {
   return (
@@ -13,11 +8,9 @@ export function Footer() {
         <div className="flex flex-col md:flex-row gap-12 md:gap-20 mb-12">
           <Logo unitName="spend" mode="dark" className="text-[#FFFFFF]" />
           <div className="flex flex-wrap gap-12 md:gap-20">
-            {columns.map((col) => (
+            {SpendFooter.map((col) => (
               <div key={col.title}>
-                <p
-                  className="text-[12px] uppercase tracking-[0.08em] text-[#8B8B9A] mb-4 font-sans font-medium"
-                >
+                <p className="text-[12px] uppercase tracking-[0.08em] text-[#8B8B9A] mb-4 font-sans font-medium">
                   {col.title}
                 </p>
                 <ul className="flex flex-col gap-2.5">
@@ -37,9 +30,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-[rgba(255,255,255,0.08)] pt-6">
-          <p
-            className="text-[12px] text-[#8B8B9A] font-sans font-normal"
-          >
+          <p className="text-[12px] text-[#8B8B9A] font-sans font-normal">
             &copy; 2026 Futra Financial, Inc. All rights reserved.
           </p>
         </div>

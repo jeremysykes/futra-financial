@@ -1,29 +1,4 @@
-import { Target, Repeat, TrendingUp } from 'lucide-react';
-import { ProcessSteps } from '../../stories/process-steps/ProcessSteps';
-
-const steps = [
-  {
-    icon: Target,
-    label: 'Step 01',
-    title: 'Name your goal',
-    description:
-      'Set a target amount and a timeline that works for you. Trip, home, rainy day — you decide.',
-  },
-  {
-    icon: Repeat,
-    label: 'Step 02',
-    title: 'Automate it',
-    description:
-      'Round-ups, scheduled transfers, or manual deposits. Choose what fits your rhythm.',
-  },
-  {
-    icon: TrendingUp,
-    label: 'Step 03',
-    title: 'Watch it grow',
-    description:
-      'Visual progress tracking that keeps you motivated. Every dollar gets you closer.',
-  },
-];
+import { SaveSteps } from '../../mocks/save.mock';
 
 export function HowItWorks() {
   return (
@@ -36,13 +11,36 @@ export function HowItWorks() {
           Simple by design
         </h2>
 
-        <ProcessSteps
-          size="md"
-          connector="dashed"
-          badgeShape="rounded"
-          iconStrokeWidth={1.5}
-          steps={steps}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
+          <div
+            className="hidden md:block absolute top-12 left-[20%] right-[20%] h-px"
+            style={{ borderTop: '2px dashed var(--color-border)' }}
+          />
+          {SaveSteps.map((step, i) => (
+            <div
+              key={step.num}
+              className="text-center relative animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <div className="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-muted">
+                <step.icon
+                  size={28}
+                  className="text-accent"
+                  strokeWidth={1.5}
+                />
+              </div>
+              <span className="block mb-2 font-mono font-medium text-[13px] text-accent">
+                Step {step.num}
+              </span>
+              <h3 className="mb-3 font-sans font-semibold text-xl text-foreground">
+                {step.title}
+              </h3>
+              <p className="font-sans text-base leading-[1.7] text-muted-foreground max-w-[300px] mx-auto">
+                {step.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

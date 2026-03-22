@@ -1,31 +1,5 @@
+import { PlanTestimonials } from '../../mocks/plan.mock';
 import { Card } from '../../stories/card/Card';
-
-const testimonials = [
-  {
-    quote:
-      'I used to dread checking my finances. Now I open Futra Plan every morning with my coffee. Seeing my net worth chart trend upward is genuinely motivating.',
-    name: 'Sarah Chen',
-    role: 'Software Engineer',
-    initials: 'SC',
-    colorClass: 'bg-accent',
-  },
-  {
-    quote:
-      'The budget vs. actuals view changed how I think about spending. I cut $400/month without feeling deprived -- I just finally saw where it was going.',
-    name: 'Marcus Webb',
-    role: 'Product Manager',
-    initials: 'MW',
-    colorClass: 'bg-positive',
-  },
-  {
-    quote:
-      'As a data analyst, I appreciate that the projections use real methodology, not just straight-line extrapolation. The confidence intervals are a nice touch.',
-    name: 'Priya Kapoor',
-    role: 'Data Analyst',
-    initials: 'PK',
-    colorClass: 'bg-caution',
-  },
-];
 
 export function TestimonialSection() {
   return (
@@ -39,7 +13,7 @@ export function TestimonialSection() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+          {PlanTestimonials.map((t, i) => (
             <Card
               key={t.name}
               interactive

@@ -8,15 +8,16 @@
 
 ### Typography
 
-| Role | Font | Weight | Tailwind | Notes |
-|------|------|--------|----------|-------|
-| Headings H1–H2 | Inter | Bold (700) | `font-sans font-bold` | Tight tracking (-0.01em to -0.02em) |
-| Headings H3–H4 | Inter | Semibold (600) | `font-sans font-semibold` | Standard spacing |
-| Body | Inter | Regular (400) | `font-sans` | Line height 1.6–1.7 |
-| Captions/Overlines | Inter | Medium (500) | `font-sans font-medium` | Uppercase, tracking 0.08em |
-| Data/Numbers | JetBrains Mono | Medium (500) | `font-mono font-medium` | Monetary values, scores, percentages |
+| Role               | Font           | Weight         | Tailwind                  | Notes                                |
+| ------------------ | -------------- | -------------- | ------------------------- | ------------------------------------ |
+| Headings H1–H2     | Inter          | Bold (700)     | `font-sans font-bold`     | Tight tracking (-0.01em to -0.02em)  |
+| Headings H3–H4     | Inter          | Semibold (600) | `font-sans font-semibold` | Standard spacing                     |
+| Body               | Inter          | Regular (400)  | `font-sans`               | Line height 1.6–1.7                  |
+| Captions/Overlines | Inter          | Medium (500)   | `font-sans font-medium`   | Uppercase, tracking 0.08em           |
+| Data/Numbers       | JetBrains Mono | Medium (500)   | `font-mono font-medium`   | Monetary values, scores, percentages |
 
 **Rules:**
+
 - Use `font-sans` and `font-mono` Tailwind classes — never inline `fontFamily` styles
 - All fonts loaded via `src/index.css`
 
@@ -166,29 +167,29 @@ Primitive values → Semantic tokens → Component classes
 
 ### BU-Specific Patterns
 
-| BU | Signature | Corner Radius | Max Width | Unique Elements |
-|----|-----------|---------------|-----------|-----------------|
-| **Spend** | PhoneMockup | `rounded-xl` (12px) | 1200px | Teal/Coral transaction colors |
-| **Save** | ProgressCard | `rounded-xl` (12px) | 1200px | Grove fill + Mist track progress bars |
-| **Credit** | ScoreDisplay | `rounded-xl` (12px) | 1200px | SVG arc gauge, NO red/green, Amber caution only |
-| **Plan** | DashboardPreview | `rounded-xl` (12px) | 1280px | Recharts, three-color data vocabulary |
-| **Together** | SplitDisplay | `rounded-[14px]` | 1200px | Dual-color bars, paired avatars, warmer corners |
+| BU           | Signature        | Corner Radius       | Max Width | Unique Elements                                 |
+| ------------ | ---------------- | ------------------- | --------- | ----------------------------------------------- |
+| **Spend**    | PhoneMockup      | `rounded-xl` (12px) | 1200px    | Teal/Coral transaction colors                   |
+| **Save**     | ProgressCard     | `rounded-xl` (12px) | 1200px    | Grove fill + Mist track progress bars           |
+| **Credit**   | ScoreDisplay     | `rounded-xl` (12px) | 1200px    | SVG arc gauge, NO red/green, Amber caution only |
+| **Plan**     | DashboardPreview | `rounded-xl` (12px) | 1280px    | Recharts, three-color data vocabulary           |
+| **Together** | SplitDisplay     | `rounded-[14px]`    | 1200px    | Dual-color bars, paired avatars, warmer corners |
 
 ### Semantic Token Classes
 
-| Token | Tailwind Class | Usage |
-|-------|---------------|-------|
-| Background | `bg-background` | Page background |
-| Surface | `bg-surface` | Cards, elevated containers |
-| Secondary | `bg-secondary` | Highlight areas, elevated states |
-| Primary | `bg-primary` / `text-primary` | Action color (Indigo) |
-| Foreground | `text-foreground` | Primary text |
-| Muted foreground | `text-muted-foreground` | Secondary text |
-| Accent | `text-accent` | BU-specific accent color |
-| Positive | `text-positive` | Positive status |
-| Negative | `text-negative` | Negative status |
-| Caution | `text-caution` | Warning/caution |
-| Border | `border-border` | Borders (BU-tinted) |
+| Token            | Tailwind Class                | Usage                            |
+| ---------------- | ----------------------------- | -------------------------------- |
+| Background       | `bg-background`               | Page background                  |
+| Surface          | `bg-surface`                  | Cards, elevated containers       |
+| Secondary        | `bg-secondary`                | Highlight areas, elevated states |
+| Primary          | `bg-primary` / `text-primary` | Action color (Indigo)            |
+| Foreground       | `text-foreground`             | Primary text                     |
+| Muted foreground | `text-muted-foreground`       | Secondary text                   |
+| Accent           | `text-accent`                 | BU-specific accent color         |
+| Positive         | `text-positive`               | Positive status                  |
+| Negative         | `text-negative`               | Negative status                  |
+| Caution          | `text-caution`                | Warning/caution                  |
+| Border           | `border-border`               | Borders (BU-tinted)              |
 
 ---
 
@@ -203,5 +204,5 @@ Storybook is part of the design system, not separate from it. Component presenta
 - A single shared decorator (`withStoryDisplay`) controls all component presentation — there are no one-off wrappers, inline decorators, or hardcoded values
 - If a component doesn't render correctly in the standard decorator, the component needs fixing, not the decorator
 
-*Futra Financial — Design System & Visual Identity Guide*
-*Jeremy Sykes*
+_Futra Financial — Design System & Visual Identity Guide_
+_Jeremy Sykes_

@@ -1,19 +1,13 @@
 import { TrendingUp } from 'lucide-react';
 import { Card } from '../../stories/card/Card';
-
-const stats = [
-  { value: '12,400+', label: 'Accounts Synced', trend: '+18%' },
-  { value: '2.1M', label: 'Data Points / User', trend: '+24%' },
-  { value: '94.7%', label: 'Projection Accuracy', trend: '+2.1%' },
-  { value: '22 min', label: 'Avg Session Length', trend: '+8%' },
-];
+import { PlanStats } from '../../mocks/plan.mock';
 
 export function StatsRow() {
   return (
     <section className="py-20 md:py-28 bg-surface">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((s, i) => (
+          {PlanStats.map((s, i) => (
             <Card
               key={s.label}
               accent="left"

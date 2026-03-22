@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Futra Financial</title>
     <script>
-      (function() {
-        var defaults = { spend: 'dark', save: 'light', credit: 'light', plan: 'dark', together: 'light' };
+      (function () {
+        var defaults = {
+          spend: 'dark',
+          save: 'light',
+          credit: 'light',
+          plan: 'dark',
+          together: 'light',
+        };
         var segment = window.location.pathname.split('/')[1];
-        var unit = segment && defaults[segment] !== undefined ? segment : 'spend';
+        var unit =
+          segment && defaults[segment] !== undefined ? segment : 'spend';
         var stored = null;
-        try { stored = localStorage.getItem('futra-theme-' + unit); } catch(e) {}
-        var theme = (stored === 'light' || stored === 'dark') ? stored : defaults[unit];
+        try {
+          stored = localStorage.getItem('futra-theme-' + unit);
+        } catch (e) {}
+        var theme =
+          stored === 'light' || stored === 'dark' ? stored : defaults[unit];
         if (theme === 'dark') document.documentElement.classList.add('dark');
         document.documentElement.setAttribute('data-business-unit', unit);
       })();

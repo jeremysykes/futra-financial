@@ -33,7 +33,9 @@ function getStoredTheme(unit: string): 'light' | 'dark' {
 export function AppShell() {
   const location = useLocation();
   const unit = getUnitFromPath(location.pathname);
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => getStoredTheme(unit));
+  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
+    getStoredTheme(unit),
+  );
 
   // Sync <html> attributes whenever unit or theme changes
   useEffect(() => {
@@ -65,9 +67,7 @@ export function AppShell() {
   return (
     <>
       <DemoSwitcher unit={unit} theme={theme} onToggleTheme={toggleTheme} />
-      <div
-        style={{ '--nav-top': '36px' } as React.CSSProperties}
-      >
+      <div style={{ '--nav-top': '36px' } as React.CSSProperties}>
         <Routes>
           <Route path="/spend" element={<SpendPage />} />
           <Route path="/save" element={<SavePage />} />

@@ -50,9 +50,7 @@ export function DemoSwitcher({
   }, [open]);
 
   return (
-    <div
-      className="fixed top-0 left-0 right-0 z-[60] h-9 flex items-center justify-between px-4 lg:px-6 bg-primary"
-    >
+    <div className="fixed top-0 left-0 right-0 z-[60] h-9 flex items-center justify-between px-4 lg:px-6 bg-primary">
       <div className="flex items-center gap-3">
         <span
           className="text-white text-[11px] font-bold tracking-[0.05em] hidden sm:inline"
@@ -87,7 +85,10 @@ export function DemoSwitcher({
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             {activeLabel}
-            <ChevronDown size={12} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+            <ChevronDown
+              size={12}
+              className={`transition-transform ${open ? 'rotate-180' : ''}`}
+            />
           </button>
 
           {open && (

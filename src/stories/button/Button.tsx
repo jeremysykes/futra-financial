@@ -8,10 +8,8 @@ const buttonVariants = cva(
   {
     variants: {
       intent: {
-        primary:
-          'bg-primary text-primary-foreground hover:bg-primary-hover',
-        inverse:
-          'bg-white text-accent border-transparent hover:bg-white/90',
+        primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
+        inverse: 'bg-white text-accent border-transparent hover:bg-white/90',
       },
       size: {
         sm: 'text-sm px-5 py-2',
@@ -22,7 +20,7 @@ const buttonVariants = cva(
       intent: 'primary',
       size: 'md',
     },
-  }
+  },
 );
 
 export interface ButtonProps
@@ -47,7 +45,7 @@ const Button = ({
       className={cn(
         buttonVariants({ intent, size }),
         disabled && 'opacity-50 cursor-not-allowed',
-        className
+        className,
       )}
       {...props}
     />

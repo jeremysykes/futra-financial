@@ -1,10 +1,5 @@
+import { PlanFooter } from '../../mocks/plan.mock';
 import { Logo } from '../../stories/logo/Logo';
-
-const columns = [
-  { title: 'Product', links: ['Features', 'Projections', 'Budgets', 'Net Worth'] },
-  { title: 'Company', links: ['About', 'Careers', 'Press'] },
-  { title: 'Legal', links: ['Privacy', 'Terms', 'Security'] },
-];
 
 export function Footer() {
   return (
@@ -13,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
           <Logo unitName="plan" mode="dark" className="text-[#E2E8F0]" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
-            {columns.map((col) => (
+            {PlanFooter.map((col) => (
               <div key={col.title}>
                 <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-[#A0AEC0]">
                   {col.title}

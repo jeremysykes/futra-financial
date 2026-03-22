@@ -1,28 +1,5 @@
+import { SaveTestimonials } from '../../mocks/save.mock';
 import { Card } from '../../stories/card/Card';
-
-const testimonials = [
-  {
-    quote: 'I finally saved enough for my first solo trip to Portugal. Seeing that progress bar inch forward every week kept me going.',
-    name: 'Maya Chen',
-    role: 'Saved $3,200 for travel',
-    initials: 'MC',
-    color: '#A8C5B0',
-  },
-  {
-    quote: "The round-ups are sneaky good. I barely notice them, but I've saved over $1,400 in six months without even trying.",
-    name: 'Jordan Ellis',
-    role: 'Building an emergency fund',
-    initials: 'JE',
-    color: '#3D8B5E',
-  },
-  {
-    quote: "Other apps made saving feel like a chore. Futra makes it feel like I'm actually building something. The milestones are *chef's kiss*.",
-    name: 'Priya Kapoor',
-    role: 'Saving for a down payment',
-    initials: 'PK',
-    color: '#4A7C59',
-  },
-];
 
 export function TestimonialSection() {
   return (
@@ -36,8 +13,13 @@ export function TestimonialSection() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <Card key={t.name} interactive className="animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
+          {SaveTestimonials.map((t, i) => (
+            <Card
+              key={t.name}
+              interactive
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
               <p className="mb-6 font-sans text-base leading-[1.7] text-foreground italic">
                 &ldquo;{t.quote}&rdquo;
               </p>
@@ -49,8 +31,12 @@ export function TestimonialSection() {
                   {t.initials}
                 </div>
                 <div>
-                  <span className="block font-sans font-semibold text-sm text-foreground">{t.name}</span>
-                  <span className="font-sans font-medium text-xs text-muted-foreground">{t.role}</span>
+                  <span className="block font-sans font-semibold text-sm text-foreground">
+                    {t.name}
+                  </span>
+                  <span className="font-sans font-medium text-xs text-muted-foreground">
+                    {t.role}
+                  </span>
                 </div>
               </div>
             </Card>

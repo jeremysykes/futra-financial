@@ -11,7 +11,10 @@
 import type { ReactRenderer } from '@storybook/react-vite';
 import type { DecoratorFunction } from 'storybook/internal/types';
 
-export const withThemeContext: DecoratorFunction<ReactRenderer> = (Story, context) => {
+export const withThemeContext: DecoratorFunction<ReactRenderer> = (
+  Story,
+  context,
+) => {
   const theme = context.globals.theme;
   const businessUnit = context.globals.businessUnit;
   return (

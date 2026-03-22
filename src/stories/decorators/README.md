@@ -16,6 +16,7 @@ Single source of truth for all Storybook decorators in the Futra Financial desig
 Global decorator registered in `.storybook/preview.tsx`. Applied to every story automatically.
 
 **What it does:**
+
 - Reads `theme` and `businessUnit` globals from the Storybook toolbar
 - Applies `.dark` class for dark mode
 - Sets `data-business-unit` attribute for BU token switching
@@ -29,14 +30,14 @@ Per-story decorator for component display presentation.
 
 **Options:**
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `maxWidth` | `number` | — | Constrains component max width in pixels |
-| `containFixed` | `boolean` | `false` | Enables fixed-position containment |
-| `height` | `number` | — | Height of containment area (only with `containFixed`) |
-| `layout` | `'single' \| 'grid'` | `'single'` | Display layout mode |
-| `columns` | `number` | — | Grid columns (only with `layout: 'grid'`) |
-| `gap` | `string` | `'1rem'` | Grid gap (only with `layout: 'grid'`) |
+| Option         | Type                 | Default    | Description                                           |
+| -------------- | -------------------- | ---------- | ----------------------------------------------------- |
+| `maxWidth`     | `number`             | —          | Constrains component max width in pixels              |
+| `containFixed` | `boolean`            | `false`    | Enables fixed-position containment                    |
+| `height`       | `number`             | —          | Height of containment area (only with `containFixed`) |
+| `layout`       | `'single' \| 'grid'` | `'single'` | Display layout mode                                   |
+| `columns`      | `number`             | —          | Grid columns (only with `layout: 'grid'`)             |
+| `gap`          | `string`             | `'1rem'`   | Grid gap (only with `layout: 'grid'`)                 |
 
 **Always applied:** `bg-background` (token-derived), `p-8` (consistent padding), no rounded corners.
 
@@ -46,16 +47,16 @@ Per-story decorator for component display presentation.
 import { withStoryDisplay } from '../decorators';
 
 // Standard — most components
-decorators: [withStoryDisplay()]
+decorators: [withStoryDisplay()];
 
 // Constrained width — cards, small components
-decorators: [withStoryDisplay({ maxWidth: 300 })]
+decorators: [withStoryDisplay({ maxWidth: 300 })];
 
 // Fixed-position containment — navbars, sticky headers
-decorators: [withStoryDisplay({ containFixed: true, height: 100 })]
+decorators: [withStoryDisplay({ containFixed: true, height: 100 })];
 
 // Variant grid — showcase multiple variants side by side
-decorators: [withStoryDisplay({ layout: 'grid', columns: 3 })]
+decorators: [withStoryDisplay({ layout: 'grid', columns: 3 })];
 ```
 
 ## Adding New Options

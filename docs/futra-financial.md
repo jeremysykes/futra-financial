@@ -39,21 +39,21 @@ Each business unit targets a distinct demographic, occupies a different emotiona
 
 # The daily driver.
 
-| | |
-|---|---|
-| **DEMOGRAPHIC** | 22–30, urban, salaried or gig-economy. Checks their balance more than their email. |
+|                     |                                                                                                   |
+| ------------------- | ------------------------------------------------------------------------------------------------- |
+| **DEMOGRAPHIC**     | 22–30, urban, salaried or gig-economy. Checks their balance more than their email.                |
 | **MARKET POSITION** | Mass-market neobank. Competes with Cash App and Chime — but with more information and less noise. |
-| **DEFAULT MODE** | Dark. Evening and commute usage dominates. Glanceability over depth. |
+| **DEFAULT MODE**    | Dark. Evening and commute usage dominates. Glanceability over depth.                              |
 
 Futra Spend is the surface users live in — a real-time transaction feed, debit card controls, instant P2P transfers, and spending categorization. It's opened reflexively, not intentionally. The interface has to earn that trust by being fast, readable in low light, and free of dark patterns. Dark mode isn't a preference here — it's an ergonomic baseline for the 11pm "did that payment go through?" check.
 
 #### Color palette — Spend
 
-| `#0F0F12` | `#1A1A1F` | `#6C6FE4` | `#FFFFFF` | `#8B8B9A` | `#E4746C` | `#2ABFA3` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Void** | **Surface** | **Indigo** | **Primary** | **Muted** | **Debit** | **Credit** |
+| `#0F0F12` |  `#1A1A1F`  | `#6C6FE4`  |  `#FFFFFF`  | `#8B8B9A` | `#E4746C` | `#2ABFA3`  |
+| :-------: | :---------: | :--------: | :---------: | :-------: | :-------: | :--------: |
+| **Void**  | **Surface** | **Indigo** | **Primary** | **Muted** | **Debit** | **Credit** |
 
-> *Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is built for people who check balances between gigs: high contrast, zero decoration, total clarity at a glance.*
+> _Near-black with a single electric indigo accent. Transaction amounts use teal for incoming and muted coral for outgoing — warm enough to read, never alarming. The palette is built for people who check balances between gigs: high contrast, zero decoration, total clarity at a glance._
 
 ---
 
@@ -61,21 +61,21 @@ Futra Spend is the surface users live in — a real-time transaction feed, debit
 
 # Build toward something.
 
-| | |
-|---|---|
-| **DEMOGRAPHIC** | 24–34, goal-oriented. Saving for a trip, a down payment, or an emergency fund they keep raiding. |
+|                     |                                                                                                     |
+| ------------------- | --------------------------------------------------------------------------------------------------- |
+| **DEMOGRAPHIC**     | 24–34, goal-oriented. Saving for a trip, a down payment, or an emergency fund they keep raiding.    |
 | **MARKET POSITION** | Goal-based savings. Competes with Qapital and Marcus by Goldman Sachs — but warmer and more visual. |
-| **DEFAULT MODE** | Both. Light for daytime goal-setting; dark for late-night budget reviews. |
+| **DEFAULT MODE**    | Both. Light for daytime goal-setting; dark for late-night budget reviews.                           |
 
 Futra Save is goal-based savings with visual progress mechanics. Users name their goals, set targets and timelines, and automate contributions through round-ups or scheduled transfers. Sessions are deliberate — someone opening Save is in a planning mindset, not a checking one. The interface should feel calm and motivating, like a journal you feel good about updating.
 
 #### Color palette — Save
 
-| `#F7F5F0` | `#FFFFFF` | `#4A7C59` | `#A8C5B0` | `#E8F0EB` | `#1C1C1A` | `#6C6FE4` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Linen** | **Card** | **Grove** | **Sage** | **Mist** | **Ink** | **Indigo** |
+| `#F7F5F0` | `#FFFFFF` | `#4A7C59` | `#A8C5B0` | `#E8F0EB` | `#1C1C1A` | `#6C6FE4`  |
+| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :--------: |
+| **Linen** | **Card**  | **Grove** | **Sage**  | **Mist**  |  **Ink**  | **Indigo** |
 
-> *Warm off-white and earthy sage greens. The green palette evokes cultivation and slow growth — the emotional opposite of a trading dashboard. Indigo carries over from the core system as the action color; here it sits alongside Grove green rather than against pure black, softening its energy. Progress bars never use red or amber — percentage fill alone communicates momentum.*
+> _Warm off-white and earthy sage greens. The green palette evokes cultivation and slow growth — the emotional opposite of a trading dashboard. Indigo carries over from the core system as the action color; here it sits alongside Grove green rather than against pure black, softening its energy. Progress bars never use red or amber — percentage fill alone communicates momentum._
 
 ---
 
@@ -83,21 +83,21 @@ Futra Save is goal-based savings with visual progress mechanics. Users name thei
 
 # Know where you stand.
 
-| | |
-|---|---|
-| **DEMOGRAPHIC** | 23–35, building or repairing credit. Applying for apartments, car loans, or their first credit card with a real limit. |
+|                     |                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **DEMOGRAPHIC**     | 23–35, building or repairing credit. Applying for apartments, car loans, or their first credit card with a real limit.   |
 | **MARKET POSITION** | Credit monitoring and debt management. Competes with Credit Karma and Experian — less anxiety-inducing, more actionable. |
-| **DEFAULT MODE** | Both. High-stakes sessions need user control over their environment. |
+| **DEFAULT MODE**    | Both. High-stakes sessions need user control over their environment.                                                     |
 
 Futra Credit is a credit score monitor, credit card manager, and debt payoff planner in one surface. It's the product people open with their stomach slightly knotted. Design decisions here carry psychological weight that doesn't exist in other surfaces — a poorly chosen red can make a "fair" score feel catastrophic. The UI deliberately uses neutral architectural language: no red for bad, no green for good. Status is communicated through structure and label, not color alone.
 
 #### Color palette — Credit
 
-| `#F9F7FF` | `#EEEAFF` | `#6C6FE4` | `#9896C8` | `#E8A838` | `#1A1830` | `#D4D2EE` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|   `#F9F7FF`    |  `#EEEAFF`   | `#6C6FE4`  | `#9896C8` | `#E8A838` |  `#1A1830`   |   `#D4D2EE`    |
+| :------------: | :----------: | :--------: | :-------: | :-------: | :----------: | :------------: |
 | **Iris White** | **Lavender** | **Indigo** | **Slate** | **Amber** | **Midnight** | **Periwinkle** |
 
-> *Soft lavender-whites and deep indigo-navy. The palette reads clinical but not cold — closer to a well-designed health app than a banking portal. Amber is the only warm accent, reserved strictly for caution states. The absence of red is a deliberate product decision: this demographic already carries financial anxiety, and the color system should not amplify it.*
+> _Soft lavender-whites and deep indigo-navy. The palette reads clinical but not cold — closer to a well-designed health app than a banking portal. Amber is the only warm accent, reserved strictly for caution states. The absence of red is a deliberate product decision: this demographic already carries financial anxiety, and the color system should not amplify it._
 
 ---
 
@@ -105,21 +105,21 @@ Futra Credit is a credit score monitor, credit card manager, and debt payoff pla
 
 # Your money, mapped.
 
-| | |
-|---|---|
-| **DEMOGRAPHIC** | 27–40, analytically inclined. Spreadsheet users who want a better tool. Probably has a vague retirement plan they haven't reviewed in eight months. |
-| **MARKET POSITION** | Financial planning dashboard. Competes with Monarch Money, Copilot, YNAB — tighter visual aesthetic and better chart quality. |
-| **DEFAULT MODE** | Dark default, full light mode support. Long analytical sessions favor dark; presentation contexts favor light. |
+|                     |                                                                                                                                                     |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **DEMOGRAPHIC**     | 27–40, analytically inclined. Spreadsheet users who want a better tool. Probably has a vague retirement plan they haven't reviewed in eight months. |
+| **MARKET POSITION** | Financial planning dashboard. Competes with Monarch Money, Copilot, YNAB — tighter visual aesthetic and better chart quality.                       |
+| **DEFAULT MODE**    | Dark default, full light mode support. Long analytical sessions favor dark; presentation contexts favor light.                                      |
 
 Futra Plan is the web-first financial planning surface: net worth tracking, monthly budget vs actuals, multi-year cash flow projections, and retirement runway estimation. Sessions are long and deliberate. The interface competes with spreadsheets — it has to earn trust through density, precision, and legibility of complex data. Dark mode is the default because this is the product users open at midnight with a cup of tea and a vague sense of dread that turns into clarity.
 
 #### Color palette — Plan
 
-| `#0C1017` | `#151E2B` | `#1F2D3D` | `#6C6FE4` | `#2ABFA3` | `#E8A838` | `#A0AEC0` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Abyss** | **Deep** | **Surface** | **Indigo** | **Teal** | **Amber** | **Steel** |
+| `#0C1017` | `#151E2B` |  `#1F2D3D`  | `#6C6FE4`  | `#2ABFA3` | `#E8A838` | `#A0AEC0` |
+| :-------: | :-------: | :---------: | :--------: | :-------: | :-------: | :-------: |
+| **Abyss** | **Deep**  | **Surface** | **Indigo** | **Teal**  | **Amber** | **Steel** |
 
-> *Deep blue-blacks with a three-color data vocabulary: indigo for primary series and interactive elements, teal for secondary data and positive variance, amber for caution and negative variance. Steel gray handles secondary text and axis labels. The palette is borrowed from professional data tools — Bloomberg terminal energy, without the chaos. Chart readability at high density is the primary constraint every color decision is made against.*
+> _Deep blue-blacks with a three-color data vocabulary: indigo for primary series and interactive elements, teal for secondary data and positive variance, amber for caution and negative variance. Steel gray handles secondary text and axis labels. The palette is borrowed from professional data tools — Bloomberg terminal energy, without the chaos. Chart readability at high density is the primary constraint every color decision is made against._
 
 ---
 
@@ -127,21 +127,21 @@ Futra Plan is the web-first financial planning surface: net worth tracking, mont
 
 # Shared money, shared life.
 
-| | |
-|---|---|
-| **DEMOGRAPHIC** | 25–38, cohabitating couples or roommates actively trying to stop arguing about money. |
+|                     |                                                                                                                                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **DEMOGRAPHIC**     | 25–38, cohabitating couples or roommates actively trying to stop arguing about money.                                                      |
 | **MARKET POSITION** | Shared household finances. Competes with Honeydue and Splitwise — but with actual banking integration and a more grown-up visual register. |
-| **DEFAULT MODE** | Light default. Used collaboratively, face-to-face, on a shared screen. |
+| **DEFAULT MODE**    | Light default. Used collaboratively, face-to-face, on a shared screen.                                                                     |
 
 Futra Together is a shared finances surface for households — joint accounts, shared savings goals, bill tracking, and contribution management for two or more people. It's the only Futra surface that gets used collaboratively, face-to-face, on a shared screen. The critical design constraint: no visual hierarchy between users. Neither person's money or contributions should feel more prominent than the other's.
 
 #### Color palette — Together
 
-| `#FFF9F5` | `#FFFFFF` | `#C4622D` | `#6C6FE4` | `#F2E4DA` | `#1C1A18` | `#9E8E84` |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Warm White** | **Card** | **Terracotta** | **Indigo** | **Blush** | **Espresso** | **Clay** |
+|   `#FFF9F5`    | `#FFFFFF` |   `#C4622D`    | `#6C6FE4`  | `#F2E4DA` |  `#1C1A18`   | `#9E8E84` |
+| :------------: | :-------: | :------------: | :--------: | :-------: | :----------: | :-------: |
+| **Warm White** | **Card**  | **Terracotta** | **Indigo** | **Blush** | **Espresso** | **Clay**  |
 
-> *Warm whites and terracotta — the only Futra surface that moves away from cool neutrals. The warmth signals domesticity and shared life rather than individual financial management. User attribution uses indigo for one person and terracotta for the other — two equally weighted, visually distinct colors with no warm/cool implication of positive/negative.*
+> _Warm whites and terracotta — the only Futra surface that moves away from cool neutrals. The warmth signals domesticity and shared life rather than individual financial management. User attribution uses indigo for one person and terracotta for the other — two equally weighted, visually distinct colors with no warm/cool implication of positive/negative._
 
 ---
 
@@ -165,5 +165,5 @@ Multi-brand theming · Semantic token architecture · Cross-surface component re
 
 ---
 
-*Futra Financial — Brand & Design System Strategy*
-*Jeremy Sykes — ARO Studio*
+_Futra Financial — Brand & Design System Strategy_
+_Jeremy Sykes — ARO Studio_

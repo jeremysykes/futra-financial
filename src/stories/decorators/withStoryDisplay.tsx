@@ -66,7 +66,9 @@ export function withStoryDisplay(
 
     if (layout === 'grid') {
       style.display = 'grid';
-      style.gridTemplateColumns = columns ? `repeat(${columns}, 1fr)` : undefined;
+      style.gridTemplateColumns = columns
+        ? `repeat(${columns}, 1fr)`
+        : undefined;
       style.gap = gap;
     }
 

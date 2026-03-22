@@ -9,6 +9,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Scope:** Visual design decisions, UI polish, component aesthetics, layout composition
 
 **Responsibilities:**
+
 - Design audits — assess visual quality and distinctiveness across BUs
 - Propose visual improvements (color usage, spacing, typography, motion)
 - Create mockups and visual comparisons for design decisions
@@ -20,6 +21,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Does not:** Write production code, manage routing, handle state management
 
 **Skills to invoke:**
+
 - `frontend-design:frontend-design` — Distinctive, production-grade UI design (invoke on every design task)
 - `figma:implement-design` — When translating Figma designs to code specifications
 - `figma:get-design-context` — When pulling design context from Figma files
@@ -34,6 +36,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Scope:** Component implementation, React/TypeScript code, Tailwind styling, build tooling
 
 **Responsibilities:**
+
 - Implement components from Figma designs using CSS variable tokens
 - Build new pages and wire them into the router (AppShell)
 - Refactor components to use semantic token classes
@@ -47,6 +50,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Does not:** Make brand decisions, choose color palettes, alter DESIGN.md
 
 **Skills to invoke:**
+
 - `react-best-practices` — After editing TSX components, before shipping
 - `figma:implement-design` — When implementing UI from Figma files
 - `shadcn` — When using shadcn/ui components, Radix primitives, or CVA patterns
@@ -66,6 +70,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Scope:** Brand identity, palette decisions, typography choices, emotional register
 
 **Responsibilities:**
+
 - Define and maintain DESIGN.md as the canonical style guide
 - Make palette decisions (new colors, token adjustments)
 - Define emotional register and audience profile per BU
@@ -77,6 +82,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Does not:** Write code, implement designs, manage the build system
 
 **Skills to invoke:**
+
 - `superpowers:brainstorming` — Before any brand identity decision or palette change
 - `frontend-design:frontend-design` — For visual direction and aesthetic guidance
 - `geist` — When considering typography decisions and font configuration
@@ -88,6 +94,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Scope:** Token architecture, theme infrastructure, cross-BU consistency
 
 **Responsibilities:**
+
 - Maintain `tailwind.css` — all CSS custom property definitions
 - Ensure token names are consistent across BUs
 - Add new semantic tokens when needed
@@ -100,6 +107,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Does not:** Build page components, make visual design decisions, write copy
 
 **Skills to invoke:**
+
 - `shadcn` — For theming patterns, CSS variable conventions, and Tailwind integration
 - `react-best-practices` — When reviewing decorator and provider patterns
 - `superpowers:systematic-debugging` — When theme switching or token resolution fails
@@ -112,6 +120,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Scope:** Visual verification, cross-BU consistency checks, regression catching
 
 **Responsibilities:**
+
 - Screenshot all 5 BUs in both light and dark mode after changes
 - Verify navbar alignment, spacing, and scroll behavior
 - Check theme persistence (localStorage) across navigation
@@ -124,6 +133,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Does not:** Write code or make design decisions — only reports issues
 
 **Skills to invoke:**
+
 - `agent-browser` — Primary tool for all visual verification (screenshots, interaction, navigation)
 - `agent-browser-verify` — Automated dev-server verification checklist
 - `verification` — Full end-to-end verification orchestrator
@@ -137,6 +147,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Scope:** Headlines, body copy, testimonials, CTAs, FAQ content
 
 **Responsibilities:**
+
 - Write copy that matches each BU's emotional register (per DESIGN.md)
 - Maintain appropriate tone: clinical for Credit, warm for Together, analytical for Plan
 - Write testimonial quotes that reflect the target demographic
@@ -148,6 +159,7 @@ This document defines the specialized agent roles for the Futra Financial projec
 **Does not:** Make code changes, choose colors, alter the design system
 
 **Skills to invoke:**
+
 - `superpowers:brainstorming` — Before writing copy for a new BU or section
 - `frontend-design:frontend-design` — When copy needs to complement a specific visual direction
 
@@ -155,17 +167,17 @@ This document defines the specialized agent roles for the Futra Financial projec
 
 ## Workflow Summary
 
-| Task | Lead Role | Supporting Roles |
-|------|-----------|-----------------|
-| New BU landing page | Frontend Engineer | Frontend Designer, Brand Strategist |
-| Design audit | Frontend Designer | QA / Visual Reviewer |
-| Token/palette changes | Brand Strategist | Design System Engineer |
-| Component polish | Frontend Engineer | Frontend Designer |
-| Copy updates | Content / Copy Writer | Brand Strategist |
-| Visual verification | QA / Visual Reviewer | Frontend Engineer |
-| Image sourcing | Content / Copy Writer | Frontend Designer |
-| Storybook maintenance | Frontend Engineer | Design System Engineer |
-| Bug fixing | Frontend Engineer | QA / Visual Reviewer |
+| Task                   | Lead Role              | Supporting Roles                    |
+| ---------------------- | ---------------------- | ----------------------------------- |
+| New BU landing page    | Frontend Engineer      | Frontend Designer, Brand Strategist |
+| Design audit           | Frontend Designer      | QA / Visual Reviewer                |
+| Token/palette changes  | Brand Strategist       | Design System Engineer              |
+| Component polish       | Frontend Engineer      | Frontend Designer                   |
+| Copy updates           | Content / Copy Writer  | Brand Strategist                    |
+| Visual verification    | QA / Visual Reviewer   | Frontend Engineer                   |
+| Image sourcing         | Content / Copy Writer  | Frontend Designer                   |
+| Storybook maintenance  | Frontend Engineer      | Design System Engineer              |
+| Bug fixing             | Frontend Engineer      | QA / Visual Reviewer                |
 | Design system refactor | Design System Engineer | Frontend Engineer, Brand Strategist |
 
 ---

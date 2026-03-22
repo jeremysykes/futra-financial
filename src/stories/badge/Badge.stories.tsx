@@ -50,7 +50,14 @@ export const Large: Story = {
   },
 };
 
-export const TextContent: Story = {
+export const Text: Story = {
+  args: {
+    content: 'text',
+    children: <span className="text-accent">A</span>,
+  },
+};
+
+export const TextLarge: Story = {
   args: {
     content: 'text',
     shape: 'circle',
@@ -86,9 +93,15 @@ export const AllShapes: Story = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
-      <Badge shape="square"><Target size={24} className="text-accent" /></Badge>
-      <Badge shape="rounded"><Target size={24} className="text-accent" /></Badge>
-      <Badge shape="circle"><Target size={24} className="text-accent" /></Badge>
+      <Badge shape="square">
+        <Target size={24} className="text-accent" />
+      </Badge>
+      <Badge shape="rounded">
+        <Target size={24} className="text-accent" />
+      </Badge>
+      <Badge shape="circle">
+        <Target size={24} className="text-accent" />
+      </Badge>
     </>
   ),
 };
@@ -97,9 +110,15 @@ export const AllSizes: Story = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
-      <Badge size="sm"><Target size={18} className="text-accent" /></Badge>
-      <Badge size="md"><Target size={24} className="text-accent" /></Badge>
-      <Badge size="lg"><Target size={28} className="text-accent" /></Badge>
+      <Badge size="sm">
+        <Target size={18} className="text-accent" />
+      </Badge>
+      <Badge size="md">
+        <Target size={24} className="text-accent" />
+      </Badge>
+      <Badge size="lg">
+        <Target size={28} className="text-accent" />
+      </Badge>
     </>
   ),
 };

@@ -5,7 +5,11 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
       <div className="absolute inset-0 z-0">
-        <img src={`${import.meta.env.BASE_URL}images/IMG-SAVE-01.png`} alt="" className="w-full h-full object-cover opacity-[0.08]" />
+        <img
+          src={`${import.meta.env.BASE_URL}images/IMG-SAVE-01.png`}
+          alt=""
+          className="w-full h-full object-cover opacity-[0.08]"
+        />
         <div className="absolute inset-0 bg-background/70" />
       </div>
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full">
@@ -28,13 +32,28 @@ export function HeroSection() {
           <div className="flex-1 relative w-full max-w-md lg:max-w-lg">
             <div className="relative" style={{ minHeight: 380 }}>
               <div className="absolute top-0 left-0 w-[280px] sm:w-[300px] z-10 shadow-xl -rotate-2">
-                <ProgressCard goalName="Trip to Japan" targetAmount="$4,500" currentAmount="$3,015" percentage={67} />
+                <ProgressCard
+                  goalName="Trip to Japan"
+                  targetAmount="$4,500"
+                  currentAmount="$3,015"
+                  percentage={67}
+                />
               </div>
               <div className="absolute top-28 left-16 sm:left-24 w-[280px] sm:w-[300px] z-20 shadow-xl rotate-1">
-                <ProgressCard goalName="Emergency Fund" targetAmount="$10,000" currentAmount="$4,300" percentage={43} />
+                <ProgressCard
+                  goalName="Emergency Fund"
+                  targetAmount="$10,000"
+                  currentAmount="$4,300"
+                  percentage={43}
+                />
               </div>
               <div className="absolute top-56 left-8 sm:left-12 w-[280px] sm:w-[300px] z-30 shadow-2xl -rotate-1">
-                <ProgressCard goalName="New Laptop" targetAmount="$2,200" currentAmount="$1,958" percentage={89} />
+                <ProgressCard
+                  goalName="New Laptop"
+                  targetAmount="$2,200"
+                  currentAmount="$1,958"
+                  percentage={89}
+                />
               </div>
             </div>
           </div>

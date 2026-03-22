@@ -1,10 +1,5 @@
+import { CreditFooter } from '../../mocks/credit.mock';
 import { Logo } from '../../stories/logo/Logo';
-
-const columns = [
-  { title: 'Product', links: ['Features', 'Score Factors', 'Debt Payoff'] },
-  { title: 'Company', links: ['About', 'Careers', 'Press'] },
-  { title: 'Legal', links: ['Privacy', 'Terms', 'Security'] },
-];
 
 export function Footer() {
   return (
@@ -13,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
           <Logo unitName="credit" mode="dark" className="text-[#F9F7FF]" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
-            {columns.map((col) => (
+            {CreditFooter.map((col) => (
               <div key={col.title}>
                 <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-[#F9F7FF]">
                   {col.title}

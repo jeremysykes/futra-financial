@@ -5,7 +5,12 @@ export function SplitDisplay({
 }: {
   label: string;
   total: string;
-  splits: { name: string; amount: string; percent: number; color: 'indigo' | 'terracotta' }[];
+  splits: {
+    name: string;
+    amount: string;
+    percent: number;
+    color: 'indigo' | 'terracotta';
+  }[];
 }) {
   const colors = {
     indigo: 'var(--color-primary)',
@@ -15,8 +20,12 @@ export function SplitDisplay({
   return (
     <div className="rounded-[14px] p-5 bg-surface border border-border shadow-[0_2px_8px_rgba(28,26,24,0.05)]">
       <div className="flex justify-between items-center mb-3">
-        <span className="font-sans font-semibold text-base text-foreground">{label}</span>
-        <span className="font-mono font-medium text-lg text-foreground">{total}</span>
+        <span className="font-sans font-semibold text-base text-foreground">
+          {label}
+        </span>
+        <span className="font-mono font-medium text-lg text-foreground">
+          {total}
+        </span>
       </div>
 
       {/* Split bar */}
@@ -40,8 +49,12 @@ export function SplitDisplay({
               className="w-2.5 h-2.5 rounded-full"
               style={{ backgroundColor: colors[s.color] }}
             />
-            <span className="text-xs text-muted-foreground font-medium">{s.name}</span>
-            <span className="font-mono text-xs font-medium text-foreground">{s.amount}</span>
+            <span className="text-xs text-muted-foreground font-medium">
+              {s.name}
+            </span>
+            <span className="font-mono text-xs font-medium text-foreground">
+              {s.amount}
+            </span>
           </div>
         ))}
       </div>

@@ -6,24 +6,27 @@ export function HeroSection() {
     <section className="relative min-h-screen bg-background flex items-center overflow-hidden pt-[calc(var(--nav-top,0px)+64px)]">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
-        <img src={`${import.meta.env.BASE_URL}images/IMG-SPEND-01.png`} alt="" className="w-full h-full object-cover opacity-10" />
+        <img
+          src={`${import.meta.env.BASE_URL}images/IMG-SPEND-01.png`}
+          alt=""
+          className="w-full h-full object-cover opacity-10"
+        />
         <div className="absolute inset-0 bg-background/80" />
       </div>
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         <div className="flex-1 text-center lg:text-left">
-          <h1
-            className="text-[40px] sm:text-[48px] lg:text-[56px] text-foreground leading-[1.05] tracking-[-0.02em] mb-6 font-sans font-bold"
-          >
+          <h1 className="text-[40px] sm:text-[48px] lg:text-[56px] text-foreground leading-[1.05] tracking-[-0.02em] mb-6 font-sans font-bold">
             Your money,
             <br />
             <span className="text-accent">in real time.</span>
           </h1>
-          <p
-            className="text-muted-foreground text-[17px] leading-[1.6] mb-8 max-w-md mx-auto lg:mx-0 font-sans font-normal"
-          >
-            Instant transactions, zero fees, total control. See every dollar the second it moves — not hours later.
+          <p className="text-muted-foreground text-[17px] leading-[1.6] mb-8 max-w-md mx-auto lg:mx-0 font-sans font-normal">
+            Instant transactions, zero fees, total control. See every dollar the
+            second it moves — not hours later.
           </p>
-          <Button asChild><a href="#cta">Open Your Account</a></Button>
+          <Button asChild>
+            <a href="#cta">Open Your Account</a>
+          </Button>
         </div>
         <div className="flex-shrink-0">
           <PhoneMockup />

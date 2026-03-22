@@ -1,24 +1,5 @@
 import { Check, X } from 'lucide-react';
-
-const features = [
-  'Net worth tracking',
-  'Budget vs actuals',
-  'Cash flow projections',
-  'Retirement runway',
-  'Multi-account sync',
-  'Investment tracking',
-  'Custom categories',
-  'Data export',
-];
-
-type Support = boolean;
-
-const competitors: { name: string; support: Support[] }[] = [
-  { name: 'Futra Plan', support: [true, true, true, true, true, true, true, true] },
-  { name: 'Monarch', support: [true, true, true, false, true, true, true, false] },
-  { name: 'YNAB', support: [false, true, false, false, true, false, true, true] },
-  { name: 'Spreadsheets', support: [true, true, false, false, false, false, true, true] },
-];
+import { PlanCompetitors, PlanFeatures } from '../../mocks/plan.mock';
 
 export function ComparisonSection() {
   return (
@@ -38,7 +19,7 @@ export function ComparisonSection() {
                 <th className="py-4 pr-4 text-left font-sans font-medium text-sm text-muted-foreground">
                   Feature
                 </th>
-                {competitors.map((c, i) => (
+                {PlanCompetitors.map((c, i) => (
                   <th
                     key={c.name}
                     className={`py-4 px-4 text-center font-sans font-semibold text-sm ${
@@ -51,13 +32,16 @@ export function ComparisonSection() {
               </tr>
             </thead>
             <tbody>
-              {features.map((feat, fi) => (
+              {PlanFeatures.map((feat, fi) => (
                 <tr key={feat} className="border-b border-border">
                   <td className="py-4 pr-4 font-sans text-sm text-foreground">
                     {feat}
                   </td>
-                  {competitors.map((c, ci) => (
-                    <td key={c.name} className={`py-4 px-4 text-center ${ci === 0 ? 'bg-primary/10' : ''}`}>
+                  {PlanCompetitors.map((c, ci) => (
+                    <td
+                      key={c.name}
+                      className={`py-4 px-4 text-center ${ci === 0 ? 'bg-primary/10' : ''}`}
+                    >
                       {c.support[fi] ? (
                         <Check
                           size={18}

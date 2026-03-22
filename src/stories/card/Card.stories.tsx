@@ -8,7 +8,9 @@ const SampleContent = () => (
     <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
       <span className="text-accent font-bold text-sm">⚡</span>
     </div>
-    <h4 className="font-sans font-semibold text-base text-foreground mb-2">Feature Title</h4>
+    <h4 className="font-sans font-semibold text-base text-foreground mb-2">
+      Feature Title
+    </h4>
     <p className="font-sans text-sm text-muted-foreground leading-relaxed">
       A brief description of this feature that explains its value to the user.
     </p>
@@ -81,12 +83,24 @@ export const AllVariants: Story = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
-      <Card accent="none"><SampleContent /></Card>
-      <Card accent="left"><SampleContent /></Card>
-      <Card accent="top"><SampleContent /></Card>
-      <Card accent="right"><SampleContent /></Card>
-      <Card accent="bottom"><SampleContent /></Card>
-      <Card accent="left" interactive><SampleContent /></Card>
+      <Card accent="none">
+        <SampleContent />
+      </Card>
+      <Card accent="left">
+        <SampleContent />
+      </Card>
+      <Card accent="top">
+        <SampleContent />
+      </Card>
+      <Card accent="right">
+        <SampleContent />
+      </Card>
+      <Card accent="bottom">
+        <SampleContent />
+      </Card>
+      <Card accent="left" interactive>
+        <SampleContent />
+      </Card>
     </>
   ),
 };

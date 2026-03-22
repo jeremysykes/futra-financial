@@ -1,19 +1,5 @@
+import { TogetherFooter } from '../../mocks/together.mock';
 import { Logo } from '../../stories/logo/Logo';
-
-const COLUMNS = [
-  {
-    title: 'Product',
-    links: ['Features', 'Splits', 'Shared Goals'],
-  },
-  {
-    title: 'Company',
-    links: ['About', 'Careers', 'Press'],
-  },
-  {
-    title: 'Legal',
-    links: ['Privacy', 'Terms'],
-  },
-];
 
 export function Footer() {
   return (
@@ -23,14 +9,17 @@ export function Footer() {
           {/* Logo column */}
           <div className="col-span-2 md:col-span-1">
             <Logo unitName="together" mode="dark" className="text-[#FFF9F5]" />
-            <p className="text-sm mt-4 leading-relaxed" style={{ color: '#9E8E84' }}>
+            <p
+              className="text-sm mt-4 leading-relaxed"
+              style={{ color: '#9E8E84' }}
+            >
               Shared finances,
               <br />
               without the friction.
             </p>
           </div>
 
-          {COLUMNS.map((col) => (
+          {TogetherFooter.map((col) => (
             <div key={col.title}>
               <h4
                 className="font-sans font-semibold text-xs uppercase tracking-wider mb-4"
@@ -56,7 +45,10 @@ export function Footer() {
 
         <div
           className="mt-12 pt-8 text-xs text-center"
-          style={{ borderTop: '1px solid rgba(158,142,132,0.2)', color: '#9E8E84' }}
+          style={{
+            borderTop: '1px solid rgba(158,142,132,0.2)',
+            color: '#9E8E84',
+          }}
         >
           &copy; 2026 Futra Together. All rights reserved.
         </div>

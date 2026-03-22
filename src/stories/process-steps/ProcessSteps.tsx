@@ -2,33 +2,30 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 import { Badge } from '../badge/Badge';
 
-const processStepsVariants = cva(
-  'grid grid-cols-1 relative',
-  {
-    variants: {
-      size: {
-        sm: '',
-        md: '',
-        lg: '',
-      },
-      connector: {
-        dashed: '',
-        solid: '',
-        none: '',
-      },
-      badgeShape: {
-        square: '',
-        rounded: '',
-        circle: '',
-      },
+const processStepsVariants = cva('grid grid-cols-1 relative', {
+  variants: {
+    size: {
+      sm: '',
+      md: '',
+      lg: '',
     },
-    defaultVariants: {
-      size: 'md',
-      connector: 'dashed',
-      badgeShape: 'rounded',
+    connector: {
+      dashed: '',
+      solid: '',
+      none: '',
     },
-  }
-);
+    badgeShape: {
+      square: '',
+      rounded: '',
+      circle: '',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+    connector: 'dashed',
+    badgeShape: 'rounded',
+  },
+});
 
 // Size tiers match existing BU implementations:
 // md = Save (lg badge, small label, larger title/desc)
@@ -86,14 +83,19 @@ const gridColsMap: Record<number, string> = {
 };
 
 export interface StepItem {
-  icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
+  icon: React.ComponentType<{
+    size?: number;
+    className?: string;
+    strokeWidth?: number;
+  }>;
   label: string;
   title: string;
   description: string;
 }
 
 export interface ProcessStepsProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof processStepsVariants> {
   steps: StepItem[];
   animated?: boolean;
@@ -120,7 +122,7 @@ const ProcessSteps = ({
         processStepsVariants({ size, connector, badgeShape }),
         gridColsMap[steps.length],
         gapClasses[resolvedSize],
-        className
+        className,
       )}
       {...props}
     >
@@ -130,7 +132,7 @@ const ProcessSteps = ({
           className={cn(
             'hidden md:block absolute',
             resolvedSize === 'sm' && 'top-5 left-[16.67%] right-[16.67%]',
-            resolvedSize === 'md' && 'top-12 left-[20%] right-[20%]',
+            resolvedSize === 'md' && 'top-8 left-[16.67%] right-[16.67%]',
             resolvedSize === 'lg' && 'top-8 left-[16.67%] right-[16.67%]',
             connector === 'solid' && 'h-px bg-border',
           )}
@@ -163,7 +165,9 @@ const ProcessSteps = ({
             <step.icon
               size={iconSizeMap[resolvedSize]}
               className="text-accent"
-              {...(iconStrokeWidth !== undefined && { strokeWidth: iconStrokeWidth })}
+              {...(iconStrokeWidth !== undefined && {
+                strokeWidth: iconStrokeWidth,
+              })}
             />
           </Badge>
 

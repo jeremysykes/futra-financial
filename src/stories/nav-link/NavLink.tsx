@@ -13,11 +13,12 @@ const navLinkVariants = cva(
     defaultVariants: {
       size: 'sm',
     },
-  }
+  },
 );
 
 export interface NavLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  extends
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
     VariantProps<typeof navLinkVariants> {
   href: string;
 }

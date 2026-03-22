@@ -5,7 +5,11 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
       <div className="absolute inset-0 z-0">
-        <img src={`${import.meta.env.BASE_URL}images/IMG-PLAN-01.png`} alt="" className="w-full h-full object-cover opacity-[0.07]" />
+        <img
+          src={`${import.meta.env.BASE_URL}images/IMG-PLAN-01.png`}
+          alt=""
+          className="w-full h-full object-cover opacity-[0.07]"
+        />
         <div className="absolute inset-0 bg-background/80" />
       </div>
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full">

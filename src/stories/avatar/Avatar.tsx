@@ -22,7 +22,8 @@ const avatarVariants = cva('', {
 });
 
 export interface AvatarProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>,
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>,
     VariantProps<typeof avatarVariants> {
   src?: string;
   alt: string;
@@ -47,13 +48,11 @@ const Avatar = ({
       {...props}
     >
       {src ? (
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-full object-cover"
-        />
+        <img src={src} alt={alt} className="w-full h-full object-cover" />
       ) : (
-        <span className="text-accent">{initials ?? alt.charAt(0).toUpperCase()}</span>
+        <span className="text-accent">
+          {initials ?? alt.charAt(0).toUpperCase()}
+        </span>
       )}
     </Badge>
   );

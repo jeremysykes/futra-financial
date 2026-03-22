@@ -5,7 +5,11 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center pt-[calc(var(--nav-top,0px)+64px)] bg-background">
       <div className="absolute inset-0 z-0">
-        <img src={`${import.meta.env.BASE_URL}images/IMG-CREDIT-01.png`} alt="" className="w-full h-full object-cover opacity-[0.07]" />
+        <img
+          src={`${import.meta.env.BASE_URL}images/IMG-CREDIT-01.png`}
+          alt=""
+          className="w-full h-full object-cover opacity-[0.07]"
+        />
         <div className="absolute inset-0 bg-background/75" />
       </div>
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full">
@@ -16,18 +20,24 @@ export function HeroSection() {
             </p>
             <h1 className="mb-6 font-sans font-bold text-foreground leading-[1.1] tracking-[-0.01em] text-[clamp(36px,5vw,56px)]">
               Your credit score,
-              <br />without the anxiety.
+              <br />
+              without the anxiety.
             </h1>
             <p className="mb-10 font-sans text-lg leading-[1.7] text-muted-foreground max-w-[460px]">
               Free credit monitoring that gives you clarity — not panic.
-              Understand your score, track your progress, and take control
-              of your financial future.
+              Understand your score, track your progress, and take control of
+              your financial future.
             </p>
             <Button>See Your Score Free</Button>
           </div>
 
           <div className="flex-1 flex justify-center w-full max-w-md lg:max-w-lg">
-            <ScoreDisplay score={724} label="Good" percentage={0.75} size={260} />
+            <ScoreDisplay
+              score={724}
+              label="Good"
+              percentage={0.75}
+              size={260}
+            />
           </div>
         </div>
       </div>

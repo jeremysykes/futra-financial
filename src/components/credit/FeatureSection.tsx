@@ -1,32 +1,12 @@
-import { Gauge, CreditCard, Activity, Bell } from 'lucide-react';
+import { CreditFeatures } from '../../mocks/credit.mock';
 import { Card } from '../../stories/card/Card';
-
-const features = [
-  {
-    icon: Gauge,
-    title: 'Credit Score Monitoring',
-    description: 'Track your credit score over time with clear, easy-to-read charts and weekly updates.',
-  },
-  {
-    icon: CreditCard,
-    title: 'Balance Tracking & Reminders',
-    description: 'Stay on top of your balances and never miss a payment with smart reminders.',
-  },
-  {
-    icon: Activity,
-    title: 'Debt Payoff Planner',
-    description: 'Create a personalized plan to pay down debt faster and save on interest.',
-  },
-  {
-    icon: Bell,
-    title: 'Score Alerts & Insights',
-    description: 'Get notified when your score changes and understand exactly what drove it.',
-  },
-];
 
 export function FeatureSection() {
   return (
-    <section id="features" className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/40">
+    <section
+      id="features"
+      className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/40"
+    >
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center mb-16">
           <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
@@ -37,7 +17,7 @@ export function FeatureSection() {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, i) => (
+          {CreditFeatures.map((feature, i) => (
             <Card
               key={feature.title}
               accent="left"

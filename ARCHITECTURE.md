@@ -4,20 +4,20 @@
 
 ## Tech Stack
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| Framework | React | 19 |
-| Build | Vite | 7 |
-| Styling | Tailwind CSS | 4 (v4 plugin, CSS-first config) |
-| Charts | Recharts | latest (Plan BU only) |
-| Icons | Lucide React | latest |
-| Primitives | Radix UI | latest |
-| Variants | class-variance-authority (CVA) | latest |
-| Class merging | tailwind-merge | latest |
-| Routing | React Router | 7 |
-| Component dev | Storybook | 10 |
-| Testing | Vitest + Playwright | latest |
-| Language | TypeScript | 5.9 (strict mode) |
+| Layer         | Technology                     | Version                         |
+| ------------- | ------------------------------ | ------------------------------- |
+| Framework     | React                          | 19                              |
+| Build         | Vite                           | 7                               |
+| Styling       | Tailwind CSS                   | 4 (v4 plugin, CSS-first config) |
+| Charts        | Recharts                       | latest (Plan BU only)           |
+| Icons         | Lucide React                   | latest                          |
+| Primitives    | Radix UI                       | latest                          |
+| Variants      | class-variance-authority (CVA) | latest                          |
+| Class merging | tailwind-merge                 | latest                          |
+| Routing       | React Router                   | 7                               |
+| Component dev | Storybook                      | 10                              |
+| Testing       | Vitest + Playwright            | latest                          |
+| Language      | TypeScript                     | 5.9 (strict mode)               |
 
 ---
 
@@ -107,6 +107,7 @@ Routing is handled by React Router v7 in `main.tsx` (BrowserRouter) and `AppShel
 ### AppShell
 
 The root layout component. Responsibilities:
+
 1. Derives the active business unit from the URL path
 2. Manages light/dark theme state (per-BU, persisted to localStorage)
 3. Renders the DemoSwitcher bar
@@ -132,6 +133,7 @@ The root layout component. Responsibilities:
 ### DemoSwitcher
 
 Fixed bar at the very top of the viewport. Contains:
+
 - Business unit pills (Link components to each route)
 - Light/dark theme toggle (Sun/Moon icons)
 - Storybook deep-link (opens matching story with correct globals)
@@ -151,21 +153,21 @@ Each BU has a `{BU}Page.tsx` orchestrator that composes section components:
 
 ### Per-BU Section Inventory
 
-| Section | Spend | Save | Credit | Plan | Together |
-|---------|:-----:|:----:|:------:|:----:|:--------:|
-| Navbar | x | x | x | x | x |
-| Hero | x | x | x | x | x |
-| HowItWorks | | x | | | x |
-| TrustSection | | | x | | |
-| FeatureSection | x | x | x | | x |
-| FeatureDeepDive | | | | x | |
-| ComparisonSection | | | | x | |
-| SplitShowcase | | | | | x |
-| FAQSection | | | x | | |
-| StatsRow | x | x | | x | |
-| Testimonials | x | x | | x | x |
-| CTASection | x | x | x | x | x |
-| Footer | x | x | x | x | x |
+| Section           | Spend | Save | Credit | Plan | Together |
+| ----------------- | :---: | :--: | :----: | :--: | :------: |
+| Navbar            |   x   |  x   |   x    |  x   |    x     |
+| Hero              |   x   |  x   |   x    |  x   |    x     |
+| HowItWorks        |       |  x   |        |      |    x     |
+| TrustSection      |       |      |   x    |      |          |
+| FeatureSection    |   x   |  x   |   x    |      |    x     |
+| FeatureDeepDive   |       |      |        |  x   |          |
+| ComparisonSection |       |      |        |  x   |          |
+| SplitShowcase     |       |      |        |      |    x     |
+| FAQSection        |       |      |   x    |      |          |
+| StatsRow          |   x   |  x   |        |  x   |          |
+| Testimonials      |   x   |  x   |        |  x   |    x     |
+| CTASection        |   x   |  x   |   x    |  x   |    x     |
+| Footer            |   x   |  x   |   x    |  x   |    x     |
 
 ---
 
@@ -198,17 +200,18 @@ Each BU has a `{BU}Page.tsx` orchestrator that composes section components:
 
 ### Default Themes
 
-| BU | Default | Reason |
-|----|---------|--------|
-| Spend | Dark | Evening/commute usage |
-| Save | Light | Planning mindset, warm Linen bg |
-| Credit | Light | User control for high-stakes sessions |
-| Plan | Dark | Midnight analytical sessions |
-| Together | Light | Shared-screen, face-to-face usage |
+| BU       | Default | Reason                                |
+| -------- | ------- | ------------------------------------- |
+| Spend    | Dark    | Evening/commute usage                 |
+| Save     | Light   | Planning mindset, warm Linen bg       |
+| Credit   | Light   | User control for high-stakes sessions |
+| Plan     | Dark    | Midnight analytical sessions          |
+| Together | Light   | Shared-screen, face-to-face usage     |
 
 ### Theme Persistence
 
 Per-BU preferences stored in localStorage:
+
 - `futra-theme-spend` → `"light"` | `"dark"`
 - `futra-theme-save` → `"light"` | `"dark"`
 - etc.
@@ -228,6 +231,7 @@ When switching BUs, the stored preference is loaded (or the default is used on f
 ### Global Controls
 
 Two toolbar selectors defined in `.storybook/preview.tsx`:
+
 - **Theme:** Light / Dark
 - **Business Unit:** Spend, Save, Credit, Plan, Together
 
@@ -277,6 +281,7 @@ dist/
 ### Why no shared component library (yet)
 
 Each BU has its own component directory with duplicated patterns (Navbar, Footer, Logo, etc.). This is intentional at this stage:
+
 - BU components have subtle differences (corner radii, icon choices, section ordering)
 - The token system handles cross-BU consistency at the CSS level
 - Premature abstraction would couple BUs that need to evolve independently
@@ -285,6 +290,7 @@ Each BU has its own component directory with duplicated patterns (Navbar, Footer
 ### Why CSS variables instead of Tailwind config themes
 
 Tailwind CSS v4 uses CSS-first configuration. The `@theme` directive and `@layer base` selectors in `tailwind.css` define all tokens. This approach:
+
 - Supports runtime theme switching via `data-business-unit` attributes
 - Allows dark mode via CSS cascade (`.dark` class)
 - Avoids JavaScript-level theme context or providers

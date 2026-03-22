@@ -18,7 +18,7 @@ const navbarVariants = cva(
     defaultVariants: {
       scrolled: false,
     },
-  }
+  },
 );
 
 const mobileMenuVariants = cva(
@@ -32,7 +32,7 @@ const mobileMenuVariants = cva(
     defaultVariants: {
       state: 'open',
     },
-  }
+  },
 );
 
 export interface NavbarProps extends VariantProps<typeof navbarVariants> {

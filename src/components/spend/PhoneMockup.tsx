@@ -1,12 +1,6 @@
-export function PhoneMockup() {
-  const transactions = [
-    { name: 'Blue Bottle Coffee', category: 'Coffee', amount: -5.75, time: '2 min ago' },
-    { name: 'Whole Foods Market', category: 'Groceries', amount: -47.32, time: '1 hr ago' },
-    { name: 'Netflix', category: 'Subscription', amount: -15.99, time: '3 hrs ago' },
-    { name: 'Alex M.', category: 'P2P Transfer', amount: 120.0, time: 'Yesterday' },
-    { name: 'Uber Eats', category: 'Food', amount: -23.48, time: 'Yesterday' },
-  ];
+import { SpendTransactions } from '../../mocks/spend.mock';
 
+export function PhoneMockup() {
   return (
     <div className="relative mx-auto w-[280px] sm:w-[300px]">
       {/* Outer phone body */}
@@ -15,7 +9,9 @@ export function PhoneMockup() {
         <div className="rounded-[42px] bg-background overflow-hidden relative">
           {/* Status bar */}
           <div className="flex items-center justify-between px-7 pt-3 pb-1">
-            <span className="text-[11px] text-foreground/60 font-sans font-medium">9:41</span>
+            <span className="text-[11px] text-foreground/60 font-sans font-medium">
+              9:41
+            </span>
             {/* Dynamic Island */}
             <div className="w-[90px] h-[28px] rounded-full bg-black absolute left-1/2 -translate-x-1/2 top-2.5" />
             <div className="flex items-center gap-1">
@@ -33,14 +29,17 @@ export function PhoneMockup() {
                 Available Balance
               </p>
               <p className="text-[36px] text-foreground leading-none font-mono font-medium">
-                $4,218<span className="text-[22px] text-muted-foreground">.63</span>
+                $4,218
+                <span className="text-[22px] text-muted-foreground">.63</span>
               </p>
             </div>
 
             {/* Card preview */}
             <div className="mb-5 rounded-xl bg-gradient-to-br from-primary to-primary-hover p-4 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-white/10 -translate-y-8 translate-x-8" />
-              <p className="text-[10px] uppercase tracking-[0.1em] text-white/60 mb-2 font-sans font-medium">Futra Debit</p>
+              <p className="text-[10px] uppercase tracking-[0.1em] text-white/60 mb-2 font-sans font-medium">
+                Futra Debit
+              </p>
               <p className="text-[14px] text-white/90 tracking-[0.12em] font-mono font-medium">
                 •••• •••• •••• 4291
               </p>
@@ -51,15 +50,22 @@ export function PhoneMockup() {
               Recent Activity
             </p>
             <div className="flex flex-col gap-3">
-              {transactions.map((tx) => (
-                <div key={tx.name} className="flex items-center justify-between">
+              {SpendTransactions.map((tx) => (
+                <div
+                  key={tx.name}
+                  className="flex items-center justify-between"
+                >
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-full bg-surface border border-border flex items-center justify-center text-[11px] text-muted-foreground font-sans font-semibold">
                       {tx.name[0]}
                     </div>
                     <div>
-                      <p className="text-[13px] text-foreground leading-tight font-sans font-medium">{tx.name}</p>
-                      <p className="text-[10px] text-muted-foreground leading-tight">{tx.time}</p>
+                      <p className="text-[13px] text-foreground leading-tight font-sans font-medium">
+                        {tx.name}
+                      </p>
+                      <p className="text-[10px] text-muted-foreground leading-tight">
+                        {tx.time}
+                      </p>
                     </div>
                   </div>
                   <span

@@ -5,6 +5,7 @@
 **DESIGN.md** is the canonical brand identity and design system document. It defines palettes, typography, token architecture, and component patterns for all 5 business units. When making any visual design decision, consult DESIGN.md first.
 
 Rules for DESIGN.md:
+
 - Do not add audit findings, improvement plans, task lists, or temporary content
 - Do not add image requirements, brainstorming notes, or operational content
 - Only add content that defines the official brand identity and design system
