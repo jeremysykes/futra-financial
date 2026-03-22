@@ -10,6 +10,9 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    children: { table: { disable: true } },
+  },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof Badge>;
 
