@@ -71,7 +71,7 @@ export function SpendPage() {
           <img
             src={`${import.meta.env.BASE_URL}images/IMG-SPEND-02.png`}
             alt="Contactless payment"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[50%_40%]"
           />
           <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
         </div>
