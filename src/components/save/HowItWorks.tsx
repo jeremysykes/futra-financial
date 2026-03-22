@@ -1,29 +1,5 @@
-import { Target, Repeat, TrendingUp } from 'lucide-react';
 import { ProcessSteps } from '../../stories/process-steps/ProcessSteps';
-
-const steps = [
-  {
-    icon: Target,
-    label: 'Step 01',
-    title: 'Name your goal',
-    description:
-      'Set a target amount and a timeline that works for you. Trip, home, rainy day — you decide.',
-  },
-  {
-    icon: Repeat,
-    label: 'Step 02',
-    title: 'Automate it',
-    description:
-      'Round-ups, scheduled transfers, or manual deposits. Choose what fits your rhythm.',
-  },
-  {
-    icon: TrendingUp,
-    label: 'Step 03',
-    title: 'Watch it grow',
-    description:
-      'Visual progress tracking that keeps you motivated. Every dollar gets you closer.',
-  },
-];
+import { SaveSteps } from '../../mocks/save.mock';
 
 export function HowItWorks() {
   return (
@@ -41,7 +17,7 @@ export function HowItWorks() {
           connector="dashed"
           badgeShape="rounded"
           iconStrokeWidth={1.5}
-          steps={steps}
+          steps={SaveSteps}
         />
       </div>
     </section>

@@ -39,22 +39,25 @@ const SaveFooter = [
 
 const SaveSteps = [
   {
-    num: '01',
+    label: 'Step 01',
     icon: Target,
     title: 'Name your goal',
-    desc: 'Set a target amount and a timeline that works for you. Trip, home, rainy day — you decide.',
+    description:
+      'Set a target amount and a timeline that works for you. Trip, home, rainy day — you decide.',
   },
   {
-    num: '02',
+    label: 'Step 02',
     icon: Repeat,
     title: 'Automate it',
-    desc: 'Round-ups, scheduled transfers, or manual deposits. Choose what fits your rhythm.',
+    description:
+      'Round-ups, scheduled transfers, or manual deposits. Choose what fits your rhythm.',
   },
   {
-    num: '03',
+    label: 'Step 03',
     icon: TrendingUp,
     title: 'Watch it grow',
-    desc: 'Visual progress tracking that keeps you motivated. Every dollar gets you closer.',
+    description:
+      'Visual progress tracking that keeps you motivated. Every dollar gets you closer.',
   },
 ];
 

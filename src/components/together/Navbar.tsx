@@ -3,6 +3,10 @@ import { Navbar as SharedNavbar } from '../../stories/navbar/Navbar';
 
 export function Navbar() {
   return (
-    <SharedNavbar unitName="together" links={TogetherLinks} ctaText="Get Started" />
+    <SharedNavbar
+      unitName="together"
+      links={TogetherLinks}
+      ctaText="Get Started"
+    />
   );
 }

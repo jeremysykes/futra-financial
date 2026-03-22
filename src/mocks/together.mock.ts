@@ -1,4 +1,12 @@
-import { Home, HandCoins, Heart, Bell, Link, Settings, Eye } from 'lucide-react';
+import {
+  Home,
+  HandCoins,
+  Heart,
+  Bell,
+  Link,
+  Settings,
+  Eye,
+} from 'lucide-react';
 
 const TogetherFeatures = [
   {
@@ -49,21 +57,21 @@ const TogetherFooter = [
 const TogetherSteps = [
   {
     icon: Link,
-    number: '01',
+    label: '01',
     title: 'Connect your accounts',
-    desc: 'Link your bank accounts. Both of you. Takes two minutes.',
+    description: 'Link your bank accounts. Both of you. Takes two minutes.',
   },
   {
     icon: Settings,
-    number: '02',
+    label: '02',
     title: 'Set up your splits',
-    desc: "Choose what's shared, how to split it, and who pays what.",
+    description: "Choose what's shared, how to split it, and who pays what.",
   },
   {
     icon: Eye,
-    number: '03',
+    label: '03',
     title: 'Live transparently',
-    desc: 'See every shared expense, goal, and payment in real time.',
+    description: 'See every shared expense, goal, and payment in real time.',
   },
 ];
 
@@ -138,4 +146,11 @@ const TogetherTestimonials = [
   },
 ];
 
-export { TogetherFeatures, TogetherFooter, TogetherSteps, TogetherLinks, TogetherExamples, TogetherTestimonials };
+export {
+  TogetherFeatures,
+  TogetherFooter,
+  TogetherSteps,
+  TogetherLinks,
+  TogetherExamples,
+  TogetherTestimonials,
+};
