@@ -88,6 +88,8 @@ The current AppShell wraps routes in `<div style={{ '--nav-top': '36px' }}>`. Th
 Additionally, each BU page component currently has its own `<main id="main-content">`. These must be removed from the individual pages, and AppShell will own the sole `<main>` element for correct HTML semantics (no nested `<main>` tags).
 
 ```tsx
+// Add useRef to imports: import { useCallback, useEffect, useRef, useState } from 'react';
+
 // Track a key that changes when BU changes, forcing remount
 const prevUnit = useRef(unit);
 const [transitionKey, setTransitionKey] = useState(0);
@@ -99,8 +101,10 @@ useEffect(() => {
   }
 }, [unit]);
 
-// The keyed wrapper replaces the existing div:
+// The keyed wrapper replaces the existing div.
+// id="main-content" preserves the skip-navigation link target.
 <main
+  id="main-content"
   className="page-transition"
   key={transitionKey}
   style={{ '--nav-top': '36px' } as React.CSSProperties}
