@@ -95,7 +95,7 @@ export interface StepItem {
 
 export interface ProcessStepsProps
   extends
-    React.HTMLAttributes<HTMLDivElement>,
+    React.HTMLAttributes<HTMLOListElement>,
     VariantProps<typeof processStepsVariants> {
   steps: StepItem[];
   animated?: boolean;
@@ -117,11 +117,13 @@ const ProcessSteps = ({
   const resolvedSize = size ?? 'md';
 
   return (
-    <div
+    <ol
+      aria-label="Steps"
       className={cn(
         processStepsVariants({ size, connector, badgeShape }),
         gridColsMap[steps.length],
         gapClasses[resolvedSize],
+        'list-none',
         className,
       )}
       {...props}
@@ -143,7 +145,7 @@ const ProcessSteps = ({
       )}
 
       {steps.map((step, i) => (
-        <div
+        <li
           key={step.label}
           className={cn(
             'flex flex-col items-center text-center relative',
@@ -197,9 +199,9 @@ const ProcessSteps = ({
           >
             {step.description}
           </p>
-        </div>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 };
 
