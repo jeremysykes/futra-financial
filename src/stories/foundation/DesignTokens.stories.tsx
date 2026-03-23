@@ -147,7 +147,7 @@ function TokenGridPage() {
       </div>
 
       {/* Matrix Table */}
-      <div className="overflow-x-auto rounded-lg border border-border">
+      <div className="overflow-x-auto rounded-lg border border-border bg-surface">
         <table className="w-full font-mono text-xs border-collapse">
           <thead>
             <tr className="border-b border-border">
