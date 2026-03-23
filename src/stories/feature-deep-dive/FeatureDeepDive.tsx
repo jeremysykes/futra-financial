@@ -123,7 +123,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Net worth, tracked over time."
           desc="Watch your wealth compound with a precise, annotated timeline. Every asset, every liability, one clean chart you'll actually want to check."
           chart={
-            <div className="w-full" style={{ height: 200 }}>
+            <div role="img" aria-label="Net worth growth from $98K in 2020 to $184K in 2025" className="w-full" style={{ height: 200 }}>
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={PlanNetWorthLong}>
                   <defs>
@@ -154,7 +154,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Budget vs actuals, no surprises."
           desc="See exactly where you overspend and where you save. Horizontal breakdowns by category with instant variance highlighting — Teal when you're under, Amber when you're over."
           chart={
-            <div className="w-full" style={{ height: 220 }}>
+            <div role="img" aria-label="Budget vs actuals comparison by category" className="w-full" style={{ height: 220 }}>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={PlanBudgetData} layout="vertical" barGap={2} barSize={10}>
                   <CartesianGrid stroke={gridStroke} horizontal={false} />
@@ -186,7 +186,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Cash flow projections with confidence bands."
           desc="See your financial trajectory across optimistic, projected, and conservative scenarios. Data-driven projections that update as your habits evolve."
           chart={
-            <div className="w-full" style={{ height: 200 }}>
+            <div role="img" aria-label="Cash flow projections with optimistic, projected, and conservative scenarios" className="w-full" style={{ height: 200 }}>
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={PlanProjectionData}>
                   <CartesianGrid stroke={gridStroke} vertical={false} />
@@ -213,7 +213,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Retirement runway, quantified."
           desc="One number that matters: years until financial independence. Watch it update in real-time as you adjust savings rate, expected returns, and target spending."
           chart={
-            <div>
+            <div role="img" aria-label="Retirement runway projection reaching $3.2M by 2059">
               <div className="text-center mb-4">
                 <span className="font-mono text-5xl font-medium text-positive">34</span>
                 <span className="block font-sans font-medium text-xs text-muted-foreground tracking-[0.08em] uppercase mt-1">

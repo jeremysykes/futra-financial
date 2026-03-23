@@ -90,9 +90,17 @@ const BudgetBar = ({
           style={{ color: PlanStatusColors[status] }}
         >
           ${actual.toLocaleString()} / ${budget.toLocaleString()}
+          <span className="sr-only"> ({status})</span>
         </span>
       </div>
-      <div className="w-full h-1.5 rounded-full bg-muted">
+      <div
+        role="progressbar"
+        aria-valuenow={actual}
+        aria-valuemin={0}
+        aria-valuemax={budget}
+        aria-label={`${name}: $${actual.toLocaleString()} of $${budget.toLocaleString()}, ${status}`}
+        className="w-full h-1.5 rounded-full bg-muted"
+      >
         <div
           className="h-full rounded-full transition-all"
           style={{
@@ -131,7 +139,7 @@ const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
           <div className="mb-3 font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
             Net Worth — 12 Month Trend
           </div>
-          <div className="w-full min-w-0" style={{ height: 180 }}>
+          <div role="img" aria-label="Net worth trend chart showing 12-month growth" className="w-full min-w-0" style={{ height: 180 }}>
             <ResponsiveContainer width="100%" height={180}>
               <AreaChart data={PlanNetWorthData}>
                 <defs>
