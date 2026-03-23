@@ -61,7 +61,7 @@ function FeatureBlock({
         <h3 className="font-sans font-semibold text-foreground leading-[1.2] text-[clamp(24px,3vw,32px)]">
           {title}
         </h3>
-        <p className="mt-4 font-sans text-base leading-[1.6] text-muted-foreground max-w-[440px]">
+        <p className="mt-4 font-sans text-[clamp(15px,2vw,17px)] leading-[1.6] text-muted-foreground max-w-[440px]">
           {desc}
         </p>
       </div>
