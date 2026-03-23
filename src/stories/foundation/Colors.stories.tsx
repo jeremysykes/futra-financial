@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 const TOKEN_GROUPS = [
   {
@@ -46,26 +46,34 @@ const TOKEN_GROUPS = [
   },
 ];
 
-function resolveColor(cssValue: string): { hex: string; rgb: string; oklch: string; r: number; g: number; b: number } {
-  // Use a canvas to resolve any CSS color (including oklch) to RGB
+function resolveColor(computedValue: string): { hex: string; rgb: string; oklch: string; r: number; g: number; b: number } {
+  // Resolve the computed CSS color value to RGB using a temp element
+  const el = document.createElement('div');
+  el.style.backgroundColor = computedValue;
+  document.body.appendChild(el);
+  const resolved = getComputedStyle(el).backgroundColor;
+  document.body.removeChild(el);
+
+  // Modern browsers may return oklch() or color() — use canvas as fallback
+  const rgbMatch = resolved.match(/rgba?\(\s*([\d.]+),?\s*([\d.]+),?\s*([\d.]+)/);
+  if (rgbMatch) {
+    const r = Math.round(parseFloat(rgbMatch[1]));
+    const g = Math.round(parseFloat(rgbMatch[2]));
+    const b = Math.round(parseFloat(rgbMatch[3]));
+    const hex = '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
+    return { hex, rgb: `rgb(${r}, ${g}, ${b})`, oklch: computedValue.trim(), r, g, b };
+  }
+
+  // Fallback: use canvas to resolve non-RGB formats
   const canvas = document.createElement('canvas');
   canvas.width = 1;
   canvas.height = 1;
   const ctx = canvas.getContext('2d')!;
-  ctx.fillStyle = cssValue;
+  ctx.fillStyle = resolved;
   ctx.fillRect(0, 0, 1, 1);
   const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
-
   const hex = '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
-
-  return {
-    hex,
-    rgb: `rgb(${r}, ${g}, ${b})`,
-    oklch: cssValue.trim(),
-    r,
-    g,
-    b,
-  };
+  return { hex, rgb: `rgb(${r}, ${g}, ${b})`, oklch: computedValue.trim(), r, g, b };
 }
 
 function ColorSwatch({
@@ -77,16 +85,12 @@ function ColorSwatch({
   variable: string;
   tailwind: string;
 }) {
-  const [color, setColor] = useState<{ hex: string; rgb: string; oklch: string; r: number; g: number; b: number } | null>(null);
-
-  useEffect(() => {
+  const color = useMemo(() => {
+    if (typeof window === 'undefined') return null;
     const raw = getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
-    if (raw) {
-      // Resolve via canvas — pass the CSS variable reference so the browser resolves it
-      const resolved = resolveColor(`var(${variable})`);
-      // Keep the raw oklch string for display
-      setColor({ ...resolved, oklch: raw });
-    }
+    if (!raw) return null;
+    const resolved = resolveColor(raw);
+    return { ...resolved, oklch: raw };
   }, [variable]);
 
   const isLight = color
@@ -94,7 +98,7 @@ function ColorSwatch({
     : false;
 
   return (
-    <div className="rounded-xl border border-border overflow-hidden">
+    <div className="rounded-xl border border-[#e5e5e5] dark:border-[#333] overflow-hidden">
       <div
         className="h-20 flex items-end p-3 relative"
         style={{ backgroundColor: `var(${variable})` }}
@@ -110,27 +114,27 @@ function ColorSwatch({
           {name}
         </span>
       </div>
-      <div className="p-3 space-y-1.5 border-t border-border bg-white">
+      <div className="p-3 space-y-1.5 border-t border-[#e5e5e5] bg-white dark:bg-[#1a1a1a] dark:border-[#333]">
         <div className="flex justify-between items-center">
-          <span className="font-mono text-xs text-muted-foreground">HEX</span>
-          <span className="font-mono text-xs text-foreground">{color?.hex ?? '...'}</span>
+          <span className="font-mono text-xs text-[#888]">HEX</span>
+          <span className="font-mono text-xs text-[#111] dark:text-[#eee]">{color?.hex ?? '...'}</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="font-mono text-xs text-muted-foreground">RGB</span>
-          <span className="font-mono text-xs text-foreground">{color?.rgb ?? '...'}</span>
+          <span className="font-mono text-xs text-[#888]">RGB</span>
+          <span className="font-mono text-xs text-[#111] dark:text-[#eee]">{color?.rgb ?? '...'}</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="font-mono text-xs text-muted-foreground">OKLCH</span>
-          <span className="font-mono text-[10px] text-foreground truncate ml-4">{color?.oklch ?? '...'}</span>
+          <span className="font-mono text-xs text-[#888]">OKLCH</span>
+          <span className="font-mono text-[10px] text-[#111] dark:text-[#eee] truncate ml-4">{color?.oklch ?? '...'}</span>
         </div>
-        <div className="pt-1.5 border-t border-border space-y-1">
+        <div className="pt-1.5 border-t border-[#e5e5e5] dark:border-[#333] space-y-1">
           <div className="flex justify-between items-center">
-            <span className="font-mono text-[10px] text-muted-foreground">CSS</span>
-            <code className="font-mono text-[10px] text-accent">var({variable})</code>
+            <span className="font-mono text-[10px] text-[#888]">CSS</span>
+            <code className="font-mono text-[10px] text-[#6C6FE4]">var({variable})</code>
           </div>
           <div className="flex justify-between items-center">
-            <span className="font-mono text-[10px] text-muted-foreground">Tailwind</span>
-            <code className="font-mono text-[10px] text-accent">{tailwind}</code>
+            <span className="font-mono text-[10px] text-[#888]">Tailwind</span>
+            <code className="font-mono text-[10px] text-[#6C6FE4]">{tailwind}</code>
           </div>
         </div>
       </div>
@@ -140,17 +144,17 @@ function ColorSwatch({
 
 function ColorPalette() {
   return (
-    <div className="max-w-[1200px] mx-auto px-6 py-12 bg-background min-h-screen">
-      <h1 className="font-sans font-bold text-3xl text-foreground mb-2">Color Palette</h1>
-      <p className="font-sans text-base text-muted-foreground mb-12">
-        All colors derive from CSS custom properties in <code className="font-mono text-accent">tailwind.css</code> and
-        switch automatically per business unit via <code className="font-mono text-accent">data-business-unit</code> attributes.
+    <div className="max-w-[1200px] mx-auto px-6 py-12 min-h-screen bg-white dark:bg-[#111]">
+      <h1 className="font-sans font-bold text-3xl text-[#111] dark:text-[#eee] mb-2">Color Palette</h1>
+      <p className="font-sans text-base text-[#666] dark:text-[#999] mb-12">
+        All colors derive from CSS custom properties in <code className="font-mono text-[#6C6FE4]">tailwind.css</code> and
+        switch automatically per business unit via <code className="font-mono text-[#6C6FE4]">data-business-unit</code> attributes.
         Use the BU selector in the toolbar to see each palette.
       </p>
 
       {TOKEN_GROUPS.map((group) => (
         <div key={group.title} className="mb-12">
-          <h2 className="font-sans font-semibold text-lg text-foreground mb-4">{group.title}</h2>
+          <h2 className="font-sans font-semibold text-lg text-[#111] dark:text-[#eee] mb-4">{group.title}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {group.tokens.map((token) => (
               <ColorSwatch key={token.variable} {...token} />
