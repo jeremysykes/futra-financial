@@ -59,7 +59,11 @@ const SplitDisplay = ({
         </span>
       </div>
 
-      <div className="flex rounded-full overflow-hidden h-3 mb-3">
+      <div
+        role="img"
+        aria-label={`${label} split: ${splits.map(s => `${s.name} ${s.amount}`).join(', ')}`}
+        className="flex rounded-full overflow-hidden h-3 mb-3"
+      >
         {splits.map((s, i) => (
           <div
             key={i}
