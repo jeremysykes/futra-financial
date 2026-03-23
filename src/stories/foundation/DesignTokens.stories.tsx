@@ -185,7 +185,7 @@ function TokenGridPage() {
                       onClick={() => toggleExpanded(token.cssVar)}
                       className={`border-b border-[#e5e5e5] dark:border-[#333] cursor-pointer transition-colors ${
                         expanded.has(token.cssVar)
-                          ? 'bg-[#f8f8ff] dark:bg-[#16161e]'
+                          ? 'bg-[#fafafa] dark:bg-[#161616]'
                           : 'hover:bg-[#f5f5f5] dark:hover:bg-[#1a1a1a]'
                       }`}
                     >
@@ -211,7 +211,7 @@ function TokenGridPage() {
                       })}
                     </tr>
                     {expanded.has(token.cssVar) && (
-                      <tr className="bg-[#f8f8ff] dark:bg-[#16161e] border-b border-[#e5e5e5] dark:border-[#333]">
+                      <tr className="bg-[#fafafa] dark:bg-[#161616] border-b border-[#e5e5e5] dark:border-[#333]">
                         <td colSpan={6} className="px-6 py-4">
                           {/* Large swatches */}
                           <div className="flex gap-4 mb-3">
