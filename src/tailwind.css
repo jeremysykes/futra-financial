@@ -2,33 +2,157 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ─── Primitive Tokens ───
+   Raw named color values. Components never reference these directly.
+   Declared at :root (outside @theme) to prevent Tailwind utility generation. */
+
+:root {
+  /* ─── Shared palette ─── */
+  --white: #ffffff;
+  --black: #000000;
+  --indigo: #6c6fe4;
+  --indigo-hover: #5b5ed0;
+  --indigo-light: #7b7eee;
+  --teal: #2abfa3;
+  --coral: #e4746c;
+  --amber: #e8a838;
+  --destructive-red: #d40924;
+
+  /* ─── Default theme primitives (light) ─── */
+  --default-fg: #0b0b0b;
+  --default-primary: #555555;
+  --default-primary-hover: #3d3d3d;
+  --default-secondary: #f2f2f2;
+  --default-secondary-hover: #e5e5e5;
+  --default-secondary-fg: #161616;
+  --default-muted: #eeeeee;
+  --default-muted-fg: #717171;
+  --default-border: #d7d7d7;
+
+  /* ─── Default theme primitives (dark) ─── */
+  --default-dark-bg: #080808;
+  --default-dark-surface: #121212;
+  --default-dark-fg: #eeeeee;
+  --default-dark-primary: #d4d4d4;
+  --default-dark-primary-hover: #e8e8e8;
+  --default-dark-primary-fg: #080808;
+  --default-dark-secondary: #1a1a1a;
+  --default-dark-secondary-hover: #252525;
+  --default-dark-secondary-fg: #e0e0e0;
+  --default-dark-muted: #1a1a1a;
+  --default-dark-muted-fg: #7a7a7a;
+  --default-dark-border: #2b2b2b;
+  --default-dark-accent: #5577ee;
+  --default-dark-positive: #2ec4a0;
+  --default-dark-negative: #e88070;
+  --default-dark-caution: #e8b44c;
+  --default-dark-destructive: #e83030;
+
+  /* ─── Spend palette ─── */
+  --spend-void: #0f0f12;
+  --spend-ink: #1a1a1f;
+  --spend-cloud: #f5f5f8;
+  --spend-muted: #8b8b9a;
+  --spend-secondary: #f0f0f5;
+  --spend-secondary-hover: #e5e5ee;
+  --spend-secondary-dark: #252530;
+  --spend-border: rgba(0, 0, 0, 0.08);
+  --spend-border-dark: rgba(255, 255, 255, 0.08);
+
+  /* ─── Save palette ─── */
+  --save-linen: #f7f5f0;
+  --save-ink: #1c1c1a;
+  --save-grove: #4a7c59;
+  --save-grove-light: #5a8c69;
+  --save-mist: #e8f0eb;
+  --save-mist-hover: #d8e8dd;
+  --save-muted: #7a7a72;
+  --save-muted-dark: #9a9a90;
+  --save-surface-dark: #2a2a26;
+  --save-secondary-dark: #2a3a2e;
+  --save-secondary-dark-hover: #354538;
+  --save-border: rgba(74, 124, 89, 0.15);
+  --save-border-dark: rgba(74, 124, 89, 0.2);
+
+  /* ─── Credit palette ─── */
+  --credit-iris: #f9f7ff;
+  --credit-lavender: #eeeaff;
+  --credit-lavender-hover: #e0daff;
+  --credit-midnight: #1a1830;
+  --credit-slate: #9896c8;
+  --credit-slate-dark: #7b79b0;
+  --credit-periwinkle: #d4d2ee;
+  --credit-muted: #6b6880;
+  --credit-surface-dark: #252340;
+  --credit-secondary-dark: #3a3860;
+  --credit-secondary-dark-hover: #454370;
+  --credit-border: rgba(108, 111, 228, 0.15);
+  --credit-border-dark: rgba(108, 111, 228, 0.2);
+
+  /* ─── Plan palette ─── */
+  --plan-cloud: #f0f4f8;
+  --plan-abyss: #0c1017;
+  --plan-deep: #151e2b;
+  --plan-surface-dark: #1f2d3d;
+  --plan-surface-dark-hover: #2a3a4d;
+  --plan-steel: #a0aec0;
+  --plan-muted: #64748b;
+  --plan-secondary: #e8edf2;
+  --plan-secondary-hover: #d8dfe8;
+  --plan-fg-dark: #e2e8f0;
+  --plan-teal: #1fa88e;
+  --plan-caution: #d4962e;
+  --plan-border: rgba(12, 16, 23, 0.1);
+  --plan-border-dark: rgba(255, 255, 255, 0.08);
+
+  /* ─── Together palette ─── */
+  --together-warm: #fff9f5;
+  --together-espresso: #1c1a18;
+  --together-terracotta: #c4622d;
+  --together-terracotta-light: #d4724a;
+  --together-blush: #f2e4da;
+  --together-blush-hover: #e8d6ca;
+  --together-clay: #9e8e84;
+  --together-surface-dark: #2a2622;
+  --together-secondary-dark: #3a322c;
+  --together-secondary-dark-hover: #453c35;
+  --together-grove: #4a7c59;
+  --together-grove-light: #5a8c69;
+  --together-border: rgba(196, 98, 45, 0.15);
+  --together-border-dark: rgba(196, 98, 45, 0.2);
+}
+
+/* ─── Semantic Tokens ───
+   Contextual meanings that components reference via Tailwind classes.
+   All values are var() references to primitives — no raw colors here. */
+
 /* ─── Default / White-label theme (light) ─── */
 @theme {
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.15 0 0);
-  --color-surface: oklch(1 0 0);
+  --color-background: var(--white);
+  --color-foreground: var(--default-fg);
+  --color-surface: var(--white);
 
-  --color-primary: oklch(0.45 0 0);
-  --color-primary-hover: oklch(0.35 0 0);
-  --color-primary-foreground: oklch(1 0 0);
+  --color-primary: var(--default-primary);
+  --color-primary-hover: var(--default-primary-hover);
+  --color-primary-foreground: var(--white);
 
-  --color-secondary: oklch(0.96 0 0);
-  --color-secondary-hover: oklch(0.91 0 0);
-  --color-secondary-foreground: oklch(0.2 0 0);
+  --color-secondary: var(--default-secondary);
+  --color-secondary-hover: var(--default-secondary-hover);
+  --color-secondary-foreground: var(--default-secondary-fg);
 
-  --color-muted: oklch(0.95 0 0);
-  --color-muted-foreground: oklch(0.55 0 0);
+  --color-muted: var(--default-muted);
+  --color-muted-foreground: var(--default-muted-fg);
 
-  --color-border: oklch(0.88 0 0);
-  --color-ring: oklch(0.45 0 0);
+  --color-border: var(--default-border);
+  --color-ring: var(--default-primary);
 
-  --color-accent: oklch(0.5 0.2 265);
-  --color-positive: oklch(0.6 0.15 170);
-  --color-negative: oklch(0.65 0.16 25);
-  --color-caution: oklch(0.75 0.15 75);
+  --color-accent: var(--indigo);
+  --color-positive: var(--teal);
+  --color-negative: var(--coral);
+  --color-caution: var(--amber);
 
-  --color-destructive: oklch(0.55 0.22 25);
-  --color-destructive-foreground: oklch(1 0 0);
+  --color-destructive: var(--destructive-red);
+  --color-destructive-foreground: var(--white);
 
   --animate-interval: 100ms;
   --animate-accordion-down: accordion-down 300ms ease-out;
@@ -38,296 +162,296 @@
 @layer base {
   /* ─── Default / White-label (dark) ─── */
   .dark {
-    --color-background: oklch(0.13 0 0);
-    --color-foreground: oklch(0.95 0 0);
-    --color-surface: oklch(0.18 0 0);
+    --color-background: var(--default-dark-bg);
+    --color-foreground: var(--default-dark-fg);
+    --color-surface: var(--default-dark-surface);
 
-    --color-primary: oklch(0.85 0 0);
-    --color-primary-hover: oklch(0.92 0 0);
-    --color-primary-foreground: oklch(0.13 0 0);
+    --color-primary: var(--default-dark-primary);
+    --color-primary-hover: var(--default-dark-primary-hover);
+    --color-primary-foreground: var(--default-dark-primary-fg);
 
-    --color-secondary: oklch(0.22 0 0);
-    --color-secondary-hover: oklch(0.28 0 0);
-    --color-secondary-foreground: oklch(0.9 0 0);
+    --color-secondary: var(--default-dark-secondary);
+    --color-secondary-hover: var(--default-dark-secondary-hover);
+    --color-secondary-foreground: var(--default-dark-secondary-fg);
 
-    --color-muted: oklch(0.22 0 0);
-    --color-muted-foreground: oklch(0.6 0 0);
+    --color-muted: var(--default-dark-muted);
+    --color-muted-foreground: var(--default-dark-muted-fg);
 
-    --color-border: oklch(0.3 0 0);
-    --color-ring: oklch(0.85 0 0);
+    --color-border: var(--default-dark-border);
+    --color-ring: var(--default-dark-primary);
 
-    --color-accent: oklch(0.65 0.18 265);
-    --color-positive: oklch(0.7 0.13 170);
-    --color-negative: oklch(0.7 0.14 25);
-    --color-caution: oklch(0.8 0.13 75);
+    --color-accent: var(--default-dark-accent);
+    --color-positive: var(--default-dark-positive);
+    --color-negative: var(--default-dark-negative);
+    --color-caution: var(--default-dark-caution);
 
-    --color-destructive: oklch(0.6 0.22 25);
-    --color-destructive-foreground: oklch(1 0 0);
+    --color-destructive: var(--default-dark-destructive);
+    --color-destructive-foreground: var(--white);
   }
 
   /* ─── Futra Spend — Indigo/Dark ─── */
 
   [data-business-unit='spend'] {
-    --color-background: #f5f5f8;
-    --color-foreground: #1a1a1f;
-    --color-surface: #ffffff;
+    --color-background: var(--spend-cloud);
+    --color-foreground: var(--spend-ink);
+    --color-surface: var(--white);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #f0f0f5;
-    --color-secondary-hover: #e5e5ee;
-    --color-secondary-foreground: #1a1a1f;
+    --color-secondary: var(--spend-secondary);
+    --color-secondary-hover: var(--spend-secondary-hover);
+    --color-secondary-foreground: var(--spend-ink);
 
-    --color-muted: #f0f0f5;
-    --color-muted-foreground: #8b8b9a;
+    --color-muted: var(--spend-secondary);
+    --color-muted-foreground: var(--spend-muted);
 
-    --color-border: rgba(0, 0, 0, 0.08);
-    --color-ring: #6c6fe4;
+    --color-border: var(--spend-border);
+    --color-ring: var(--indigo);
 
-    --color-accent: #6c6fe4;
-    --color-positive: #2abfa3;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--indigo);
+    --color-positive: var(--teal);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   [data-business-unit='spend'].dark,
   .dark [data-business-unit='spend'] {
-    --color-background: #0f0f12;
-    --color-foreground: #ffffff;
-    --color-surface: #1a1a1f;
+    --color-background: var(--spend-void);
+    --color-foreground: var(--white);
+    --color-surface: var(--spend-ink);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #1a1a1f;
-    --color-secondary-hover: #252530;
-    --color-secondary-foreground: #ffffff;
+    --color-secondary: var(--spend-ink);
+    --color-secondary-hover: var(--spend-secondary-dark);
+    --color-secondary-foreground: var(--white);
 
-    --color-muted: #1a1a1f;
-    --color-muted-foreground: #8b8b9a;
+    --color-muted: var(--spend-ink);
+    --color-muted-foreground: var(--spend-muted);
 
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-ring: #6c6fe4;
+    --color-border: var(--spend-border-dark);
+    --color-ring: var(--indigo);
 
-    --color-accent: #6c6fe4;
-    --color-positive: #2abfa3;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--indigo);
+    --color-positive: var(--teal);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   /* ─── Futra Save — Grove Green ─── */
 
   [data-business-unit='save'] {
-    --color-background: #f7f5f0;
-    --color-foreground: #1c1c1a;
-    --color-surface: #ffffff;
+    --color-background: var(--save-linen);
+    --color-foreground: var(--save-ink);
+    --color-surface: var(--white);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #e8f0eb;
-    --color-secondary-hover: #d8e8dd;
-    --color-secondary-foreground: #1c1c1a;
+    --color-secondary: var(--save-mist);
+    --color-secondary-hover: var(--save-mist-hover);
+    --color-secondary-foreground: var(--save-ink);
 
-    --color-muted: #e8f0eb;
-    --color-muted-foreground: #7a7a72;
+    --color-muted: var(--save-mist);
+    --color-muted-foreground: var(--save-muted);
 
-    --color-border: rgba(74, 124, 89, 0.15);
-    --color-ring: #4a7c59;
+    --color-border: var(--save-border);
+    --color-ring: var(--save-grove);
 
-    --color-accent: #4a7c59;
-    --color-positive: #4a7c59;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--save-grove);
+    --color-positive: var(--save-grove);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   [data-business-unit='save'].dark,
   .dark [data-business-unit='save'] {
-    --color-background: #1c1c1a;
-    --color-foreground: #f7f5f0;
-    --color-surface: #2a2a26;
+    --color-background: var(--save-ink);
+    --color-foreground: var(--save-linen);
+    --color-surface: var(--save-surface-dark);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #2a3a2e;
-    --color-secondary-hover: #354538;
-    --color-secondary-foreground: #f7f5f0;
+    --color-secondary: var(--save-secondary-dark);
+    --color-secondary-hover: var(--save-secondary-dark-hover);
+    --color-secondary-foreground: var(--save-linen);
 
-    --color-muted: #2a3a2e;
-    --color-muted-foreground: #9a9a90;
+    --color-muted: var(--save-secondary-dark);
+    --color-muted-foreground: var(--save-muted-dark);
 
-    --color-border: rgba(74, 124, 89, 0.2);
-    --color-ring: #5a8c69;
+    --color-border: var(--save-border-dark);
+    --color-ring: var(--save-grove-light);
 
-    --color-accent: #5a8c69;
-    --color-positive: #5a8c69;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--save-grove-light);
+    --color-positive: var(--save-grove-light);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   /* ─── Futra Credit — Lavender/Indigo ─── */
 
   [data-business-unit='credit'] {
-    --color-background: #f9f7ff;
-    --color-foreground: #1a1830;
-    --color-surface: #eeeaff;
+    --color-background: var(--credit-iris);
+    --color-foreground: var(--credit-midnight);
+    --color-surface: var(--credit-lavender);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #eeeaff;
-    --color-secondary-hover: #e0daff;
-    --color-secondary-foreground: #1a1830;
+    --color-secondary: var(--credit-lavender);
+    --color-secondary-hover: var(--credit-lavender-hover);
+    --color-secondary-foreground: var(--credit-midnight);
 
-    --color-muted: #d4d2ee;
-    --color-muted-foreground: #6b6880;
+    --color-muted: var(--credit-periwinkle);
+    --color-muted-foreground: var(--credit-muted);
 
-    --color-border: rgba(108, 111, 228, 0.15);
-    --color-ring: #6c6fe4;
+    --color-border: var(--credit-border);
+    --color-ring: var(--indigo);
 
-    --color-accent: #9896c8;
-    --color-positive: #6c6fe4;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--credit-slate);
+    --color-positive: var(--indigo);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   [data-business-unit='credit'].dark,
   .dark [data-business-unit='credit'] {
-    --color-background: #1a1830;
-    --color-foreground: #f9f7ff;
-    --color-surface: #252340;
+    --color-background: var(--credit-midnight);
+    --color-foreground: var(--credit-iris);
+    --color-surface: var(--credit-surface-dark);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #7b7eee;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-light);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #3a3860;
-    --color-secondary-hover: #454370;
-    --color-secondary-foreground: #f9f7ff;
+    --color-secondary: var(--credit-secondary-dark);
+    --color-secondary-hover: var(--credit-secondary-dark-hover);
+    --color-secondary-foreground: var(--credit-iris);
 
-    --color-muted: #3a3860;
-    --color-muted-foreground: #9896c8;
+    --color-muted: var(--credit-secondary-dark);
+    --color-muted-foreground: var(--credit-slate);
 
-    --color-border: rgba(108, 111, 228, 0.2);
-    --color-ring: #6c6fe4;
+    --color-border: var(--credit-border-dark);
+    --color-ring: var(--indigo);
 
-    --color-accent: #7b79b0;
-    --color-positive: #6c6fe4;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--credit-slate-dark);
+    --color-positive: var(--indigo);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   /* ─── Futra Plan — Deep Blue/Dark ─── */
 
   [data-business-unit='plan'] {
-    --color-background: #f0f4f8;
-    --color-foreground: #0c1017;
-    --color-surface: #ffffff;
+    --color-background: var(--plan-cloud);
+    --color-foreground: var(--plan-abyss);
+    --color-surface: var(--white);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #e8edf2;
-    --color-secondary-hover: #d8dfe8;
-    --color-secondary-foreground: #0c1017;
+    --color-secondary: var(--plan-secondary);
+    --color-secondary-hover: var(--plan-secondary-hover);
+    --color-secondary-foreground: var(--plan-abyss);
 
-    --color-muted: #e8edf2;
-    --color-muted-foreground: #64748b;
+    --color-muted: var(--plan-secondary);
+    --color-muted-foreground: var(--plan-muted);
 
-    --color-border: rgba(12, 16, 23, 0.1);
-    --color-ring: #6c6fe4;
+    --color-border: var(--plan-border);
+    --color-ring: var(--indigo);
 
-    --color-accent: #6c6fe4;
-    --color-positive: #1fa88e;
-    --color-negative: #e4746c;
-    --color-caution: #d4962e;
+    --color-accent: var(--indigo);
+    --color-positive: var(--plan-teal);
+    --color-negative: var(--coral);
+    --color-caution: var(--plan-caution);
   }
 
   [data-business-unit='plan'].dark,
   .dark [data-business-unit='plan'] {
-    --color-background: #0c1017;
-    --color-foreground: #e2e8f0;
-    --color-surface: #151e2b;
+    --color-background: var(--plan-abyss);
+    --color-foreground: var(--plan-fg-dark);
+    --color-surface: var(--plan-deep);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #7b7eee;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-light);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #1f2d3d;
-    --color-secondary-hover: #2a3a4d;
-    --color-secondary-foreground: #e2e8f0;
+    --color-secondary: var(--plan-surface-dark);
+    --color-secondary-hover: var(--plan-surface-dark-hover);
+    --color-secondary-foreground: var(--plan-fg-dark);
 
-    --color-muted: #1f2d3d;
-    --color-muted-foreground: #a0aec0;
+    --color-muted: var(--plan-surface-dark);
+    --color-muted-foreground: var(--plan-steel);
 
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-ring: #6c6fe4;
+    --color-border: var(--plan-border-dark);
+    --color-ring: var(--indigo);
 
-    --color-accent: #6c6fe4;
-    --color-positive: #2abfa3;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--indigo);
+    --color-positive: var(--teal);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   /* ─── Futra Together — Warm Terracotta ─── */
 
   [data-business-unit='together'] {
-    --color-background: #fff9f5;
-    --color-foreground: #1c1a18;
-    --color-surface: #ffffff;
+    --color-background: var(--together-warm);
+    --color-foreground: var(--together-espresso);
+    --color-surface: var(--white);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #5b5ed0;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-hover);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #f2e4da;
-    --color-secondary-hover: #e8d6ca;
-    --color-secondary-foreground: #1c1a18;
+    --color-secondary: var(--together-blush);
+    --color-secondary-hover: var(--together-blush-hover);
+    --color-secondary-foreground: var(--together-espresso);
 
-    --color-muted: #f2e4da;
-    --color-muted-foreground: #9e8e84;
+    --color-muted: var(--together-blush);
+    --color-muted-foreground: var(--together-clay);
 
-    --color-border: rgba(196, 98, 45, 0.15);
-    --color-ring: #c4622d;
+    --color-border: var(--together-border);
+    --color-ring: var(--together-terracotta);
 
-    --color-accent: #c4622d;
-    --color-positive: #4a7c59;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--together-terracotta);
+    --color-positive: var(--together-grove);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 
   [data-business-unit='together'].dark,
   .dark [data-business-unit='together'] {
-    --color-background: #1c1a18;
-    --color-foreground: #fff9f5;
-    --color-surface: #2a2622;
+    --color-background: var(--together-espresso);
+    --color-foreground: var(--together-warm);
+    --color-surface: var(--together-surface-dark);
 
-    --color-primary: #6c6fe4;
-    --color-primary-hover: #7b7eee;
-    --color-primary-foreground: #ffffff;
+    --color-primary: var(--indigo);
+    --color-primary-hover: var(--indigo-light);
+    --color-primary-foreground: var(--white);
 
-    --color-secondary: #3a322c;
-    --color-secondary-hover: #453c35;
-    --color-secondary-foreground: #fff9f5;
+    --color-secondary: var(--together-secondary-dark);
+    --color-secondary-hover: var(--together-secondary-dark-hover);
+    --color-secondary-foreground: var(--together-warm);
 
-    --color-muted: #3a322c;
-    --color-muted-foreground: #9e8e84;
+    --color-muted: var(--together-secondary-dark);
+    --color-muted-foreground: var(--together-clay);
 
-    --color-border: rgba(196, 98, 45, 0.2);
-    --color-ring: #d4724a;
+    --color-border: var(--together-border-dark);
+    --color-ring: var(--together-terracotta-light);
 
-    --color-accent: #d4724a;
-    --color-positive: #5a8c69;
-    --color-negative: #e4746c;
-    --color-caution: #e8a838;
+    --color-accent: var(--together-terracotta-light);
+    --color-positive: var(--together-grove-light);
+    --color-negative: var(--coral);
+    --color-caution: var(--amber);
   }
 }
 
