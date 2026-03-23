@@ -11,8 +11,8 @@ const heroSectionVariants = cva(
         centered: 'text-center',
       },
       size: {
-        default: 'min-h-screen',
-        tall: 'min-h-[110vh]',
+        default: 'min-h-[85vh] sm:min-h-screen',
+        tall: 'min-h-[95vh] sm:min-h-[110vh]',
       },
     },
     defaultVariants: {
@@ -23,7 +23,7 @@ const heroSectionVariants = cva(
 );
 
 const contentVariants = cva(
-  'relative z-10 max-w-[1200px] mx-auto px-6 py-20 md:py-28 w-full',
+  'relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-28 lg:py-32 w-full',
   {
     variants: {
       layout: {
@@ -77,7 +77,7 @@ const HeroSection = ({
       )}
       <div className={contentVariants({ layout })}>
         {layout !== 'centered' ? (
-          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-16 lg:gap-20">
             <div className="flex-1 max-w-xl">
               {eyebrow && (
                 <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
@@ -90,10 +90,10 @@ const HeroSection = ({
               <p className="mb-10 font-sans text-lg leading-[1.7] text-muted-foreground max-w-[460px]">
                 {subheading}
               </p>
-              {actions}
+              <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
             </div>
             {children && (
-              <div className="flex-1 relative w-full max-w-md lg:max-w-lg">
+              <div className="flex-1 relative w-full max-w-[220px] sm:max-w-[280px] lg:max-w-lg mx-auto lg:mx-0">
                 {children}
               </div>
             )}
