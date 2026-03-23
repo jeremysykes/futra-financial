@@ -8,8 +8,8 @@ const faqSectionVariants = cva(
   {
     variants: {
       padding: {
-        default: 'py-20 md:py-28',
-        compact: 'py-16 md:py-20',
+        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+        compact: 'py-12 sm:py-16 md:py-20',
       },
     },
     defaultVariants: {
@@ -68,8 +68,8 @@ const FAQSection = ({
           />
         </div>
       )}
-      <div className="relative z-10 max-w-[700px] mx-auto px-6">
-        <div className="text-center mb-16">
+      <div className="relative z-10 max-w-[700px] mx-auto px-5 sm:px-6">
+        <div className="text-center mb-10 md:mb-16">
           {eyebrow && (
             <p className="mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
               {eyebrow}

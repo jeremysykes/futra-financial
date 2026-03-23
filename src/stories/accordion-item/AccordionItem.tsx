@@ -9,7 +9,7 @@ const accordionItemVariants = cva(
 );
 
 const triggerVariants = cva(
-  'w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent',
+  'w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent min-h-[44px]',
 );
 
 export interface AccordionItemProps {
