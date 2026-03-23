@@ -11,8 +11,8 @@ const howItWorksVariants = cva(
         muted: 'bg-secondary/40',
       },
       padding: {
-        default: 'py-24 md:py-32',
-        compact: 'py-20',
+        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+        compact: 'py-12 sm:py-16 md:py-20',
       },
     },
     defaultVariants: {
@@ -42,9 +42,9 @@ const HowItWorks = ({
 }: HowItWorksProps) => {
   return (
     <section id={sectionId} className={cn(howItWorksVariants({ background, padding }), className)}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {(eyebrow || heading) && (
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             {eyebrow && (
               <p className="mb-3 uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
                 {eyebrow}
