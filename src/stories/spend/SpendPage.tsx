@@ -1,3 +1,4 @@
+import { FocalImage } from '../focal-image/FocalImage';
 import { Navbar } from '../navbar/Navbar';
 import { PhoneMockup } from '../phone-mockup/PhoneMockup';
 import { HeroSection } from '../hero-section/HeroSection';
@@ -67,13 +68,15 @@ export function SpendPage() {
           </>
         }
       >
-        <div className="mb-12 rounded-xl overflow-hidden max-h-[200px] relative">
-          <img
+        <div className="mb-12 relative">
+          <FocalImage
             src={`${import.meta.env.BASE_URL}images/IMG-SPEND-02.png`}
             alt="Contactless payment"
-            className="w-full h-full object-cover object-[50%_40%]"
+            focusX={55}
+            focusY={38}
+            className="w-full h-[200px] rounded-xl"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent rounded-xl" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {SpendFeatures.map((f, i) => (
