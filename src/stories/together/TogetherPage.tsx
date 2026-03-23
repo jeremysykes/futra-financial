@@ -1,3 +1,4 @@
+import { FocalImage } from '../focal-image/FocalImage';
 import { Navbar } from '../navbar/Navbar';
 import { HeroSection } from '../hero-section/HeroSection';
 import { HowItWorks } from '../how-it-works/HowItWorks';
@@ -96,13 +97,15 @@ export function TogetherPage() {
       </HowItWorks>
 
       <FeatureSection heading="Built for sharing">
-        <div className="mb-12 rounded-xl overflow-hidden max-h-[200px] relative">
-          <img
+        <div className="mb-12 relative">
+          <FocalImage
             src={`${import.meta.env.BASE_URL}images/IMG-TOGETHER-02.png`}
             alt="Shared life"
-            className="w-full h-full object-cover"
+            focusX={50}
+            focusY={28}
+            className="w-full h-[200px] rounded-xl"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent rounded-xl" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {TogetherFeatures.map((feature, i) => (
