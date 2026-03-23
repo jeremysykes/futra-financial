@@ -97,12 +97,15 @@ function ColorSwatch({
   return (
     <div className="rounded-xl border border-border overflow-hidden bg-surface">
       <div
-        className="h-20 flex items-end p-3"
+        className="h-20 flex items-end p-3 relative"
         style={{ backgroundColor: `var(${variable})` }}
       >
         <span
-          className="font-sans font-semibold text-sm"
-          style={{ color: isLight ? '#000' : '#fff' }}
+          className="font-sans font-semibold text-sm relative z-10 px-2 py-0.5 rounded"
+          style={{
+            color: isLight ? '#000' : '#fff',
+            backgroundColor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.15)',
+          }}
         >
           {name}
         </span>
