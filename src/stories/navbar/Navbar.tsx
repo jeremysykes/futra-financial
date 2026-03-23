@@ -67,7 +67,7 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
 
   return (
     <nav aria-label="Main navigation" className={cn(navbarVariants({ scrolled }), className)}>
-      <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 h-full flex items-center justify-between">
         <Logo unitName={unitName} />
 
         <div className="hidden md:flex items-center gap-8">
@@ -86,7 +86,7 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
 
         <button
           ref={toggleRef}
-          className="md:hidden text-foreground cursor-pointer"
+          className="md:hidden text-foreground cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -102,6 +102,7 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
               key={link.label}
               href={link.href}
               size="base"
+              className="min-h-[44px] flex items-center"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
