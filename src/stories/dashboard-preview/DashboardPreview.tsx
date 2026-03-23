@@ -34,8 +34,8 @@ const panelVariants = cva(
   {
     variants: {
       padding: {
-        default: 'p-3 md:p-4',
-        compact: 'p-2 md:p-3',
+        default: 'p-2 sm:p-3 md:p-4',
+        compact: 'p-1.5 sm:p-2 md:p-3',
       },
     },
     defaultVariants: {
@@ -59,13 +59,13 @@ const MetricCard = ({
   trend: string;
 }) => (
   <div className={cn(panelVariants())}>
-    <div className="font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
+    <div className="font-sans font-medium text-[10px] sm:text-[11px] tracking-[0.08em] uppercase text-muted-foreground truncate">
       {label}
     </div>
-    <div className="mt-1 font-mono font-medium text-foreground text-[clamp(18px,3vw,32px)]">
+    <div className="mt-1 font-mono font-medium text-foreground text-[clamp(16px,2.5vw,32px)]">
       {value}
     </div>
-    <div className="mt-1 font-mono text-xs text-positive">↑ {trend}</div>
+    <div className="mt-0.5 font-mono text-[10px] sm:text-xs text-positive truncate">↑ {trend}</div>
   </div>
 );
 
@@ -126,9 +126,9 @@ const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
         </span>
       </div>
 
-      <div className="p-4 md:p-6">
+      <div className="p-3 sm:p-4 md:p-6">
         {/* Metrics row */}
-        <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-4 md:mb-6">
           <MetricCard label="Net Worth" value="$184K" trend="+12.4%" />
           <MetricCard label="Monthly Savings" value="$2,140" trend="+3.2%" />
           <MetricCard label="Runway" value="34 yrs" trend="On track" />

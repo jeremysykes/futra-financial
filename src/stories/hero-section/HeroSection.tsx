@@ -47,6 +47,7 @@ export interface HeroSectionProps
   overlayOpacity?: string;
   actions: ReactNode;
   children?: ReactNode;
+  hideChildrenLandscape?: boolean;
   className?: string;
 }
 
@@ -61,6 +62,7 @@ const HeroSection = ({
   size,
   actions,
   children,
+  hideChildrenLandscape = true,
   className,
 }: HeroSectionProps) => {
   return (
@@ -93,7 +95,7 @@ const HeroSection = ({
               <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
             </div>
             {children && (
-              <div className="flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0 hidden portrait:block lg:block">
+              <div className={cn("flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0", hideChildrenLandscape && "hidden portrait:block lg:block")}>
                 {children}
               </div>
             )}

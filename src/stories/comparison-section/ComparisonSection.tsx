@@ -64,12 +64,12 @@ export function ComparisonSection() {
           </table>
         </div>
         {/* Mobile card layout */}
-        <div className="md:hidden flex flex-col gap-4">
+        <div className="md:hidden flex flex-col gap-3">
           {PlanCompetitors.map((c, ci) => (
             <div
               key={c.name}
               className={cn(
-                'rounded-xl p-4 border',
+                'rounded-xl px-4 py-3 border',
                 ci === 0
                   ? 'bg-primary/10 border-primary/30'
                   : 'bg-surface border-border',
@@ -77,24 +77,24 @@ export function ComparisonSection() {
             >
               <p
                 className={cn(
-                  'font-sans font-semibold text-sm mb-3',
+                  'font-sans font-semibold text-sm mb-2',
                   ci === 0 ? 'text-primary' : 'text-foreground',
                 )}
               >
                 {c.name}
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col">
                 {PlanFeatures.map((feat, fi) => (
                   <div
                     key={feat}
-                    className="flex items-center justify-between py-2"
+                    className="flex items-center justify-between py-1.5 border-b border-border/50 last:border-0"
                   >
-                    <span className="text-sm text-foreground font-sans">
+                    <span className="text-xs text-foreground font-sans">
                       {feat}
                     </span>
                     {c.support[fi] ? (
                       <Check
-                        size={18}
+                        size={16}
                         className={cn(
                           'shrink-0 ml-2',
                           ci === 0 ? 'text-primary' : 'text-positive',
@@ -102,7 +102,7 @@ export function ComparisonSection() {
                       />
                     ) : (
                       <X
-                        size={18}
+                        size={16}
                         className="shrink-0 ml-2 text-muted-foreground opacity-40"
                       />
                     )}

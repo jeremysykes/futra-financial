@@ -38,6 +38,7 @@ export function PlanPage() {
         backgroundOpacity="opacity-30"
         overlayOpacity="bg-gradient-to-r from-background/70 via-background/50 to-background/30"
         actions={<Button>Map Your Finances</Button>}
+        hideChildrenLandscape={false}
       >
         <DashboardPreview />
       </HeroSection>
