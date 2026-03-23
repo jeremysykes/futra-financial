@@ -23,7 +23,7 @@ const heroSectionVariants = cva(
 );
 
 const contentVariants = cva(
-  'relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32 w-full',
+  'relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32 landscape:py-8 lg:landscape:py-32 w-full',
   {
     variants: {
       layout: {
@@ -84,10 +84,10 @@ const HeroSection = ({
                   {eyebrow}
                 </p>
               )}
-              <h1 className="mb-6 font-sans font-bold text-foreground leading-[1.1] tracking-[-0.01em] text-[clamp(36px,5vw,56px)]">
+              <h1 className="mb-6 landscape:mb-3 lg:landscape:mb-6 font-sans font-bold text-foreground leading-[1.1] tracking-[-0.01em] text-[clamp(36px,5vw,56px)]">
                 {heading}
               </h1>
-              <p className="mb-10 font-sans text-lg leading-[1.7] text-muted-foreground max-w-[460px]">
+              <p className="mb-10 landscape:mb-4 lg:landscape:mb-10 font-sans text-lg leading-[1.7] text-muted-foreground max-w-[460px]">
                 {subheading}
               </p>
               <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
