@@ -34,12 +34,24 @@ const Card = ({
   className,
   accent,
   interactive,
+  onClick,
   children,
   ...props
 }: CardProps) => {
+  const isClickable = interactive && !!onClick;
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick?.(e as unknown as React.MouseEvent<HTMLDivElement>);
+    }
+  };
+
   return (
     <div
       className={cn(cardVariants({ accent, interactive }), className)}
+      onClick={onClick}
+      {...(isClickable ? { role: 'button', tabIndex: 0, onKeyDown: handleKeyDown } : {})}
       {...props}
     >
       {children}
