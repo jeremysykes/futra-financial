@@ -66,6 +66,12 @@ export function AppShell() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-background focus:px-4 focus:py-2 focus:rounded-lg focus:text-foreground focus:font-sans focus:font-medium focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
       <DemoSwitcher unit={unit} theme={theme} onToggleTheme={toggleTheme} />
       <div style={{ '--nav-top': '36px' } as React.CSSProperties}>
         <Routes>

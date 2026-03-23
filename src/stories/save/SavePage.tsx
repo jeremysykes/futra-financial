@@ -26,6 +26,7 @@ export function SavePage() {
     <div className="min-h-screen bg-background">
       <Navbar unitName="save" links={SaveLinks} ctaText="Start Saving" />
 
+      <main id="main-content">
       <HeroSection
         eyebrow="Goal-based savings"
         heading={
@@ -169,6 +170,8 @@ export function SavePage() {
       >
         <Button>Start Saving</Button>
       </CTASection>
+
+      </main>
 
       <Footer>
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">

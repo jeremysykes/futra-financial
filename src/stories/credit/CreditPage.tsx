@@ -22,6 +22,7 @@ export function CreditPage() {
     <div className="min-h-screen bg-background">
       <Navbar unitName="credit" links={CreditLinks} ctaText="Check Your Score" />
 
+      <main id="main-content">
       <HeroSection
         eyebrow="Free credit monitoring"
         heading={
@@ -100,6 +101,8 @@ export function CreditPage() {
       >
         <Button>Get Started Free</Button>
       </CTASection>
+
+      </main>
 
       <Footer className="bg-[#1A1830]">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">

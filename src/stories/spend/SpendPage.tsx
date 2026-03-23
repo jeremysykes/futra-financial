@@ -24,6 +24,7 @@ export function SpendPage() {
     <div className="min-h-screen bg-background">
       <Navbar unitName="spend" links={SpendLinks} ctaText="Get Started" />
 
+      <main id="main-content">
       <HeroSection
         heading={
           <>
@@ -147,6 +148,8 @@ export function SpendPage() {
           <a href="#">Download the App</a>
         </Button>
       </CTASection>
+
+      </main>
 
       <Footer className="bg-[#0F0F12] border-t border-[rgba(255,255,255,0.08)]">
         <div className="flex flex-col md:flex-row gap-12 md:gap-20 mb-12">
