@@ -1,18 +1,19 @@
 import { Check, X } from 'lucide-react';
 import { PlanCompetitors, PlanFeatures } from '../../mocks/plan.mock';
+import { cn } from '../../lib/utils';
 
 export function ComparisonSection() {
   return (
-    <section id="compare" className="py-24 md:py-32 bg-surface">
-      <div className="max-w-[1200px] mx-auto px-6">
+    <section id="compare" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-surface">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         <p className="mb-3 uppercase text-center font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
           How we compare
         </p>
-        <h2 className="text-center mb-16 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">
+        <h2 className="text-center mb-10 md:mb-16 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">
           The full picture, not a partial view
         </h2>
 
-        <div className="overflow-x-auto">
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full min-w-[600px]">
             <thead>
               <tr className="border-b border-border">
@@ -61,6 +62,55 @@ export function ComparisonSection() {
               ))}
             </tbody>
           </table>
+        </div>
+        {/* Mobile card layout */}
+        <div className="md:hidden flex flex-col gap-4">
+          {PlanCompetitors.map((c, ci) => (
+            <div
+              key={c.name}
+              className={cn(
+                'rounded-xl p-4 border',
+                ci === 0
+                  ? 'bg-primary/10 border-primary/30'
+                  : 'bg-surface border-border',
+              )}
+            >
+              <p
+                className={cn(
+                  'font-sans font-semibold text-sm mb-3',
+                  ci === 0 ? 'text-primary' : 'text-foreground',
+                )}
+              >
+                {c.name}
+              </p>
+              <div className="flex flex-col gap-2">
+                {PlanFeatures.map((feat, fi) => (
+                  <div
+                    key={feat}
+                    className="flex items-center justify-between py-2"
+                  >
+                    <span className="text-sm text-foreground font-sans">
+                      {feat}
+                    </span>
+                    {c.support[fi] ? (
+                      <Check
+                        size={18}
+                        className={cn(
+                          'shrink-0 ml-2',
+                          ci === 0 ? 'text-primary' : 'text-positive',
+                        )}
+                      />
+                    ) : (
+                      <X
+                        size={18}
+                        className="shrink-0 ml-2 text-muted-foreground opacity-40"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
