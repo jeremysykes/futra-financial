@@ -13,6 +13,7 @@ import {
 } from 'recharts';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
+import { useChartColors } from '../../hooks/useChartColors';
 import {
   PlanBudgetData,
   PlanNetWorthLong,
@@ -77,21 +78,6 @@ function FeatureBlock({
 }
 
 const monoFont = 'JetBrains Mono, monospace';
-
-function useChartColors() {
-  const style =
-    typeof window !== 'undefined'
-      ? getComputedStyle(document.documentElement)
-      : null;
-  const get = (name: string, fallback: string) =>
-    style?.getPropertyValue(name).trim() || fallback;
-  return {
-    accent: get('--color-accent', '#6C6FE4'),
-    positive: get('--color-positive', '#2ABFA3'),
-    caution: get('--color-caution', '#E8A838'),
-    mutedFg: get('--color-muted-foreground', '#64748B'),
-  };
-}
 
 const featureDeepDiveVariants = cva(
   'relative overflow-hidden bg-background',
