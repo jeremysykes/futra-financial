@@ -35,8 +35,8 @@ export function SpendPage() {
         }
         subheading="Instant transactions, zero fees, total control. See every dollar the second it moves — not hours later."
         backgroundImage={`${import.meta.env.BASE_URL}images/IMG-SPEND-01.png`}
-        backgroundOpacity="opacity-10"
-        overlayOpacity="bg-background/80"
+        backgroundOpacity="opacity-30"
+        overlayOpacity="bg-gradient-to-r from-background/70 via-background/50 to-background/30"
         actions={
           <Button asChild>
             <a href="#cta">Open Your Account</a>

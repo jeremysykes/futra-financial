@@ -35,8 +35,8 @@ export function TogetherPage() {
         }
         subheading="Joint accounts, fair splits, and shared savings goals — designed for couples, roommates, and anyone sharing a financial life."
         backgroundImage={`${import.meta.env.BASE_URL}images/IMG-TOGETHER-01.png`}
-        backgroundOpacity="opacity-[0.18]"
-        overlayOpacity="bg-background/50"
+        backgroundOpacity="opacity-30"
+        overlayOpacity="bg-gradient-to-r from-background/70 via-background/50 to-background/30"
         actions={<Button>Start Sharing</Button>}
       >
         <div className="flex flex-col gap-5">

@@ -35,8 +35,8 @@ export function PlanPage() {
         }
         subheading="Track net worth, budget with precision, and project your financial future — all from a single dashboard built for clarity."
         backgroundImage={`${import.meta.env.BASE_URL}images/IMG-PLAN-01.png`}
-        backgroundOpacity="opacity-[0.07]"
-        overlayOpacity="bg-background/80"
+        backgroundOpacity="opacity-30"
+        overlayOpacity="bg-gradient-to-r from-background/70 via-background/50 to-background/30"
         actions={<Button>Map Your Finances</Button>}
       >
         <DashboardPreview />
