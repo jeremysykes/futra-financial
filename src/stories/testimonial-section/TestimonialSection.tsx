@@ -53,7 +53,7 @@ const TestimonialSection = ({
         {(heading || subtitle) && (
           <div className="text-center mb-10 md:mb-16">
             {subtitle && (
-              <p className="mb-3 uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
+              <p className="mb-3 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
                 {subtitle}
               </p>
             )}

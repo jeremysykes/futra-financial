@@ -47,7 +47,7 @@ const FeatureSection = ({
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {subtitle && (
-          <p className="mb-3 uppercase text-center font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
+          <p className="mb-3 uppercase text-center font-sans font-medium text-xs tracking-[0.08em] text-accent">
             {subtitle}
           </p>
         )}
