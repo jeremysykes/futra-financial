@@ -11,7 +11,7 @@ const trustSectionVariants = cva(
         muted: 'bg-muted',
       },
       padding: {
-        default: 'py-8',
+        default: 'py-6 sm:py-8',
         compact: 'py-6',
       },
     },
@@ -49,7 +49,7 @@ const TrustSection = ({
           />
         </div>
       )}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {children}
         </div>
