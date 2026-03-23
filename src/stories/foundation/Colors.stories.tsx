@@ -94,7 +94,7 @@ function ColorSwatch({
     : false;
 
   return (
-    <div className="rounded-xl border border-border overflow-hidden bg-surface">
+    <div className="rounded-xl border border-border overflow-hidden">
       <div
         className="h-20 flex items-end p-3 relative"
         style={{ backgroundColor: `var(${variable})` }}
@@ -110,7 +110,7 @@ function ColorSwatch({
           {name}
         </span>
       </div>
-      <div className="p-3 space-y-1.5 border-t border-border">
+      <div className="p-3 space-y-1.5 border-t border-border bg-white">
         <div className="flex justify-between items-center">
           <span className="font-mono text-xs text-muted-foreground">HEX</span>
           <span className="font-mono text-xs text-foreground">{color?.hex ?? '...'}</span>
