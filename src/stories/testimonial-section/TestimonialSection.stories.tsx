@@ -6,13 +6,13 @@ import { withStoryDisplay } from '../decorators';
 const TestimonialCard = ({
   quote,
   name,
-  role,
+  subtitle,
   initials,
   color,
 }: {
   quote: string;
   name: string;
-  role: string;
+  subtitle: string;
   initials: string;
   color: string;
 }) => (
@@ -32,7 +32,7 @@ const TestimonialCard = ({
           {name}
         </span>
         <span className="font-sans font-medium text-xs text-muted-foreground">
-          {role}
+          {subtitle}
         </span>
       </div>
     </div>
@@ -64,21 +64,21 @@ export const ThreeColumns: Story = {
         <TestimonialCard
           quote="I finally saved enough for my first solo trip to Portugal."
           name="Maya Chen"
-          role="Saved $3,200 for travel"
+          subtitle="Saved $3,200 for travel"
           initials="MC"
           color="#A8C5B0"
         />
         <TestimonialCard
           quote="The round-ups are sneaky good. I've saved over $1,400 in six months."
           name="Jordan Ellis"
-          role="Building an emergency fund"
+          subtitle="Building an emergency fund"
           initials="JE"
           color="#3D8B5E"
         />
         <TestimonialCard
           quote="Futra makes saving feel like I'm actually building something."
           name="Priya Kapoor"
-          role="Saving for a down payment"
+          subtitle="Saving for a down payment"
           initials="PK"
           color="#4A7C59"
         />
@@ -98,14 +98,14 @@ export const TwoColumns: Story = {
         <TestimonialCard
           quote="Planning our finances together has never been easier."
           name="Alex Rivera"
-          role="Couple planning"
+          subtitle="Couple planning"
           initials="AR"
           color="#D4718A"
         />
         <TestimonialCard
           quote="We finally have visibility into our shared expenses."
           name="Sam Taylor"
-          role="Joint account holder"
+          subtitle="Joint account holder"
           initials="ST"
           color="#C25D7B"
         />

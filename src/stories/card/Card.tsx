@@ -47,11 +47,24 @@ const Card = ({
     }
   };
 
+  if (isClickable) {
+    return (
+      <div
+        className={cn(cardVariants({ accent, interactive }), className)}
+        role="button"
+        tabIndex={0}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(cardVariants({ accent, interactive }), className)}
-      onClick={onClick}
-      {...(isClickable ? { role: 'button', tabIndex: 0, onKeyDown: handleKeyDown } : {})}
       {...props}
     >
       {children}
