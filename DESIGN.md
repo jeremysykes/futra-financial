@@ -274,6 +274,44 @@ src/
 
 ---
 
+## Accessibility Standards
+
+### Interactive Components
+
+All interactive components use Radix UI primitives for ARIA management, keyboard navigation, and focus handling. Radix provides the behavior; CVA tokens and Tailwind classes provide the visuals. Before building any new interactive pattern, check the Radix component library at https://www.radix-ui.com/primitives/docs/components for an existing primitive.
+
+| Pattern | Implementation | Provides |
+|---------|---------------|----------|
+| Accordion/Disclosure | `@radix-ui/react-accordion` | `aria-expanded`, `aria-controls`, keyboard nav |
+| Avatar | `@radix-ui/react-avatar` | Image load detection, fallback rendering |
+| Progress bars | `role="progressbar"` with `aria-valuenow/max` | Screen reader progress announcements |
+| Data visualizations | `role="img"` with `aria-label` | Accessible description of chart content |
+| Interactive cards | Conditional `role="button"` when `onClick` present | Keyboard support only when card is actually clickable |
+
+### Focus Indicators
+
+All focusable elements display a visible ring on `:focus-visible` using the `--color-ring` design token. Components must not suppress focus outlines unless providing a custom focus indicator of equal or greater visibility.
+
+### Page Landmarks
+
+Every page includes:
+- `<nav aria-label="Main navigation">` — Navbar
+- `<main id="main-content">` — Primary content area
+- `<footer>` — Page footer
+- Skip-to-main link (visually hidden, visible on focus)
+
+### Semantic Structure
+
+- Process steps use `<ol>` / `<li>` for ordered list semantics
+- Data visualizations (SVG charts, score displays) use `role="img"` with descriptive `aria-label`
+- Status indicators include text alongside color for colorblind accessibility
+
+### Color Contrast
+
+Muted foreground colors (`text-muted-foreground`) meet WCAG AA contrast ratio (4.5:1 minimum for normal text). Status indicators (on-budget, over, under) include text labels alongside color to support colorblind users.
+
+---
+
 ## Storybook Presentation
 
 Storybook is part of the design system, not separate from it. Component presentation in stories follows the same rules as the application:
