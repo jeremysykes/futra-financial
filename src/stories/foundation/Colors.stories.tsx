@@ -104,11 +104,10 @@ function ColorSwatch({
         style={{ backgroundColor: `var(${variable})` }}
       >
         <span
-          className="font-sans font-semibold text-sm relative z-10 px-2 py-0.5 rounded"
+          className="font-sans font-semibold text-sm relative z-10 px-2 py-1 rounded"
           style={{
-            color: isLight ? '#000' : '#fff',
-            backgroundColor: isLight ? 'rgba(0,0,0,0.25)' : 'rgba(0,0,0,0.4)',
-            textShadow: isLight ? 'none' : '0 1px 3px rgba(0,0,0,0.8)',
+            color: isLight ? '#222' : '#fff',
+            backgroundColor: isLight ? 'rgba(0,0,0,0.12)' : 'rgba(0,0,0,0.5)',
           }}
         >
           {name}
