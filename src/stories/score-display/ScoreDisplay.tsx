@@ -22,7 +22,13 @@ export function ScoreDisplay({
 
   return (
     <div className="flex flex-col items-center">
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      <svg
+        role="img"
+        aria-label={`Credit score: ${score}, ${label}`}
+        width={size}
+        height={size}
+        viewBox={`0 0 ${size} ${size}`}
+      >
         <circle
           cx={center}
           cy={center}
