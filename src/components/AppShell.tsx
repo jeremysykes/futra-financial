@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router';
+import { useScrollAnimations } from '../hooks/useScrollAnimations';
 import { SpendPage } from '../stories/spend/SpendPage';
 import { SavePage } from '../stories/save/SavePage';
 import { CreditPage } from '../stories/credit/CreditPage';
@@ -33,6 +34,7 @@ function getStoredTheme(unit: string): 'light' | 'dark' {
 export function AppShell() {
   const location = useLocation();
   const unit = getUnitFromPath(location.pathname);
+  useScrollAnimations();
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     getStoredTheme(unit),
   );

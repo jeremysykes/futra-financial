@@ -52,8 +52,9 @@ export function PlanPage() {
             key={s.label}
             accent="left"
             interactive
-            className="bg-secondary text-center animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            className="bg-secondary text-center"
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           >
             <span className="block mb-1 font-mono font-semibold text-foreground text-[clamp(28px,4vw,40px)]">
               {s.value}
@@ -77,8 +78,8 @@ export function PlanPage() {
           <Card
             key={t.name}
             interactive
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           >
             <p className="mb-6 font-sans text-base leading-[1.7] text-foreground italic">
               &ldquo;{t.quote}&rdquo;

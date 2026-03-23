@@ -116,8 +116,9 @@ export function TogetherPage() {
               key={feature.title}
               accent="left"
               interactive
-              className="flex flex-col animate-fade-in-up"
-              style={{ animationDelay: `${i * 100}ms` }}
+              className="flex flex-col"
+              data-animate="fade-in-up"
+              style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
             >
               <div
                 className={`w-12 h-12 rounded-[10px] flex items-center justify-center mb-5 ${feature.colorType === 'accent' ? 'bg-accent/10' : 'bg-primary/10'}`}
@@ -173,8 +174,9 @@ export function TogetherPage() {
           <Card
             key={t.names}
             interactive
-            className="flex flex-col animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            className="flex flex-col"
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="flex items-center">

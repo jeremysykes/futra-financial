@@ -53,8 +53,8 @@ export function SpendPage() {
             value={s.value}
             label={s.label}
             valueColor="foreground"
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           />
         ))}
       </StatsRow>
@@ -85,8 +85,8 @@ export function SpendPage() {
               key={f.title}
               accent="left"
               interactive
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${i * 100}ms` }}
+              data-animate="fade-in-up"
+              style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                 <f.icon size={20} className="text-accent" />
@@ -116,8 +116,9 @@ export function SpendPage() {
           <Card
             key={t.name}
             interactive
-            className="relative z-10 animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            className="relative z-10"
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           >
             <p className="text-[15px] text-muted-foreground leading-[1.6] italic mb-6 font-sans font-normal">
               &ldquo;{t.quote}&rdquo;

@@ -98,8 +98,8 @@ export function SavePage() {
               key={f.title}
               accent="top"
               interactive
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${i * 100}ms` }}
+              data-animate="fade-in-up"
+              style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
             >
               <div className="w-12 h-12 rounded-xl mb-5 flex items-center justify-center bg-muted">
                 <f.icon
@@ -125,8 +125,8 @@ export function SavePage() {
             key={s.label}
             value={s.value}
             label={s.label}
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           />
         ))}
       </StatsRow>
@@ -139,8 +139,8 @@ export function SavePage() {
           <Card
             key={t.name}
             interactive
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${i * 100}ms` }}
+            data-animate="fade-in-up"
+            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
           >
             <p className="mb-6 font-sans text-base leading-[1.7] text-foreground italic">
               &ldquo;{t.quote}&rdquo;
