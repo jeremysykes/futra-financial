@@ -4,6 +4,7 @@ import { withStoryDisplay } from '../decorators';
 
 const faqItems = [
   {
+    value: 'free',
     trigger: 'Is checking my score really free?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">
@@ -12,6 +13,7 @@ const faqItems = [
     ),
   },
   {
+    value: 'affect',
     trigger: 'Will this affect my credit score?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">
@@ -20,6 +22,7 @@ const faqItems = [
     ),
   },
   {
+    value: 'updated',
     trigger: 'How often is my score updated?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">

@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Accordion } from 'radix-ui';
 import { AccordionItem } from './AccordionItem';
 import { withStoryDisplay } from '../decorators';
 
@@ -17,36 +17,29 @@ const meta = {
 } satisfies Meta<typeof AccordionItem>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export const Default: StoryObj<typeof AccordionItem> = {
-  render: () => {
-    const [open, setOpen] = useState(false);
-    return (
-      <AccordionItem
-        trigger="Is checking my score really free?"
-        isOpen={open}
-        onToggle={() => setOpen(!open)}
-      >
+  render: () => (
+    <Accordion.Root type="single" collapsible>
+      <AccordionItem value="demo" trigger="Is checking my score really free?">
         <p className="font-sans text-sm leading-relaxed text-muted-foreground">
           Yes, completely free. We never charge for credit score access.
         </p>
       </AccordionItem>
-    );
-  },
+    </Accordion.Root>
+  ),
   globals: { businessUnit: 'credit' },
 };
 
-export const Open: Story = {
-  args: {
-    trigger: 'Is checking my score really free?',
-    isOpen: true,
-    children: (
-      <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        Yes, completely free. We never charge for credit score access.
-      </p>
-    ),
-  },
+export const Open: StoryObj<typeof AccordionItem> = {
+  render: () => (
+    <Accordion.Root type="single" defaultValue="demo">
+      <AccordionItem value="demo" trigger="Is checking my score really free?">
+        <p className="font-sans text-sm leading-relaxed text-muted-foreground">
+          Yes, completely free. We never charge for credit score access.
+        </p>
+      </AccordionItem>
+    </Accordion.Root>
+  ),
   globals: { businessUnit: 'credit' },
 };
-

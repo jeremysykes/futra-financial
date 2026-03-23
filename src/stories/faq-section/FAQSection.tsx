@@ -44,7 +44,8 @@ const FAQSection = ({
   sectionId = 'faq',
   className,
 }: FAQSectionProps) => {
-  const accordionItems = items.map((faq) => ({
+  const accordionItems = items.map((faq, i) => ({
+    value: `faq-${i}`,
     trigger: faq.question,
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">

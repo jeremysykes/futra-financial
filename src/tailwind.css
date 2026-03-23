@@ -31,6 +31,8 @@
   --color-destructive-foreground: oklch(1 0 0);
 
   --animate-interval: 100ms;
+  --animate-accordion-down: accordion-down 300ms ease-out;
+  --animate-accordion-up: accordion-up 200ms ease-out;
 }
 
 @layer base {
@@ -368,6 +370,16 @@
 
 .animate-bar-fill {
   animation: bar-fill 0.8s ease-out both;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
 }
 
 /* ─── Accessibility ─── */

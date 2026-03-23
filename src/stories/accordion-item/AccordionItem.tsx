@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Accordion } from 'radix-ui';
 import { ChevronDown } from 'lucide-react';
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
@@ -8,66 +9,47 @@ const accordionItemVariants = cva(
 );
 
 const triggerVariants = cva(
-  'font-sans font-semibold text-base pr-4 transition-colors duration-200',
-  {
-    variants: {
-      state: {
-        open: 'text-primary',
-        closed: 'text-foreground',
-      },
-    },
-    defaultVariants: {
-      state: 'closed',
-    },
-  },
+  'w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent',
 );
 
 export interface AccordionItemProps {
+  value: string;
   trigger: ReactNode;
   children: ReactNode;
-  isOpen?: boolean;
-  onToggle?: () => void;
   className?: string;
 }
 
 const AccordionItem = ({
+  value,
   trigger,
   children,
-  isOpen = false,
-  onToggle,
   className,
 }: AccordionItemProps) => {
   return (
-    <div className={cn(accordionItemVariants(), className)}>
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent"
-      >
-        <span className={triggerVariants({ state: isOpen ? 'open' : 'closed' })}>
-          {trigger}
-        </span>
-        <ChevronDown
-          size={18}
-          className={cn(
-            'text-muted-foreground shrink-0 transition-transform duration-200',
-            isOpen && 'rotate-180',
-          )}
-        />
-      </button>
-      <div
-        className="grid transition-[grid-template-rows] duration-300 ease-out"
-        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-      >
-        <div className="overflow-hidden">
-          <div className="px-6 pb-4">
-            {children}
-          </div>
+    <Accordion.Item value={value} className={cn(accordionItemVariants(), className)}>
+      <Accordion.Header asChild>
+        <h3>
+          <Accordion.Trigger className={cn(triggerVariants(), 'group')}>
+            <span className="font-sans font-semibold text-base pr-4 transition-colors duration-200 text-foreground group-data-[state=open]:text-primary">
+              {trigger}
+            </span>
+            <ChevronDown
+              size={18}
+              className="text-muted-foreground shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180"
+              aria-hidden="true"
+            />
+          </Accordion.Trigger>
+        </h3>
+      </Accordion.Header>
+      <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        <div className="px-6 pb-4">
+          {children}
         </div>
-      </div>
-    </div>
+      </Accordion.Content>
+    </Accordion.Item>
   );
 };
 
 AccordionItem.displayName = 'AccordionItem';
 
-export { AccordionItem, accordionItemVariants, triggerVariants };
+export { AccordionItem, accordionItemVariants };
