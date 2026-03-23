@@ -541,3 +541,27 @@
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
 }
+
+/* ─── Page Transitions ─── */
+
+@keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-transition {
+  animation: page-enter 300ms ease-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  [data-business-unit] * {
+    transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none;
+  }
+}
