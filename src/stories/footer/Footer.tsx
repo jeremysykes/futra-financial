@@ -26,7 +26,7 @@ export interface FooterProps
 const Footer = ({ layout, children, className }: FooterProps) => {
   return (
     <footer className={cn(footerVariants({ layout }), className)}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {children}
       </div>
     </footer>
