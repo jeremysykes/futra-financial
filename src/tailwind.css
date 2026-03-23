@@ -369,3 +369,10 @@
 .animate-bar-fill {
   animation: bar-fill 0.8s ease-out both;
 }
+
+/* ─── Accessibility ─── */
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
