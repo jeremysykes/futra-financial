@@ -93,7 +93,7 @@ const HeroSection = ({
               <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
             </div>
             {children && (
-              <div className="flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0">
+              <div className="flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0 hidden portrait:block lg:block">
                 {children}
               </div>
             )}
