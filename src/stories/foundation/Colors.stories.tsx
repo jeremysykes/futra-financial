@@ -110,7 +110,7 @@ function ColorSwatch({
           {name}
         </span>
       </div>
-      <div className="p-3 space-y-1.5">
+      <div className="p-3 space-y-1.5 border-t border-border">
         <div className="flex justify-between items-center">
           <span className="font-mono text-xs text-muted-foreground">HEX</span>
           <span className="font-mono text-xs text-foreground">{color?.hex ?? '...'}</span>
