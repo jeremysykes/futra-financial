@@ -11,8 +11,8 @@ const heroSectionVariants = cva(
         centered: 'text-center',
       },
       size: {
-        default: 'min-h-[85vh] sm:min-h-screen',
-        tall: 'min-h-[95vh] sm:min-h-[110vh]',
+        default: 'min-h-[85vh] lg:min-h-screen',
+        tall: 'min-h-[95vh] lg:min-h-[110vh]',
       },
     },
     defaultVariants: {
