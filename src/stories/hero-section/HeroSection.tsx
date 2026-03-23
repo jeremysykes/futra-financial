@@ -80,14 +80,14 @@ const HeroSection = ({
           <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-16 lg:gap-20">
             <div className="flex-1 max-w-xl">
               {eyebrow && (
-                <p className="mb-4 landscape:mb-2 lg:landscape:mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
+                <p className="mb-4 landscape:hidden lg:landscape:block lg:landscape:mb-4 uppercase font-sans font-medium text-xs tracking-[0.08em] text-accent">
                   {eyebrow}
                 </p>
               )}
               <h1 className="mb-6 landscape:mb-3 lg:landscape:mb-6 font-sans font-bold text-foreground leading-[1.1] tracking-[-0.01em] text-[clamp(36px,5vw,56px)]">
                 {heading}
               </h1>
-              <p className="mb-10 landscape:mb-4 lg:landscape:mb-10 font-sans text-lg leading-[1.7] landscape:leading-[1.4] lg:landscape:leading-[1.7] text-muted-foreground max-w-[460px]">
+              <p className="mb-10 landscape:mb-3 lg:landscape:mb-10 font-sans text-lg landscape:text-base lg:landscape:text-lg leading-[1.7] landscape:leading-[1.3] lg:landscape:leading-[1.7] text-muted-foreground max-w-[460px]">
                 {subheading}
               </p>
               <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
