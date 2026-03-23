@@ -102,7 +102,7 @@ export function TogetherPage() {
             src={`${import.meta.env.BASE_URL}images/IMG-TOGETHER-02.png`}
             alt="Shared life"
             focusX={50}
-            focusY={28}
+            focusY={24}
             className="w-full h-[200px] rounded-xl"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent rounded-xl" />
