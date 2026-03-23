@@ -120,8 +120,12 @@ Tokens that don't match any prefix fall into an "Other" category. This map only 
 | File | Action |
 |------|--------|
 | `src/stories/foundation/DesignTokens.stories.tsx` | Replace entirely |
+| `src/stories/foundation/token-grid/parseCssSource.ts` | Create — CSS source parser for variable chains |
+| `src/stories/foundation/token-grid/tokenDiscovery.ts` | Create — dynamic token discovery and categorization |
+| `src/stories/foundation/token-grid/useResolvedTokens.ts` | Create — hook for upfront token resolution |
+| `src/stories/foundation/token-grid/index.ts` | Create — barrel export |
 
-No new files. No changes to `tailwind.css`, decorators, or other stories.
+No changes to `tailwind.css`, decorators, or other stories.
 
 ## Non-Goals
 
