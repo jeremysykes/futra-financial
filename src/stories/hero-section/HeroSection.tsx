@@ -11,8 +11,8 @@ const heroSectionVariants = cva(
         centered: 'text-center',
       },
       size: {
-        default: 'min-h-[85vh] lg:min-h-screen',
-        tall: 'min-h-[95vh] lg:min-h-[110vh]',
+        default: 'lg:min-h-screen',
+        tall: 'lg:min-h-[110vh]',
       },
     },
     defaultVariants: {
@@ -23,7 +23,7 @@ const heroSectionVariants = cva(
 );
 
 const contentVariants = cva(
-  'relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-28 lg:py-32 w-full',
+  'relative z-10 max-w-[1200px] mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32 w-full',
   {
     variants: {
       layout: {
