@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -45,6 +45,7 @@ export interface NavbarProps extends VariantProps<typeof navbarVariants> {
 const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -52,8 +53,20 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [mobileOpen]);
+
   return (
-    <nav className={cn(navbarVariants({ scrolled }), className)}>
+    <nav aria-label="Main navigation" className={cn(navbarVariants({ scrolled }), className)}>
       <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
         <Logo unitName={unitName} />
 
@@ -72,8 +85,10 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
         </div>
 
         <button
+          ref={toggleRef}
           className="md:hidden text-foreground cursor-pointer"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
