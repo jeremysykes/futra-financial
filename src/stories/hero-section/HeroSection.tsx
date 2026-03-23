@@ -95,7 +95,7 @@ const HeroSection = ({
               <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
             </div>
             {children && (
-              <div className={cn("flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0", hideChildrenLandscape && "hidden portrait:block lg:block")}>
+              <div className={cn("flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0 landscape:max-w-none lg:landscape:max-w-lg", hideChildrenLandscape && "hidden portrait:block lg:block")}>
                 {children}
               </div>
             )}
