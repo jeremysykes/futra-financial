@@ -27,11 +27,20 @@
 
 ### Token Architecture
 
-The theme system uses CSS custom properties in `tailwind.css`, switched via `data-business-unit` attributes. Components use semantic Tailwind classes (`bg-background`, `text-foreground`, `bg-surface`, etc.) that resolve to different values per BU.
+The theme system uses a two-layer token structure in `tailwind.css`:
+
+**Primitives** (`:root`) — Named color values that form the raw palette. Components never reference these directly. Each BU has its own primitive set alongside shared values like `--indigo` and `--teal`. Primitives are declared at `:root` outside `@theme` to prevent Tailwind from generating utility classes for them.
+
+**Semantic tokens** (`@theme`) — Intent-based tokens (`--color-background`, `--color-primary`, `--color-accent`) that reference primitives via `var()`. Components use Tailwind utility classes mapped to these tokens. BU theme switching overrides semantic values to point at different primitives.
 
 ```
-Primitive values → Semantic tokens → Component classes
-(raw hex)         (--color-*)        (bg-background, text-accent)
+Primitives (raw palette)     → --indigo: #6c6fe4
+                               --save-grove: #4a7c59
+Semantic tokens (intent)     → --color-primary: var(--indigo)
+                               --color-accent: var(--indigo)
+Theme overrides (BU switch)  → [data-business-unit='save'] {
+                                 --color-accent: var(--save-grove);
+                               }
 ```
 
 **Never use hardcoded hex colors in components.** Always use semantic token classes so themes switch automatically between light/dark and across business units. The only exception is footers (always dark, hardcoded).
