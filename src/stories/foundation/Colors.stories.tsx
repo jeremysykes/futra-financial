@@ -46,28 +46,25 @@ const TOKEN_GROUPS = [
   },
 ];
 
-function rgbToHex(r: number, g: number, b: number): string {
-  return '#' + [r, g, b].map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
-}
+function resolveColor(cssValue: string): { hex: string; rgb: string; oklch: string; r: number; g: number; b: number } {
+  // Use a canvas to resolve any CSS color (including oklch) to RGB
+  const canvas = document.createElement('canvas');
+  canvas.width = 1;
+  canvas.height = 1;
+  const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = cssValue;
+  ctx.fillRect(0, 0, 1, 1);
+  const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
 
-function parseColor(raw: string): { hex: string; rgb: string; oklch: string } {
-  // Create a temporary element to resolve the computed color
-  const el = document.createElement('div');
-  el.style.color = raw;
-  document.body.appendChild(el);
-  const computed = getComputedStyle(el).color;
-  document.body.removeChild(el);
-
-  // Parse rgb(r, g, b) or rgba(r, g, b, a)
-  const match = computed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-  const r = match ? parseInt(match[1]) : 0;
-  const g = match ? parseInt(match[2]) : 0;
-  const b = match ? parseInt(match[3]) : 0;
+  const hex = '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
 
   return {
-    hex: rgbToHex(r, g, b),
+    hex,
     rgb: `rgb(${r}, ${g}, ${b})`,
-    oklch: raw.trim(),
+    oklch: cssValue.trim(),
+    r,
+    g,
+    b,
   };
 }
 
@@ -80,18 +77,20 @@ function ColorSwatch({
   variable: string;
   tailwind: string;
 }) {
-  const [color, setColor] = useState<{ hex: string; rgb: string; oklch: string } | null>(null);
+  const [color, setColor] = useState<{ hex: string; rgb: string; oklch: string; r: number; g: number; b: number } | null>(null);
 
   useEffect(() => {
     const raw = getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
-    if (raw) setColor(parseColor(raw));
+    if (raw) {
+      // Resolve via canvas — pass the CSS variable reference so the browser resolves it
+      const resolved = resolveColor(`var(${variable})`);
+      // Keep the raw oklch string for display
+      setColor({ ...resolved, oklch: raw });
+    }
   }, [variable]);
 
   const isLight = color
-    ? parseInt(color.hex.slice(1, 3), 16) * 0.299 +
-        parseInt(color.hex.slice(3, 5), 16) * 0.587 +
-        parseInt(color.hex.slice(5, 7), 16) * 0.114 >
-      186
+    ? color.r * 0.299 + color.g * 0.587 + color.b * 0.114 > 186
     : false;
 
   return (
@@ -104,7 +103,8 @@ function ColorSwatch({
           className="font-sans font-semibold text-sm relative z-10 px-2 py-0.5 rounded"
           style={{
             color: isLight ? '#000' : '#fff',
-            backgroundColor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.15)',
+            backgroundColor: isLight ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.2)',
+            textShadow: isLight ? 'none' : '0 1px 2px rgba(0,0,0,0.5)',
           }}
         >
           {name}
