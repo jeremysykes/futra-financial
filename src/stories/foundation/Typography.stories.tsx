@@ -47,35 +47,35 @@ const FONT_TABLE = [
 
 function TypographyPage() {
   return (
-    <div className="max-w-[1200px] mx-auto px-6 py-12 bg-background min-h-screen">
-      <h1 className="font-sans font-bold text-3xl text-foreground mb-2">Typography</h1>
-      <p className="font-sans text-base text-muted-foreground mb-12">
-        Two font families: <span className="font-sans font-semibold text-foreground">Inter</span> for
-        interface text and <span className="font-mono font-medium text-foreground">JetBrains Mono</span> for
-        data, numbers, and code. Use <code className="font-mono text-accent">font-sans</code> and{' '}
-        <code className="font-mono text-accent">font-mono</code> Tailwind classes — never inline fontFamily.
+    <div className="max-w-[1200px] mx-auto px-6 py-12 min-h-screen bg-white dark:bg-[#111]">
+      <h1 className="font-sans font-bold text-3xl text-[#111] dark:text-[#eee] mb-2">Typography</h1>
+      <p className="font-sans text-base text-[#666] dark:text-[#999] mb-12">
+        Two font families: <span className="font-sans font-semibold text-[#111] dark:text-[#eee]">Inter</span> for
+        interface text and <span className="font-mono font-medium text-[#111] dark:text-[#eee]">JetBrains Mono</span> for
+        data, numbers, and code. Use <code className="font-mono text-[#6C6FE4]">font-sans</code> and{' '}
+        <code className="font-mono text-[#6C6FE4]">font-mono</code> Tailwind classes — never inline fontFamily.
       </p>
 
       {/* Font reference table */}
       <div className="mb-12 overflow-x-auto">
-        <h2 className="font-sans font-semibold text-lg text-foreground mb-4">Font Reference</h2>
+        <h2 className="font-sans font-semibold text-lg text-[#111] dark:text-[#eee] mb-4">Font Reference</h2>
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-border">
-              <th className="py-3 pr-4 text-left font-sans font-medium text-muted-foreground">Role</th>
-              <th className="py-3 px-4 text-left font-sans font-medium text-muted-foreground">Font</th>
-              <th className="py-3 px-4 text-left font-sans font-medium text-muted-foreground">Weight</th>
-              <th className="py-3 pl-4 text-left font-sans font-medium text-muted-foreground">Tailwind</th>
+            <tr className="border-b border-[#e5e5e5] dark:border-[#333]">
+              <th className="py-3 pr-4 text-left font-sans font-medium text-[#888]">Role</th>
+              <th className="py-3 px-4 text-left font-sans font-medium text-[#888]">Font</th>
+              <th className="py-3 px-4 text-left font-sans font-medium text-[#888]">Weight</th>
+              <th className="py-3 pl-4 text-left font-sans font-medium text-[#888]">Tailwind</th>
             </tr>
           </thead>
           <tbody>
             {FONT_TABLE.map((row) => (
-              <tr key={row.role} className="border-b border-border">
-                <td className="py-3 pr-4 font-sans text-foreground">{row.role}</td>
-                <td className="py-3 px-4 font-sans text-foreground">{row.font}</td>
-                <td className="py-3 px-4 font-sans text-muted-foreground">{row.weight}</td>
+              <tr key={row.role} className="border-b border-[#e5e5e5] dark:border-[#333]">
+                <td className="py-3 pr-4 font-sans text-[#111] dark:text-[#eee]">{row.role}</td>
+                <td className="py-3 px-4 font-sans text-[#111] dark:text-[#eee]">{row.font}</td>
+                <td className="py-3 px-4 font-sans text-[#888]">{row.weight}</td>
                 <td className="py-3 pl-4">
-                  <code className="font-mono text-xs text-accent">{row.tailwind}</code>
+                  <code className="font-mono text-xs text-[#6C6FE4]">{row.tailwind}</code>
                 </td>
               </tr>
             ))}
@@ -86,13 +86,13 @@ function TypographyPage() {
       {/* Type samples */}
       {SAMPLES.map((group) => (
         <div key={group.title} className="mb-12">
-          <h2 className="font-sans font-semibold text-lg text-foreground mb-6">{group.title}</h2>
+          <h2 className="font-sans font-semibold text-lg text-[#111] dark:text-[#eee] mb-6">{group.title}</h2>
           <div className="space-y-8">
             {group.items.map((item) => (
-              <div key={item.label} className="border-b border-border pb-6">
+              <div key={item.label} className="border-b border-[#e5e5e5] dark:border-[#333] pb-6">
                 <div className="flex items-baseline gap-4 mb-2">
-                  <span className="font-mono text-xs text-accent shrink-0 w-24">{item.label}</span>
-                  <code className="font-mono text-[10px] text-muted-foreground truncate hidden sm:block">
+                  <span className="font-mono text-xs text-[#6C6FE4] shrink-0 w-24">{item.label}</span>
+                  <code className="font-mono text-[10px] text-[#888] truncate hidden sm:block">
                     {item.className}
                   </code>
                 </div>

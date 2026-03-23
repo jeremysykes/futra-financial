@@ -107,8 +107,8 @@ function ColorSwatch({
           className="font-sans font-semibold text-sm relative z-10 px-2 py-0.5 rounded"
           style={{
             color: isLight ? '#000' : '#fff',
-            backgroundColor: isLight ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.2)',
-            textShadow: isLight ? 'none' : '0 1px 2px rgba(0,0,0,0.5)',
+            backgroundColor: isLight ? 'rgba(0,0,0,0.25)' : 'rgba(0,0,0,0.4)',
+            textShadow: isLight ? 'none' : '0 1px 3px rgba(0,0,0,0.8)',
           }}
         >
           {name}
