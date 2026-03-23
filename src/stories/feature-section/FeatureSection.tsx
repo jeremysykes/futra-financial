@@ -11,8 +11,8 @@ const featureSectionVariants = cva(
         muted: 'bg-muted',
       },
       padding: {
-        default: 'py-24 md:py-32',
-        compact: 'py-16 md:py-20',
+        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+        compact: 'py-12 sm:py-16 md:py-20',
       },
     },
     defaultVariants: {
@@ -45,13 +45,13 @@ const FeatureSection = ({
       id={sectionId}
       className={cn(featureSectionVariants({ background, padding }), className)}
     >
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {subtitle && (
           <p className="mb-3 uppercase text-center font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
             {subtitle}
           </p>
         )}
-        <h2 className="text-center mb-16 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">
+        <h2 className="text-center mb-10 md:mb-16 font-sans font-bold text-foreground tracking-[-0.01em] text-[clamp(28px,4vw,40px)]">
           {heading}
         </h2>
         {children}
