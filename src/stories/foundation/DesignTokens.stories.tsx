@@ -1,358 +1,189 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useMemo } from 'react';
+import { Fragment, useState } from 'react';
+import { withStoryDisplay } from '../decorators';
+import {
+  BUSINESS_UNITS,
+  BU_DEFAULT_MODES,
+  useResolvedTokens,
+} from './token-grid';
+import type { BusinessUnit, Category, TokenInfo } from './token-grid';
+
+type ThemeMode = 'bu-defaults' | 'all-light' | 'all-dark';
+
+/** BU accent colors for column header styling */
+const BU_ACCENTS: Record<BusinessUnit, string> = {
+  spend: '#50e3c2',
+  save: '#2abfa3',
+  credit: '#8b8fc7',
+  plan: '#f59e0b',
+  together: '#c2724e',
+};
+
+function getActiveMode(bu: BusinessUnit, mode: ThemeMode): 'light' | 'dark' {
+  if (mode === 'all-light') return 'light';
+  if (mode === 'all-dark') return 'dark';
+  return BU_DEFAULT_MODES[bu];
+}
 
 /**
- * All token definitions. The `variable` is the CSS custom property name.
- * Values are resolved at runtime from getComputedStyle so this page
- * always reflects the actual token state — no manual sync needed.
+ * Normalize a resolved CSS color to a hex string for display.
+ * Handles rgb(), oklch(), and pass-through hex values.
  */
-const TOKEN_CATEGORIES = [
-  {
-    title: 'Background Colors',
-    tokens: [
-      { variable: '--color-background', tailwind: 'bg-background', description: 'Page background' },
-      { variable: '--color-surface', tailwind: 'bg-surface', description: 'Cards, elevated containers' },
-      { variable: '--color-secondary', tailwind: 'bg-secondary', description: 'Highlight areas, elevated states' },
-      { variable: '--color-muted', tailwind: 'bg-muted', description: 'Subtle backgrounds, tracks' },
-    ],
-  },
-  {
-    title: 'Foreground Colors',
-    tokens: [
-      { variable: '--color-foreground', tailwind: 'text-foreground', description: 'Primary text' },
-      { variable: '--color-muted-foreground', tailwind: 'text-muted-foreground', description: 'Secondary text, captions' },
-      { variable: '--color-primary-foreground', tailwind: 'text-primary-foreground', description: 'Text on primary backgrounds' },
-      { variable: '--color-secondary-foreground', tailwind: 'text-secondary-foreground', description: 'Text on secondary backgrounds' },
-      { variable: '--color-destructive-foreground', tailwind: 'text-destructive-foreground', description: 'Text on destructive backgrounds' },
-    ],
-  },
-  {
-    title: 'Brand & Interactive',
-    tokens: [
-      { variable: '--color-primary', tailwind: 'bg-primary', description: 'Action color (Indigo)' },
-      { variable: '--color-primary-hover', tailwind: 'hover:bg-primary-hover', description: 'Primary hover state' },
-      { variable: '--color-secondary-hover', tailwind: 'hover:bg-secondary-hover', description: 'Secondary hover state' },
-      { variable: '--color-accent', tailwind: 'text-accent', description: 'BU-specific accent color' },
-      { variable: '--color-ring', tailwind: 'ring-ring', description: 'Focus ring indicator' },
-    ],
-  },
-  {
-    title: 'Status Colors',
-    tokens: [
-      { variable: '--color-positive', tailwind: 'text-positive', description: 'Positive / success' },
-      { variable: '--color-negative', tailwind: 'text-negative', description: 'Negative / error' },
-      { variable: '--color-caution', tailwind: 'text-caution', description: 'Warning / caution' },
-      { variable: '--color-destructive', tailwind: 'bg-destructive', description: 'Destructive actions' },
-    ],
-  },
-  {
-    title: 'Borders',
-    tokens: [
-      { variable: '--color-border', tailwind: 'border-border', description: 'Default border color' },
-    ],
-  },
-  {
-    title: 'Animations',
-    tokens: [
-      { variable: '--animate-interval', tailwind: 'animate-fade-in-up (delay)', description: 'Stagger delay between animated items' },
-      { variable: '--animate-accordion-down', tailwind: 'animate-accordion-down', description: 'Accordion open animation' },
-      { variable: '--animate-accordion-up', tailwind: 'animate-accordion-up', description: 'Accordion close animation' },
-    ],
-  },
-];
+function toHex(value: string): string {
+  if (!value || value === '—') return '—';
+  if (value.startsWith('#')) return value;
 
-/** Primitive token groups, mirroring the :root block in tailwind.css */
-const PRIMITIVE_GROUPS = [
-  {
-    title: 'Shared',
-    tokens: [
-      '--white',
-      '--black',
-      '--indigo',
-      '--indigo-hover',
-      '--indigo-light',
-      '--teal',
-      '--coral',
-      '--amber',
-      '--destructive-red',
-    ],
-  },
-  {
-    title: 'Default Light',
-    tokens: [
-      '--default-fg',
-      '--default-primary',
-      '--default-primary-hover',
-      '--default-secondary',
-      '--default-secondary-hover',
-      '--default-secondary-fg',
-      '--default-muted',
-      '--default-muted-fg',
-      '--default-border',
-    ],
-  },
-  {
-    title: 'Default Dark',
-    tokens: [
-      '--default-dark-bg',
-      '--default-dark-surface',
-      '--default-dark-fg',
-      '--default-dark-primary',
-      '--default-dark-primary-hover',
-      '--default-dark-primary-fg',
-      '--default-dark-secondary',
-      '--default-dark-secondary-hover',
-      '--default-dark-secondary-fg',
-      '--default-dark-muted',
-      '--default-dark-muted-fg',
-      '--default-dark-border',
-      '--default-dark-accent',
-      '--default-dark-positive',
-      '--default-dark-negative',
-      '--default-dark-caution',
-      '--default-dark-destructive',
-    ],
-  },
-  {
-    title: 'Spend',
-    tokens: [
-      '--spend-void',
-      '--spend-ink',
-      '--spend-cloud',
-      '--spend-muted',
-      '--spend-secondary',
-      '--spend-secondary-hover',
-      '--spend-secondary-dark',
-      '--spend-border',
-      '--spend-border-dark',
-    ],
-  },
-  {
-    title: 'Save',
-    tokens: [
-      '--save-linen',
-      '--save-ink',
-      '--save-grove',
-      '--save-grove-light',
-      '--save-mist',
-      '--save-mist-hover',
-      '--save-muted',
-      '--save-muted-dark',
-      '--save-surface-dark',
-      '--save-secondary-dark',
-      '--save-secondary-dark-hover',
-      '--save-border',
-      '--save-border-dark',
-    ],
-  },
-  {
-    title: 'Credit',
-    tokens: [
-      '--credit-iris',
-      '--credit-lavender',
-      '--credit-lavender-hover',
-      '--credit-midnight',
-      '--credit-slate',
-      '--credit-slate-dark',
-      '--credit-periwinkle',
-      '--credit-muted',
-      '--credit-surface-dark',
-      '--credit-secondary-dark',
-      '--credit-secondary-dark-hover',
-      '--credit-border',
-      '--credit-border-dark',
-    ],
-  },
-  {
-    title: 'Plan',
-    tokens: [
-      '--plan-cloud',
-      '--plan-abyss',
-      '--plan-deep',
-      '--plan-surface-dark',
-      '--plan-surface-dark-hover',
-      '--plan-steel',
-      '--plan-muted',
-      '--plan-secondary',
-      '--plan-secondary-hover',
-      '--plan-fg-dark',
-      '--plan-teal',
-      '--plan-caution',
-      '--plan-border',
-      '--plan-border-dark',
-    ],
-  },
-  {
-    title: 'Together',
-    tokens: [
-      '--together-warm',
-      '--together-espresso',
-      '--together-terracotta',
-      '--together-terracotta-light',
-      '--together-blush',
-      '--together-blush-hover',
-      '--together-clay',
-      '--together-surface-dark',
-      '--together-secondary-dark',
-      '--together-secondary-dark-hover',
-      '--together-grove',
-      '--together-grove-light',
-      '--together-border',
-      '--together-border-dark',
-    ],
-  },
-];
-
-function resolveValue(variable: string): string {
-  if (typeof window === 'undefined') return '';
-  return getComputedStyle(document.documentElement).getPropertyValue(variable).trim() || '—';
+  // Use a canvas to convert any CSS color string to hex
+  try {
+    const ctx = document.createElement('canvas').getContext('2d');
+    if (!ctx) return value;
+    ctx.fillStyle = '#000000'; // Reset to known state
+    ctx.fillStyle = value;
+    // If fillStyle is still #000000 and input wasn't black, canvas couldn't parse it
+    // (e.g., oklch not supported in canvas). Return the raw value.
+    if (ctx.fillStyle === '#000000' && !value.includes('0, 0, 0') && value !== 'black') {
+      return value;
+    }
+    return ctx.fillStyle; // Returns hex
+  } catch {
+    return value;
+  }
 }
 
-function isColorValue(value: string): boolean {
-  if (!value || value === '—') return false;
-  // Matches hex, rgb, rgba, hsl, named colors
-  return /^(#|rgb|rgba|hsl|hsla|oklch)/.test(value.trim());
-}
+function TokenGridPage() {
+  const { tokens, resolved, loading } = useResolvedTokens();
+  const [mode, setMode] = useState<ThemeMode>('bu-defaults');
 
-function PrimitiveRow({ variable }: { variable: string }) {
-  const resolved = useMemo(() => resolveValue(variable), [variable]);
-  const showSwatch = isColorValue(resolved);
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <p className="font-mono text-sm text-muted-foreground">Resolving tokens...</p>
+      </div>
+    );
+  }
+
+  // Group tokens by category
+  const grouped = new Map<Category, TokenInfo[]>();
+  for (const token of tokens) {
+    const list = grouped.get(token.category) || [];
+    list.push(token);
+    grouped.set(token.category, list);
+  }
 
   return (
-    <tr className="border-b border-[#e5e5e5] dark:border-[#333]">
-      <td className="py-3 pr-4 align-top">
-        <div className="flex items-center gap-2">
-          {showSwatch ? (
-            <div
-              className="w-5 h-5 rounded border border-[#ccc] dark:border-[#555] shrink-0"
-              style={{ backgroundColor: `var(${variable})` }}
-            />
-          ) : (
-            <div className="w-5 h-5 shrink-0" />
-          )}
-          <code className="font-mono text-xs text-[#6C6FE4]">{variable}</code>
-        </div>
-      </td>
-      <td className="py-3 pl-4 align-top">
-        <code className="font-mono text-[11px] text-[#888] break-all">{resolved}</code>
-      </td>
-    </tr>
-  );
-}
-
-function TokenRow({ variable, tailwind, description }: { variable: string; tailwind: string; description: string }) {
-  const resolved = useMemo(() => resolveValue(variable), [variable]);
-  const isColor = variable.startsWith('--color-');
-
-  return (
-    <tr className="border-b border-[#e5e5e5] dark:border-[#333]">
-      <td className="py-3 pr-4 align-top">
-        <div className="flex items-center gap-2">
-          {isColor && (
-            <div
-              className="w-5 h-5 rounded border border-[#ccc] dark:border-[#555] shrink-0"
-              style={{ backgroundColor: `var(${variable})` }}
-            />
-          )}
-          <code className="font-mono text-xs text-[#6C6FE4]">{variable}</code>
-        </div>
-      </td>
-      <td className="py-3 px-4 align-top">
-        <code className="font-mono text-[11px] text-[#111] dark:text-[#eee]">{tailwind}</code>
-      </td>
-      <td className="py-3 px-4 align-top">
-        <code className="font-mono text-[11px] text-[#888] break-all">{resolved}</code>
-      </td>
-      <td className="py-3 pl-4 align-top">
-        <span className="font-sans text-xs text-[#666] dark:text-[#999]">{description}</span>
-      </td>
-    </tr>
-  );
-}
-
-function DesignTokensPage() {
-  return (
-    <div className="max-w-[1400px] mx-auto px-6 py-12 min-h-screen bg-white dark:bg-[#111]">
-      <h1 className="font-sans font-bold text-3xl text-[#111] dark:text-[#eee] mb-2">Design Tokens</h1>
-      <p className="font-sans text-base text-[#666] dark:text-[#999] mb-4">
-        All tokens are CSS custom properties defined in <code className="font-mono text-[#6C6FE4]">tailwind.css</code>.
-        Values shown are resolved live from the current theme — switch BU and light/dark mode in the toolbar to see how tokens change.
+    <div className="max-w-[1400px] mx-auto">
+      {/* Intro */}
+      <h1 className="font-sans font-bold text-2xl text-foreground mb-2">Design Tokens</h1>
+      <p className="font-sans text-sm text-muted-foreground mb-1">
+        Components use semantic tokens (<code className="font-mono text-xs text-[#6c6fe4]">bg-surface</code>,{' '}
+        <code className="font-mono text-xs text-[#6c6fe4]">text-accent</code>) that resolve through
+        primitives to final hex values. Each BU remaps the same semantic tokens to its own palette.
       </p>
-      <p className="font-sans text-sm text-[#888] mb-12">
-        Tokens are the single source of truth. Components reference them via Tailwind utility classes. Never hardcode hex values in components.
+      <p className="font-mono text-xs text-muted-foreground mb-8">
+        var(--teal) → var(--color-accent) → bg-accent
       </p>
 
-      {/* ── Primitive Tokens ── */}
-      <h2 className="font-sans font-bold text-xl text-[#111] dark:text-[#eee] mb-1">Primitive Tokens</h2>
-      <p className="font-sans text-sm text-[#666] dark:text-[#999] mb-8">
-        Raw palette values defined at <code className="font-mono text-[#6C6FE4]">:root</code>. Components never reference these directly — they exist to give semantic tokens named values to point to.
-      </p>
+      {/* Mode Toggle */}
+      <div className="flex items-center gap-2 mb-6">
+        <span className="font-sans text-xs text-muted-foreground mr-1">Mode:</span>
+        {(
+          [
+            { value: 'bu-defaults', label: 'BU Defaults' },
+            { value: 'all-light', label: 'All Light' },
+            { value: 'all-dark', label: 'All Dark' },
+          ] as const
+        ).map((opt) => (
+          <button
+            key={opt.value}
+            onClick={() => setMode(opt.value)}
+            className={`px-3 py-1.5 rounded-md font-sans text-xs font-medium transition-colors ${
+              mode === opt.value
+                ? 'bg-[#6c6fe4] text-white'
+                : 'bg-secondary text-muted-foreground hover:bg-secondary-hover'
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
 
-      {PRIMITIVE_GROUPS.map((group) => (
-        <div key={group.title} className="mb-8">
-          <h3 className="font-sans font-semibold text-sm uppercase tracking-widest text-[#888] mb-3">{group.title}</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[#e5e5e5] dark:border-[#333]">
-                  <th className="py-2 pr-4 text-left font-sans font-medium text-[#888] w-[320px]">Token</th>
-                  <th className="py-2 pl-4 text-left font-sans font-medium text-[#888]">Resolved Value</th>
+      {/* Matrix Table */}
+      <div className="overflow-x-auto rounded-lg border border-border">
+        <table className="w-full font-mono text-xs border-collapse">
+          <thead>
+            <tr className="border-b border-border">
+              <th className="text-left py-3 px-4 font-sans font-medium text-muted-foreground w-[28%]">
+                Token
+              </th>
+              {BUSINESS_UNITS.map((bu) => (
+                <th key={bu} className="text-center py-3 px-2 w-[14.4%]">
+                  <span className="font-sans font-semibold text-xs capitalize" style={{ color: BU_ACCENTS[bu] }}>
+                    {bu}
+                  </span>
+                  <div className="font-sans font-normal text-[10px] text-muted-foreground mt-0.5">
+                    {getActiveMode(bu, mode)}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {Array.from(grouped.entries()).map(([category, categoryTokens]) => (
+              <Fragment key={category}>
+                {/* Category header row */}
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="pt-4 pb-2 px-4 font-sans font-bold text-[10px] uppercase tracking-[0.1em] text-[#6c6fe4] border-t-2 border-border"
+                  >
+                    {category}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {group.tokens.map((variable) => (
-                  <PrimitiveRow key={variable} variable={variable} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ))}
 
-      {/* ── Separator ── */}
-      <div className="my-12 border-t-2 border-[#e5e5e5] dark:border-[#333]" />
-      <h2 className="font-sans font-bold text-xl text-[#111] dark:text-[#eee] mb-1">Semantic Tokens</h2>
-      <p className="font-sans text-sm text-[#666] dark:text-[#999] mb-8">
-        Intent-based tokens that components reference via Tailwind utility classes. All values resolve through primitive tokens — never raw hex colors. Switch BU or light/dark to see how these change.
-      </p>
-
-      {TOKEN_CATEGORIES.map((category) => (
-        <div key={category.title} className="mb-10">
-          <h3 className="font-sans font-semibold text-lg text-[#111] dark:text-[#eee] mb-4">{category.title}</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[#e5e5e5] dark:border-[#333]">
-                  <th className="py-2 pr-4 text-left font-sans font-medium text-[#888] w-[280px]">Token</th>
-                  <th className="py-2 px-4 text-left font-sans font-medium text-[#888] w-[200px]">Tailwind</th>
-                  <th className="py-2 px-4 text-left font-sans font-medium text-[#888] w-[220px]">Resolved Value</th>
-                  <th className="py-2 pl-4 text-left font-sans font-medium text-[#888]">Usage</th>
-                </tr>
-              </thead>
-              <tbody>
-                {category.tokens.map((token) => (
-                  <TokenRow key={token.variable} {...token} />
+                {/* Token rows */}
+                {categoryTokens.map((token) => (
+                  <tr
+                    key={token.cssVar}
+                    className="border-b border-border/50 hover:bg-secondary/50 cursor-pointer transition-colors"
+                  >
+                    <td className="py-2.5 px-4 text-muted-foreground">
+                      {token.cssVar}
+                    </td>
+                    {BUSINESS_UNITS.map((bu) => {
+                      const activeMode = getActiveMode(bu, mode);
+                      const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+                      const hex = toHex(val);
+                      return (
+                        <td key={bu} className="text-center py-2.5 px-2">
+                          <div
+                            className="w-6 h-6 rounded-md mx-auto border border-border/50"
+                            style={{ backgroundColor: val }}
+                            title={hex}
+                          />
+                        </td>
+                      );
+                    })}
+                  </tr>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ))}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
 
 const meta = {
   title: 'Foundation/Design Tokens',
-  component: DesignTokensPage,
+  component: TokenGridPage,
   parameters: {
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof DesignTokensPage>;
+  decorators: [withStoryDisplay()],
+} satisfies Meta<typeof TokenGridPage>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  globals: { businessUnit: 'spend' },
-};
+export const Default: Story = {};
