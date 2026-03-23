@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const statsRowVariants = cva(
-  'py-20 md:py-28',
+  'py-16 sm:py-20 md:py-28 lg:py-32',
   {
     variants: {
       columns: {
@@ -23,11 +23,11 @@ const statsRowVariants = cva(
 );
 
 const statsGridVariants = cva(
-  'grid gap-8 md:gap-12',
+  'grid gap-6 sm:gap-8 md:gap-12',
   {
     variants: {
       columns: {
-        3: 'grid-cols-1 sm:grid-cols-3',
+        3: 'grid-cols-1 sm:grid-cols-3 text-center sm:text-left',
         4: 'grid-cols-2 lg:grid-cols-4',
       },
     },
@@ -46,7 +46,7 @@ export interface StatsRowProps
 const StatsRow = ({ columns, background, children, className }: StatsRowProps) => {
   return (
     <section className={cn(statsRowVariants({ columns, background }), className)}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         <div className={statsGridVariants({ columns })}>
           {children}
         </div>
