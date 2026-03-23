@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const testimonialSectionVariants = cva(
-  'py-24 md:py-32 bg-background',
+  'py-16 sm:py-20 md:py-28 lg:py-32 bg-background',
   {
     variants: {
       columns: {
@@ -18,12 +18,12 @@ const testimonialSectionVariants = cva(
 );
 
 const testimonialGridVariants = cva(
-  'grid grid-cols-1 gap-6',
+  'grid grid-cols-1 gap-6 sm:gap-8',
   {
     variants: {
       columns: {
         2: 'md:grid-cols-2',
-        3: 'md:grid-cols-3',
+        3: 'sm:grid-cols-2 md:grid-cols-3',
       },
     },
     defaultVariants: {
@@ -49,9 +49,9 @@ const TestimonialSection = ({
 }: TestimonialSectionProps) => {
   return (
     <section className={cn(testimonialSectionVariants({ columns }), className)}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {(heading || subtitle) && (
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             {subtitle && (
               <p className="mb-3 uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
                 {subtitle}
