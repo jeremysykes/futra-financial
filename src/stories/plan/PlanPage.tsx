@@ -23,7 +23,7 @@ export function PlanPage() {
     <div className="min-h-screen bg-background">
       <Navbar unitName="plan" links={PlanLinks} ctaText="Start Planning" />
 
-      <main id="main-content">
+      <>
       <HeroSection
         eyebrow="Your money, mapped."
         heading={
@@ -120,7 +120,7 @@ export function PlanPage() {
         <Button>Start Planning Free</Button>
       </CTASection>
 
-      </main>
+      </>
 
       <Footer className="bg-[#0C1017]">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">

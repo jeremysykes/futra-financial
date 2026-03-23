@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { useScrollAnimations } from '../hooks/useScrollAnimations';
 import { SpendPage } from '../stories/spend/SpendPage';
@@ -38,10 +38,19 @@ export function AppShell() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     getStoredTheme(unit),
   );
+  const prevUnit = useRef(unit);
+  const [transitionKey, setTransitionKey] = useState(0);
 
   // Sync <html> attributes whenever unit or theme changes
   useEffect(() => {
     setTheme(getStoredTheme(unit));
+  }, [unit]);
+
+  useEffect(() => {
+    if (prevUnit.current !== unit) {
+      setTransitionKey((k) => k + 1);
+      prevUnit.current = unit;
+    }
   }, [unit]);
 
   useEffect(() => {
@@ -75,7 +84,12 @@ export function AppShell() {
         Skip to main content
       </a>
       <DemoSwitcher unit={unit} theme={theme} onToggleTheme={toggleTheme} />
-      <div style={{ '--nav-top': '36px' } as React.CSSProperties}>
+      <main
+        id="main-content"
+        className="page-transition"
+        key={transitionKey}
+        style={{ '--nav-top': '36px' } as React.CSSProperties}
+      >
         <Routes>
           <Route path="/spend" element={<SpendPage />} />
           <Route path="/save" element={<SavePage />} />
@@ -84,7 +98,7 @@ export function AppShell() {
           <Route path="/together" element={<TogetherPage />} />
           <Route path="/" element={<Navigate to="/spend" replace />} />
         </Routes>
-      </div>
+      </main>
     </>
   );
 }

@@ -25,7 +25,7 @@ export function TogetherPage() {
     <div className="min-h-screen bg-background">
       <Navbar unitName="together" links={TogetherLinks} ctaText="Get Started" />
 
-      <main id="main-content">
+      <>
       <HeroSection
         heading={
           <>
@@ -209,7 +209,7 @@ export function TogetherPage() {
         <Button>Get Started</Button>
       </CTASection>
 
-      </main>
+      </>
 
       <Footer className="bg-[#1C1A18]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
