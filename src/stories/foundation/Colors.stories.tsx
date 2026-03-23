@@ -106,8 +106,8 @@ function ColorSwatch({
         <span
           className="font-sans font-semibold text-sm relative z-10 px-2 py-1 rounded"
           style={{
-            color: isLight ? '#222' : '#fff',
-            backgroundColor: isLight ? 'rgba(0,0,0,0.12)' : 'rgba(0,0,0,0.5)',
+            color: isLight ? '#fff' : '#fff',
+            backgroundColor: isLight ? 'rgba(0,0,0,0.55)' : 'rgba(0,0,0,0.5)',
           }}
         >
           {name}
