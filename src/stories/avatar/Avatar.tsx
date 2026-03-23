@@ -1,3 +1,4 @@
+import { Avatar as RadixAvatar } from 'radix-ui';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 import { Badge } from '../badge/Badge';
@@ -47,13 +48,21 @@ const Avatar = ({
       className={cn(avatarVariants({ ring }), className)}
       {...props}
     >
-      {src ? (
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
-      ) : (
-        <span className="text-accent">
+      <RadixAvatar.Root className="w-full h-full flex items-center justify-center">
+        {src && (
+          <RadixAvatar.Image
+            src={src}
+            alt={alt}
+            className="w-full h-full object-cover"
+          />
+        )}
+        <RadixAvatar.Fallback
+          delayMs={src ? 300 : 0}
+          className="text-accent"
+        >
           {initials ?? alt.charAt(0).toUpperCase()}
-        </span>
-      )}
+        </RadixAvatar.Fallback>
+      </RadixAvatar.Root>
     </Badge>
   );
 };
