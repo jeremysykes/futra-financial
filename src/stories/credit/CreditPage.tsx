@@ -34,8 +34,8 @@ export function CreditPage() {
         }
         subheading="Free credit monitoring that gives you clarity — not panic. Understand your score, track your progress, and take control of your financial future."
         backgroundImage={`${import.meta.env.BASE_URL}images/IMG-CREDIT-01.png`}
-        backgroundOpacity="opacity-[0.07]"
-        overlayOpacity="bg-background/75"
+        backgroundOpacity="opacity-[0.18]"
+        overlayOpacity="bg-background/50"
         actions={<Button>See Your Score Free</Button>}
       >
         <ScoreDisplay score={724} label="Good" percentage={0.75} size={260} />

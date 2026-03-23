@@ -37,6 +37,8 @@ export function SavePage() {
         }
         subheading="Automate your savings with round-ups and scheduled transfers. Watch your goals grow with beautiful, visual progress tracking."
         backgroundImage={`${import.meta.env.BASE_URL}images/IMG-SAVE-01.png`}
+        backgroundOpacity="opacity-[0.18]"
+        overlayOpacity="bg-background/50"
         actions={<Button>Create Your First Goal</Button>}
       >
         <div className="relative" style={{ minHeight: 380 }}>
