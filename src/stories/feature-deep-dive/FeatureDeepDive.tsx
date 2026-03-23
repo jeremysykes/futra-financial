@@ -67,7 +67,7 @@ function FeatureBlock({
       </div>
       <div
         style={{ direction: 'ltr' }}
-        className="rounded-xl p-4 md:p-6 min-w-0 max-w-[320px] mx-auto md:max-w-none"
+        className="rounded-xl p-4 md:p-6 min-w-0"
       >
         <div className="rounded-lg p-4 bg-surface border border-border min-w-0">
           {chart}
