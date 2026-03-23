@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const statsRowVariants = cva(
-  'py-16 sm:py-20 md:py-28 lg:py-32',
+  'py-12 sm:py-16 md:py-20',
   {
     variants: {
       columns: {
