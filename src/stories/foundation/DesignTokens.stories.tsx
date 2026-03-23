@@ -5,8 +5,9 @@ import {
   BUSINESS_UNITS,
   BU_DEFAULT_MODES,
   useResolvedTokens,
+  parseCssSource,
 } from './token-grid';
-import type { BusinessUnit, Category, TokenInfo } from './token-grid';
+import type { BusinessUnit, Category, TokenInfo, CssSourceData } from './token-grid';
 
 type ThemeMode = 'bu-defaults' | 'all-light' | 'all-dark';
 
@@ -50,9 +51,47 @@ function toHex(value: string): string {
   }
 }
 
+/**
+ * Get the CSS variable chain for a token in a specific BU/mode.
+ * Falls back through: BU dark/light overrides → global dark override → default chain.
+ */
+function getChain(
+  cssVar: string,
+  bu: BusinessUnit,
+  mode: 'light' | 'dark',
+  source: CssSourceData,
+): string {
+  if (mode === 'dark') {
+    const buDark = source.buDarkChains[bu]?.[cssVar];
+    if (buDark) return buDark;
+    const buLight = source.buChains[bu]?.[cssVar];
+    if (buLight) return buLight;
+    const globalDark = source.darkChains[cssVar];
+    if (globalDark) return globalDark;
+  } else {
+    const buLight = source.buChains[bu]?.[cssVar];
+    if (buLight) return buLight;
+  }
+  return source.defaultChains[cssVar] || 'direct value';
+}
+
 function TokenGridPage() {
   const { tokens, resolved, loading } = useResolvedTokens();
   const [mode, setMode] = useState<ThemeMode>('bu-defaults');
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [source] = useState<CssSourceData>(() => parseCssSource());
+
+  function toggleExpanded(cssVar: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(cssVar)) {
+        next.delete(cssVar);
+      } else {
+        next.add(cssVar);
+      }
+      return next;
+    });
+  }
 
   if (loading) {
     return (
@@ -142,28 +181,92 @@ function TokenGridPage() {
 
                 {/* Token rows */}
                 {categoryTokens.map((token) => (
-                  <tr
-                    key={token.cssVar}
-                    className="border-b border-border/50 hover:bg-secondary/50 cursor-pointer transition-colors"
-                  >
-                    <td className="py-2.5 px-4 text-muted-foreground">
-                      {token.cssVar}
-                    </td>
-                    {BUSINESS_UNITS.map((bu) => {
-                      const activeMode = getActiveMode(bu, mode);
-                      const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
-                      const hex = toHex(val);
-                      return (
-                        <td key={bu} className="text-center py-2.5 px-2">
-                          <div
-                            className="w-6 h-6 rounded-md mx-auto border border-border/50"
-                            style={{ backgroundColor: val }}
-                            title={hex}
-                          />
+                  <Fragment key={token.cssVar}>
+                    <tr
+                      onClick={() => toggleExpanded(token.cssVar)}
+                      className={`border-b border-border/50 cursor-pointer transition-colors ${
+                        expanded.has(token.cssVar)
+                          ? 'bg-[#6c6fe4]/5'
+                          : 'hover:bg-secondary/50'
+                      }`}
+                    >
+                      <td className="py-2.5 px-4 text-muted-foreground">
+                        <span className="mr-1.5 text-[10px]">
+                          {expanded.has(token.cssVar) ? '▾' : '▸'}
+                        </span>
+                        {token.cssVar}
+                      </td>
+                      {BUSINESS_UNITS.map((bu) => {
+                        const activeMode = getActiveMode(bu, mode);
+                        const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+                        const hex = toHex(val);
+                        return (
+                          <td key={bu} className="text-center py-2.5 px-2">
+                            <div
+                              className="w-6 h-6 rounded-md mx-auto border border-border/50"
+                              style={{ backgroundColor: val }}
+                              title={hex}
+                            />
+                          </td>
+                        );
+                      })}
+                    </tr>
+                    {expanded.has(token.cssVar) && (
+                      <tr className="bg-[#6c6fe4]/5 border-b border-border/50">
+                        <td colSpan={6} className="px-6 py-4">
+                          {/* Large swatches */}
+                          <div className="flex gap-4 mb-3">
+                            {BUSINESS_UNITS.map((bu) => {
+                              const activeMode = getActiveMode(bu, mode);
+                              const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+                              const hex = toHex(val);
+                              return (
+                                <div key={bu} className="text-center">
+                                  <div
+                                    className="w-11 h-11 rounded-lg mx-auto border border-border/50 mb-1"
+                                    style={{ backgroundColor: val }}
+                                  />
+                                  <div className="font-sans text-[10px] font-semibold capitalize" style={{ color: BU_ACCENTS[bu] }}>
+                                    {bu}
+                                  </div>
+                                  <div className="font-mono text-[10px] text-muted-foreground">
+                                    {hex}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          {/* Tailwind class */}
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="font-sans text-[10px] text-muted-foreground">Tailwind:</span>
+                            <code className="font-mono text-[10px] bg-secondary px-2 py-0.5 rounded text-foreground">
+                              {token.tailwind}
+                            </code>
+                          </div>
+
+                          {/* Variable chains */}
+                          <div className="flex items-start gap-2">
+                            <span className="font-sans text-[10px] text-muted-foreground shrink-0">Chain:</span>
+                            <div className="font-mono text-[10px] text-muted-foreground">
+                              {BUSINESS_UNITS.map((bu, i) => {
+                                const activeMode = getActiveMode(bu, mode);
+                                const chain = getChain(token.cssVar, bu, activeMode, source);
+                                return (
+                                  <span key={bu}>
+                                    {i > 0 && <span className="mx-1.5">·</span>}
+                                    <span className="capitalize" style={{ color: BU_ACCENTS[bu] }}>{bu}</span>
+                                    {': '}
+                                    {chain}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          </div>
                         </td>
-                      );
-                    })}
-                  </tr>
+                      </tr>
+                    )}
+                  </Fragment>
                 ))}
               </Fragment>
             ))}
