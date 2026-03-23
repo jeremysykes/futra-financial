@@ -3,7 +3,7 @@ import { ScoreDisplay } from './ScoreDisplay';
 import { withStoryDisplay } from '../decorators';
 
 const meta = {
-  title: 'Organisms/ScoreDisplay',
+  title: 'Data Visualization/ScoreDisplay',
   component: ScoreDisplay,
   parameters: {
     layout: 'centered',

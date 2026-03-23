@@ -21,7 +21,7 @@ export const Default: Story = {
     alt: 'Contactless payment',
     focusX: 55,
     focusY: 38,
-    className: 'w-full max-h-[200px] rounded-xl',
+    className: 'w-[700px] h-[200px] rounded-xl',
   },
   globals: { businessUnit: 'spend' },
 };
@@ -32,7 +32,7 @@ export const FocusOnChip: Story = {
     alt: 'Contactless payment',
     focusX: 32,
     focusY: 35,
-    className: 'w-full max-h-[200px] rounded-xl',
+    className: 'w-[700px] h-[200px] rounded-xl',
   },
   globals: { businessUnit: 'spend' },
 };
@@ -43,18 +43,18 @@ export const FocusOnDebit: Story = {
     alt: 'Contactless payment',
     focusX: 75,
     focusY: 40,
-    className: 'w-full max-h-[200px] rounded-xl',
+    className: 'w-[700px] h-[200px] rounded-xl',
   },
   globals: { businessUnit: 'spend' },
 };
 
-export const TallContainer: Story = {
+export const WideContainer: Story = {
   args: {
     src: `${import.meta.env.BASE_URL}images/IMG-SPEND-02.png`,
     alt: 'Contactless payment',
     focusX: 55,
     focusY: 38,
-    className: 'w-full max-h-[400px] rounded-xl',
+    className: 'w-[700px] h-[140px] rounded-xl',
   },
   globals: { businessUnit: 'spend' },
 };

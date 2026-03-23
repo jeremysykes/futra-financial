@@ -3,7 +3,7 @@ import { DashboardPreview } from './DashboardPreview';
 import { withStoryDisplay } from '../decorators';
 
 const meta = {
-  title: 'Organisms/DashboardPreview',
+  title: 'Data Visualization/DashboardPreview',
   component: DashboardPreview,
   parameters: {
     layout: 'centered',

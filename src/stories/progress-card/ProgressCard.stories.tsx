@@ -3,7 +3,7 @@ import { ProgressCard } from './ProgressCard';
 import { withStoryDisplay } from '../decorators';
 
 const meta = {
-  title: 'Molecules/ProgressCard',
+  title: 'Data Visualization/ProgressCard',
   component: ProgressCard,
   parameters: {
     layout: 'centered',

@@ -3,7 +3,7 @@ import { SplitDisplay } from './SplitDisplay';
 import { withStoryDisplay } from '../decorators';
 
 const meta = {
-  title: 'Molecules/SplitDisplay',
+  title: 'Data Visualization/SplitDisplay',
   component: SplitDisplay,
   parameters: {
     layout: 'centered',
