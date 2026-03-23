@@ -54,6 +54,26 @@ function deriveTailwind(name: string, prefix: string): string {
 }
 
 /**
+ * Recursively collect --color-* properties from CSS rules,
+ * descending into @layer, @media, @supports, and other grouping rules.
+ */
+function collectColorProps(rules: CSSRuleList, out: Set<string>): void {
+  for (const rule of Array.from(rules)) {
+    if (rule instanceof CSSStyleRule) {
+      const style = rule.style;
+      for (let i = 0; i < style.length; i++) {
+        const prop = style[i];
+        if (prop.startsWith('--color-')) {
+          out.add(prop);
+        }
+      }
+    } else if ('cssRules' in rule && (rule as CSSGroupingRule).cssRules) {
+      collectColorProps((rule as CSSGroupingRule).cssRules, out);
+    }
+  }
+}
+
+/**
  * Discover all --color-* semantic tokens from the live document stylesheets.
  * Returns tokens grouped by category in display order.
  */
@@ -62,17 +82,7 @@ export function discoverTokens(): TokenInfo[] {
 
   for (const sheet of Array.from(document.styleSheets)) {
     try {
-      for (const rule of Array.from(sheet.cssRules)) {
-        if (rule instanceof CSSStyleRule) {
-          const style = rule.style;
-          for (let i = 0; i < style.length; i++) {
-            const prop = style[i];
-            if (prop.startsWith('--color-')) {
-              tokenNames.add(prop);
-            }
-          }
-        }
-      }
+      collectColorProps(sheet.cssRules, tokenNames);
     } catch {
       // Skip cross-origin stylesheets
     }
