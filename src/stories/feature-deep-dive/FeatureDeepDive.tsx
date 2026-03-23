@@ -22,7 +22,7 @@ import {
 } from '../../mocks/plan.mock';
 
 const featureBlockVariants = cva(
-  'grid md:grid-cols-2 gap-10 md:gap-16 items-center',
+  'grid md:grid-cols-2 gap-8 md:gap-16 items-center',
   {
     variants: {
       direction: {
@@ -67,7 +67,7 @@ function FeatureBlock({
       </div>
       <div
         style={{ direction: 'ltr' }}
-        className="rounded-xl p-4 md:p-6 min-w-0"
+        className="rounded-xl p-4 md:p-6 min-w-0 max-w-[320px] mx-auto md:max-w-none"
       >
         <div className="rounded-lg p-4 bg-surface border border-border min-w-0">
           {chart}
@@ -84,8 +84,8 @@ const featureDeepDiveVariants = cva(
   {
     variants: {
       padding: {
-        default: 'py-20 md:py-32',
-        compact: 'py-16 md:py-24',
+        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+        compact: 'py-12 sm:py-16 md:py-24',
       },
     },
     defaultVariants: {
@@ -117,7 +117,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           className="w-full h-full object-cover opacity-[0.06]"
         />
       </div>
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 flex flex-col gap-24 md:gap-32">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-6 flex flex-col gap-16 sm:gap-24 md:gap-32">
         <FeatureBlock
           overline="THE BIG PICTURE"
           title="Net worth, tracked over time."
