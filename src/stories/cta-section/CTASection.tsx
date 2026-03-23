@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const ctaSectionVariants = cva(
-  'relative overflow-hidden py-24 md:py-32',
+  'relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-32',
   {
     variants: {
       background: {
@@ -60,11 +60,11 @@ const CTASection = ({
         </div>
       )}
       <div className={cn(
-        'relative z-10 mx-auto px-6',
+        'relative z-10 mx-auto px-5 sm:px-6',
         alignment === 'center' ? 'max-w-[600px]' : 'max-w-[1200px]',
       )}>
         <h2 className={cn(
-          'mb-4 font-sans font-bold tracking-[-0.01em] text-[clamp(28px,4vw,40px)]',
+          'mb-6 md:mb-8 font-sans font-bold tracking-[-0.01em] text-[clamp(28px,4vw,40px)]',
           isSolid ? 'text-primary-foreground' : 'text-foreground',
         )}>
           {heading}
@@ -77,7 +77,7 @@ const CTASection = ({
             {description}
           </p>
         )}
-        {children}
+        <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{children}</div>
       </div>
     </section>
   );
