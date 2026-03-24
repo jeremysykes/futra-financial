@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 // @ts-expect-error css side-effect import
 import '../src/tailwind.css';
+// @ts-expect-error css side-effect import
 import '../src/index.css';
 import { withThemeContext } from '../src/stories/decorators';
 
