@@ -10,6 +10,7 @@ This project uses [Vitest](https://vitest.dev/) with two distinct test projects 
 | `npm run test:interactions` | Interaction tests (browser) |
 | `npm run test:interactions:watch` | Interaction tests in watch mode |
 | `npm run test:documentation` | Documentation tests (Node.js) |
+| `npm run chromatic` | Visual regression tests (Chromatic) |
 
 ## Interaction Tests
 
@@ -86,3 +87,61 @@ Documentation tests validate that every story's metadata meets the project's Sto
 ### Why they exist
 
 These tests enforce the conventions documented in `CLAUDE.md` — ensuring every component in Storybook has complete, categorized controls for the docs panel. Without them, it's easy to add a new prop and forget to document it.
+
+## Visual Regression Tests (Chromatic)
+
+**Command:** `npm run chromatic`
+
+**Service:** [Chromatic](https://www.chromatic.com/) — cloud-based visual regression testing for Storybook.
+
+**Project:** [futra-financial on Chromatic](https://www.chromatic.com/builds?appId=69c33ccc2ed05dca54e3f9ff)
+
+### What it does
+
+Chromatic captures a snapshot of every story and compares it against a baseline. When a visual change is detected, it flags the diff for review in the Chromatic web UI. This catches unintended regressions to colors, spacing, layout, and typography across all components.
+
+### Current configuration (Phase 1 — Lean)
+
+- **Theme coverage:** light + dark (Spend BU only)
+- **Snapshots per build:** ~72 (36 stories x 2 themes)
+- **Free tier budget:** ~5,000 snapshots/month (~69 builds)
+
+### CI integration
+
+Chromatic runs automatically via GitHub Actions (`.github/workflows/chromatic.yml`):
+
+- **On pull requests:** compares the PR branch against the `main` baseline, posts a status check with a link to visual diffs
+- **On push to main:** updates the baseline snapshots for future comparisons
+
+### Running locally
+
+To publish a one-off build for debugging:
+
+```bash
+npm run chromatic -- --project-token=<token>
+```
+
+The project token is stored as a GitHub Actions secret (`CHROMATIC_PROJECT_TOKEN`). Do not commit it to source control.
+
+### Reviewing visual changes
+
+1. Open the Chromatic build link from the PR status check
+2. Review each flagged change — accept intentional changes, deny regressions
+3. Accepted changes become the new baseline
+
+### Future expansion plans
+
+The current setup snapshots stories in Spend dark + light only. The theme matrix can be expanded using Chromatic's [modes](https://www.chromatic.com/docs/modes/) feature to capture all BU/theme combinations:
+
+| Phase | Coverage | Snapshots/build | Notes |
+|---|---|---|---|
+| **Phase 1 (current)** | Spend light + dark | ~72 | Lean start within free tier |
+| **Phase 2** | All 5 BUs x 2 themes for shared components only | ~200 | BU page stories only get their own BU |
+| **Phase 3** | Full matrix — all 5 BUs x 2 themes x all stories | ~360 | Requires paid plan or snapshot budget review |
+
+To enable multi-mode snapshots, add a `modes` configuration to `.storybook/modes.ts` that overrides the `theme` and `businessUnit` globals per snapshot. See the [Chromatic modes docs](https://www.chromatic.com/docs/modes/) for setup details.
+
+### Packages
+
+- `chromatic` — CLI for publishing Storybook builds to Chromatic
+- `@chromatic-com/storybook` — Storybook addon that integrates Chromatic into the Storybook UI
