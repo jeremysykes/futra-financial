@@ -141,7 +141,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                     tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`}
                     width={50}
                   />
-                  <Area type="monotone" dataKey="value" stroke={c.accent} strokeWidth={2} fill="url(#nwg2)" />
+                  <Area type="monotone" dataKey="value" stroke={c.accent} strokeWidth={2} fill="url(#nwg2)" isAnimationActive={false} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -173,8 +173,8 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                     tickLine={false}
                     width={70}
                   />
-                  <Bar dataKey="budget" fill={c.accent} radius={[0, 4, 4, 0]} />
-                  <Bar dataKey="actual" fill={c.positive} radius={[0, 4, 4, 0]} />
+                  <Bar dataKey="budget" fill={c.accent} radius={[0, 4, 4, 0]} isAnimationActive={false} />
+                  <Bar dataKey="actual" fill={c.positive} radius={[0, 4, 4, 0]} isAnimationActive={false} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -198,9 +198,9 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                     tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`}
                     width={50}
                   />
-                  <Line type="monotone" dataKey="optimistic" stroke={c.positive} strokeWidth={1.5} strokeDasharray="6 3" dot={false} />
-                  <Line type="monotone" dataKey="projected" stroke={c.accent} strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="conservative" stroke={c.mutedFg} strokeWidth={1.5} strokeDasharray="4 4" dot={false} />
+                  <Line type="monotone" dataKey="optimistic" stroke={c.positive} strokeWidth={1.5} strokeDasharray="6 3" dot={false} isAnimationActive={false} />
+                  <Line type="monotone" dataKey="projected" stroke={c.accent} strokeWidth={2} dot={false} isAnimationActive={false} />
+                  <Line type="monotone" dataKey="conservative" stroke={c.mutedFg} strokeWidth={1.5} strokeDasharray="4 4" dot={false} isAnimationActive={false} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -238,7 +238,7 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                       tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`}
                       width={50}
                     />
-                    <Area type="monotone" dataKey="balance" stroke={c.positive} strokeWidth={2} fill="url(#retG)" />
+                    <Area type="monotone" dataKey="balance" stroke={c.positive} strokeWidth={2} fill="url(#retG)" isAnimationActive={false} />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

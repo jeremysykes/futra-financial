@@ -184,6 +184,7 @@ const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
                   stroke="var(--color-accent)"
                   strokeWidth={2}
                   fill="url(#nwGrad)"
+                  isAnimationActive={false}
                 />
               </AreaChart>
             </ResponsiveContainer>
