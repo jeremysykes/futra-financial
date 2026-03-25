@@ -16,6 +16,7 @@
     "test:interactions": "vitest --project=storybook",
     "test:interactions:watch": "vitest --project=storybook --watch",
     "test:documentation": "vitest --project=unit",
+    "chromatic": "npx chromatic --project-token=chpt_a76c04981bc86e6",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -47,12 +48,14 @@
     "@vitejs/plugin-react": "^5.0.0",
     "@vitest/browser-playwright": "^4.1.0",
     "@vitest/coverage-v8": "^4.1.0",
+    "chromatic": "^16.0.0",
     "eslint": "^9.39.4",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-storybook": "^10.3.0",
     "globals": "^17.4.0",
+    "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
