@@ -75,11 +75,11 @@ Each BU frame renders in that BU's **default mode**.
 
 | BU | Default Mode | Background | Foreground | Surface | Accent | Primary | Border | Muted | Muted Foreground |
 |----|-------------|-----------|------------|---------|--------|---------|--------|-------|-----------------|
-| Spend | Dark | #0F0F12 | #FFFFFF | #1A1A1F | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #2a2a2f | #8B8B9A |
-| Save | Light | #F7F5F0 | #1C1C1A | #FFFFFF | #4A7C59 | #6C6FE4 | rgba(74,124,89,0.15) | #E8F0EB | #7A8A7E |
-| Credit | Light | #F9F7FF | #1A1830 | #EEEAFF | #9896C8 | #6C6FE4 | rgba(108,111,228,0.15) | #D4D2EE | #6E6C8A |
+| Spend | Dark | #0F0F12 | #FFFFFF | #1A1A1F | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #1A1A1F | #8B8B9A |
+| Save | Light | #F7F5F0 | #1C1C1A | #FFFFFF | #4A7C59 | #6C6FE4 | rgba(74,124,89,0.15) | #E8F0EB | #7A7A72 |
+| Credit | Light | #F9F7FF | #1A1830 | #EEEAFF | #9896C8 | #6C6FE4 | rgba(108,111,228,0.15) | #D4D2EE | #6B6880 |
 | Plan | Dark | #0C1017 | #E2E8F0 | #151E2B | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #1F2D3D | #A0AEC0 |
-| Together | Light | #FFF9F5 | #1C1A18 | #FFFFFF | #C4622D | #6C6FE4 | rgba(196,98,45,0.15) | #F2E4DA | #8A7E76 |
+| Together | Light | #FFF9F5 | #1C1A18 | #FFFFFF | #C4622D | #6C6FE4 | rgba(196,98,45,0.15) | #F2E4DA | #9E8E84 |
 
 **Key distinction:** `primary` is always #6C6FE4 (Indigo) for buttons. `accent` varies by BU and is used for decorative/highlight colors. The inverse button uses `text-accent`, so its text color varies per BU.
 
