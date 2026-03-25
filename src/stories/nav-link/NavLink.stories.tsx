@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, within, userEvent, fn } from 'storybook/test';
+import { expect, within, fn } from 'storybook/test';
 import { NavLink } from './NavLink';
 import { withStoryDisplay } from '../decorators';
 
