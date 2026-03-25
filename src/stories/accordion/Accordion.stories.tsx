@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within, userEvent } from 'storybook/test';
 import { Accordion } from './Accordion';
 import { withStoryDisplay } from '../decorators';
 
@@ -39,6 +40,29 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    items: {
+      description: 'Array of accordion item data objects with value, trigger, and content',
+      control: { type: 'object' },
+      table: { category: 'Content' },
+    },
+    multiple: {
+      description: 'Allow multiple accordion items to be open simultaneously',
+      control: { type: 'boolean' },
+      table: { category: 'Behavior' },
+    },
+    spacing: {
+      description: 'Vertical spacing between accordion items',
+      control: { type: 'inline-radio' },
+      options: ['default', 'compact'],
+      table: { category: 'Layout' },
+    },
+    className: {
+      description: 'Additional CSS classes for the accordion root',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+  },
   decorators: [withStoryDisplay({ maxWidth: 700 })],
 } satisfies Meta<typeof Accordion>;
 
@@ -48,8 +72,29 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     items: faqItems,
+    spacing: 'default',
   },
   globals: { businessUnit: 'credit' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // All items should start collapsed
+    const triggers = canvas.getAllByRole('button');
+    expect(triggers).toHaveLength(3);
+
+    // Click first item to expand
+    await userEvent.click(triggers[0]);
+    expect(triggers[0]).toHaveAttribute('data-state', 'open');
+
+    // Click second item — first should collapse (single mode)
+    await userEvent.click(triggers[1]);
+    expect(triggers[1]).toHaveAttribute('data-state', 'open');
+    expect(triggers[0]).toHaveAttribute('data-state', 'closed');
+
+    // Click second item again to collapse it
+    await userEvent.click(triggers[1]);
+    expect(triggers[1]).toHaveAttribute('data-state', 'closed');
+  },
 };
 
 export const Multiple: Story = {
@@ -58,6 +103,16 @@ export const Multiple: Story = {
     multiple: true,
   },
   globals: { businessUnit: 'credit' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const triggers = canvas.getAllByRole('button');
+
+    // Open first and second — both should stay open
+    await userEvent.click(triggers[0]);
+    await userEvent.click(triggers[1]);
+    expect(triggers[0]).toHaveAttribute('data-state', 'open');
+    expect(triggers[1]).toHaveAttribute('data-state', 'open');
+  },
 };
 
 export const CompactSpacing: Story = {
@@ -66,5 +121,14 @@ export const CompactSpacing: Story = {
     spacing: 'compact',
   },
   globals: { businessUnit: 'save' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const triggers = canvas.getAllByRole('button');
+    expect(triggers).toHaveLength(3);
+
+    // Verify compact spacing renders and items are interactive
+    await userEvent.click(triggers[2]);
+    expect(triggers[2]).toHaveAttribute('data-state', 'open');
+  },
 };
 

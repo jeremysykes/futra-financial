@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Target, Repeat, TrendingUp, Link, Settings, Eye } from 'lucide-react';
 import { ProcessSteps } from './ProcessSteps';
 import { withStoryDisplay } from '../decorators';
@@ -56,6 +57,50 @@ const meta = {
   },
   tags: ['autodocs'],
   decorators: [withStoryDisplay({ maxWidth: 1200 })],
+  argTypes: {
+    size: {
+      description: 'Controls typography and spacing tier (sm, md, lg)',
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+      table: { category: 'Appearance' },
+    },
+    connector: {
+      description: 'Style of the horizontal line connecting step badges',
+      control: { type: 'select' },
+      options: ['dashed', 'solid', 'none'],
+      table: { category: 'Appearance' },
+    },
+    badgeShape: {
+      description: 'Shape of the icon badge for each step',
+      control: { type: 'select' },
+      options: ['square', 'rounded', 'circle'],
+      table: { category: 'Appearance' },
+    },
+    badgeClassName: {
+      description: 'Additional CSS classes applied to each step badge',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    iconStrokeWidth: {
+      description: 'Stroke width override for step icons',
+      control: { type: 'number' },
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes for the outer list element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    animated: {
+      description: 'Whether steps animate in with a fade-up effect',
+      control: { type: 'boolean' },
+      table: { category: 'Behavior' },
+    },
+    steps: {
+      description: 'Array of step objects with icon, label, title, and description',
+      table: { disable: true },
+    },
+  },
 } satisfies Meta<typeof ProcessSteps>;
 
 export default meta;
@@ -63,7 +108,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    size: 'md',
+    connector: 'dashed',
+    badgeShape: 'rounded',
     steps: saveSteps,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Name your goal')).toBeInTheDocument();
+    expect(canvas.getByText('Automate it')).toBeInTheDocument();
+    expect(canvas.getByText('Watch it grow')).toBeInTheDocument();
   },
 };
 

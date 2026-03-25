@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within, userEvent } from 'storybook/test';
 import { FAQSection } from './FAQSection';
 import { withStoryDisplay } from '../decorators';
 
@@ -9,6 +10,49 @@ const meta = {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
+  argTypes: {
+    padding: {
+      description: 'Vertical padding size',
+      control: 'inline-radio',
+      options: ['default', 'compact'],
+      table: { category: 'Layout' },
+    },
+    eyebrow: {
+      description: 'Small label displayed above the heading',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    heading: {
+      description: 'Section heading text',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    items: {
+      description: 'Array of FAQ question/answer pairs',
+      control: { type: 'object' },
+      table: { category: 'Content' },
+    },
+    backgroundImage: {
+      description: 'URL for the background image',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    backgroundOpacity: {
+      description: 'Tailwind opacity class applied to the background image',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    sectionId: {
+      description: 'HTML id attribute for anchor linking',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS classes for the root element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+  },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof FAQSection>;
 
@@ -17,6 +61,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    padding: 'default',
     eyebrow: 'FAQ',
     heading: 'Common questions',
     backgroundImage: `${import.meta.env.BASE_URL}images/IMG-CREDIT-03.png`,
@@ -49,6 +94,29 @@ export const Default: Story = {
     ],
   },
   globals: { businessUnit: 'credit' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Verify heading and eyebrow
+    expect(canvas.getByText('Common questions')).toBeInTheDocument();
+    expect(canvas.getByText('FAQ')).toBeInTheDocument();
+
+    // Verify all FAQ triggers render
+    const triggers = canvas.getAllByRole('button');
+    expect(triggers.length).toBeGreaterThanOrEqual(5);
+
+    // Click first FAQ to expand
+    const firstTrigger = canvas.getByText('Is checking my score really free?');
+    await userEvent.click(firstTrigger);
+
+    // Verify answer is visible
+    expect(canvas.getByText(/completely free/i)).toBeInTheDocument();
+
+    // Click second FAQ — first should collapse
+    const secondTrigger = canvas.getByText('Will this affect my credit score?');
+    await userEvent.click(secondTrigger);
+    expect(canvas.getByText(/soft inquiry/i)).toBeInTheDocument();
+  },
 };
 
 export const WithoutImage: Story = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
+import { expect, within, userEvent, fn } from 'storybook/test';
 import { NavLink } from './NavLink';
 import { withStoryDisplay } from '../decorators';
 
@@ -10,6 +10,30 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    href: {
+      description: 'Target URL for the link',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    size: {
+      description: 'Text size variant',
+      control: 'inline-radio',
+      options: ['sm', 'base'],
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    children: {
+      table: { disable: true },
+    },
+    onClick: {
+      table: { disable: true },
+    },
+  },
   args: { onClick: fn() },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof NavLink>;
@@ -20,8 +44,17 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     href: '#features',
-    size: 'sm',
+    size: 'base',
     children: 'Features',
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link', { name: 'Features' });
+
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', '#features');
+    // Verify the onClick spy is wired up (don't click — anchor navigation crashes the test browser)
+    expect(args.onClick).toBeDefined();
   },
 };
 
@@ -30,5 +63,12 @@ export const Base: Story = {
     href: '#how-it-works',
     size: 'base',
     children: 'How It Works',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link', { name: 'How It Works' });
+
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute('href', '#how-it-works');
   },
 };

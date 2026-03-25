@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { SplitDisplay } from './SplitDisplay';
 import { withStoryDisplay } from '../decorators';
 
@@ -10,6 +11,33 @@ const meta = {
   },
   tags: ['autodocs'],
   decorators: [withStoryDisplay({ maxWidth: 400 })],
+  argTypes: {
+    size: {
+      description: 'Controls padding density of the card',
+      control: { type: 'select' },
+      options: ['default', 'compact'],
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes for the outer container',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    label: {
+      description: 'Heading text describing the expense category',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    total: {
+      description: 'Formatted total amount displayed alongside the label',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    splits: {
+      description: 'Array of segment objects defining each payer\'s share',
+      table: { disable: true },
+    },
+  },
 } satisfies Meta<typeof SplitDisplay>;
 
 export default meta;
@@ -17,6 +45,7 @@ type Story = StoryObj<typeof meta>;
 
 export const EvenSplit: Story = {
   args: {
+    size: 'default',
     label: 'Rent',
     total: '$2,400',
     splits: [
@@ -25,6 +54,13 @@ export const EvenSplit: Story = {
     ],
   },
   globals: { businessUnit: 'together' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Rent')).toBeInTheDocument();
+    expect(canvas.getByText('$2,400')).toBeInTheDocument();
+    expect(canvas.getByText('Alex')).toBeInTheDocument();
+    expect(canvas.getByText('Jordan')).toBeInTheDocument();
+  },
 };
 
 export const UnevenSplit: Story = {

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Footer } from './Footer';
 import { Logo } from '../logo/Logo';
 import { withStoryDisplay } from '../decorators';
@@ -11,6 +12,17 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    layout: {
+      description: 'Footer layout style',
+      control: 'inline-radio',
+      options: ['columns', 'simple'],
+      table: { category: 'Layout' },
+    },
+    className: {
+      description: 'Additional CSS classes for the root element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
   decorators: [withStoryDisplay()],
@@ -56,9 +68,22 @@ const SaveFooterContent = () => (
 
 export const Columns: Story = {
   args: {
+    layout: 'columns',
     children: <SaveFooterContent />,
   },
   globals: { businessUnit: 'save' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Verify footer links render
+    expect(canvas.getByText('Product')).toBeInTheDocument();
+    expect(canvas.getByText('Company')).toBeInTheDocument();
+    expect(canvas.getByText('Legal')).toBeInTheDocument();
+    expect(canvas.getByText(/All rights reserved/)).toBeInTheDocument();
+
+    // Verify footer links are clickable
+    const links = canvas.getAllByRole('link');
+    expect(links.length).toBeGreaterThanOrEqual(8);
+  },
 };
 
 export const Simple: Story = {

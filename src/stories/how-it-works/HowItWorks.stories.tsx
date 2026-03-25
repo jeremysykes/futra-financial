@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Target, Repeat, TrendingUp, Link, Settings, Eye } from 'lucide-react';
 import { HowItWorks } from './HowItWorks';
 import { ProcessSteps } from '../process-steps/ProcessSteps';
@@ -12,6 +13,38 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    background: {
+      description: 'Background color variant',
+      control: 'inline-radio',
+      options: ['default', 'muted'],
+      table: { category: 'Appearance' },
+    },
+    padding: {
+      description: 'Vertical padding size',
+      control: 'inline-radio',
+      options: ['default', 'compact'],
+      table: { category: 'Layout' },
+    },
+    eyebrow: {
+      description: 'Small label displayed above the heading',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    heading: {
+      description: 'Section heading text',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    sectionId: {
+      description: 'HTML id attribute for anchor linking',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS classes for the root element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
   decorators: [withStoryDisplay()],
@@ -22,6 +55,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Save: Story = {
   args: {
+    background: 'default',
+    padding: 'default',
     eyebrow: 'Three steps to start',
     heading: 'Simple by design',
     children: (
@@ -40,6 +75,14 @@ export const Save: Story = {
     ),
   },
   globals: { businessUnit: 'save' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Simple by design')).toBeInTheDocument();
+    expect(canvas.getByText('Three steps to start')).toBeInTheDocument();
+    expect(canvas.getByText('Name your goal')).toBeInTheDocument();
+    expect(canvas.getByText('Automate it')).toBeInTheDocument();
+    expect(canvas.getByText('Watch it grow')).toBeInTheDocument();
+  },
 };
 
 export const Together: Story = {

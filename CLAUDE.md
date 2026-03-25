@@ -22,6 +22,10 @@ Rules for DESIGN.md:
 - Never define inline or local decorators in story files
 - Never use hardcoded colors or backgrounds in decorators — all visual properties derive from Tailwind CSS variable tokens
 - The `withStoryDisplay` decorator is the single tool for wrapping components in stories
+- Every story must include `argTypes` with `description`, `table.category`, and `control` for each meaningful prop
+- Categories: `Appearance` (variants, className), `Layout` (layout, size, positioning), `Content` (text, data, labels), `Behavior` (interactive flags, event handlers)
+- Props that accept complex JSX (`children`, `actions`, slots) should be hidden: `{ table: { disable: true } }`
+- When adding a new component or decomposing an existing one, its story must include full argTypes metadata before the work is considered complete
 
 ## Project Structure
 

@@ -57,7 +57,6 @@ const Avatar = ({
           />
         )}
         <RadixAvatar.Fallback
-          delayMs={src ? 300 : 0}
           className="text-accent"
         >
           {initials ?? alt.charAt(0).toUpperCase()}

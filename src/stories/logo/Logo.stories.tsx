@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Logo } from './Logo';
 import { withStoryDisplay } from '../decorators';
 
@@ -9,6 +10,24 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    unitName: {
+      description: 'Business unit name displayed after the FUTRA brand',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    mode: {
+      description: 'Color mode variant for light or dark backgrounds',
+      control: 'inline-radio',
+      options: ['light', 'dark'],
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+  },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof Logo>;
 
@@ -18,6 +37,11 @@ type Story = StoryObj<typeof meta>;
 export const Spend: Story = {
   args: { unitName: 'spend', mode: 'light' },
   globals: { businessUnit: 'spend' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText(/futra/i)).toBeInTheDocument();
+    expect(canvas.getByText(/spend/i)).toBeInTheDocument();
+  },
 };
 
 export const Save: Story = {

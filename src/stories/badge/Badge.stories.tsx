@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect } from 'storybook/test';
 import { Target, Star, Zap } from 'lucide-react';
 import { Badge } from './Badge';
 import { withStoryDisplay } from '../decorators';
@@ -11,6 +12,29 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    shape: {
+      description: 'Border radius style',
+      control: 'select',
+      options: ['square', 'rounded', 'circle'],
+      table: { category: 'Appearance' },
+    },
+    size: {
+      description: 'Badge dimensions',
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      table: { category: 'Layout' },
+    },
+    content: {
+      description: 'Content type styling hint',
+      control: 'select',
+      options: ['icon', 'text', 'image'],
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes',
+      control: 'text',
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
   decorators: [withStoryDisplay()],
@@ -21,7 +45,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    shape: 'rounded',
+    size: 'md',
+    content: 'icon',
     children: <Target size={24} className="text-accent" />,
+  },
+  play: async ({ canvasElement }) => {
+    expect(canvasElement.querySelector('svg')).toBeInTheDocument();
   },
 };
 
@@ -57,6 +87,9 @@ export const Text: Story = {
   args: {
     content: 'text',
     children: <span className="text-accent">A</span>,
+  },
+  play: async ({ canvasElement }) => {
+    expect(canvasElement.textContent).toContain('A');
   },
 };
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { StatItem } from './StatItem';
 import { withStoryDisplay } from '../decorators';
 
@@ -9,6 +10,29 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    value: {
+      description: 'The statistic value to display',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    label: {
+      description: 'Descriptive label below the value',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    valueColor: {
+      description: 'Color variant for the value text',
+      control: 'inline-radio',
+      options: ['foreground', 'accent'],
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+  },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof StatItem>;
 
@@ -17,10 +41,16 @@ type Story = StoryObj<typeof meta>;
 
 export const AccentValue: Story = {
   args: {
+    valueColor: 'foreground',
     value: '$42M+',
     label: 'Total saved by users',
   },
   globals: { businessUnit: 'save' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('$42M+')).toBeInTheDocument();
+    expect(canvas.getByText('Total saved by users')).toBeInTheDocument();
+  },
 };
 
 export const ForegroundValue: Story = {

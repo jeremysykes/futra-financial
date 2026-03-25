@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { CircleDot, Coins, CalendarClock, Trophy } from 'lucide-react';
 import { FeatureSection } from './FeatureSection';
 import { Card } from '../card/Card';
@@ -42,6 +43,38 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    background: {
+      description: 'Background color variant',
+      control: 'inline-radio',
+      options: ['default', 'muted'],
+      table: { category: 'Appearance' },
+    },
+    padding: {
+      description: 'Vertical padding size',
+      control: 'inline-radio',
+      options: ['default', 'compact'],
+      table: { category: 'Layout' },
+    },
+    heading: {
+      description: 'Section heading text',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    subtitle: {
+      description: 'Eyebrow label displayed above the heading',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    sectionId: {
+      description: 'HTML id attribute for anchor linking',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS classes for the root element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
   decorators: [withStoryDisplay()],
@@ -52,6 +85,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    background: 'default',
+    padding: 'default',
     subtitle: 'Saving, your way',
     heading: 'Tools that fit your life',
     children: (
@@ -64,6 +99,15 @@ export const Default: Story = {
     ),
   },
   globals: { businessUnit: 'save' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Tools that fit your life')).toBeInTheDocument();
+    expect(canvas.getByText('Saving, your way')).toBeInTheDocument();
+    expect(canvas.getByText('Visual goal tracking')).toBeInTheDocument();
+    expect(canvas.getByText('Smart round-ups')).toBeInTheDocument();
+    expect(canvas.getByText('Scheduled transfers')).toBeInTheDocument();
+    expect(canvas.getByText('Milestones & streaks')).toBeInTheDocument();
+  },
 };
 
 export const MutedBackground: Story = {

@@ -11,7 +11,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:interactions": "vitest --project=storybook",
+    "test:interactions:watch": "vitest --project=storybook --watch",
+    "test:documentation": "vitest --project=unit"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

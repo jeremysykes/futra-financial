@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Lock, Shield, RefreshCw, Target } from 'lucide-react';
 import { TrustSection } from './TrustSection';
 import { withStoryDisplay } from '../decorators';
@@ -31,6 +32,33 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    background: {
+      description: 'Background color variant',
+      control: 'inline-radio',
+      options: ['default', 'muted'],
+      table: { category: 'Appearance' },
+    },
+    padding: {
+      description: 'Vertical padding size',
+      control: 'inline-radio',
+      options: ['default', 'compact'],
+      table: { category: 'Layout' },
+    },
+    backgroundImage: {
+      description: 'URL for the background image',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    backgroundOpacity: {
+      description: 'Tailwind opacity class applied to the background image',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes for the root element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
   decorators: [withStoryDisplay()],
@@ -41,6 +69,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    background: 'default',
+    padding: 'default',
     backgroundImage: `${import.meta.env.BASE_URL}images/IMG-CREDIT-02.png`,
     children: (
       <>
@@ -52,4 +82,11 @@ export const Default: Story = {
     ),
   },
   globals: { businessUnit: 'credit' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Bank-level encryption')).toBeInTheDocument();
+    expect(canvas.getByText('No impact to your credit score')).toBeInTheDocument();
+    expect(canvas.getByText('Updated weekly')).toBeInTheDocument();
+    expect(canvas.getByText(/Free forever/)).toBeInTheDocument();
+  },
 };

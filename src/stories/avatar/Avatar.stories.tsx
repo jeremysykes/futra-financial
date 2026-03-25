@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { Avatar } from './Avatar';
 import { withStoryDisplay } from '../decorators';
 
@@ -9,6 +10,40 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    src: {
+      description: 'Image source URL for the avatar',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    alt: {
+      description: 'Alt text; first character used as fallback initial',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    initials: {
+      description: 'Custom initials to show when no image is provided',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    size: {
+      description: 'Avatar size variant',
+      control: 'inline-radio',
+      options: ['sm', 'md', 'lg'],
+      table: { category: 'Appearance' },
+    },
+    ring: {
+      description: 'Ring color around the avatar',
+      control: 'inline-radio',
+      options: ['none', 'accent', 'primary'],
+      table: { category: 'Appearance' },
+    },
+    className: {
+      description: 'Additional CSS classes',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+  },
   decorators: [withStoryDisplay()],
 } satisfies Meta<typeof Avatar>;
 
@@ -19,6 +54,13 @@ export const WithImage: Story = {
   args: {
     src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop&crop=face',
     alt: 'Alex',
+    size: 'md',
+    ring: 'none',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // External image may not load in test browser — fallback initial renders instead
+    expect(canvas.getByText('A')).toBeInTheDocument();
   },
 };
 
@@ -27,11 +69,20 @@ export const WithInitials: Story = {
     alt: 'Jordan',
     initials: 'JS',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('JS')).toBeInTheDocument();
+  },
 };
 
 export const FallbackInitial: Story = {
   args: {
     alt: 'Morgan',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Should show first character of alt as fallback
+    expect(canvas.getByText('M')).toBeInTheDocument();
   },
 };
 

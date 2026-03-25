@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import { TestimonialSection } from './TestimonialSection';
 import { Card } from '../card/Card';
 import { withStoryDisplay } from '../decorators';
@@ -47,6 +48,27 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    columns: {
+      description: 'Number of grid columns for testimonial cards',
+      control: 'inline-radio',
+      options: [2, 3],
+      table: { category: 'Layout' },
+    },
+    heading: {
+      description: 'Section heading text',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    subtitle: {
+      description: 'Eyebrow label displayed above the heading',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS classes for the root element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
   decorators: [withStoryDisplay()],
@@ -57,6 +79,7 @@ type Story = StoryObj<typeof meta>;
 
 export const ThreeColumns: Story = {
   args: {
+    columns: 3,
     subtitle: 'From our savers',
     heading: 'Real goals, real progress',
     children: (
@@ -86,6 +109,14 @@ export const ThreeColumns: Story = {
     ),
   },
   globals: { businessUnit: 'save' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Real goals, real progress')).toBeInTheDocument();
+    expect(canvas.getByText('From our savers')).toBeInTheDocument();
+    expect(canvas.getByText('Maya Chen')).toBeInTheDocument();
+    expect(canvas.getByText('Jordan Ellis')).toBeInTheDocument();
+    expect(canvas.getByText('Priya Kapoor')).toBeInTheDocument();
+  },
 };
 
 export const TwoColumns: Story = {

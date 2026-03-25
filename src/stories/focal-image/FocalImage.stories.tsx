@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect } from 'storybook/test';
 import { FocalImage } from './FocalImage';
 import { withStoryDisplay } from '../decorators';
 
@@ -10,6 +11,33 @@ const meta = {
   },
   tags: ['autodocs'],
   decorators: [withStoryDisplay({ maxWidth: 800 })],
+  argTypes: {
+    src: {
+      description: 'Image source URL',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    alt: {
+      description: 'Alt text for accessibility',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    focusX: {
+      description:
+        'Focal point X coordinate (0 = left edge, 50 = center, 100 = right edge)',
+      control: { type: 'range', min: 0, max: 100, step: 1 },
+      table: { category: 'Layout' },
+    },
+    focusY: {
+      description:
+        'Focal point Y coordinate (0 = top edge, 50 = center, 100 = bottom edge)',
+      control: { type: 'range', min: 0, max: 100, step: 1 },
+      table: { category: 'Layout' },
+    },
+    className: {
+      table: { disable: true },
+    },
+  },
 } satisfies Meta<typeof FocalImage>;
 
 export default meta;
@@ -21,9 +49,18 @@ export const Default: Story = {
     alt: 'Contactless payment',
     focusX: 55,
     focusY: 38,
-    className: 'w-[700px] h-[200px] rounded-xl',
   },
+  render: (args) => (
+    <div className="w-[700px] h-[200px] rounded-xl overflow-hidden">
+      <FocalImage {...args} className="w-full h-full" />
+    </div>
+  ),
   globals: { businessUnit: 'spend' },
+  play: async ({ canvasElement }) => {
+    const img = canvasElement.querySelector('img');
+    expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute('alt', 'Contactless payment');
+  },
 };
 
 export const FocusOnChip: Story = {
@@ -32,8 +69,12 @@ export const FocusOnChip: Story = {
     alt: 'Contactless payment',
     focusX: 32,
     focusY: 35,
-    className: 'w-[700px] h-[200px] rounded-xl',
   },
+  render: (args) => (
+    <div className="w-[700px] h-[200px] rounded-xl overflow-hidden">
+      <FocalImage {...args} className="w-full h-full" />
+    </div>
+  ),
   globals: { businessUnit: 'spend' },
 };
 
@@ -43,8 +84,12 @@ export const FocusOnDebit: Story = {
     alt: 'Contactless payment',
     focusX: 75,
     focusY: 40,
-    className: 'w-[700px] h-[200px] rounded-xl',
   },
+  render: (args) => (
+    <div className="w-[700px] h-[200px] rounded-xl overflow-hidden">
+      <FocalImage {...args} className="w-full h-full" />
+    </div>
+  ),
   globals: { businessUnit: 'spend' },
 };
 
@@ -54,8 +99,12 @@ export const WideContainer: Story = {
     alt: 'Contactless payment',
     focusX: 55,
     focusY: 38,
-    className: 'w-[700px] h-[140px] rounded-xl',
   },
+  render: (args) => (
+    <div className="w-[700px] h-[140px] rounded-xl overflow-hidden">
+      <FocalImage {...args} className="w-full h-full" />
+    </div>
+  ),
   globals: { businessUnit: 'spend' },
 };
 
@@ -65,7 +114,11 @@ export const NarrowContainer: Story = {
     alt: 'Contactless payment',
     focusX: 55,
     focusY: 38,
-    className: 'w-[300px] h-[300px] rounded-xl',
   },
+  render: (args) => (
+    <div className="w-[300px] h-[300px] rounded-xl overflow-hidden">
+      <FocalImage {...args} className="w-full h-full" />
+    </div>
+  ),
   globals: { businessUnit: 'spend' },
 };

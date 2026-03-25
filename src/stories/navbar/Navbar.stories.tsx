@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within, userEvent } from 'storybook/test';
 import { Navbar } from './Navbar';
 import { withStoryDisplay } from '../decorators';
 
@@ -12,6 +13,29 @@ const meta = {
     },
   },
   tags: ['autodocs'],
+  argTypes: {
+    unitName: {
+      description: 'Business unit name used for the logo',
+      control: { type: 'select' },
+      options: ['spend', 'save', 'credit', 'plan', 'together'],
+      table: { category: 'Content' },
+    },
+    links: {
+      description: 'Navigation link items displayed in the navbar',
+      control: { type: 'object' },
+      table: { category: 'Content' },
+    },
+    ctaText: {
+      description: 'Label text for the call-to-action button',
+      control: { type: 'text' },
+      table: { category: 'Content' },
+    },
+    className: {
+      description: 'Additional CSS classes for the nav element',
+      control: { type: 'text' },
+      table: { category: 'Appearance' },
+    },
+  },
   decorators: [withStoryDisplay({ containFixed: true, height: 100 })],
 } satisfies Meta<typeof Navbar>;
 
@@ -29,6 +53,30 @@ export const Spend: Story = {
     ctaText: 'Get Started',
   },
   globals: { businessUnit: 'spend' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Verify navigation links render
+    expect(canvas.getAllByText('Features')).not.toHaveLength(0);
+    expect(canvas.getAllByText('Security')).not.toHaveLength(0);
+    expect(canvas.getAllByText('Pricing')).not.toHaveLength(0);
+
+    // Verify CTA button renders
+    expect(canvas.getAllByText('Get Started')).not.toHaveLength(0);
+
+    // Verify mobile menu toggle exists
+    const menuToggle = canvas.getByLabelText('Open menu');
+    expect(menuToggle).toBeInTheDocument();
+
+    // Click to open mobile menu
+    await userEvent.click(menuToggle);
+    const closeButton = canvas.getByLabelText('Close menu');
+    expect(closeButton).toBeInTheDocument();
+
+    // Close mobile menu
+    await userEvent.click(closeButton);
+    expect(canvas.getByLabelText('Open menu')).toBeInTheDocument();
+  },
 };
 
 export const Save: Story = {

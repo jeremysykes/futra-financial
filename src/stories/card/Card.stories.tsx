@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, within } from 'storybook/test';
 import React from 'react';
 import { Card } from './Card';
 import { withStoryDisplay } from '../decorators';
@@ -25,6 +26,22 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    accent: {
+      description: 'Colored accent border position',
+      control: 'select',
+      options: ['none', 'left', 'top', 'right', 'bottom'],
+      table: { category: 'Appearance' },
+    },
+    interactive: {
+      description: 'Enables hover elevation and cursor pointer',
+      control: 'boolean',
+      table: { category: 'Behavior' },
+    },
+    className: {
+      description: 'Additional CSS classes',
+      control: 'text',
+      table: { category: 'Appearance' },
+    },
     children: { table: { disable: true } },
   },
 } satisfies Meta<typeof Card>;
@@ -37,7 +54,13 @@ const constrainedCard = [withStoryDisplay({ maxWidth: 300 })];
 export const Default: Story = {
   decorators: constrainedCard,
   args: {
+    accent: 'none',
     children: React.createElement(SampleContent),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByText('Feature Title')).toBeInTheDocument();
+    expect(canvas.getByText(/A brief description/)).toBeInTheDocument();
   },
 };
 
@@ -79,6 +102,11 @@ export const Hover: Story = {
     accent: 'left',
     interactive: true,
     children: React.createElement(SampleContent),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const card = canvas.getByText('Feature Title').closest('[class*="cursor-pointer"]');
+    expect(card).toBeInTheDocument();
   },
 };
 
