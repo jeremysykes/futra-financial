@@ -9,7 +9,7 @@ Rules for DESIGN.md:
 - Do not add audit findings, improvement plans, task lists, or temporary content
 - Do not add image requirements, brainstorming notes, or operational content
 - Only add content that defines the official brand identity and design system
-- Operational docs belong in `docs/` (e.g., `docs/design-audit.md`, `docs/image-requirements.md`)
+- Operational docs belong in `docs/` (e.g., `docs/image-requirements.md`, `docs/testing.md`)
 - If DESIGN.md needs updating, the change must reflect a real brand decision — not a work-in-progress
 
 ## Design System
@@ -33,5 +33,8 @@ Rules for DESIGN.md:
 - `src/components/AppShell.tsx` — Router, theme state, DemoSwitcher wrapper
 - `src/components/DemoSwitcher.tsx` — Global demo navigation bar
 - `src/stories/{bu}/` — Storybook stories per BU
-- `docs/` — Operational documents (audit, specs, plans, image requirements)
+- `docs/superpowers/specs/` — Design specs (brainstormed and reviewed before implementation)
+- `docs/superpowers/plans/` — Implementation plans (step-by-step execution checklists)
+- `docs/prompts/` — AI tooling prompts (Figma Make, etc.)
+- `docs/` — Operational documents (testing, image requirements, workflows)
 - `.claude/skills/` — Project-specific Claude skills

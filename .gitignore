@@ -30,7 +30,3 @@ storybook-static
 screenshots/
 .superpowers/
 .worktrees/
-
-# AI workflow artifacts
-docs/superpowers/
-docs/prompts/
