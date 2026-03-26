@@ -49,6 +49,7 @@ export function AppShell() {
   useEffect(() => {
     if (prevUnit.current !== unit) {
       setTransitionKey((k) => k + 1);
+      window.scrollTo(0, 0);
       prevUnit.current = unit;
     }
   }, [unit]);
