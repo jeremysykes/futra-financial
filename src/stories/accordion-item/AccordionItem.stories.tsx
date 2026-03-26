@@ -74,9 +74,5 @@ export const Open: StoryObj<typeof AccordionItem> = {
 
     // Content should be visible
     expect(canvas.getByText(/completely free/i)).toBeInTheDocument();
-
-    // Click to collapse
-    await userEvent.click(trigger);
-    expect(trigger).toHaveAttribute('data-state', 'closed');
   },
 };

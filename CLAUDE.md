@@ -36,5 +36,13 @@ Rules for DESIGN.md:
 - `docs/superpowers/specs/` — Design specs (brainstormed and reviewed before implementation)
 - `docs/superpowers/plans/` — Implementation plans (step-by-step execution checklists)
 - `docs/prompts/` — AI tooling prompts (Figma Make, etc.)
+- `docs/diagrams/` — Architecture and workflow diagrams (Mermaid wrapped in Markdown)
 - `docs/` — Operational documents (testing, image requirements, workflows)
 - `.claude/skills/` — Project-specific Claude skills
+
+## Diagrams
+
+- All Mermaid diagrams must be wrapped in a Markdown file (`.md`, not `.mmd`) so they render in GitHub preview and IDE markdown viewers
+- Use a fenced code block with the `mermaid` language identifier
+- Place all diagrams in `docs/diagrams/`
+- Include a brief description above the diagram explaining what it documents
