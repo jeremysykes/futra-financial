@@ -225,6 +225,7 @@ The [Figma component library](docs/figma-library-workflow.md) is generated from 
 | [Token Architecture Diagram](docs/diagrams/token-architecture.md) | Mermaid diagram of full token flow from source to consumers | Engineering, Design |
 | [Figma Library Workflow](docs/figma-library-workflow.md) | How the Figma component library is generated from code | Design |
 | [Image Requirements](docs/image-requirements.md) | Image specs and generation prompts per BU | Design, PM |
+| [Spacing Tokens Decision](docs/decisions/spacing-tokens.md) | Why we use Tailwind defaults instead of custom spacing tokens | Engineering, Design |
 
 ---
 

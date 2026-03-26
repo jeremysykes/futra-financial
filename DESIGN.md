@@ -45,6 +45,10 @@ Theme overrides (BU switch)  → [data-business-unit='save'] {
 
 **Never use hardcoded hex colors in components.** Always use semantic token classes so themes switch automatically between light/dark and across business units. The only exception is footers (always dark, hardcoded).
 
+### Spacing
+
+The design system uses **Tailwind's built-in spacing scale** (4px base: `p-4` = 16px, `gap-6` = 24px, etc.) rather than custom spacing tokens. See `docs/decisions/spacing-tokens.md` for the rationale.
+
 ---
 
 ## Business Unit Palettes
