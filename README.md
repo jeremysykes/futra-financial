@@ -3,7 +3,7 @@
 **Brand & Design System**
 Strategy Document
 
-[Live Demo](https://jeremysykes.github.io/futra-financial/) | [Storybook](https://jeremysykes.github.io/futra-financial/storybook/) | [Figma](https://www.figma.com/design/pMroF1oVmzBSUY99ZnmeIl/Futra-Financial---UI-Library?node-id=123-2&t=QxZJhncmyS4nXgwQ-0) | [Chromatic](https://www.chromatic.com/library?appId=69c33ccc2ed05dca54e3f9ff) | [Zero Height](https://zeroheight.com/829a17c3e/p/417d5c-spacing)
+[Live Demo](https://jeremysykes.github.io/futra-financial/) | [Storybook](https://jeremysykes.github.io/futra-financial/storybook/) | [Figma](https://www.figma.com/design/pMroF1oVmzBSUY99ZnmeIl/Futra-Financial---UI-Library?node-id=123-2&t=QxZJhncmyS4nXgwQ-0) | [Chromatic](https://www.chromatic.com/library?appId=69c33ccc2ed05dca54e3f9ff) | [Zero Height](https://zeroheight.com/829a17c3e/p/4577c9-futra-financial)
 
 ---
 
