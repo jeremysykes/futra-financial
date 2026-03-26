@@ -167,5 +167,66 @@ Multi-brand theming · Semantic token architecture · Cross-surface component re
 
 ---
 
+## HOW IT'S BUILT
+
+### Token pipeline
+
+One JSON source of truth becomes five branded products:
+
+```mermaid
+graph LR
+    A["tokens.json<br/>(W3C DTCG)"] -->|build| B["Style Dictionary"]
+    B -->|generate| C[":root primitives<br/>98 CSS variables"]
+    C --> D["Tailwind @theme<br/>semantic tokens"]
+    D --> E["React Components<br/>CVA + utilities"]
+    E --> F["5 Themed UIs<br/>data-business-unit"]
+```
+
+One source of truth, five branded surfaces, zero JavaScript re-rendering. Theme switching happens entirely through CSS cascade. [Full pipeline documentation →](docs/design-token-pipeline.md)
+
+### Quality pipeline
+
+Every Storybook story is a test — three layers catch different categories of issues:
+
+```mermaid
+graph LR
+    S["Storybook<br/>35 stories"] --> I["Interaction Tests<br/>Chromium · Playwright"]
+    S --> D["Documentation Tests<br/>argTypes validation"]
+    S --> C["Chromatic<br/>visual regression"]
+```
+
+Components render in real Chromium (not JSDOM) because CSS custom property resolution matters for theme correctness. [Full testing documentation →](docs/testing.md)
+
+### Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 19 + TypeScript |
+| Build | Vite 7, Turborepo monorepo |
+| Styling | Tailwind CSS 4, CSS custom properties |
+| Tokens | W3C DTCG JSON + Style Dictionary 4 |
+| Components | CVA + Radix UI primitives |
+| Component dev | Storybook 10 + Chromatic |
+| Testing | Vitest + Playwright (browser) |
+
+The [Figma component library](docs/figma-library-workflow.md) is generated from code specs via Figma MCP, keeping design and implementation in sync.
+
+---
+
+## DOCUMENTATION
+
+| Document | Covers | Audience |
+|----------|--------|----------|
+| [Design Principles](PRINCIPLES.md) | Facilitate over configure, compose don't configure, tokens are the contract | All |
+| [Brand & Design Identity](DESIGN.md) | Palettes, typography, token architecture, component patterns | Design, PM |
+| [Architecture](ARCHITECTURE.md) | Tech stack, monorepo structure, routing, build commands | Engineering |
+| [Design Token Pipeline](docs/design-token-pipeline.md) | DTCG JSON → Style Dictionary → CSS → components | Engineering, Design |
+| [Testing Strategy](docs/testing.md) | Vitest browser tests, documentation tests, Chromatic | Engineering |
+| [Token Architecture Diagram](docs/diagrams/token-architecture.md) | Mermaid diagram of full token flow from source to consumers | Engineering, Design |
+| [Figma Library Workflow](docs/figma-library-workflow.md) | How the Figma component library is generated from code | Design |
+| [Image Requirements](docs/image-requirements.md) | Image specs and generation prompts per BU | Design, PM |
+
+---
+
 _Futra Financial — Brand & Design System Strategy_
 _Jeremy Sykes_

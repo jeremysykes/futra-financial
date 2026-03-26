@@ -1,0 +1,15 @@
+{
+  "name": "@futra/tokens",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./primitives.css": "./dist/primitives.css"
+  },
+  "scripts": {
+    "build": "style-dictionary build --config config/style-dictionary.config.ts"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

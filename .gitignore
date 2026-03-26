@@ -26,6 +26,12 @@ dist-ssr
 # Storybook
 storybook-static
 
+# Turborepo
+.turbo
+
+# Generated tokens
+packages/tokens/dist/
+
 # Screenshots & browser test artifacts
 screenshots/
 .superpowers/

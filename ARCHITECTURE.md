@@ -8,7 +8,9 @@
 | ------------- | ------------------------------ | ------------------------------- |
 | Framework     | React                          | 19                              |
 | Build         | Vite                           | 7                               |
+| Monorepo      | Turborepo + pnpm workspaces    | latest                          |
 | Styling       | Tailwind CSS                   | 4 (v4 plugin, CSS-first config) |
+| Tokens        | W3C DTCG JSON + Style Dictionary | 4                             |
 | Charts        | Recharts                       | latest (Plan BU only)           |
 | Icons         | Lucide React                   | latest                          |
 | Primitives    | Radix UI                       | latest                          |
@@ -24,65 +26,71 @@
 ## Directory Structure
 
 ```
-futra-financial/
-├── DESIGN.md                    # Canonical style guide (do not pollute)
-├── CLAUDE.md                    # Claude Code rules and conventions
-├── AGENTS.md                    # Agent roles and division of labour
-├── ARCHITECTURE.md              # This file
-├── README.md                    # Brand strategy and project overview
-├── index.html                   # Vite entry point
-├── package.json
-├── vite.config.ts
-├── tsconfig.app.json
-├── eslint.config.js
+futra-financial/                     # Turborepo monorepo root
+├── DESIGN.md                        # Canonical style guide (do not pollute)
+├── CLAUDE.md                        # Claude Code rules and conventions
+├── AGENTS.md                        # Agent roles and division of labour
+├── ARCHITECTURE.md                  # This file
+├── README.md                        # Brand strategy and project overview
+├── package.json                     # Root workspace scripts (delegates to turbo)
+├── pnpm-workspace.yaml              # Workspace definition (apps/*, packages/*)
+├── turbo.json                       # Turborepo task pipeline
 │
-├── src/
-│   ├── main.tsx                 # React root — BrowserRouter wraps App
-│   ├── App.tsx                  # Renders AppShell
-│   ├── tailwind.css             # Theme tokens (all BU palettes, light/dark)
-│   ├── index.css                # Font imports (Inter, JetBrains Mono)
-│   ├── App.css                  # App-level styles
-│   ├── lib/
-│   │   └── utils.ts             # cn() utility (clsx + tailwind-merge)
-│   │
-│   ├── components/
-│   │   ├── AppShell.tsx         # Router, theme state, DemoSwitcher wrapper
-│   │   ├── DemoSwitcher.tsx     # Global demo navigation bar
-│   │   ├── spend/               # Futra Spend components (10 files)
-│   │   ├── save/                # Futra Save components (11 files)
-│   │   ├── credit/              # Futra Credit components (10 files)
-│   │   ├── plan/                # Futra Plan components (11 files)
-│   │   └── together/            # Futra Together components (11 files)
-│   │
-│   ├── stories/
-│   │   ├── decorators/          # Single source of truth for all Storybook decorators
-│   │   ├── button/              # Shared Button component stories
-│   │   ├── card/                # Shared Card component stories
-│   │   ├── logo/                # Shared Logo component stories
-│   │   ├── nav-link/            # Shared NavLink component stories
-│   │   ├── navbar/              # Shared Navbar component stories
-│   │   ├── spend/               # SpendPage.stories.tsx
-│   │   ├── save/                # SavePage.stories.tsx
-│   │   ├── credit/              # CreditPage.stories.tsx
-│   │   ├── plan/                # PlanPage.stories.tsx
-│   │   └── together/            # TogetherPage.stories.tsx
-│   │
-│   └── assets/                  # Images (per BU subdirectories)
+├── apps/
+│   └── web/                         # Main Vite + React application
+│       ├── index.html               # Vite entry point
+│       ├── package.json
+│       ├── vite.config.ts           # Vite + Vitest multi-project config
+│       ├── tsconfig.json
+│       ├── eslint.config.js
+│       ├── .storybook/
+│       │   ├── main.ts              # Storybook config
+│       │   └── preview.tsx          # Global decorators, theme/BU globals
+│       └── src/
+│           ├── main.tsx             # React root — BrowserRouter wraps App
+│           ├── App.tsx              # Renders AppShell
+│           ├── tailwind.css         # Imports @futra/tokens + semantic tokens + BU themes
+│           ├── index.css            # Font imports (Inter, JetBrains Mono)
+│           ├── lib/
+│           │   └── utils.ts         # cn() utility (clsx + tailwind-merge)
+│           ├── components/
+│           │   ├── AppShell.tsx     # Router, theme state, DemoSwitcher wrapper
+│           │   ├── DemoSwitcher.tsx # Global demo navigation bar
+│           │   ├── spend/           # Futra Spend components
+│           │   ├── save/            # Futra Save components
+│           │   ├── credit/          # Futra Credit components
+│           │   ├── plan/            # Futra Plan components
+│           │   └── together/        # Futra Together components
+│           ├── stories/
+│           │   ├── decorators/      # Single source of truth for all Storybook decorators
+│           │   ├── foundation/      # Colors, Typography, DesignTokens stories
+│           │   ├── {component}/     # Shared component stories (35 total)
+│           │   ├── {bu}/            # Page-level stories per BU
+│           │   └── __tests__/       # Unit tests (argTypes validation)
+│           └── assets/              # Images (per BU subdirectories)
 │
-├── .storybook/
-│   ├── main.ts                  # Storybook config
-│   └── preview.tsx              # Global decorators, theme/BU globals
+├── packages/
+│   └── tokens/                      # @futra/tokens — design token package
+│       ├── src/
+│       │   └── tokens.json          # DTCG-format source of truth (98 primitives)
+│       ├── config/
+│       │   └── style-dictionary.config.ts
+│       └── dist/
+│           └── primitives.css       # Generated CSS (gitignored)
 │
 ├── .claude/
 │   └── skills/
-│       └── brand-guidelines/    # Project-level Claude skill
+│       └── brand-guidelines/        # Project-level Claude skill
 │
 └── docs/
-    ├── futra-financial.md       # Original brand strategy document
-    ├── design-audit.md          # Design audit findings + improvement plan
-    ├── image-requirements.md    # 15 image specs with generation prompts
-    ├── prompts/                 # Figma Make prompts per BU
-    └── superpowers/             # Specs and plans from brainstorming sessions
+    ├── design-token-pipeline.md     # Token flow from source to render
+    ├── testing.md                   # Three-layer testing strategy
+    ├── figma-library-workflow.md    # Figma-to-code sync process
+    ├── image-requirements.md        # 15 image specs with generation prompts
+    ├── diagrams/
+    │   └── token-architecture.md    # Mermaid diagram of full token pipeline
+    ├── prompts/                     # Figma Make prompts per BU
+    └── superpowers/                 # Specs and plans from brainstorming sessions
 ```
 
 ---
@@ -175,7 +183,7 @@ Each BU has a `{BU}Page.tsx` orchestrator that composes section components:
 
 ### How It Works
 
-1. `tailwind.css` defines CSS custom properties per BU via `[data-business-unit='...']` selectors
+1. `apps/web/src/tailwind.css` imports primitives from `@futra/tokens` and defines semantic tokens per BU via `[data-business-unit='...']` selectors
 2. Dark mode variants are defined via `.dark [data-business-unit='...']` compound selectors
 3. Components use Tailwind utility classes (`bg-background`, `text-foreground`, etc.) that resolve to the active BU's tokens
 4. `AppShell` sets the `data-business-unit` attribute and `.dark` class based on route and user preference
@@ -224,25 +232,25 @@ When switching BUs, the stored preference is loaded (or the default is used on f
 
 ### Configuration
 
-- Stories glob: `src/**/*.stories.@(js|jsx|mjs|ts|tsx)`
+- Stories glob: `src/**/*.stories.@(js|jsx|mjs|ts|tsx)` (in `apps/web/`)
 - Framework: `@storybook/react-vite`
 - Addons: Chromatic, Vitest, a11y, Docs
 
 ### Global Controls
 
-Two toolbar selectors defined in `.storybook/preview.tsx`:
+Two toolbar selectors defined in `apps/web/.storybook/preview.tsx`:
 
 - **Theme:** Light / Dark
 - **Business Unit:** Spend, Save, Credit, Plan, Together
 
 ### Decorators
 
-All decorators are defined in `src/stories/decorators/` — the single source of truth.
+All decorators are defined in `apps/web/src/stories/decorators/` — the single source of truth.
 
 - **`withThemeContext`** — Global decorator (registered in `preview.tsx`). Applies `data-business-unit`, `.dark` class, and `bg-background text-foreground` to every story.
-- **`withStoryDisplay(options?)`** — Per-story decorator for display presentation. Handles padding, token-derived backgrounds, layout modes (single/grid), fixed-position containment, and width constraints. See `src/stories/decorators/README.md` for full API.
+- **`withStoryDisplay(options?)`** — Per-story decorator for display presentation. Handles padding, token-derived backgrounds, layout modes (single/grid), fixed-position containment, and width constraints. See `apps/web/src/stories/decorators/README.md` for full API.
 
-No decorator logic exists outside `src/stories/decorators/`.
+No decorator logic exists outside `apps/web/src/stories/decorators/`.
 
 ### Page Story Globals
 
@@ -256,36 +264,50 @@ Navbars use `top-[var(--nav-top,0px)]`. In the app, AppShell sets `--nav-top: 36
 
 ## Build & Development
 
+All commands run from the monorepo root via Turborepo:
+
 ```bash
-npm run dev          # Vite dev server (localhost:5173 or next available port)
-npm run build        # TypeScript check + Vite production build
-npm run storybook    # Storybook on localhost:6006
-npm run lint         # ESLint
-npm run format       # Prettier
+pnpm dev              # Vite dev server (localhost:5173 or next available port)
+pnpm build            # Turbo: tokens build → web TypeScript check + Vite build
+pnpm storybook        # Storybook on localhost:6006
+pnpm test             # All tests (Storybook browser + unit)
+pnpm lint             # ESLint
+pnpm format           # Prettier
+```
+
+To target a specific package:
+
+```bash
+pnpm --filter web dev                # Only the web app
+pnpm --filter @futra/tokens build    # Only the tokens package
+pnpm --filter web test:interactions  # Only Storybook browser tests
+pnpm --filter web test:documentation # Only unit tests
 ```
 
 ### Production Build Output
 
 ```
-dist/
+apps/web/dist/
 ├── index.html
 └── assets/
-    ├── index-*.css    (~34KB gzipped ~7KB)
-    └── index-*.js     (~262KB gzipped ~82KB)
+    ├── index-*.css    (~63KB, ~11KB gzipped)
+    └── index-*.js     (~711KB, ~217KB gzipped)
 ```
 
 ---
 
 ## Key Design Decisions
 
-### Why no shared component library (yet)
+### Shared components, not duplicated
 
-Each BU has its own component directory with duplicated patterns (Navbar, Footer, Logo, etc.). This is intentional at this stage:
+All components (Navbar, Footer, HeroSection, Card, Button, etc.) are single implementations shared across all five business units. There is no per-BU component duplication. Visual differentiation comes entirely from the token system:
 
-- BU components have subtle differences (corner radii, icon choices, section ordering)
-- The token system handles cross-BU consistency at the CSS level
-- Premature abstraction would couple BUs that need to evolve independently
-- A shared library can be extracted later once patterns stabilize
+- Components use semantic Tailwind classes (`bg-primary`, `text-foreground`, `border-border`)
+- The CSS cascade resolves these to different values per BU via `[data-business-unit]` selectors
+- BU pages compose shared components differently via props and section ordering
+- Content differences (logo text, link labels, CTA copy) are passed as props
+
+This means one Navbar serves all five products. Adding a feature to Navbar improves every BU simultaneously.
 
 ### Why CSS variables instead of Tailwind config themes
 

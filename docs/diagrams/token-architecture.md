@@ -51,20 +51,19 @@ graph LR
 
 ## Layer Detail
 
-### Source of Truth — `tokens.json`
+### Source of Truth — `packages/tokens/src/tokens.json`
 
 | Category | Contents |
 |----------|----------|
-| **Primitives** | Base color palettes — shared globals plus per-theme palettes |
-| **Semantics** | Role-based aliases (`background`, `foreground`, `primary`) that map to primitives |
-| **Typography** | Font family, font weight, composite type styles |
-| **Animation** | Durations and easing curves |
+| **Primitives** | 98 color tokens — shared globals (indigo, teal, coral) plus per-BU palettes (spend, save, credit, plan, together) and default theme |
+
+Semantic tokens, typography, and animations are defined in `apps/web/src/tailwind.css` — they reference primitives via `var()` and are not yet in `tokens.json`.
 
 ### Transform Layer
 
 | Tool | Role |
 |------|------|
-| **Style Dictionary** | Build pipeline — reads `tokens.json`, outputs CSS custom properties |
+| **Style Dictionary** | Build pipeline — reads `tokens.json`, outputs CSS custom properties via built-in `css/variables` format (zero custom configuration) |
 | **Tokens Studio** | Figma plugin — reads DTCG JSON from GitHub, pushes to Figma Variables, two-way sync via GitHub PR |
 
 ### Destinations
@@ -72,7 +71,7 @@ graph LR
 | Destination | Structure |
 |-------------|-----------|
 | **Figma** | Variable collections (Primitives, Semantic) with modes per theme. Components bind to semantic variables — swap mode to switch theme |
-| **Tailwind CSS 4** | `:root` — primitives. `@theme` — semantic tokens. `[data-*]` — theme overrides. `.dark` — dark mode variants |
+| **Tailwind CSS 4** | `@import '@futra/tokens/primitives.css'` — primitives via package import. `@theme` — semantic tokens. `[data-business-unit]` — BU theme overrides. `.dark` — dark mode variants |
 | **Zeroheight** | Imports DTCG JSON directly. Displays on Foundations pages (Color, Typography, Tokens). Embeds live Figma frames and Storybook stories |
 
 ### Consumers
@@ -83,19 +82,18 @@ graph LR
 | **Storybook / Chromatic** | Inherits CSS variables. Stories render in all themes. Visual regression snapshots per theme |
 | **Production** | Runtime theme switching. Zero rebuild required |
 
-## Current State vs. Full Pipeline
+## Current Implementation vs. Full Pipeline
 
-| Layer | Current (Case Study) | Full Pipeline (At Scale) |
+| Layer | Current | Full Pipeline (At Scale) |
 |---|---|---|
-| Source of truth | `tailwind.css` | `tokens.json` (DTCG) |
+| Source of truth | `tokens.json` (DTCG) | Same |
 | Figma sync | Manual / MCP | Tokens Studio ↔ GitHub |
-| CSS generation | Hand-authored | Style Dictionary output |
+| CSS generation | Style Dictionary output | Same |
 | Zeroheight | Manual documentation | DTCG JSON import |
 | Storybook | Inherits CSS | Same |
 | Components | Semantic tokens | Same |
 
 ## Key Tools
 
-- **Style Dictionary** — Transform engine. One token format in, many outputs.
+- **Style Dictionary 4** — Transform engine. Reads DTCG JSON, outputs CSS custom properties. Uses built-in format with zero custom configuration — the token JSON is structured so default behavior produces the exact variable names needed.
 - **Tokens Studio** (formerly Figma Tokens) — Figma plugin that reads/writes DTCG JSON, syncs with GitHub, pushes to Figma Variables.
-- **Cobalt UI** — Modern alternative to Style Dictionary, DTCG-native.

@@ -20,31 +20,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: Type check
-        run: npx tsc --noEmit
+        run: pnpm --filter web exec tsc --noEmit
 
-      - run: npm run build
+      - run: pnpm build
         env:
           BASE_PATH: /futra-financial
 
-      - run: npm run build-storybook
+      - run: pnpm --filter web build-storybook
 
       - name: Combine outputs
         run: |
-          mkdir -p dist/storybook
-          cp -r storybook-static/* dist/storybook/
-          cp dist/index.html dist/404.html
+          mkdir -p apps/web/dist/storybook
+          cp -r apps/web/storybook-static/* apps/web/dist/storybook/
+          cp apps/web/dist/index.html apps/web/dist/404.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: apps/web/dist
 
   deploy:
     needs: build

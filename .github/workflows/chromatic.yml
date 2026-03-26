@@ -14,12 +14,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - uses: chromaui/action@latest
         with:
@@ -28,3 +30,4 @@ jobs:
           exitZeroOnChanges: true
           exitOnceUploaded: true
           onlyChanged: true
+          workingDir: apps/web
