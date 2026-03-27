@@ -118,7 +118,7 @@ export interface StepItem {
   /** Step title */
   title: string;
   /** Step description text */
-  description: string;
+  description?: string;
 }
 
 export interface ProcessStepsProps
@@ -218,9 +218,11 @@ const ProcessSteps = ({
             {step.title}
           </h3>
 
-          <p className={descriptionVariants({ size })}>
-            {step.description}
-          </p>
+          {step.description && (
+            <p className={descriptionVariants({ size })}>
+              {step.description}
+            </p>
+          )}
         </li>
       ))}
     </ol>
