@@ -96,9 +96,20 @@ const featureDeepDiveVariants = cva(
 
 export interface FeatureDeepDiveProps
   extends VariantProps<typeof featureDeepDiveVariants> {
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Deep-dive feature blocks with alternating chart and text layout.
+ *
+ * Renders a series of feature blocks in a two-column grid that
+ * alternates direction. Each block includes an overline, title,
+ * description, and chart visualization. Content is hardcoded for
+ * the Spend business unit.
+ *
+ * @default padding "default"
+ */
 const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
   const c = useChartColors();
   const gridStroke = 'var(--color-border)';

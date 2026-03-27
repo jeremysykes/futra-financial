@@ -39,18 +39,47 @@ const contentVariants = cva(
 
 export interface HeroSectionProps
   extends VariantProps<typeof heroSectionVariants> {
+  /** Primary headline text */
   heading: ReactNode;
+  /** Supporting description below the heading */
   subheading: ReactNode;
+  /** Small label displayed above the heading */
   eyebrow?: ReactNode;
+  /** URL for the background image */
   backgroundImage?: string;
+  /**
+   * Tailwind opacity class applied to the background image.
+   * @default "opacity-[0.08]"
+   */
   backgroundOpacity?: string;
+  /**
+   * Tailwind background class for the overlay layer.
+   * @default "bg-background/70"
+   */
   overlayOpacity?: string;
+  /** CTA buttons or action elements */
   actions: ReactNode;
+  /** Optional visual content (e.g., phone mockup) displayed beside the text */
   children?: ReactNode;
+  /**
+   * Hide the children slot in landscape orientation.
+   * @default true
+   */
   hideChildrenLandscape?: boolean;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Hero section with heading, subheading, CTA actions, and optional visual.
+ *
+ * Supports left-right and centered layouts with optional background
+ * image and gradient overlay. The children slot (typically a phone
+ * mockup or illustration) hides in landscape orientation by default.
+ *
+ * @default layout "left-right"
+ * @default size "default"
+ */
 const HeroSection = ({
   heading,
   subheading,

@@ -24,15 +24,37 @@ const ctaSectionVariants = cva(
 
 export interface CTASectionProps
   extends VariantProps<typeof ctaSectionVariants> {
+  /** Primary headline text */
   heading: ReactNode;
+  /** Supporting description below the heading */
   description?: ReactNode;
+  /** URL for the background image */
   backgroundImage?: string;
+  /**
+   * Tailwind opacity class applied to the background image.
+   * @default "opacity-[0.08]"
+   */
   backgroundOpacity?: string;
+  /**
+   * HTML id attribute for anchor linking.
+   * @default "cta"
+   */
   sectionId?: string;
+  /** CTA buttons or action elements */
   children: ReactNode;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Call-to-action section with heading, description, and background.
+ *
+ * Supports gradient and solid background variants with optional
+ * background image overlay. Content can be center or left aligned.
+ *
+ * @default background "gradient"
+ * @default alignment "center"
+ */
 const CTASection = ({
   heading,
   description,

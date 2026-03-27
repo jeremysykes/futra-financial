@@ -24,13 +24,30 @@ const featureSectionVariants = cva(
 
 export interface FeatureSectionProps
   extends VariantProps<typeof featureSectionVariants> {
+  /** Section heading text */
   heading: ReactNode;
+  /** Eyebrow label displayed above the heading */
   subtitle?: ReactNode;
+  /**
+   * HTML id attribute for anchor linking.
+   * @default "features"
+   */
   sectionId?: string;
+  /** Feature content (cards, grids, etc.) */
   children: ReactNode;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Feature section with heading, subtitle, and content area.
+ *
+ * Generic section wrapper for feature-related content. Supports
+ * default and muted backgrounds with configurable padding.
+ *
+ * @default background "default"
+ * @default padding "default"
+ */
 const FeatureSection = ({
   heading,
   subtitle,
