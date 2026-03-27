@@ -36,10 +36,20 @@ const valueVariants = cva(
 export interface StatItemProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof statItemVariants> {
+  /** The statistic value to display */
   value: ReactNode;
+  /** Descriptive label below the value */
   label: ReactNode;
 }
 
+/**
+ * Single statistic display with value and label.
+ *
+ * Renders a large value (mono font) with a smaller label beneath.
+ * Use inside `StatsRow` for grid layouts.
+ *
+ * @default valueColor "accent"
+ */
 const StatItem = ({ value, label, valueColor, className, ...props }: StatItemProps) => {
   return (
     <div className={cn(statItemVariants({ valueColor }), className)} {...props}>

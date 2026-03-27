@@ -20,9 +20,17 @@ export interface NavLinkProps
   extends
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     VariantProps<typeof navLinkVariants> {
+  /** Target URL for the link */
   href: string;
 }
 
+/**
+ * Anchor navigation link with sizing variants.
+ *
+ * Styled with muted foreground color and accent hover transition.
+ *
+ * @default size "sm"
+ */
 const NavLink = ({
   href,
   children,

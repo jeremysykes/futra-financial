@@ -26,11 +26,23 @@ export interface AvatarProps
   extends
     Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>,
     VariantProps<typeof avatarVariants> {
+  /** Image source URL for the avatar */
   src?: string;
+  /** Alt text; first character used as fallback initial */
   alt: string;
+  /** Custom initials to show when no image is provided */
   initials?: string;
 }
 
+/**
+ * Circular avatar with image or initials fallback.
+ *
+ * Shows the provided image, or falls back to the first character
+ * of `alt` (or custom `initials`) on a muted background.
+ *
+ * @default size "md"
+ * @default ring "none"
+ */
 const Avatar = ({
   className,
   size,

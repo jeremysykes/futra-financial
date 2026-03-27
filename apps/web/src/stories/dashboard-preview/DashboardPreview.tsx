@@ -46,6 +46,7 @@ const panelVariants = cva(
 
 export interface DashboardPreviewProps
   extends VariantProps<typeof dashboardVariants> {
+  /** Additional CSS classes for the dashboard container */
   className?: string;
 }
 
@@ -113,6 +114,15 @@ const BudgetBar = ({
   );
 };
 
+/**
+ * Dashboard preview with metrics, charts, and budget bars.
+ *
+ * Renders a read-only dashboard mockup with balance, spending chart,
+ * budget categories, and recent transactions. Data is hardcoded for
+ * demonstration purposes.
+ *
+ * @default size "default"
+ */
 const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
   return (
     <div className={cn(dashboardVariants({ size }), className)}>

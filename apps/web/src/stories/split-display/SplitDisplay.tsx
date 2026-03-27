@@ -17,17 +17,25 @@ const splitDisplayVariants = cva(
 );
 
 export interface SplitSegment {
+  /** Display name for the payer */
   name: string;
+  /** Formatted amount string */
   amount: string;
+  /** Percentage share from 0 to 100 */
   percent: number;
+  /** Token color for the segment bar */
   tokenColor: 'primary' | 'accent';
 }
 
 export interface SplitDisplayProps
   extends VariantProps<typeof splitDisplayVariants> {
+  /** Heading text describing the expense category */
   label: string;
+  /** Formatted total amount displayed alongside the label */
   total: string;
+  /** Array of segment objects defining each payer's share */
   splits: SplitSegment[];
+  /** Additional CSS classes for the outer container */
   className?: string;
 }
 
@@ -41,6 +49,14 @@ const dotColorMap: Record<SplitSegment['tokenColor'], string> = {
   accent: 'bg-accent',
 };
 
+/**
+ * Split percentage display with colored segments and legend.
+ *
+ * Shows a horizontal bar divided proportionally by each split,
+ * with a legend listing names, amounts, and percentages.
+ *
+ * @default size "default"
+ */
 const SplitDisplay = ({
   label,
   total,

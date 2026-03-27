@@ -27,9 +27,19 @@ export interface ButtonProps
   extends
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
+  /** Render as a child element using Radix Slot */
   asChild?: boolean;
 }
 
+/**
+ * Primary action button with variant-driven styling.
+ *
+ * Supports `primary` and `inverse` intents with two size presets.
+ * Use `asChild` to render as a different element (e.g., a link).
+ *
+ * @default intent "primary"
+ * @default size "md"
+ */
 const Button = ({
   className,
   intent,

@@ -1,10 +1,26 @@
 interface ScoreDisplayProps {
+  /** Numeric credit score value displayed in the center */
   score: number;
+  /** Rating label shown below the score (e.g. "Good", "Excellent") */
   label: string;
+  /**
+   * Arc fill percentage from 0 to 1.
+   * @default 0.75
+   */
   percentage?: number;
+  /**
+   * SVG width and height in pixels.
+   * @default 220
+   */
   size?: number;
 }
 
+/**
+ * Circular score gauge with arc indicator.
+ *
+ * Renders a score value inside an SVG arc that fills proportionally
+ * to the `percentage` prop. Used for credit score displays.
+ */
 export function ScoreDisplay({
   score,
   label,

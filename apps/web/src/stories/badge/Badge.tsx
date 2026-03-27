@@ -30,9 +30,20 @@ export interface BadgeProps
   extends
     Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>,
     VariantProps<typeof badgeVariants> {
+  /** Badge content — icon, text, or image */
   children: React.ReactNode;
 }
 
+/**
+ * Shaped container for icon, text, or image content.
+ *
+ * Uses CVA variants for shape (square, rounded, circle),
+ * size (sm, md, lg), and content type styling hints.
+ *
+ * @default shape "rounded"
+ * @default size "md"
+ * @default content "icon"
+ */
 const Badge = ({
   className,
   shape,
