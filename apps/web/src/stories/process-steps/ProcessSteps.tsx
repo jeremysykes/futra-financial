@@ -2,12 +2,12 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 import { Badge } from '../badge/Badge';
 
-const processStepsVariants = cva('grid grid-cols-1 relative', {
+const processStepsVariants = cva('grid grid-cols-1 relative list-none', {
   variants: {
     size: {
-      sm: '',
-      md: '',
-      lg: '',
+      sm: 'gap-8 md:gap-8',
+      md: 'gap-8 md:gap-12',
+      lg: 'gap-12 md:gap-8',
     },
     connector: {
       dashed: '',
@@ -27,53 +27,77 @@ const processStepsVariants = cva('grid grid-cols-1 relative', {
   },
 });
 
-// Size tiers match existing BU implementations:
-// md = Save (lg badge, small label, larger title/desc)
-// lg = Together (lg badge, bold label, compact title/desc)
-const labelClasses = {
-  sm: 'text-xs font-medium',
-  md: 'text-[13px] font-medium',
-  lg: 'text-3xl font-bold',
-} as const;
+const connectorVariants = cva('hidden md:block absolute left-[16.67%] right-[16.67%]', {
+  variants: {
+    size: {
+      sm: 'top-5',
+      md: 'top-8',
+      lg: 'top-8',
+    },
+    connector: {
+      dashed: '',
+      solid: 'h-px bg-border',
+      none: '',
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+    connector: 'dashed',
+  },
+});
 
-const titleClasses = {
-  sm: 'text-base font-semibold',
-  md: 'text-xl font-semibold',
-  lg: 'text-lg font-semibold',
-} as const;
+const labelVariants = cva('block mb-2 font-mono text-accent', {
+  variants: {
+    size: {
+      sm: 'text-xs font-medium',
+      md: 'text-[13px] font-medium',
+      lg: 'text-3xl font-bold',
+    },
+  },
+  defaultVariants: { size: 'md' },
+});
 
-const descriptionClasses = {
-  sm: 'text-sm',
-  md: 'text-base',
-  lg: 'text-sm',
-} as const;
+const titleVariants = cva('mb-2 font-sans text-foreground', {
+  variants: {
+    size: {
+      sm: 'text-base font-semibold',
+      md: 'text-xl font-semibold',
+      lg: 'text-lg font-semibold',
+    },
+  },
+  defaultVariants: { size: 'md' },
+});
 
-const badgeSizeMap = {
-  sm: 'sm',
-  md: 'lg',
-  lg: 'lg',
-} as const;
+const descriptionVariants = cva(
+  'font-sans text-muted-foreground leading-relaxed max-w-[300px]',
+  {
+    variants: {
+      size: {
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-sm',
+      },
+    },
+    defaultVariants: { size: 'md' },
+  },
+);
 
-const iconSizeMap = {
-  sm: 18,
-  md: 28,
-  lg: 24,
-} as const;
+const badgeWrapperVariants = cva('mx-auto relative z-10', {
+  variants: {
+    size: {
+      sm: 'mb-4',
+      md: 'mb-6',
+      lg: 'mb-5',
+    },
+  },
+  defaultVariants: { size: 'md' },
+});
 
-const badgeMarginMap = {
-  sm: 'mb-4',
-  md: 'mb-6',
-  lg: 'mb-5',
-} as const;
+// Non-class values — must stay as lookups
+const badgeSizeMap = { sm: 'sm', md: 'lg', lg: 'lg' } as const;
+const iconSizeMap = { sm: 18, md: 28, lg: 24 } as const;
 
-// Gap maps match existing BU implementations
-const gapClasses = {
-  sm: 'gap-8 md:gap-8',
-  md: 'gap-8 md:gap-12',
-  lg: 'gap-12 md:gap-8',
-} as const;
-
-// Static class lookup avoids dynamic Tailwind class generation
+// Dynamic grid cols based on step count — must stay as lookup
 const gridColsMap: Record<number, string> = {
   1: 'md:grid-cols-1',
   2: 'md:grid-cols-2',
@@ -144,8 +168,6 @@ const ProcessSteps = ({
       className={cn(
         processStepsVariants({ size, connector, badgeShape }),
         gridColsMap[steps.length],
-        gapClasses[resolvedSize],
-        'list-none',
         className,
       )}
       {...props}
@@ -153,13 +175,7 @@ const ProcessSteps = ({
       {/* Connector line */}
       {connector !== 'none' && (
         <div
-          className={cn(
-            'hidden md:block absolute',
-            resolvedSize === 'sm' && 'top-5 left-[16.67%] right-[16.67%]',
-            resolvedSize === 'md' && 'top-8 left-[16.67%] right-[16.67%]',
-            resolvedSize === 'lg' && 'top-8 left-[16.67%] right-[16.67%]',
-            connector === 'solid' && 'h-px bg-border',
-          )}
+          className={connectorVariants({ size, connector })}
           {...(connector === 'dashed' && {
             style: { borderTop: '2px dashed var(--color-border)' },
           })}
@@ -181,8 +197,7 @@ const ProcessSteps = ({
             shape={badgeShape}
             size={badgeSizeMap[resolvedSize]}
             className={cn(
-              'mx-auto relative z-10',
-              badgeMarginMap[resolvedSize],
+              badgeWrapperVariants({ size }),
               badgeClassName,
             )}
           >
@@ -195,30 +210,15 @@ const ProcessSteps = ({
             />
           </Badge>
 
-          <span
-            className={cn(
-              'block mb-2 font-mono text-accent',
-              labelClasses[resolvedSize],
-            )}
-          >
+          <span className={labelVariants({ size })}>
             {step.label}
           </span>
 
-          <h3
-            className={cn(
-              'mb-2 font-sans text-foreground',
-              titleClasses[resolvedSize],
-            )}
-          >
+          <h3 className={titleVariants({ size })}>
             {step.title}
           </h3>
 
-          <p
-            className={cn(
-              'font-sans text-muted-foreground leading-relaxed max-w-[300px]',
-              descriptionClasses[resolvedSize],
-            )}
-          >
+          <p className={descriptionVariants({ size })}>
             {step.description}
           </p>
         </li>
