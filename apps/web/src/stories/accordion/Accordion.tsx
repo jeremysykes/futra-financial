@@ -70,4 +70,4 @@ const Accordion = ({
 
 Accordion.displayName = 'Accordion';
 
-export { Accordion, accordionVariants };
+export { Accordion };

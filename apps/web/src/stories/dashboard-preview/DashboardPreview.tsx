@@ -219,4 +219,4 @@ const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
 
 DashboardPreview.displayName = 'DashboardPreview';
 
-export { DashboardPreview, dashboardVariants };
+export { DashboardPreview };

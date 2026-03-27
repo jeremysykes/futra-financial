@@ -46,4 +46,4 @@ const Footer = ({ layout, children, className }: FooterProps) => {
 
 Footer.displayName = 'Footer';
 
-export { Footer, footerVariants };
+export { Footer };

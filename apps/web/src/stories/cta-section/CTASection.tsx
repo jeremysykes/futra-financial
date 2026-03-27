@@ -107,4 +107,4 @@ const CTASection = ({
 
 CTASection.displayName = 'CTASection';
 
-export { CTASection, ctaSectionVariants };
+export { CTASection };

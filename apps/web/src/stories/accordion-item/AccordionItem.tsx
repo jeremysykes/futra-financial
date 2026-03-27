@@ -62,4 +62,4 @@ const AccordionItem = ({
 
 AccordionItem.displayName = 'AccordionItem';
 
-export { AccordionItem, accordionItemVariants };
+export { AccordionItem };

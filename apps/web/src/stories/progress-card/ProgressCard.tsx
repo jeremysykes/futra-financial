@@ -76,4 +76,4 @@ const ProgressCard = ({
 
 ProgressCard.displayName = 'ProgressCard';
 
-export { ProgressCard, progressCardVariants };
+export { ProgressCard };

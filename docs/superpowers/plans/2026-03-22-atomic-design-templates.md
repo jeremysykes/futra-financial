@@ -877,7 +877,7 @@ const FeatureCard = ({
   delay?: number;
 }) => (
   <Card
-    accent="top"
+    variant="top"
     interactive
     className="animate-fade-in-up"
     style={{ animationDelay: `${delay}ms` }}
@@ -1303,7 +1303,7 @@ export function SavePage() {
           {SaveFeatures.map((f, i) => (
             <Card
               key={f.title}
-              accent="top"
+              variant="top"
               interactive
               className="animate-fade-in-up"
               style={{ animationDelay: `${i * 100}ms` }}

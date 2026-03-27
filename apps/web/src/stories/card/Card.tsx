@@ -86,4 +86,4 @@ const Card = ({
 
 Card.displayName = 'Card';
 
-export { Card, cardVariants };
+export { Card };

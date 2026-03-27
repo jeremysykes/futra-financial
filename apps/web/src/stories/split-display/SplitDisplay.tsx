@@ -108,4 +108,4 @@ const SplitDisplay = ({
 
 SplitDisplay.displayName = 'SplitDisplay';
 
-export { SplitDisplay, splitDisplayVariants };
+export { SplitDisplay };

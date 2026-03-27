@@ -153,4 +153,4 @@ const HeroSection = ({
 
 HeroSection.displayName = 'HeroSection';
 
-export { HeroSection, heroSectionVariants };
+export { HeroSection };

@@ -79,4 +79,4 @@ const FeatureSection = ({
 
 FeatureSection.displayName = 'FeatureSection';
 
-export { FeatureSection, featureSectionVariants };
+export { FeatureSection };

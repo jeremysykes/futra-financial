@@ -18,7 +18,7 @@ const FeatureCard = ({
   delay?: number;
 }) => (
   <Card
-    accent="top"
+    variant="top"
     interactive
     className="animate-fade-in-up"
     style={{ animationDelay: `${delay}ms` }}

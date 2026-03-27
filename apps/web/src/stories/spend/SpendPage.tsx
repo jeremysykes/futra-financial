@@ -83,7 +83,7 @@ export function SpendPage() {
           {SpendFeatures.map((f, i) => (
             <Card
               key={f.title}
-              accent="left"
+              variant="left"
               interactive
               data-animate="fade-in-up"
               style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}

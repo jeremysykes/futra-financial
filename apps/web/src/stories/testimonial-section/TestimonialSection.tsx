@@ -77,4 +77,4 @@ const TestimonialSection = ({
 
 TestimonialSection.displayName = 'TestimonialSection';
 
-export { TestimonialSection, testimonialSectionVariants };
+export { TestimonialSection };

@@ -59,4 +59,4 @@ const StatsRow = ({ columns, background, children, className }: StatsRowProps) =
 
 StatsRow.displayName = 'StatsRow';
 
-export { StatsRow, statsRowVariants };
+export { StatsRow };

@@ -51,7 +51,7 @@ export function PlanPage() {
         {PlanStats.map((s, i) => (
           <Card
             key={s.label}
-            accent="left"
+            variant="left"
             interactive
             className="bg-secondary text-center"
             data-animate="fade-in-up"

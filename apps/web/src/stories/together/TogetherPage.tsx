@@ -114,7 +114,7 @@ export function TogetherPage() {
           {TogetherFeatures.map((feature, i) => (
             <Card
               key={feature.title}
-              accent="left"
+              variant="left"
               interactive
               className="flex flex-col"
               data-animate="fade-in-up"

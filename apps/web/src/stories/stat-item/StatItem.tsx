@@ -50,4 +50,4 @@ const StatItem = ({ value, label, valueColor, className, ...props }: StatItemPro
 
 StatItem.displayName = 'StatItem';
 
-export { StatItem, statItemVariants };
+export { StatItem };

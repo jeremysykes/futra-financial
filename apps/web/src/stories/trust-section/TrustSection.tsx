@@ -77,4 +77,4 @@ const TrustSection = ({
 
 TrustSection.displayName = 'TrustSection';
 
-export { TrustSection, trustSectionVariants };
+export { TrustSection };

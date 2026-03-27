@@ -42,4 +42,4 @@ const Logo = ({ unitName, variant, className }: LogoProps) => {
 
 Logo.displayName = 'Logo';
 
-export { Logo, logoVariants };
+export { Logo };

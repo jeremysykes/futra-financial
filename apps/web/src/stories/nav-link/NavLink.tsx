@@ -62,4 +62,4 @@ const NavLink = ({
 
 NavLink.displayName = 'NavLink';
 
-export { NavLink, navLinkVariants };
+export { NavLink };

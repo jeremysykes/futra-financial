@@ -82,4 +82,4 @@ const HowItWorks = ({
 
 HowItWorks.displayName = 'HowItWorks';
 
-export { HowItWorks, howItWorksVariants };
+export { HowItWorks };

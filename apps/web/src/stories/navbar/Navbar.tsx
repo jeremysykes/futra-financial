@@ -132,4 +132,4 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
 
 Navbar.displayName = 'Navbar';
 
-export { Navbar, navbarVariants, mobileMenuVariants };
+export { Navbar };

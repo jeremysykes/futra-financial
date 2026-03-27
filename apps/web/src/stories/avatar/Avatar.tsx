@@ -80,4 +80,4 @@ const Avatar = ({
 
 Avatar.displayName = 'Avatar';
 
-export { Avatar, avatarVariants };
+export { Avatar };

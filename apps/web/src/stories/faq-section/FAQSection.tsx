@@ -111,4 +111,4 @@ const FAQSection = ({
 
 FAQSection.displayName = 'FAQSection';
 
-export { FAQSection, faqSectionVariants };
+export { FAQSection };

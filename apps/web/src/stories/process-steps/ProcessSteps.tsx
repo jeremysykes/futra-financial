@@ -229,4 +229,4 @@ const ProcessSteps = ({
 
 ProcessSteps.displayName = 'ProcessSteps';
 
-export { ProcessSteps, processStepsVariants };
+export { ProcessSteps };

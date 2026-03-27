@@ -263,4 +263,4 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
 
 FeatureDeepDive.displayName = 'FeatureDeepDive';
 
-export { FeatureDeepDive, featureDeepDiveVariants };
+export { FeatureDeepDive };

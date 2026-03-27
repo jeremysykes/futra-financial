@@ -64,4 +64,4 @@ const Badge = ({
 
 Badge.displayName = 'Badge';
 
-export { Badge, badgeVariants };
+export { Badge };
