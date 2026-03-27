@@ -15,23 +15,19 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     unitName: {
-      description: 'Business unit name used for the logo',
       control: { type: 'select' },
       options: ['spend', 'save', 'credit', 'plan', 'together'],
       table: { category: 'Content' },
     },
     links: {
-      description: 'Navigation link items displayed in the navbar',
       control: { type: 'object' },
       table: { category: 'Content' },
     },
     ctaText: {
-      description: 'Label text for the call-to-action button',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     className: {
-      description: 'Additional CSS classes for the nav element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

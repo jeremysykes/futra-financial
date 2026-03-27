@@ -14,34 +14,28 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     background: {
-      description: 'Background color variant',
       control: 'inline-radio',
       options: ['default', 'muted'],
       table: { category: 'Appearance' },
     },
     padding: {
-      description: 'Vertical padding size',
       control: 'inline-radio',
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     eyebrow: {
-      description: 'Small label displayed above the heading',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     heading: {
-      description: 'Section heading text',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     sectionId: {
-      description: 'HTML id attribute for anchor linking',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

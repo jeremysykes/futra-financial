@@ -27,18 +27,15 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     accent: {
-      description: 'Colored accent border position',
       control: 'select',
       options: ['none', 'left', 'top', 'right', 'bottom'],
       table: { category: 'Appearance' },
     },
     interactive: {
-      description: 'Enables hover elevation and cursor pointer',
       control: 'boolean',
       table: { category: 'Behavior' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: 'text',
       table: { category: 'Appearance' },
     },

@@ -13,12 +13,10 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     value: {
-      description: 'Unique identifier for the accordion item',
       control: 'text',
       table: { category: 'Content' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: 'text',
       table: { category: 'Appearance' },
     },

@@ -33,29 +33,24 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     background: {
-      description: 'Background color variant',
       control: 'inline-radio',
       options: ['default', 'muted'],
       table: { category: 'Appearance' },
     },
     padding: {
-      description: 'Vertical padding size',
       control: 'inline-radio',
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     backgroundImage: {
-      description: 'URL for the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     backgroundOpacity: {
-      description: 'Tailwind opacity class applied to the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

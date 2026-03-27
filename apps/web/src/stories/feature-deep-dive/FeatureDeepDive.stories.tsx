@@ -12,13 +12,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     padding: {
-      description: 'Vertical padding size',
       control: 'inline-radio',
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

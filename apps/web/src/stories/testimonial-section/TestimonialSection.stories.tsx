@@ -49,23 +49,19 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     columns: {
-      description: 'Number of grid columns for testimonial cards',
       control: 'inline-radio',
       options: [2, 3],
       table: { category: 'Layout' },
     },
     heading: {
-      description: 'Section heading text',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     subtitle: {
-      description: 'Eyebrow label displayed above the heading',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

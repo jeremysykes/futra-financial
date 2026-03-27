@@ -13,13 +13,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     layout: {
-      description: 'Footer layout style',
       control: 'inline-radio',
       options: ['columns', 'simple'],
       table: { category: 'Layout' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

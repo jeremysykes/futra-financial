@@ -14,24 +14,20 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     intent: {
-      description: 'Visual style variant',
       control: 'select',
       options: ['primary', 'inverse'],
       table: { category: 'Appearance' },
     },
     size: {
-      description: 'Button size preset',
       control: 'select',
       options: ['sm', 'md'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: 'text',
       table: { category: 'Appearance' },
     },
     disabled: {
-      description: 'Disables the button',
       control: 'boolean',
       table: { category: 'Behavior' },
     },

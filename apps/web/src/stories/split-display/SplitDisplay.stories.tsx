@@ -13,28 +13,23 @@ const meta = {
   decorators: [withStoryDisplay({ maxWidth: 400 })],
   argTypes: {
     size: {
-      description: 'Controls padding density of the card',
       control: { type: 'select' },
       options: ['default', 'compact'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes for the outer container',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     label: {
-      description: 'Heading text describing the expense category',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     total: {
-      description: 'Formatted total amount displayed alongside the label',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     splits: {
-      description: 'Array of segment objects defining each payer\'s share',
       table: { disable: true },
     },
   },

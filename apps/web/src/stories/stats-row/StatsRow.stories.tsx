@@ -14,19 +14,16 @@ const meta = {
   argTypes: {
     children: { table: { disable: true } },
     columns: {
-      description: 'Number of grid columns for the stats layout',
       control: { type: 'inline-radio' },
       options: [3, 4],
       table: { category: 'Layout' },
     },
     background: {
-      description: 'Background color variant for the section',
       control: { type: 'inline-radio' },
       options: ['default', 'muted'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes for the section element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

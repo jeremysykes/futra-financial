@@ -13,25 +13,21 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     shape: {
-      description: 'Border radius style',
       control: 'select',
       options: ['square', 'rounded', 'circle'],
       table: { category: 'Appearance' },
     },
     size: {
-      description: 'Badge dimensions',
       control: 'select',
       options: ['sm', 'md', 'lg'],
       table: { category: 'Layout' },
     },
     content: {
-      description: 'Content type styling hint',
       control: 'select',
       options: ['icon', 'text', 'image'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: 'text',
       table: { category: 'Appearance' },
     },

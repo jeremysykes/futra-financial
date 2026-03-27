@@ -12,22 +12,18 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     score: {
-      description: 'Numeric credit score value displayed in the center',
       control: { type: 'number' },
       table: { category: 'Content' },
     },
     label: {
-      description: 'Rating label shown below the score (e.g. "Good", "Excellent")',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     percentage: {
-      description: 'Arc fill percentage from 0 to 1',
       control: { type: 'number', min: 0, max: 1, step: 0.01 },
       table: { category: 'Content' },
     },
     size: {
-      description: 'SVG width and height in pixels',
       control: { type: 'number' },
       table: { category: 'Layout' },
     },

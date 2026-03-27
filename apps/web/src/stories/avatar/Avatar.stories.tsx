@@ -12,34 +12,28 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     src: {
-      description: 'Image source URL for the avatar',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     alt: {
-      description: 'Alt text; first character used as fallback initial',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     initials: {
-      description: 'Custom initials to show when no image is provided',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     size: {
-      description: 'Avatar size variant',
       control: 'inline-radio',
       options: ['sm', 'md', 'lg'],
       table: { category: 'Appearance' },
     },
     ring: {
-      description: 'Ring color around the avatar',
       control: 'inline-radio',
       options: ['none', 'accent', 'primary'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

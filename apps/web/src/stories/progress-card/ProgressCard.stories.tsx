@@ -12,33 +12,27 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     goalName: {
-      description: 'Display name for the savings goal',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     targetAmount: {
-      description: 'Formatted target amount string (e.g. "$4,500")',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     currentAmount: {
-      description: 'Formatted current saved amount string (e.g. "$3,015")',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     percentage: {
-      description: 'Progress percentage from 0 to 100',
       control: { type: 'number', min: 0, max: 100 },
       table: { category: 'Content' },
     },
     size: {
-      description: 'Card size variant controlling internal padding',
       control: { type: 'inline-radio' },
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     className: {
-      description: 'Additional CSS classes for the card container',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

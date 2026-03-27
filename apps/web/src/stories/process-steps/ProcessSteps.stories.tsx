@@ -9,22 +9,16 @@ const saveSteps = [
     icon: Target,
     label: 'Step 01',
     title: 'Name your goal',
-    description:
-      'Set a target amount and a timeline that works for you. Trip, home, rainy day — you decide.',
   },
   {
     icon: Repeat,
     label: 'Step 02',
     title: 'Automate it',
-    description:
-      'Round-ups, scheduled transfers, or manual deposits. Choose what fits your rhythm.',
   },
   {
     icon: TrendingUp,
     label: 'Step 03',
     title: 'Watch it grow',
-    description:
-      'Visual progress tracking that keeps you motivated. Every dollar gets you closer.',
   },
 ];
 
@@ -33,7 +27,6 @@ const togetherSteps = [
     icon: Link,
     label: '01',
     title: 'Connect your accounts',
-    description: 'Link your bank accounts. Both of you. Takes two minutes.',
   },
   {
     icon: Settings,
@@ -45,7 +38,6 @@ const togetherSteps = [
     icon: Eye,
     label: '03',
     title: 'Live transparently',
-    description: 'See every shared expense, goal, and payment in real time.',
   },
 ];
 
@@ -59,45 +51,37 @@ const meta = {
   decorators: [withStoryDisplay({ maxWidth: 1200 })],
   argTypes: {
     size: {
-      description: 'Controls typography and spacing tier (sm, md, lg)',
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
       table: { category: 'Appearance' },
     },
     connector: {
-      description: 'Style of the horizontal line connecting step badges',
       control: { type: 'select' },
       options: ['dashed', 'solid', 'none'],
       table: { category: 'Appearance' },
     },
     badgeShape: {
-      description: 'Shape of the icon badge for each step',
       control: { type: 'select' },
       options: ['square', 'rounded', 'circle'],
       table: { category: 'Appearance' },
     },
     badgeClassName: {
-      description: 'Additional CSS classes applied to each step badge',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     iconStrokeWidth: {
-      description: 'Stroke width override for step icons',
       control: { type: 'number' },
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes for the outer list element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     animated: {
-      description: 'Whether steps animate in with a fade-up effect',
       control: { type: 'boolean' },
       table: { category: 'Behavior' },
     },
     steps: {
-      description: 'Array of step objects with icon, label, title, and description',
       table: { disable: true },
     },
   },

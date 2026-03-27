@@ -13,44 +13,36 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     background: {
-      description: 'Background style variant',
       control: 'inline-radio',
       options: ['gradient', 'solid'],
       table: { category: 'Appearance' },
     },
     alignment: {
-      description: 'Text alignment of the section',
       control: 'inline-radio',
       options: ['center', 'left'],
       table: { category: 'Layout' },
     },
     heading: {
-      description: 'Primary headline text',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     description: {
-      description: 'Supporting description below the heading',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     backgroundImage: {
-      description: 'URL for the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     backgroundOpacity: {
-      description: 'Tailwind opacity class applied to the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     sectionId: {
-      description: 'HTML id attribute for anchor linking',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
@@ -67,8 +59,6 @@ export const GradientCenter: Story = {
     background: 'gradient',
     alignment: 'center',
     heading: 'Your first goal is waiting',
-    description:
-      'No minimum amounts. No fees. Just a calm, focused way to build toward something that matters to you.',
     children: <Button>Start Saving</Button>,
   },
   globals: { businessUnit: 'save' },
@@ -83,8 +73,6 @@ export const SolidCenter: Story = {
   args: {
     background: 'solid',
     heading: 'Start spending smarter today.',
-    description:
-      'No minimum balance. No hidden fees. No waiting. Open your account in under two minutes.',
     children: (
       <Button intent="inverse" asChild>
         <a href="#">Download the App</a>
@@ -97,8 +85,6 @@ export const SolidCenter: Story = {
 export const WithBackgroundImage: Story = {
   args: {
     heading: 'Your first goal is waiting',
-    description:
-      'No minimum amounts. No fees. Just a calm, focused way to build toward something that matters to you.',
     backgroundImage: `${import.meta.env.BASE_URL}images/IMG-SAVE-03.png`,
     children: <Button>Start Saving</Button>,
   },
@@ -109,7 +95,6 @@ export const LeftAligned: Story = {
   args: {
     alignment: 'left',
     heading: 'Ready to take control?',
-    description: 'Join thousands already planning smarter.',
     children: <Button>Get Started</Button>,
   },
   globals: { businessUnit: 'plan' },

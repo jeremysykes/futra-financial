@@ -12,23 +12,19 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     value: {
-      description: 'The statistic value to display',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     label: {
-      description: 'Descriptive label below the value',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     valueColor: {
-      description: 'Color variant for the value text',
       control: 'inline-radio',
       options: ['foreground', 'accent'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

@@ -13,54 +13,44 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     layout: {
-      description: 'Layout arrangement of hero content',
       control: 'inline-radio',
       options: ['left-right', 'centered'],
       table: { category: 'Layout' },
     },
     size: {
-      description: 'Vertical size of the hero section',
       control: 'inline-radio',
       options: ['default', 'tall'],
       table: { category: 'Layout' },
     },
     heading: {
-      description: 'Primary headline text',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     subheading: {
-      description: 'Supporting description below the heading',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     eyebrow: {
-      description: 'Small label displayed above the heading',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     backgroundImage: {
-      description: 'URL for the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     backgroundOpacity: {
-      description: 'Tailwind opacity class applied to the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     overlayOpacity: {
-      description: 'Tailwind background class for the overlay layer',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     hideChildrenLandscape: {
-      description: 'Hide the children slot in landscape orientation',
       control: { type: 'boolean' },
       table: { category: 'Behavior' },
     },

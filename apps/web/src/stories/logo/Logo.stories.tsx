@@ -12,18 +12,15 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     unitName: {
-      description: 'Business unit name displayed after the FUTRA brand',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     mode: {
-      description: 'Color mode variant for light or dark backgrounds',
       control: 'inline-radio',
       options: ['light', 'dark'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

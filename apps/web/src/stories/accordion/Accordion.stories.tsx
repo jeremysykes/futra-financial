@@ -42,23 +42,19 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     items: {
-      description: 'Array of accordion item data objects with value, trigger, and content',
       control: { type: 'object' },
       table: { category: 'Content' },
     },
     multiple: {
-      description: 'Allow multiple accordion items to be open simultaneously',
       control: { type: 'boolean' },
       table: { category: 'Behavior' },
     },
     spacing: {
-      description: 'Vertical spacing between accordion items',
       control: { type: 'inline-radio' },
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     className: {
-      description: 'Additional CSS classes for the accordion root',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

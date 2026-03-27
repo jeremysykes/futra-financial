@@ -12,13 +12,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     size: {
-      description: 'Dashboard size variant controlling text scale',
       control: { type: 'inline-radio' },
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     className: {
-      description: 'Additional CSS classes for the dashboard container',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

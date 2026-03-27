@@ -12,18 +12,15 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     href: {
-      description: 'Target URL for the link',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     size: {
-      description: 'Text size variant',
       control: 'inline-radio',
       options: ['sm', 'base'],
       table: { category: 'Appearance' },
     },
     className: {
-      description: 'Additional CSS classes',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

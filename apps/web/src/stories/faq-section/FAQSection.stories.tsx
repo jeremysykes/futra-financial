@@ -12,43 +12,35 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     padding: {
-      description: 'Vertical padding size',
       control: 'inline-radio',
       options: ['default', 'compact'],
       table: { category: 'Layout' },
     },
     eyebrow: {
-      description: 'Small label displayed above the heading',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     heading: {
-      description: 'Section heading text',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     items: {
-      description: 'Array of FAQ question/answer pairs',
       control: { type: 'object' },
       table: { category: 'Content' },
     },
     backgroundImage: {
-      description: 'URL for the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     backgroundOpacity: {
-      description: 'Tailwind opacity class applied to the background image',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },
     sectionId: {
-      description: 'HTML id attribute for anchor linking',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     className: {
-      description: 'Additional CSS classes for the root element',
       control: { type: 'text' },
       table: { category: 'Appearance' },
     },

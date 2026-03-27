@@ -13,24 +13,18 @@ const meta = {
   decorators: [withStoryDisplay({ maxWidth: 800 })],
   argTypes: {
     src: {
-      description: 'Image source URL',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     alt: {
-      description: 'Alt text for accessibility',
       control: { type: 'text' },
       table: { category: 'Content' },
     },
     focusX: {
-      description:
-        'Focal point X coordinate (0 = left edge, 50 = center, 100 = right edge)',
       control: { type: 'range', min: 0, max: 100, step: 1 },
       table: { category: 'Layout' },
     },
     focusY: {
-      description:
-        'Focal point Y coordinate (0 = top edge, 50 = center, 100 = bottom edge)',
       control: { type: 'range', min: 0, max: 100, step: 1 },
       table: { category: 'Layout' },
     },
