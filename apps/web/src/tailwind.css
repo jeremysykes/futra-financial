@@ -150,7 +150,7 @@
     --color-ring: var(--save-grove);
 
     --color-accent: var(--save-grove);
-    --color-positive: var(--save-grove);
+    --color-positive: var(--teal);
     --color-negative: var(--coral);
     --color-caution: var(--amber);
   }
@@ -176,7 +176,7 @@
     --color-ring: var(--save-grove-light);
 
     --color-accent: var(--save-grove-light);
-    --color-positive: var(--save-grove-light);
+    --color-positive: var(--teal);
     --color-negative: var(--coral);
     --color-caution: var(--amber);
   }

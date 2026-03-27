@@ -123,20 +123,20 @@ export function PlanPage() {
 
       </>
 
-      <Footer className="bg-[#0C1017]">
+      <Footer>
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo unitName="plan" variant="dark" className="text-[#E2E8F0]" />
+          <Logo unitName="plan" variant="dark" className="text-foreground" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {PlanFooter.map((col) => (
               <div key={col.title}>
-                <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-[#A0AEC0]">
+                <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-accent">
                   {col.title}
                 </span>
                 {col.links.map((link) => (
                   <a
                     key={link}
                     href="#"
-                    className="block mb-3 font-sans text-sm text-[#64748B] transition-colors hover:text-white"
+                    className="block mb-3 font-sans text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link}
                   </a>
@@ -145,8 +145,8 @@ export function PlanPage() {
             ))}
           </div>
         </div>
-        <div className="pt-8 border-t border-[rgba(160,174,192,0.1)]">
-          <span className="font-sans text-xs text-[#64748B]">
+        <div className="pt-8 border-t border-border">
+          <span className="font-sans text-xs text-muted-foreground">
             &copy; 2026 Futra Financial. All rights reserved.
           </span>
         </div>

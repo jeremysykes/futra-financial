@@ -152,13 +152,13 @@ export function SpendPage() {
 
       </>
 
-      <Footer className="bg-[#0F0F12] border-t border-[rgba(255,255,255,0.08)]">
+      <Footer className="border-t border-border">
         <div className="flex flex-col md:flex-row gap-12 md:gap-20 mb-12">
-          <Logo unitName="spend" variant="dark" className="text-[#FFFFFF]" />
+          <Logo unitName="spend" variant="dark" className="text-foreground" />
           <div className="flex flex-wrap gap-12 md:gap-20">
             {SpendFooter.map((col) => (
               <div key={col.title}>
-                <p className="text-[12px] uppercase tracking-[0.08em] text-[#8B8B9A] mb-4 font-sans font-medium">
+                <p className="text-[12px] uppercase tracking-[0.08em] text-muted-foreground mb-4 font-sans font-medium">
                   {col.title}
                 </p>
                 <ul className="flex flex-col gap-2.5">
@@ -166,7 +166,7 @@ export function SpendPage() {
                     <li key={l}>
                       <a
                         href="#"
-                        className="text-[14px] text-[#8B8B9A] hover:text-[#FFFFFF] transition-colors font-sans font-normal"
+                        className="text-[14px] text-muted-foreground hover:text-foreground transition-colors font-sans font-normal"
                       >
                         {l}
                       </a>
@@ -177,8 +177,8 @@ export function SpendPage() {
             ))}
           </div>
         </div>
-        <div className="border-t border-[rgba(255,255,255,0.08)] pt-6">
-          <p className="text-[12px] text-[#8B8B9A] font-sans font-normal">
+        <div className="border-t border-border pt-6">
+          <p className="text-[12px] text-muted-foreground font-sans font-normal">
             &copy; 2026 Futra Financial, Inc. All rights reserved.
           </p>
         </div>

@@ -16,7 +16,7 @@ Rules for DESIGN.md:
 
 ## Design System
 
-- All components must use CSS variable token classes (`bg-background`, `text-foreground`, etc.) — never hardcoded hex colors (except in always-dark footers)
+- All components must use CSS variable token classes (`bg-background`, `text-foreground`, etc.) — never hardcoded hex colors
 - Consult `DESIGN.md` for the correct palette, typography, and component patterns per business unit
 - Primitive token values are defined in `packages/tokens/src/tokens.json` (DTCG format) — edit there, not in CSS
 - Each BU has its own component directory: `apps/web/src/components/{spend,save,credit,plan,together}/`

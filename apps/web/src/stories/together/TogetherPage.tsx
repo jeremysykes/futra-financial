@@ -211,11 +211,11 @@ export function TogetherPage() {
 
       </>
 
-      <Footer className="bg-[#1C1A18]">
+      <Footer>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           <div className="col-span-2 md:col-span-1">
-            <Logo unitName="together" variant="dark" className="text-[#FFF9F5]" />
-            <p className="text-sm mt-4 leading-relaxed text-[#9E8E84]">
+            <Logo unitName="together" variant="dark" className="text-foreground" />
+            <p className="text-sm mt-4 leading-relaxed text-muted-foreground">
               Shared finances,
               <br />
               without the friction.
@@ -223,7 +223,7 @@ export function TogetherPage() {
           </div>
           {TogetherFooter.map((col) => (
             <div key={col.title}>
-              <h4 className="font-sans font-semibold text-xs uppercase tracking-wider mb-4 text-[#9E8E84]">
+              <h4 className="font-sans font-semibold text-xs uppercase tracking-wider mb-4 text-muted-foreground">
                 {col.title}
               </h4>
               <ul className="space-y-3">
@@ -231,7 +231,7 @@ export function TogetherPage() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm transition-colors text-[#9E8E84] hover:text-[#C4B8AE]"
+                      className="text-sm transition-colors text-muted-foreground hover:text-foreground"
                     >
                       {link}
                     </a>
@@ -241,7 +241,7 @@ export function TogetherPage() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-8 text-xs text-center border-t border-[rgba(158,142,132,0.2)] text-[#9E8E84]">
+        <div className="mt-12 pt-8 text-xs text-center border-t border-border text-muted-foreground">
           &copy; 2026 Futra Together. All rights reserved.
         </div>
       </Footer>

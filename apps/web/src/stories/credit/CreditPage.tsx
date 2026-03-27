@@ -104,20 +104,20 @@ export function CreditPage() {
 
       </>
 
-      <Footer className="bg-[#1A1830]">
+      <Footer>
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo unitName="credit" variant="dark" className="text-[#F9F7FF]" />
+          <Logo unitName="credit" variant="dark" className="text-foreground" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {CreditFooter.map((col) => (
               <div key={col.title}>
-                <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-[#F9F7FF]">
+                <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-foreground">
                   {col.title}
                 </span>
                 {col.links.map((link) => (
                   <a
                     key={link}
                     href="#"
-                    className="block mb-3 font-sans text-sm text-[#9896C8] transition-colors hover:text-white"
+                    className="block mb-3 font-sans text-sm text-accent transition-colors hover:text-foreground"
                   >
                     {link}
                   </a>
@@ -126,8 +126,8 @@ export function CreditPage() {
             ))}
           </div>
         </div>
-        <div className="pt-8 border-t border-[rgba(152,150,200,0.2)]">
-          <span className="font-sans text-xs text-[#6B6880]">
+        <div className="pt-8 border-t border-border">
+          <span className="font-sans text-xs text-muted-foreground">
             &copy; 2026 Futra Financial. All rights reserved.
           </span>
         </div>

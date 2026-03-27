@@ -177,18 +177,18 @@ export function SavePage() {
 
       <Footer>
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo unitName="save" variant="dark" className="text-[#F7F5F0]" />
+          <Logo unitName="save" variant="dark" className="text-foreground" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {SaveFooter.map((col) => (
               <div key={col.title}>
-                <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-[#9A9A90]">
+                <span className="block mb-4 uppercase font-sans font-medium text-[11px] tracking-[0.08em] text-muted-foreground">
                   {col.title}
                 </span>
                 {col.links.map((link) => (
                   <a
                     key={link}
                     href="#"
-                    className="block mb-3 font-sans text-sm text-[#9A9A90] transition-colors hover:text-white"
+                    className="block mb-3 font-sans text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link}
                   </a>
@@ -197,8 +197,8 @@ export function SavePage() {
             ))}
           </div>
         </div>
-        <div className="pt-8 border-t border-[rgba(154,154,144,0.2)]">
-          <span className="font-sans text-xs text-[#9A9A90]">
+        <div className="pt-8 border-t border-border">
+          <span className="font-sans text-xs text-muted-foreground">
             &copy; 2026 Futra Financial. All rights reserved.
           </span>
         </div>

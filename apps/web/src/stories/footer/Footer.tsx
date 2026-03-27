@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const footerVariants = cva(
-  'bg-[#1C1C1A]',
+  'dark bg-background text-foreground',
   {
     variants: {
       layout: {
@@ -28,9 +28,10 @@ export interface FooterProps
 /**
  * Footer section with layout variants.
  *
- * Always renders on a dark background (`#1C1C1A`). The `columns`
- * layout provides more vertical padding for multi-column content;
- * `simple` is more compact.
+ * Applies the `dark` class so all child content resolves semantic
+ * tokens to their dark-mode values. The `columns` layout provides
+ * more vertical padding for multi-column content; `simple` is
+ * more compact.
  *
  * @default layout "columns"
  */
