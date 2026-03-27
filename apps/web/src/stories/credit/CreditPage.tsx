@@ -106,7 +106,7 @@ export function CreditPage() {
 
       <Footer className="bg-[#1A1830]">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo unitName="credit" mode="dark" className="text-[#F9F7FF]" />
+          <Logo unitName="credit" variant="dark" className="text-[#F9F7FF]" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {CreditFooter.map((col) => (
               <div key={col.title}>

@@ -125,7 +125,7 @@ export function PlanPage() {
 
       <Footer className="bg-[#0C1017]">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo unitName="plan" mode="dark" className="text-[#E2E8F0]" />
+          <Logo unitName="plan" variant="dark" className="text-[#E2E8F0]" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {PlanFooter.map((col) => (
               <div key={col.title}>

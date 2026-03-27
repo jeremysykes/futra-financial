@@ -214,7 +214,7 @@ export function TogetherPage() {
       <Footer className="bg-[#1C1A18]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           <div className="col-span-2 md:col-span-1">
-            <Logo unitName="together" mode="dark" className="text-[#FFF9F5]" />
+            <Logo unitName="together" variant="dark" className="text-[#FFF9F5]" />
             <p className="text-sm mt-4 leading-relaxed text-[#9E8E84]">
               Shared finances,
               <br />

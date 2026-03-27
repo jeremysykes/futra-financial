@@ -102,7 +102,7 @@ const components: ComponentEntry[] = [
     name: 'Button',
     meta: ButtonMeta,
     firstStory: getFirstStory(ButtonStories),
-    variantKeys: ['intent', 'size'],
+    variantKeys: ['variant', 'size'],
     jsxProps: ['children'],
   },
   {
@@ -186,7 +186,7 @@ const components: ComponentEntry[] = [
     name: 'Logo',
     meta: LogoMeta,
     firstStory: getFirstStory(LogoStories),
-    variantKeys: ['mode'],
+    variantKeys: ['variant'],
     jsxProps: [],
   },
   {

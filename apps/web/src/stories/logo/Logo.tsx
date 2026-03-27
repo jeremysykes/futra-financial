@@ -3,13 +3,13 @@ import { cn } from '../../lib/utils';
 
 const logoVariants = cva('flex items-center gap-0', {
   variants: {
-    mode: {
+    variant: {
       light: 'text-foreground',
       dark: '',
     },
   },
   defaultVariants: {
-    mode: 'light',
+    variant: 'light',
   },
 });
 
@@ -26,11 +26,11 @@ export interface LogoProps extends VariantProps<typeof logoVariants> {
  * Renders the FUTRA wordmark followed by the unit name in accent color.
  * Supports light and dark mode variants.
  *
- * @default mode "light"
+ * @default variant "light"
  */
-const Logo = ({ unitName, mode, className }: LogoProps) => {
+const Logo = ({ unitName, variant, className }: LogoProps) => {
   return (
-    <div className={cn(logoVariants({ mode }), className)}>
+    <div className={cn(logoVariants({ variant }), className)}>
       <span className="font-sans font-black text-xl tracking-[-0.03em]">
         FUTRA
       </span>

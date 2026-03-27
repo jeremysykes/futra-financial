@@ -15,7 +15,7 @@ const meta = {
       control: { type: 'text' },
       table: { category: 'Content' },
     },
-    mode: {
+    variant: {
       control: 'inline-radio',
       options: ['light', 'dark'],
       table: { category: 'Appearance' },
@@ -32,7 +32,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Spend: Story = {
-  args: { unitName: 'spend', mode: 'light' },
+  args: { unitName: 'spend', variant: 'light' },
   globals: { businessUnit: 'spend' },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -42,21 +42,21 @@ export const Spend: Story = {
 };
 
 export const Save: Story = {
-  args: { unitName: 'save', mode: 'light' },
+  args: { unitName: 'save', variant: 'light' },
   globals: { businessUnit: 'save' },
 };
 
 export const Credit: Story = {
-  args: { unitName: 'credit', mode: 'light' },
+  args: { unitName: 'credit', variant: 'light' },
   globals: { businessUnit: 'credit' },
 };
 
 export const Plan: Story = {
-  args: { unitName: 'plan', mode: 'light' },
+  args: { unitName: 'plan', variant: 'light' },
   globals: { businessUnit: 'plan' },
 };
 
 export const Together: Story = {
-  args: { unitName: 'together', mode: 'light' },
+  args: { unitName: 'together', variant: 'light' },
   globals: { businessUnit: 'together' },
 };

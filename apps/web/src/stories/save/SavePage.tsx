@@ -177,7 +177,7 @@ export function SavePage() {
 
       <Footer>
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <Logo unitName="save" mode="dark" className="text-[#F7F5F0]" />
+          <Logo unitName="save" variant="dark" className="text-[#F7F5F0]" />
           <div className="grid grid-cols-3 gap-8 md:gap-16">
             {SaveFooter.map((col) => (
               <div key={col.title}>

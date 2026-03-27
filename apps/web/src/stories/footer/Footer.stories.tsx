@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 const SaveFooterContent = () => (
   <>
     <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-      <Logo unitName="save" mode="dark" className="text-[#F7F5F0]" />
+      <Logo unitName="save" variant="dark" className="text-[#F7F5F0]" />
       <div className="grid grid-cols-3 gap-8 md:gap-16">
         {[
           { title: 'Product', links: ['Features', 'Goals', 'Round-Ups'] },
@@ -89,7 +89,7 @@ export const Simple: Story = {
     layout: 'simple',
     children: (
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <Logo unitName="spend" mode="dark" className="text-[#FFFFFF]" />
+        <Logo unitName="spend" variant="dark" className="text-[#FFFFFF]" />
         <span className="font-sans text-xs text-[#9A9A90]">
           &copy; 2026 Futra Financial, Inc. All rights reserved.
         </span>

@@ -154,7 +154,7 @@ export function SpendPage() {
 
       <Footer className="bg-[#0F0F12] border-t border-[rgba(255,255,255,0.08)]">
         <div className="flex flex-col md:flex-row gap-12 md:gap-20 mb-12">
-          <Logo unitName="spend" mode="dark" className="text-[#FFFFFF]" />
+          <Logo unitName="spend" variant="dark" className="text-[#FFFFFF]" />
           <div className="flex flex-wrap gap-12 md:gap-20">
             {SpendFooter.map((col) => (
               <div key={col.title}>
