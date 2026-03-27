@@ -8,21 +8,6 @@ const statItemVariants = cva(
   {
     variants: {
       valueColor: {
-        foreground: '',
-        accent: '',
-      },
-    },
-    defaultVariants: {
-      valueColor: 'accent',
-    },
-  },
-);
-
-const valueVariants = cva(
-  'block mb-2 font-mono font-medium text-[clamp(28px,4vw,40px)]',
-  {
-    variants: {
-      valueColor: {
         foreground: 'text-foreground',
         accent: 'text-accent',
       },
@@ -53,7 +38,7 @@ export interface StatItemProps
 const StatItem = ({ value, label, valueColor, className, ...props }: StatItemProps) => {
   return (
     <div className={cn(statItemVariants({ valueColor }), className)} {...props}>
-      <span className={valueVariants({ valueColor })}>
+      <span className="block mb-2 font-mono font-medium text-[clamp(28px,4vw,40px)]">
         {value}
       </span>
       <span className="uppercase font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
@@ -65,4 +50,4 @@ const StatItem = ({ value, label, valueColor, className, ...props }: StatItemPro
 
 StatItem.displayName = 'StatItem';
 
-export { StatItem, statItemVariants, valueVariants };
+export { StatItem, statItemVariants };

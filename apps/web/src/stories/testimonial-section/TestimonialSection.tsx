@@ -17,20 +17,10 @@ const testimonialSectionVariants = cva(
   },
 );
 
-const testimonialGridVariants = cva(
-  'grid grid-cols-1 gap-6 sm:gap-8',
-  {
-    variants: {
-      columns: {
-        2: 'md:grid-cols-2',
-        3: 'sm:grid-cols-2 md:grid-cols-3',
-      },
-    },
-    defaultVariants: {
-      columns: 3,
-    },
-  },
-);
+const gridClasses: Record<number, string> = {
+  2: 'md:grid-cols-2',
+  3: 'sm:grid-cols-2 md:grid-cols-3',
+};
 
 export interface TestimonialSectionProps
   extends VariantProps<typeof testimonialSectionVariants> {
@@ -59,6 +49,7 @@ const TestimonialSection = ({
   children,
   className,
 }: TestimonialSectionProps) => {
+  const cols = columns ?? 3;
   return (
     <section className={cn(testimonialSectionVariants({ columns }), className)}>
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
@@ -76,7 +67,7 @@ const TestimonialSection = ({
             )}
           </div>
         )}
-        <div className={testimonialGridVariants({ columns })}>
+        <div className={cn('grid grid-cols-1 gap-6 sm:gap-8', gridClasses[cols])}>
           {children}
         </div>
       </div>
@@ -86,4 +77,4 @@ const TestimonialSection = ({
 
 TestimonialSection.displayName = 'TestimonialSection';
 
-export { TestimonialSection, testimonialSectionVariants, testimonialGridVariants };
+export { TestimonialSection, testimonialSectionVariants };
