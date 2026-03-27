@@ -26,7 +26,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    accent: {
+    variant: {
       control: 'select',
       options: ['none', 'left', 'top', 'right', 'bottom'],
       table: { category: 'Appearance' },
@@ -51,7 +51,7 @@ const constrainedCard = [withStoryDisplay({ maxWidth: 300 })];
 export const Default: Story = {
   decorators: constrainedCard,
   args: {
-    accent: 'none',
+    variant: 'none',
     children: React.createElement(SampleContent),
   },
   play: async ({ canvasElement }) => {
@@ -64,7 +64,7 @@ export const Default: Story = {
 export const AccentLeft: Story = {
   decorators: constrainedCard,
   args: {
-    accent: 'left',
+    variant: 'left',
     children: React.createElement(SampleContent),
   },
 };
@@ -72,7 +72,7 @@ export const AccentLeft: Story = {
 export const AccentTop: Story = {
   decorators: constrainedCard,
   args: {
-    accent: 'top',
+    variant: 'top',
     children: React.createElement(SampleContent),
   },
 };
@@ -80,7 +80,7 @@ export const AccentTop: Story = {
 export const AccentRight: Story = {
   decorators: constrainedCard,
   args: {
-    accent: 'right',
+    variant: 'right',
     children: React.createElement(SampleContent),
   },
 };
@@ -88,7 +88,7 @@ export const AccentRight: Story = {
 export const AccentBottom: Story = {
   decorators: constrainedCard,
   args: {
-    accent: 'bottom',
+    variant: 'bottom',
     children: React.createElement(SampleContent),
   },
 };
@@ -96,7 +96,7 @@ export const AccentBottom: Story = {
 export const Hover: Story = {
   decorators: constrainedCard,
   args: {
-    accent: 'left',
+    variant: 'left',
     interactive: true,
     children: React.createElement(SampleContent),
   },
@@ -111,22 +111,22 @@ export const AllVariants: Story = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 3, gap: '1.5rem' })],
   render: () => (
     <>
-      <Card accent="none">
+      <Card variant="none">
         <SampleContent />
       </Card>
-      <Card accent="left">
+      <Card variant="left">
         <SampleContent />
       </Card>
-      <Card accent="top">
+      <Card variant="top">
         <SampleContent />
       </Card>
-      <Card accent="right">
+      <Card variant="right">
         <SampleContent />
       </Card>
-      <Card accent="bottom">
+      <Card variant="bottom">
         <SampleContent />
       </Card>
-      <Card accent="left" interactive>
+      <Card variant="left" interactive>
         <SampleContent />
       </Card>
     </>

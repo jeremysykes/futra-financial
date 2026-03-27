@@ -109,7 +109,7 @@ const components: ComponentEntry[] = [
     name: 'Card',
     meta: CardMeta,
     firstStory: getFirstStory(CardStories),
-    variantKeys: ['accent', 'interactive'],
+    variantKeys: ['variant', 'interactive'],
     jsxProps: ['children'],
   },
   {

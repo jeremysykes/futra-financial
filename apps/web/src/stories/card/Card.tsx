@@ -6,7 +6,7 @@ const cardVariants = cva(
   'rounded-xl bg-surface border border-border p-6 transition-all duration-300',
   {
     variants: {
-      accent: {
+      variant: {
         none: '',
         left: 'border-l-4 border-l-accent',
         top: 'border-t-2 border-t-accent',
@@ -19,7 +19,7 @@ const cardVariants = cva(
       },
     },
     defaultVariants: {
-      accent: 'none',
+      variant: 'none',
       interactive: false,
     },
   },
@@ -36,12 +36,12 @@ export interface CardProps
  * Accent borders can be placed on any edge. Interactive mode adds
  * hover elevation and pointer cursor.
  *
- * @default accent "none"
+ * @default variant "none"
  * @default interactive false
  */
 const Card = ({
   className,
-  accent,
+  variant,
   interactive,
   onClick,
   children,
@@ -59,7 +59,7 @@ const Card = ({
   if (isClickable) {
     return (
       <div
-        className={cn(cardVariants({ accent, interactive }), className)}
+        className={cn(cardVariants({ variant, interactive }), className)}
         role="button"
         tabIndex={0}
         onClick={onClick}
@@ -73,7 +73,7 @@ const Card = ({
 
   return (
     <div
-      className={cn(cardVariants({ accent, interactive }), className)}
+      className={cn(cardVariants({ variant, interactive }), className)}
       {...props}
     >
       {children}
