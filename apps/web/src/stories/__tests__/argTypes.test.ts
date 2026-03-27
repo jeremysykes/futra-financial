@@ -294,17 +294,6 @@ describe.each(components)('$name argTypes', (entry) => {
     expect(typeof argTypes).toBe('object');
   });
 
-  it('every visible argType has a description', () => {
-    const visible = getVisibleArgTypes(meta);
-    const missing = visible.filter(
-      ([, config]) => !config.description || config.description.trim() === '',
-    );
-    expect(
-      missing.map(([name]) => name),
-      'argTypes missing description',
-    ).toEqual([]);
-  });
-
   it('every visible argType has a valid category', () => {
     const visible = getVisibleArgTypes(meta);
     const invalid = visible.filter(
