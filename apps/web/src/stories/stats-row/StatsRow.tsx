@@ -39,10 +39,21 @@ const statsGridVariants = cva(
 
 export interface StatsRowProps
   extends VariantProps<typeof statsRowVariants> {
+  /** StatItem children to display in the grid */
   children: ReactNode;
+  /** Additional CSS classes for the section element */
   className?: string;
 }
 
+/**
+ * Row container for statistic items in a responsive grid.
+ *
+ * Wraps `StatItem` children in a 3 or 4 column grid layout
+ * with configurable background.
+ *
+ * @default columns 4
+ * @default background "muted"
+ */
 const StatsRow = ({ columns, background, children, className }: StatsRowProps) => {
   return (
     <section className={cn(statsRowVariants({ columns, background }), className)}>

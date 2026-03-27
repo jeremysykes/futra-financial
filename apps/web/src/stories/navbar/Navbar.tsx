@@ -36,12 +36,23 @@ const mobileMenuVariants = cva(
 );
 
 export interface NavbarProps extends VariantProps<typeof navbarVariants> {
+  /** Business unit name used for the logo */
   unitName: string;
+  /** Navigation link items displayed in the navbar */
   links: { label: string; href: string }[];
+  /** Label text for the call-to-action button */
   ctaText: string;
+  /** Additional CSS classes for the nav element */
   className?: string;
 }
 
+/**
+ * Responsive navigation bar with logo, links, CTA, and mobile menu.
+ *
+ * Fixed to the top of the viewport. Transitions from transparent to
+ * a blurred surface background on scroll. Includes a hamburger menu
+ * for mobile viewports.
+ */
 const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);

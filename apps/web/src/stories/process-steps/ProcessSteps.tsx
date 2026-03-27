@@ -83,13 +83,17 @@ const gridColsMap: Record<number, string> = {
 };
 
 export interface StepItem {
+  /** Lucide icon component for the step badge */
   icon: React.ComponentType<{
     size?: number;
     className?: string;
     strokeWidth?: number;
   }>;
+  /** Short label above the title (e.g. "Step 1") */
   label: string;
+  /** Step title */
   title: string;
+  /** Step description text */
   description: string;
 }
 
@@ -97,12 +101,30 @@ export interface ProcessStepsProps
   extends
     React.HTMLAttributes<HTMLOListElement>,
     VariantProps<typeof processStepsVariants> {
+  /** Array of step objects with icon, label, title, and description */
   steps: StepItem[];
+  /**
+   * Whether steps animate in with a fade-up effect.
+   * @default true
+   */
   animated?: boolean;
+  /** Additional CSS classes applied to each step badge */
   badgeClassName?: string;
+  /** Stroke width override for step icons */
   iconStrokeWidth?: number;
 }
 
+/**
+ * Multi-step process display with badges and connector lines.
+ *
+ * Renders a responsive grid of steps, each with an icon badge,
+ * label, title, and description. Steps can be connected with
+ * dashed, solid, or no connector lines.
+ *
+ * @default size "md"
+ * @default connector "dashed"
+ * @default badgeShape "rounded"
+ */
 const ProcessSteps = ({
   className,
   size = 'md',
