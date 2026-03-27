@@ -14,7 +14,8 @@
           plan: 'dark',
           together: 'light',
         };
-        var segment = window.location.pathname.split('/')[1];
+        var segments = window.location.pathname.split('/').filter(Boolean);
+        var segment = segments.length > 1 ? segments[segments.length - 1] : segments[0];
         var unit =
           segment && defaults[segment] !== undefined ? segment : 'spend';
         var stored = null;
