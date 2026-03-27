@@ -16,6 +16,7 @@ const cardVariants = cva(
       interactive: {
         true: 'hover:-translate-y-1 hover:shadow-lg cursor-pointer',
         false: '',
+        disabled: 'opacity-50 cursor-not-allowed',
       },
     },
     defaultVariants: {
@@ -34,7 +35,8 @@ export interface CardProps
  * Container with optional accent borders and interactive hover states.
  *
  * Accent borders can be placed on any edge. Interactive mode adds
- * hover elevation and pointer cursor.
+ * hover elevation and pointer cursor. Disabled mode reduces opacity
+ * and prevents interaction.
  *
  * @default variant "none"
  * @default interactive false
@@ -47,7 +49,8 @@ const Card = ({
   children,
   ...props
 }: CardProps) => {
-  const isClickable = interactive && !!onClick;
+  const isDisabled = interactive === 'disabled';
+  const isClickable = interactive === true && !!onClick && !isDisabled;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {

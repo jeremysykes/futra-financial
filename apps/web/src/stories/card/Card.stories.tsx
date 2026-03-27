@@ -32,7 +32,8 @@ const meta = {
       table: { category: 'Appearance' },
     },
     interactive: {
-      control: 'boolean',
+      control: 'select',
+      options: [true, false, 'disabled'],
       table: { category: 'Behavior' },
     },
     className: {
@@ -41,6 +42,7 @@ const meta = {
     },
     children: { table: { disable: true } },
   },
+  args: { interactive: false },
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -103,6 +105,20 @@ export const Hover: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const card = canvas.getByText('Feature Title').closest('[class*="cursor-pointer"]');
+    expect(card).toBeInTheDocument();
+  },
+};
+
+export const Disabled: Story = {
+  decorators: constrainedCard,
+  args: {
+    variant: 'left',
+    interactive: 'disabled',
+    children: React.createElement(SampleContent),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const card = canvas.getByText('Feature Title').closest('[class*="cursor-not-allowed"]');
     expect(card).toBeInTheDocument();
   },
 };

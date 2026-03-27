@@ -20,6 +20,10 @@ const meta = {
       options: ['sm', 'base'],
       table: { category: 'Appearance' },
     },
+    disabled: {
+      control: 'boolean',
+      table: { category: 'Behavior' },
+    },
     className: {
       control: { type: 'text' },
       table: { category: 'Appearance' },
@@ -52,6 +56,23 @@ export const Default: Story = {
     expect(link).toHaveAttribute('href', '#features');
     // Verify the onClick spy is wired up (don't click — anchor navigation crashes the test browser)
     expect(args.onClick).toBeDefined();
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    href: '#features',
+    size: 'base',
+    disabled: true,
+    children: 'Features',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByText('Features');
+
+    expect(link).toHaveAttribute('aria-disabled', 'true');
+    expect(link).not.toHaveAttribute('href');
+    expect(link.tagName).toBe('A');
   },
 };
 

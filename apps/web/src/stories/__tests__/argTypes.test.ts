@@ -200,7 +200,7 @@ const components: ComponentEntry[] = [
     name: 'NavLink',
     meta: NavLinkMeta,
     firstStory: getFirstStory(NavLinkStories),
-    variantKeys: ['size'],
+    variantKeys: ['size', 'disabled'],
     jsxProps: ['children'],
   },
   {
