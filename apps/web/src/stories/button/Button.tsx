@@ -7,7 +7,7 @@ const buttonVariants = cva(
   'inline-flex items-center justify-center cursor-pointer font-sans font-semibold rounded-[10px] transition-colors not-disabled:active:scale-[0.98]',
   {
     variants: {
-      intent: {
+      variant: {
         primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
         inverse: 'bg-white text-accent border-transparent hover:bg-white/90',
       },
@@ -17,7 +17,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      intent: 'primary',
+      variant: 'primary',
       size: 'md',
     },
   },
@@ -34,15 +34,15 @@ export interface ButtonProps
 /**
  * Primary action button with variant-driven styling.
  *
- * Supports `primary` and `inverse` intents with two size presets.
+ * Supports `primary` and `inverse` variants with two size presets.
  * Use `asChild` to render as a different element (e.g., a link).
  *
- * @default intent "primary"
+ * @default variant "primary"
  * @default size "md"
  */
 const Button = ({
   className,
-  intent,
+  variant,
   size,
   asChild,
   disabled = false,
@@ -53,7 +53,7 @@ const Button = ({
     <Comp
       disabled={disabled ?? undefined}
       className={cn(
-        buttonVariants({ intent, size }),
+        buttonVariants({ variant, size }),
         disabled && 'opacity-50 cursor-not-allowed',
         className,
       )}

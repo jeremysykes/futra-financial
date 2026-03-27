@@ -74,7 +74,7 @@ export const SolidCenter: Story = {
     background: 'solid',
     heading: 'Start spending smarter today.',
     children: (
-      <Button intent="inverse" asChild>
+      <Button variant="inverse" asChild>
         <a href="#">Download the App</a>
       </Button>
     ),

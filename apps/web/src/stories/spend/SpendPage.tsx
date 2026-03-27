@@ -145,7 +145,7 @@ export function SpendPage() {
         heading="Start spending smarter today."
         description="No minimum balance. No hidden fees. No waiting. Open your account in under two minutes."
       >
-        <Button intent="inverse" asChild>
+        <Button variant="inverse" asChild>
           <a href="#">Download the App</a>
         </Button>
       </CTASection>

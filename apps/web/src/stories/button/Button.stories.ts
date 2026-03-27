@@ -13,7 +13,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    intent: {
+    variant: {
       control: 'select',
       options: ['primary', 'inverse'],
       table: { category: 'Appearance' },
@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    intent: 'primary',
+    variant: 'primary',
     size: 'md',
     children: 'Get Started',
   },
@@ -59,7 +59,7 @@ export const Primary: Story = {
 
 export const Inverse: Story = {
   args: {
-    intent: 'inverse',
+    variant: 'inverse',
     children: 'Download the App',
   },
   play: async ({ canvasElement, args }) => {
@@ -73,7 +73,7 @@ export const Inverse: Story = {
 
 export const Medium: Story = {
   args: {
-    intent: 'primary',
+    variant: 'primary',
     size: 'md',
     children: 'Open Your Account',
   },
@@ -85,7 +85,7 @@ export const Medium: Story = {
 
 export const Small: Story = {
   args: {
-    intent: 'primary',
+    variant: 'primary',
     size: 'sm',
     children: 'Get Started',
   },
