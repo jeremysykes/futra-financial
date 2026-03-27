@@ -14,10 +14,20 @@ const logoVariants = cva('flex items-center gap-0', {
 });
 
 export interface LogoProps extends VariantProps<typeof logoVariants> {
+  /** Business unit name displayed after the FUTRA brand */
   unitName: string;
+  /** Additional CSS classes */
   className?: string;
 }
 
+/**
+ * FUTRA brand logo with business unit name.
+ *
+ * Renders the FUTRA wordmark followed by the unit name in accent color.
+ * Supports light and dark mode variants.
+ *
+ * @default mode "light"
+ */
 const Logo = ({ unitName, mode, className }: LogoProps) => {
   return (
     <div className={cn(logoVariants({ mode }), className)}>

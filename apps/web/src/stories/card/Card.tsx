@@ -30,6 +30,15 @@ export interface CardProps
     React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof cardVariants> {}
 
+/**
+ * Container with optional accent borders and interactive hover states.
+ *
+ * Accent borders can be placed on any edge. Interactive mode adds
+ * hover elevation and pointer cursor.
+ *
+ * @default accent "none"
+ * @default interactive false
+ */
 const Card = ({
   className,
   accent,

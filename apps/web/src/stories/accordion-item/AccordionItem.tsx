@@ -13,12 +13,22 @@ const triggerVariants = cva(
 );
 
 export interface AccordionItemProps {
+  /** Unique identifier for the accordion item */
   value: string;
+  /** Clickable header content that toggles open/close */
   trigger: ReactNode;
+  /** Collapsible body content revealed when open */
   children: ReactNode;
+  /** Additional CSS classes */
   className?: string;
 }
 
+/**
+ * Individual accordion item with trigger and collapsible content.
+ *
+ * Must be used inside an `Accordion` component. The trigger area
+ * includes a chevron icon that rotates when expanded.
+ */
 const AccordionItem = ({
   value,
   trigger,

@@ -27,11 +27,22 @@ export interface AccordionItemData {
 
 export interface AccordionProps
   extends VariantProps<typeof accordionVariants> {
+  /** Array of accordion item data objects with value, trigger, and content */
   items: AccordionItemData[];
+  /** Allow multiple accordion items to be open simultaneously */
   multiple?: boolean;
+  /** Additional CSS classes for the accordion root */
   className?: string;
 }
 
+/**
+ * Collapsible accordion with support for single or multiple open items.
+ *
+ * Renders a list of `AccordionItem` components driven by the `items` data array.
+ *
+ * @default spacing "default"
+ * @default multiple false
+ */
 const Accordion = ({
   items,
   multiple = false,
