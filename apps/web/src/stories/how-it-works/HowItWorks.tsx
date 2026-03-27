@@ -24,13 +24,30 @@ const howItWorksVariants = cva(
 
 export interface HowItWorksProps
   extends VariantProps<typeof howItWorksVariants> {
+  /** Small label displayed above the heading */
   eyebrow?: ReactNode;
+  /** Section heading text */
   heading?: ReactNode;
+  /**
+   * HTML id attribute for anchor linking.
+   * @default "how-it-works"
+   */
   sectionId?: string;
+  /** Section content (typically ProcessSteps) */
   children: ReactNode;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Section wrapper for "how it works" content.
+ *
+ * Provides a heading area and content slot, typically used with
+ * `ProcessSteps` as children. Supports background and padding variants.
+ *
+ * @default background "default"
+ * @default padding "default"
+ */
 const HowItWorks = ({
   eyebrow,
   heading,

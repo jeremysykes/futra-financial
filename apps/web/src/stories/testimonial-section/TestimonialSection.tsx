@@ -34,12 +34,24 @@ const testimonialGridVariants = cva(
 
 export interface TestimonialSectionProps
   extends VariantProps<typeof testimonialSectionVariants> {
+  /** Section heading text */
   heading?: ReactNode;
+  /** Eyebrow label displayed above the heading */
   subtitle?: ReactNode;
+  /** Testimonial card children */
   children: ReactNode;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Testimonial section with responsive card grid.
+ *
+ * Renders a heading area followed by a grid of testimonial cards.
+ * Supports 2 or 3 column layouts.
+ *
+ * @default columns 3
+ */
 const TestimonialSection = ({
   heading,
   subtitle,

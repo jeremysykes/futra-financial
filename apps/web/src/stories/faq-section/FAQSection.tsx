@@ -19,21 +19,45 @@ const faqSectionVariants = cva(
 );
 
 export interface FAQItem {
+  /** The question text */
   question: string;
+  /** The answer text */
   answer: string;
 }
 
 export interface FAQSectionProps
   extends VariantProps<typeof faqSectionVariants> {
+  /** Small label displayed above the heading */
   eyebrow?: ReactNode;
+  /** Section heading text */
   heading: ReactNode;
+  /** Array of FAQ question/answer pairs */
   items: FAQItem[];
+  /** URL for the background image */
   backgroundImage?: string;
+  /**
+   * Tailwind opacity class applied to the background image.
+   * @default "opacity-[0.06]"
+   */
   backgroundOpacity?: string;
+  /**
+   * HTML id attribute for anchor linking.
+   * @default "faq"
+   */
   sectionId?: string;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * FAQ section with accordion of questions and answers.
+ *
+ * Renders a heading area followed by an `Accordion` component
+ * populated from the `items` array. Supports optional background
+ * image overlay.
+ *
+ * @default padding "default"
+ */
 const FAQSection = ({
   eyebrow,
   heading,

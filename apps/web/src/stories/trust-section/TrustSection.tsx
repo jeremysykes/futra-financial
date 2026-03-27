@@ -24,12 +24,29 @@ const trustSectionVariants = cva(
 
 export interface TrustSectionProps
   extends VariantProps<typeof trustSectionVariants> {
+  /** URL for the background image */
   backgroundImage?: string;
+  /**
+   * Tailwind opacity class applied to the background image.
+   * @default "opacity-[0.12]"
+   */
   backgroundOpacity?: string;
+  /** Trust badge or partner logo content */
   children: ReactNode;
+  /** Additional CSS classes for the root element */
   className?: string;
 }
 
+/**
+ * Trust section with horizontal layout for badges and logos.
+ *
+ * Renders a bordered strip with optional background image,
+ * typically containing trust badges, partner logos, or
+ * security certifications.
+ *
+ * @default background "default"
+ * @default padding "default"
+ */
 const TrustSection = ({
   background,
   padding,
