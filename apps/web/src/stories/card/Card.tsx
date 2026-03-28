@@ -59,25 +59,20 @@ const Card = ({
     }
   };
 
-  if (isClickable) {
-    return (
-      <div
-        className={cn(cardVariants({ variant, interactive }), className)}
-        role="button"
-        tabIndex={0}
-        onClick={onClick}
-        onKeyDown={handleKeyDown}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
+  const clickableProps = isClickable
+    ? {
+        role: 'button',
+        tabIndex: 0,
+        onClick,
+        onKeyDown: handleKeyDown,
+      }
+    : {};
 
   return (
     <div
       className={cn(cardVariants({ variant, interactive }), className)}
       {...props}
+      {...clickableProps}
     >
       {children}
     </div>

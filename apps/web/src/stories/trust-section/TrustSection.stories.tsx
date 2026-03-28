@@ -70,9 +70,17 @@ export const Default: Story = {
     children: (
       <>
         <TrustSignal icon={Lock} text="Bank-level encryption" />
-        <TrustSignal icon={Shield} text="No impact to your credit score" showDivider />
+        <TrustSignal
+          icon={Shield}
+          text="No impact to your credit score"
+          showDivider
+        />
         <TrustSignal icon={RefreshCw} text="Updated weekly" showDivider />
-        <TrustSignal icon={Target} text="Free forever — no hidden costs" showDivider />
+        <TrustSignal
+          icon={Target}
+          text="Free forever — no hidden costs"
+          showDivider
+        />
       </>
     ),
   },
@@ -80,7 +88,9 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText('Bank-level encryption')).toBeInTheDocument();
-    expect(canvas.getByText('No impact to your credit score')).toBeInTheDocument();
+    expect(
+      canvas.getByText('No impact to your credit score'),
+    ).toBeInTheDocument();
     expect(canvas.getByText('Updated weekly')).toBeInTheDocument();
     expect(canvas.getByText(/Free forever/)).toBeInTheDocument();
   },

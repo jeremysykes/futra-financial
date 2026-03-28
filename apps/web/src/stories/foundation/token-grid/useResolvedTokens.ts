@@ -77,18 +77,21 @@ export function useResolvedTokens(): UseResolvedTokensResult {
       const result: ResolvedTokens = {};
 
       for (const token of discoveredTokens) {
-        result[token.cssVar] = {} as Record<BusinessUnit, { light: string; dark: string }>;
+        result[token.cssVar] = {} as Record<
+          BusinessUnit,
+          { light: string; dark: string }
+        >;
 
         for (const bu of BUSINESS_UNITS) {
           const lightEl = resolverMap[`${bu}-light`];
           const darkEl = resolverMap[`${bu}-dark`];
 
-          const lightVal = getComputedStyle(lightEl)
-            .getPropertyValue(token.cssVar)
-            .trim() || '—';
-          const darkVal = getComputedStyle(darkEl)
-            .getPropertyValue(token.cssVar)
-            .trim() || '—';
+          const lightVal =
+            getComputedStyle(lightEl).getPropertyValue(token.cssVar).trim() ||
+            '—';
+          const darkVal =
+            getComputedStyle(darkEl).getPropertyValue(token.cssVar).trim() ||
+            '—';
 
           result[token.cssVar][bu] = { light: lightVal, dark: darkVal };
         }

@@ -15,6 +15,7 @@
 ### Task 1: Add CSS Transitions and Page-Enter Keyframe to tailwind.css
 
 **Files:**
+
 - Modify: `src/tailwind.css` (after the Accessibility section, line 544)
 
 - [ ] **Step 1: Add page-enter keyframe and transition declarations**
@@ -25,8 +26,12 @@ Add the following at the end of `src/tailwind.css`, after the `/* ─── Acce
 /* ─── Page Transitions ─── */
 
 @keyframes page-enter {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .page-transition {
@@ -36,7 +41,10 @@ Add the following at the end of `src/tailwind.css`, after the `/* ─── Acce
 @media (prefers-reduced-motion: no-preference) {
   body,
   [data-business-unit] * {
-    transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+    transition:
+      background-color 300ms ease,
+      color 300ms ease,
+      border-color 300ms ease;
   }
 }
 
@@ -64,6 +72,7 @@ git commit -m "feat(transitions): add page-enter keyframe and color transition d
 ### Task 2: Migrate `<main>` from BU Pages to AppShell
 
 **Files:**
+
 - Modify: `src/stories/spend/SpendPage.tsx` (remove `<main id="main-content">` wrapper)
 - Modify: `src/stories/save/SavePage.tsx` (remove `<main id="main-content">` wrapper)
 - Modify: `src/stories/credit/CreditPage.tsx` (remove `<main id="main-content">` wrapper)
@@ -74,19 +83,25 @@ git commit -m "feat(transitions): add page-enter keyframe and color transition d
 - [ ] **Step 1: Remove `<main id="main-content">` from SpendPage**
 
 In `src/stories/spend/SpendPage.tsx`, replace:
+
 ```tsx
       <main id="main-content">
 ```
+
 with:
+
 ```tsx
       <>
 ```
 
 And replace the corresponding closing tag:
+
 ```tsx
       </main>
 ```
+
 with:
+
 ```tsx
       </>
 ```
@@ -94,24 +109,28 @@ with:
 - [ ] **Step 2: Remove `<main id="main-content">` from SavePage**
 
 Same change in `src/stories/save/SavePage.tsx`:
+
 - Replace `<main id="main-content">` with `<>`
 - Replace `</main>` with `</>`
 
 - [ ] **Step 3: Remove `<main id="main-content">` from CreditPage**
 
 Same change in `src/stories/credit/CreditPage.tsx`:
+
 - Replace `<main id="main-content">` with `<>`
 - Replace `</main>` with `</>`
 
 - [ ] **Step 4: Remove `<main id="main-content">` from PlanPage**
 
 Same change in `src/stories/plan/PlanPage.tsx`:
+
 - Replace `<main id="main-content">` with `<>`
 - Replace `</main>` with `</>`
 
 - [ ] **Step 5: Remove `<main id="main-content">` from TogetherPage**
 
 Same change in `src/stories/together/TogetherPage.tsx`:
+
 - Replace `<main id="main-content">` with `<>`
 - Replace `</main>` with `</>`
 
@@ -128,54 +147,54 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 **6b. Add transition key state** — inside `AppShell()`, after the existing `theme` state (line 40), add:
 
 ```tsx
-  const prevUnit = useRef(unit);
-  const [transitionKey, setTransitionKey] = useState(0);
+const prevUnit = useRef(unit);
+const [transitionKey, setTransitionKey] = useState(0);
 ```
 
 **6c. Add the key-incrementing effect** — after the existing `useEffect` that sets theme from unit (line 43-45), add:
 
 ```tsx
-  useEffect(() => {
-    if (prevUnit.current !== unit) {
-      setTransitionKey((k) => k + 1);
-      prevUnit.current = unit;
-    }
-  }, [unit]);
+useEffect(() => {
+  if (prevUnit.current !== unit) {
+    setTransitionKey((k) => k + 1);
+    prevUnit.current = unit;
+  }
+}, [unit]);
 ```
 
 **6d. Replace the `<div>` wrapper with keyed `<main>`** — change lines 78-87 from:
 
 ```tsx
-      <div style={{ '--nav-top': '36px' } as React.CSSProperties}>
-        <Routes>
-          <Route path="/spend" element={<SpendPage />} />
-          <Route path="/save" element={<SavePage />} />
-          <Route path="/credit" element={<CreditPage />} />
-          <Route path="/plan" element={<PlanPage />} />
-          <Route path="/together" element={<TogetherPage />} />
-          <Route path="/" element={<Navigate to="/spend" replace />} />
-        </Routes>
-      </div>
+<div style={{ '--nav-top': '36px' } as React.CSSProperties}>
+  <Routes>
+    <Route path="/spend" element={<SpendPage />} />
+    <Route path="/save" element={<SavePage />} />
+    <Route path="/credit" element={<CreditPage />} />
+    <Route path="/plan" element={<PlanPage />} />
+    <Route path="/together" element={<TogetherPage />} />
+    <Route path="/" element={<Navigate to="/spend" replace />} />
+  </Routes>
+</div>
 ```
 
 to:
 
 ```tsx
-      <main
-        id="main-content"
-        className="page-transition"
-        key={transitionKey}
-        style={{ '--nav-top': '36px' } as React.CSSProperties}
-      >
-        <Routes>
-          <Route path="/spend" element={<SpendPage />} />
-          <Route path="/save" element={<SavePage />} />
-          <Route path="/credit" element={<CreditPage />} />
-          <Route path="/plan" element={<PlanPage />} />
-          <Route path="/together" element={<TogetherPage />} />
-          <Route path="/" element={<Navigate to="/spend" replace />} />
-        </Routes>
-      </main>
+<main
+  id="main-content"
+  className="page-transition"
+  key={transitionKey}
+  style={{ '--nav-top': '36px' } as React.CSSProperties}
+>
+  <Routes>
+    <Route path="/spend" element={<SpendPage />} />
+    <Route path="/save" element={<SavePage />} />
+    <Route path="/credit" element={<CreditPage />} />
+    <Route path="/plan" element={<PlanPage />} />
+    <Route path="/together" element={<TogetherPage />} />
+    <Route path="/" element={<Navigate to="/spend" replace />} />
+  </Routes>
+</main>
 ```
 
 - [ ] **Step 7: Verify TypeScript compiles**
@@ -204,15 +223,15 @@ Run: `npm run dev`
 
 Open the app in a browser and test:
 
-| Check | Expected |
-|-------|----------|
-| Click Spend → Save | Background color blends from dark to light over ~300ms; page content fades in |
-| Click Save → Credit | Colors blend smoothly; page fades in |
-| Click Credit → Plan | Light-to-dark color blend; page fades in |
-| Click any BU → same BU | Nothing happens (no animation, no flash) |
-| Rapid click through all 5 BUs | Each click restarts the fade-in; colors retarget smoothly; no visual glitches |
-| Toggle light/dark during transition | Theme toggle works; no conflict with BU transition |
-| Scroll down after BU switch | `data-animate` elements stagger in as before |
+| Check                               | Expected                                                                      |
+| ----------------------------------- | ----------------------------------------------------------------------------- |
+| Click Spend → Save                  | Background color blends from dark to light over ~300ms; page content fades in |
+| Click Save → Credit                 | Colors blend smoothly; page fades in                                          |
+| Click Credit → Plan                 | Light-to-dark color blend; page fades in                                      |
+| Click any BU → same BU              | Nothing happens (no animation, no flash)                                      |
+| Rapid click through all 5 BUs       | Each click restarts the fade-in; colors retarget smoothly; no visual glitches |
+| Toggle light/dark during transition | Theme toggle works; no conflict with BU transition                            |
+| Scroll down after BU switch         | `data-animate` elements stagger in as before                                  |
 
 - [ ] **Step 3: Verify skip link still works**
 
@@ -227,6 +246,7 @@ Expected: BU switching is instant — no color blend, no fade. Same as before th
 - [ ] **Step 5: Fix any issues found**
 
 Address visual or functional issues. Common things to check:
+
 - DemoSwitcher hover feels too slow (add `transition-duration: 150ms` override if needed)
 - Page enter animation feels too fast/slow (adjust 300ms in tailwind.css)
 - Color transitions create a flash on certain elements (exclude from transition scope)
@@ -242,12 +262,12 @@ git commit -m "fix(transitions): polish from visual verification"
 
 ## File Map Summary
 
-| File | Action | Purpose |
-|------|--------|---------|
-| `src/tailwind.css` | Modify | Add `page-enter` keyframe, `.page-transition` class, color transitions, reduced motion |
-| `src/components/AppShell.tsx` | Modify | Keyed `<main>` wrapper with transition class, `transitionKey` + `prevUnit` ref |
-| `src/stories/spend/SpendPage.tsx` | Modify | Remove `<main id="main-content">` wrapper |
-| `src/stories/save/SavePage.tsx` | Modify | Remove `<main id="main-content">` wrapper |
-| `src/stories/credit/CreditPage.tsx` | Modify | Remove `<main id="main-content">` wrapper |
-| `src/stories/plan/PlanPage.tsx` | Modify | Remove `<main id="main-content">` wrapper |
-| `src/stories/together/TogetherPage.tsx` | Modify | Remove `<main id="main-content">` wrapper |
+| File                                    | Action | Purpose                                                                                |
+| --------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
+| `src/tailwind.css`                      | Modify | Add `page-enter` keyframe, `.page-transition` class, color transitions, reduced motion |
+| `src/components/AppShell.tsx`           | Modify | Keyed `<main>` wrapper with transition class, `transitionKey` + `prevUnit` ref         |
+| `src/stories/spend/SpendPage.tsx`       | Modify | Remove `<main id="main-content">` wrapper                                              |
+| `src/stories/save/SavePage.tsx`         | Modify | Remove `<main id="main-content">` wrapper                                              |
+| `src/stories/credit/CreditPage.tsx`     | Modify | Remove `<main id="main-content">` wrapper                                              |
+| `src/stories/plan/PlanPage.tsx`         | Modify | Remove `<main id="main-content">` wrapper                                              |
+| `src/stories/together/TogetherPage.tsx` | Modify | Remove `<main id="main-content">` wrapper                                              |

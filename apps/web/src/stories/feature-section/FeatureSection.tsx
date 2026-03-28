@@ -2,28 +2,26 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const featureSectionVariants = cva(
-  '',
-  {
-    variants: {
-      background: {
-        default: 'bg-background',
-        muted: 'bg-muted',
-      },
-      padding: {
-        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
-        compact: 'py-12 sm:py-16 md:py-20',
-      },
+const featureSectionVariants = cva('', {
+  variants: {
+    background: {
+      default: 'bg-background',
+      muted: 'bg-muted',
     },
-    defaultVariants: {
-      background: 'default',
-      padding: 'default',
+    padding: {
+      default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+      compact: 'py-12 sm:py-16 md:py-20',
     },
   },
-);
+  defaultVariants: {
+    background: 'default',
+    padding: 'default',
+  },
+});
 
-export interface FeatureSectionProps
-  extends VariantProps<typeof featureSectionVariants> {
+export interface FeatureSectionProps extends VariantProps<
+  typeof featureSectionVariants
+> {
   /** Section heading text */
   heading: ReactNode;
   /** Eyebrow label displayed above the heading */

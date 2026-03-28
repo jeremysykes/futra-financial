@@ -4,22 +4,22 @@
 
 ## Tech Stack
 
-| Layer         | Technology                     | Version                         |
-| ------------- | ------------------------------ | ------------------------------- |
-| Framework     | React                          | 19                              |
-| Build         | Vite                           | 7                               |
-| Monorepo      | Turborepo + pnpm workspaces    | latest                          |
-| Styling       | Tailwind CSS                   | 4 (v4 plugin, CSS-first config) |
-| Tokens        | W3C DTCG JSON + Style Dictionary | 4                             |
-| Charts        | Recharts                       | latest (Plan BU only)           |
-| Icons         | Lucide React                   | latest                          |
-| Primitives    | Radix UI                       | latest                          |
-| Variants      | class-variance-authority (CVA) | latest                          |
-| Class merging | tailwind-merge                 | latest                          |
-| Routing       | React Router                   | 7                               |
-| Component dev | Storybook                      | 10                              |
-| Testing       | Vitest + Playwright            | latest                          |
-| Language      | TypeScript                     | 5.9 (strict mode)               |
+| Layer         | Technology                       | Version                         |
+| ------------- | -------------------------------- | ------------------------------- |
+| Framework     | React                            | 19                              |
+| Build         | Vite                             | 7                               |
+| Monorepo      | Turborepo + pnpm workspaces      | latest                          |
+| Styling       | Tailwind CSS                     | 4 (v4 plugin, CSS-first config) |
+| Tokens        | W3C DTCG JSON + Style Dictionary | 4                               |
+| Charts        | Recharts                         | latest (Plan BU only)           |
+| Icons         | Lucide React                     | latest                          |
+| Primitives    | Radix UI                         | latest                          |
+| Variants      | class-variance-authority (CVA)   | latest                          |
+| Class merging | tailwind-merge                   | latest                          |
+| Routing       | React Router                     | 7                               |
+| Component dev | Storybook                        | 10                              |
+| Testing       | Vitest + Playwright              | latest                          |
+| Language      | TypeScript                       | 5.9 (strict mode)               |
 
 ---
 

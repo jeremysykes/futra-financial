@@ -15,11 +15,27 @@ export type TokenInfo = {
   category: Category;
 };
 
-const CATEGORY_RULES: Array<{ match: RegExp; category: Category; prefix: string }> = [
-  { match: /^(background|surface|secondary|muted)$/, category: 'Backgrounds', prefix: 'bg' },
+const CATEGORY_RULES: Array<{
+  match: RegExp;
+  category: Category;
+  prefix: string;
+}> = [
+  {
+    match: /^(background|surface|secondary|muted)$/,
+    category: 'Backgrounds',
+    prefix: 'bg',
+  },
   { match: /^(foreground)$/, category: 'Foregrounds', prefix: 'text' },
-  { match: /^(primary|accent|ring)$/, category: 'Brand & Interactive', prefix: 'bg' },
-  { match: /^(positive|negative|caution)$/, category: 'Status', prefix: 'text' },
+  {
+    match: /^(primary|accent|ring)$/,
+    category: 'Brand & Interactive',
+    prefix: 'bg',
+  },
+  {
+    match: /^(positive|negative|caution)$/,
+    category: 'Status',
+    prefix: 'text',
+  },
   { match: /^(destructive)$/, category: 'Status', prefix: 'bg' },
   { match: /^(border)$/, category: 'Borders', prefix: 'border' },
 ];
@@ -111,7 +127,8 @@ export function discoverTokens(): TokenInfo[] {
   ];
 
   tokens.sort((a, b) => {
-    const catDiff = categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+    const catDiff =
+      categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
     if (catDiff !== 0) return catDiff;
     return a.name.localeCompare(b.name);
   });

@@ -15,7 +15,8 @@
           together: 'light',
         };
         var segments = window.location.pathname.split('/').filter(Boolean);
-        var segment = segments.length > 1 ? segments[segments.length - 1] : segments[0];
+        var segment =
+          segments.length > 1 ? segments[segments.length - 1] : segments[0];
         var unit =
           segment && defaults[segment] !== undefined ? segment : 'spend';
         var stored = null;

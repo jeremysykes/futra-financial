@@ -15,6 +15,7 @@
 ### Task 0: Create feature branch and start dev server
 
 **Files:**
+
 - None (git + dev server setup)
 
 - [ ] **Step 1: Create feature branch**
@@ -40,6 +41,7 @@ Use Playwright MCP `browser_navigate` to `http://localhost:5173` (Spend page is 
 ### Task 1: HeroSection responsive updates
 
 **Files:**
+
 - Modify: `src/stories/hero-section/HeroSection.tsx`
 
 - [ ] **Step 1: Update `heroSectionVariants` size variants**
@@ -88,9 +90,11 @@ The `actions` prop receives a `<Button>` from the consuming page. To make all he
 
 ```tsx
 // line 93, change:
-              {actions}
+{
+  actions;
+}
 // to:
-              <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
+<div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>;
 ```
 
 This uses descendant selectors to force child buttons to `w-full` on mobile and `w-auto` on tablet+.
@@ -98,6 +102,7 @@ This uses descendant selectors to force child buttons to `w-full` on mobile and 
 - [ ] **Step 6: Verify in Playwright at 375px**
 
 Use Playwright MCP to navigate to `http://localhost:5173`, resize to 375x812, take screenshot. Verify:
+
 - Hero doesn't take full viewport height (85vh)
 - Phone mockup is small (~220px) and centered
 - Gap between text and mockup is tighter
@@ -116,6 +121,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to HeroSection"
 ### Task 1b: Body text clamp for section paragraphs
 
 **Files:**
+
 - Modify: `src/stories/feature-deep-dive/FeatureDeepDive.tsx`
 
 The spec requires `text-[clamp(15px,2vw,17px)]` for body paragraphs (replacing static `text-base`). This applies to FeatureDeepDive's description paragraphs — the primary `text-base` body text in section templates. Hero subheading (`text-lg`) and CTA description (`text-lg`) are intentionally larger and stay unchanged.
@@ -141,6 +147,7 @@ git commit -m "feat(responsive): add body text clamp to FeatureDeepDive paragrap
 ### Task 2: FeatureSection responsive updates
 
 **Files:**
+
 - Modify: `src/stories/feature-section/FeatureSection.tsx`
 
 - [ ] **Step 1: Update `featureSectionVariants` padding variants**
@@ -184,6 +191,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to FeatureSection"
 ### Task 3: FeatureDeepDive responsive updates
 
 **Files:**
+
 - Modify: `src/stories/feature-deep-dive/FeatureDeepDive.tsx`
 
 - [ ] **Step 1: Update inner grid gap in `featureBlockVariants`**
@@ -244,6 +252,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to FeatureDeepDive
 ### Task 4: StatsRow responsive updates
 
 **Files:**
+
 - Modify: `src/stories/stats-row/StatsRow.tsx`
 
 - [ ] **Step 1: Update `statsRowVariants` section padding**
@@ -292,6 +301,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to StatsRow"
 ### Task 5: TestimonialSection responsive updates
 
 **Files:**
+
 - Modify: `src/stories/testimonial-section/TestimonialSection.tsx`
 
 - [ ] **Step 1: Update `testimonialSectionVariants` section padding**
@@ -347,6 +357,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to TestimonialSect
 ### Task 6: CTASection responsive updates
 
 **Files:**
+
 - Modify: `src/stories/cta-section/CTASection.tsx`
 
 - [ ] **Step 1: Update `ctaSectionVariants` section padding**
@@ -384,9 +395,11 @@ CTASection renders children (the CTA button) directly. Wrap with the same respon
 
 ```tsx
 // line 80, change:
-        {children}
+{
+  children;
+}
 // to:
-        <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{children}</div>
+<div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{children}</div>;
 ```
 
 - [ ] **Step 5: Commit**
@@ -399,6 +412,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to CTASection"
 - [ ] **Step 6: Mid-point visual verification**
 
 Use Playwright MCP to navigate to `http://localhost:5173`, resize to 375x812, take screenshot. Verify Tasks 1–6 collectively:
+
 - Hero: reduced height, centered small mockup, full-width CTA, tighter padding
 - FeatureSection: tighter padding and heading margin
 - StatsRow: tighter gaps
@@ -411,6 +425,7 @@ Use Playwright MCP to navigate to `http://localhost:5173`, resize to 375x812, ta
 ### Task 7: HowItWorks responsive updates
 
 **Files:**
+
 - Modify: `src/stories/how-it-works/HowItWorks.tsx`
 
 - [ ] **Step 1: Update `howItWorksVariants` padding variants**
@@ -454,6 +469,7 @@ Note: Step spacing (`gap-8 sm:gap-10 md:gap-12`) is handled by `ProcessSteps` ch
 ### Task 8: FAQSection + AccordionItem responsive updates
 
 **Files:**
+
 - Modify: `src/stories/faq-section/FAQSection.tsx`
 - Modify: `src/stories/accordion-item/AccordionItem.tsx`
 
@@ -511,6 +527,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to FAQSection and 
 ### Task 9: ComparisonSection dual-render (table + mobile cards)
 
 **Files:**
+
 - Modify: `src/stories/comparison-section/ComparisonSection.tsx`
 
 This is the most complex change — adding a mobile card layout alongside the existing table.
@@ -554,7 +571,9 @@ This is the most complex change — adding a mobile card layout alongside the ex
 Insert after the closing `</div>` of the table wrapper (after line 64), before the closing `</div>` of the container:
 
 ```tsx
-{/* Mobile card layout */}
+{
+  /* Mobile card layout */
+}
 <div className="md:hidden flex flex-col gap-4">
   {PlanCompetitors.map((c, ci) => (
     <div
@@ -576,13 +595,8 @@ Insert after the closing `</div>` of the table wrapper (after line 64), before t
       </p>
       <div className="flex flex-col gap-2">
         {PlanFeatures.map((feat, fi) => (
-          <div
-            key={feat}
-            className="flex items-center justify-between py-2"
-          >
-            <span className="text-sm text-foreground font-sans">
-              {feat}
-            </span>
+          <div key={feat} className="flex items-center justify-between py-2">
+            <span className="text-sm text-foreground font-sans">{feat}</span>
             {c.support[fi] ? (
               <Check
                 size={18}
@@ -602,7 +616,7 @@ Insert after the closing `</div>` of the table wrapper (after line 64), before t
       </div>
     </div>
   ))}
-</div>
+</div>;
 ```
 
 - [ ] **Step 5: Add `cn` import**
@@ -631,6 +645,7 @@ git commit -m "feat(responsive): add mobile card layout to ComparisonSection wit
 ### Task 10: TrustSection responsive updates
 
 **Files:**
+
 - Modify: `src/stories/trust-section/TrustSection.tsx`
 
 - [ ] **Step 1: Update `trustSectionVariants` default padding**
@@ -663,6 +678,7 @@ git commit -m "feat(responsive): add mobile-first breakpoints to TrustSection"
 ### Task 11: Navbar touch target updates
 
 **Files:**
+
 - Modify: `src/stories/navbar/Navbar.tsx`
 
 - [ ] **Step 1: Add min tap target to hamburger button**
@@ -684,28 +700,32 @@ The mobile menu uses `<NavLink>` components. Add `min-h-[44px]` to the mobile me
 
 ```tsx
 // lines 100-108, change:
-{links.map((link) => (
-  <NavLink
-    key={link.label}
-    href={link.href}
-    size="base"
-    onClick={() => setMobileOpen(false)}
-  >
-    {link.label}
-  </NavLink>
-))}
+{
+  links.map((link) => (
+    <NavLink
+      key={link.label}
+      href={link.href}
+      size="base"
+      onClick={() => setMobileOpen(false)}
+    >
+      {link.label}
+    </NavLink>
+  ));
+}
 // to:
-{links.map((link) => (
-  <NavLink
-    key={link.label}
-    href={link.href}
-    size="base"
-    className="min-h-[44px] flex items-center"
-    onClick={() => setMobileOpen(false)}
-  >
-    {link.label}
-  </NavLink>
-))}
+{
+  links.map((link) => (
+    <NavLink
+      key={link.label}
+      href={link.href}
+      size="base"
+      className="min-h-[44px] flex items-center"
+      onClick={() => setMobileOpen(false)}
+    >
+      {link.label}
+    </NavLink>
+  ));
+}
 ```
 
 - [ ] **Step 3: Update container padding**
@@ -729,6 +749,7 @@ git commit -m "feat(responsive): add 44px touch targets to Navbar mobile menu"
 ### Task 12: Footer responsive updates
 
 **Files:**
+
 - Modify: `src/stories/footer/Footer.tsx`
 
 - [ ] **Step 1: Update container padding**
@@ -754,11 +775,13 @@ git commit -m "feat(responsive): update Footer container padding for mobile"
 ### Task 13: Full visual verification with Playwright MCP
 
 **Files:**
+
 - None (verification only)
 
 - [ ] **Step 1: Verify Spend page at 375px (iPhone SE)**
 
 Use Playwright MCP to navigate to `http://localhost:5173`, resize to 375x812. Take screenshot and verify:
+
 - Navbar: hamburger visible, 44px tap target
 - Hero: 85vh height, phone mockup ~220px centered, full-width CTA button
 - StatsRow: single column, centered text
@@ -771,6 +794,7 @@ Use Playwright MCP to navigate to `http://localhost:5173`, resize to 375x812. Ta
 - [ ] **Step 2: Verify Spend page at 768px (tablet)**
 
 Resize to 768x1024. Take screenshot and verify:
+
 - Navbar: desktop nav links visible
 - Hero: full viewport height, phone mockup larger
 - StatsRow: 3-column grid
@@ -781,6 +805,7 @@ Resize to 768x1024. Take screenshot and verify:
 - [ ] **Step 3: Verify Plan page at 375px for ComparisonSection cards**
 
 Navigate to `http://localhost:5173/#/plan` (or however Plan page routes), resize to 375x812. Verify:
+
 - ComparisonSection shows cards, not table
 - Futra Plan card has indigo highlight and renders first
 - Each card shows full feature checklist
@@ -788,12 +813,14 @@ Navigate to `http://localhost:5173/#/plan` (or however Plan page routes), resize
 - [ ] **Step 4: Verify Plan page at 768px for ComparisonSection table**
 
 Resize to 768x1024. Verify:
+
 - ComparisonSection shows table, not cards
 - Table layout matches pre-change behavior
 
 - [ ] **Step 5: Verify desktop hasn't regressed at 1280px**
 
 Resize to 1280x900. Verify Spend page:
+
 - Hero: full viewport, side-by-side layout, phone mockup at max-w-lg
 - All sections: 128px vertical padding (py-32 at lg)
 - 24px horizontal padding

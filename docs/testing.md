@@ -18,11 +18,11 @@ This project uses [Vitest](https://vitest.dev/) with two distinct test projects 
 
 ## Overview
 
-| Layer | Tool | Environment | What it catches |
-|-------|------|-------------|-----------------|
-| Interaction tests | Vitest + Storybook addon | Chromium (Playwright) | Render crashes, broken interactions, accessibility violations |
-| Documentation tests | Vitest | Node.js | Missing argTypes metadata, documentation standards violations |
-| Visual regression | Chromatic | Cloud screenshot diffing | Unintended pixel-level changes across themes |
+| Layer               | Tool                     | Environment              | What it catches                                               |
+| ------------------- | ------------------------ | ------------------------ | ------------------------------------------------------------- |
+| Interaction tests   | Vitest + Storybook addon | Chromium (Playwright)    | Render crashes, broken interactions, accessibility violations |
+| Documentation tests | Vitest                   | Node.js                  | Missing argTypes metadata, documentation standards violations |
+| Visual regression   | Chromatic                | Cloud screenshot diffing | Unintended pixel-level changes across themes                  |
 
 ```
 pnpm test
@@ -39,13 +39,13 @@ pnpm test
 
 ## Quick Reference
 
-| Command | What it runs |
-|---|---|
-| `pnpm test` | Both test suites (via Turborepo) |
-| `pnpm --filter web test:interactions` | Interaction tests (browser) |
-| `pnpm --filter web test:interactions:watch` | Interaction tests in watch mode |
-| `pnpm --filter web test:documentation` | Documentation tests (Node.js) |
-| `pnpm --filter web chromatic` | Visual regression tests (Chromatic) |
+| Command                                     | What it runs                        |
+| ------------------------------------------- | ----------------------------------- |
+| `pnpm test`                                 | Both test suites (via Turborepo)    |
+| `pnpm --filter web test:interactions`       | Interaction tests (browser)         |
+| `pnpm --filter web test:interactions:watch` | Interaction tests in watch mode     |
+| `pnpm --filter web test:documentation`      | Documentation tests (Node.js)       |
+| `pnpm --filter web chromatic`               | Visual regression tests (Chromatic) |
 
 From `apps/web/` directly:
 
@@ -234,10 +234,10 @@ Chromatic runs from `apps/web/` with the `workingDir` option:
 - uses: chromaui/action@latest
   with:
     projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-    autoAcceptChanges: main     # Auto-accept on merge to main (new baseline)
-    exitZeroOnChanges: true     # Don't fail CI on visual changes (just flag them)
-    exitOnceUploaded: true      # Don't wait for review to complete
-    onlyChanged: true           # Only test stories affected by the diff
+    autoAcceptChanges: main # Auto-accept on merge to main (new baseline)
+    exitZeroOnChanges: true # Don't fail CI on visual changes (just flag them)
+    exitOnceUploaded: true # Don't wait for review to complete
+    onlyChanged: true # Only test stories affected by the diff
     workingDir: apps/web
 ```
 
@@ -261,11 +261,11 @@ The project token is stored as a GitHub Actions secret (`CHROMATIC_PROJECT_TOKEN
 
 The current setup snapshots stories in Spend dark + light only. The theme matrix can be expanded using Chromatic's [modes](https://www.chromatic.com/docs/modes/) feature to capture all BU/theme combinations:
 
-| Phase | Coverage | Snapshots/build | Notes |
-|---|---|---|---|
-| **Phase 1 (current)** | Spend light + dark | ~72 | Lean start within free tier |
-| **Phase 2** | All 5 BUs x 2 themes for shared components only | ~200 | BU page stories only get their own BU |
-| **Phase 3** | Full matrix — all 5 BUs x 2 themes x all stories | ~360 | Requires paid plan or snapshot budget review |
+| Phase                 | Coverage                                         | Snapshots/build | Notes                                        |
+| --------------------- | ------------------------------------------------ | --------------- | -------------------------------------------- |
+| **Phase 1 (current)** | Spend light + dark                               | ~72             | Lean start within free tier                  |
+| **Phase 2**           | All 5 BUs x 2 themes for shared components only  | ~200            | BU page stories only get their own BU        |
+| **Phase 3**           | Full matrix — all 5 BUs x 2 themes x all stories | ~360            | Requires paid plan or snapshot budget review |
 
 To enable multi-mode snapshots, add a `modes` configuration to `.storybook/modes.ts` that overrides the `theme` and `businessUnit` globals per snapshot. See the [Chromatic modes docs](https://www.chromatic.com/docs/modes/) for setup details.
 
@@ -297,9 +297,9 @@ Builds and deploys to GitHub Pages on push to `main`:
 
 ```yaml
 - run: pnpm install --frozen-lockfile
-- run: pnpm --filter web exec tsc --noEmit   # Type check
-- run: pnpm build                              # Turbo: tokens -> web
-- run: pnpm --filter web build-storybook       # Storybook static build
+- run: pnpm --filter web exec tsc --noEmit # Type check
+- run: pnpm build # Turbo: tokens -> web
+- run: pnpm --filter web build-storybook # Storybook static build
 # Combines app dist + storybook into one Pages site
 ```
 

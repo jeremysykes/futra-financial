@@ -4,20 +4,17 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 import { AccordionItem } from '../accordion-item/AccordionItem';
 
-const accordionVariants = cva(
-  '',
-  {
-    variants: {
-      spacing: {
-        default: 'space-y-3',
-        compact: 'space-y-2',
-      },
-    },
-    defaultVariants: {
-      spacing: 'default',
+const accordionVariants = cva('', {
+  variants: {
+    spacing: {
+      default: 'space-y-3',
+      compact: 'space-y-2',
     },
   },
-);
+  defaultVariants: {
+    spacing: 'default',
+  },
+});
 
 export interface AccordionItemData {
   value: string;
@@ -25,8 +22,7 @@ export interface AccordionItemData {
   content: ReactNode;
 }
 
-export interface AccordionProps
-  extends VariantProps<typeof accordionVariants> {
+export interface AccordionProps extends VariantProps<typeof accordionVariants> {
   /** Array of accordion item data objects with value, trigger, and content */
   items: AccordionItemData[];
   /** Allow multiple accordion items to be open simultaneously */
@@ -60,7 +56,11 @@ const Accordion = ({
       className={cn(accordionVariants({ spacing }), className)}
     >
       {items.map((item) => (
-        <AccordionItem key={item.value} value={item.value} trigger={item.trigger}>
+        <AccordionItem
+          key={item.value}
+          value={item.value}
+          trigger={item.trigger}
+        >
           {item.content}
         </AccordionItem>
       ))}

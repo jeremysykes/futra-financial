@@ -3,20 +3,17 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 import { Accordion } from '../accordion/Accordion';
 
-const faqSectionVariants = cva(
-  'relative overflow-hidden bg-background',
-  {
-    variants: {
-      padding: {
-        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
-        compact: 'py-12 sm:py-16 md:py-20',
-      },
-    },
-    defaultVariants: {
-      padding: 'default',
+const faqSectionVariants = cva('relative overflow-hidden bg-background', {
+  variants: {
+    padding: {
+      default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+      compact: 'py-12 sm:py-16 md:py-20',
     },
   },
-);
+  defaultVariants: {
+    padding: 'default',
+  },
+});
 
 export interface FAQItem {
   /** The question text */
@@ -25,8 +22,9 @@ export interface FAQItem {
   answer: string;
 }
 
-export interface FAQSectionProps
-  extends VariantProps<typeof faqSectionVariants> {
+export interface FAQSectionProps extends VariantProps<
+  typeof faqSectionVariants
+> {
   /** Small label displayed above the heading */
   eyebrow?: ReactNode;
   /** Section heading text */

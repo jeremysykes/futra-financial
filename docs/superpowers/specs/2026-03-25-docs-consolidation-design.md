@@ -35,12 +35,12 @@ All files in `docs/superpowers/` and `docs/prompts/` become trackable.
 
 ### 2. Move files from `docs/specs/` to canonical locations
 
-| Source | Destination |
-|--------|------------|
-| `docs/specs/2026-03-23-page-transitions-design.md` | `docs/superpowers/specs/2026-03-23-page-transitions-design.md` |
+| Source                                                   | Destination                                                          |
+| -------------------------------------------------------- | -------------------------------------------------------------------- |
+| `docs/specs/2026-03-23-page-transitions-design.md`       | `docs/superpowers/specs/2026-03-23-page-transitions-design.md`       |
 | `docs/specs/2026-03-23-interactive-token-grid-design.md` | `docs/superpowers/specs/2026-03-23-interactive-token-grid-design.md` |
-| `docs/specs/2026-03-23-page-transitions-plan.md` | `docs/superpowers/plans/2026-03-23-page-transitions.md` |
-| `docs/specs/2026-03-23-interactive-token-grid-plan.md` | `docs/superpowers/plans/2026-03-23-interactive-token-grid.md` |
+| `docs/specs/2026-03-23-page-transitions-plan.md`         | `docs/superpowers/plans/2026-03-23-page-transitions.md`              |
+| `docs/specs/2026-03-23-interactive-token-grid-plan.md`   | `docs/superpowers/plans/2026-03-23-interactive-token-grid.md`        |
 
 Plan files drop the `-plan` suffix to match the naming convention used in `docs/superpowers/plans/` (date + topic, no suffix).
 
@@ -48,10 +48,10 @@ Delete `docs/specs/` after the moves.
 
 ### 3. Delete low-signal files
 
-| File | Reason |
-|------|--------|
+| File                                                        | Reason                                                                    |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `docs/superpowers/specs/2026-03-22-process-steps-design.md` | Narrow single-component spec — doesn't demonstrate systems-level thinking |
-| `docs/superpowers/plans/2026-03-22-process-steps-plan.md` | Pairs with deleted spec |
+| `docs/superpowers/plans/2026-03-22-process-steps-plan.md`   | Pairs with deleted spec                                                   |
 
 ### 4. Track all remaining files
 

@@ -6,7 +6,12 @@ import {
   useResolvedTokens,
   parseCssSource,
 } from './token-grid';
-import type { BusinessUnit, Category, TokenInfo, CssSourceData } from './token-grid';
+import type {
+  BusinessUnit,
+  Category,
+  TokenInfo,
+  CssSourceData,
+} from './token-grid';
 
 type ThemeMode = 'bu-defaults' | 'all-light' | 'all-dark';
 
@@ -41,7 +46,11 @@ function toHex(value: string): string {
     ctx.fillStyle = value;
     // If fillStyle is still #000000 and input wasn't black, canvas couldn't parse it
     // (e.g., oklch not supported in canvas). Return the raw value.
-    if (ctx.fillStyle === '#000000' && !value.includes('0, 0, 0') && value !== 'black') {
+    if (
+      ctx.fillStyle === '#000000' &&
+      !value.includes('0, 0, 0') &&
+      value !== 'black'
+    ) {
       return value;
     }
     return ctx.fillStyle; // Returns hex
@@ -111,11 +120,15 @@ function TokenGridPage() {
   return (
     <div className="max-w-[1400px] mx-auto px-6 py-12 min-h-screen bg-white dark:bg-[#111]">
       {/* Intro */}
-      <h1 className="font-sans font-bold text-2xl text-[#111] dark:text-[#eee] mb-2">Design Tokens</h1>
+      <h1 className="font-sans font-bold text-2xl text-[#111] dark:text-[#eee] mb-2">
+        Design Tokens
+      </h1>
       <p className="font-sans text-sm text-[#666] dark:text-[#999] mb-1">
-        Components use semantic tokens (<code className="font-mono text-xs text-[#6c6fe4]">bg-surface</code>,{' '}
-        <code className="font-mono text-xs text-[#6c6fe4]">text-accent</code>) that resolve through
-        primitives to final hex values. Each BU remaps the same semantic tokens to its own palette.
+        Components use semantic tokens (
+        <code className="font-mono text-xs text-[#6c6fe4]">bg-surface</code>,{' '}
+        <code className="font-mono text-xs text-[#6c6fe4]">text-accent</code>)
+        that resolve through primitives to final hex values. Each BU remaps the
+        same semantic tokens to its own palette.
       </p>
       <p className="font-mono text-xs text-[#888] mb-8">
         var(--teal) → var(--color-accent) → bg-accent
@@ -155,7 +168,10 @@ function TokenGridPage() {
               </th>
               {BUSINESS_UNITS.map((bu) => (
                 <th key={bu} className="text-center py-3 px-2 w-[14.4%]">
-                  <span className="font-sans font-semibold text-xs capitalize" style={{ color: BU_ACCENTS[bu] }}>
+                  <span
+                    className="font-sans font-semibold text-xs capitalize"
+                    style={{ color: BU_ACCENTS[bu] }}
+                  >
                     {bu}
                   </span>
                   <div className="font-sans font-normal text-[10px] text-[#888] mt-0.5">
@@ -197,7 +213,8 @@ function TokenGridPage() {
                       </td>
                       {BUSINESS_UNITS.map((bu) => {
                         const activeMode = getActiveMode(bu, mode);
-                        const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+                        const val =
+                          resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
                         const hex = toHex(val);
                         return (
                           <td key={bu} className="text-center py-2.5 px-2">
@@ -217,7 +234,9 @@ function TokenGridPage() {
                           <div className="flex gap-4 mb-3">
                             {BUSINESS_UNITS.map((bu) => {
                               const activeMode = getActiveMode(bu, mode);
-                              const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+                              const val =
+                                resolved[token.cssVar]?.[bu]?.[activeMode] ||
+                                '—';
                               const hex = toHex(val);
                               return (
                                 <div key={bu} className="text-center">
@@ -225,7 +244,10 @@ function TokenGridPage() {
                                     className="w-11 h-11 rounded-lg mx-auto border border-[#ccc] dark:border-[#555] mb-1"
                                     style={{ backgroundColor: val }}
                                   />
-                                  <div className="font-sans text-[10px] font-semibold capitalize" style={{ color: BU_ACCENTS[bu] }}>
+                                  <div
+                                    className="font-sans text-[10px] font-semibold capitalize"
+                                    style={{ color: BU_ACCENTS[bu] }}
+                                  >
                                     {bu}
                                   </div>
                                   <div className="font-mono text-[10px] text-[#888]">
@@ -238,7 +260,9 @@ function TokenGridPage() {
 
                           {/* Tailwind class */}
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="font-sans text-[10px] text-[#888]">Tailwind:</span>
+                            <span className="font-sans text-[10px] text-[#888]">
+                              Tailwind:
+                            </span>
                             <code className="font-mono text-[10px] bg-[#f2f2f2] dark:bg-[#222] px-2 py-0.5 rounded text-[#111] dark:text-[#eee]">
                               {token.tailwind}
                             </code>
@@ -246,15 +270,27 @@ function TokenGridPage() {
 
                           {/* Variable chains */}
                           <div className="flex items-start gap-2">
-                            <span className="font-sans text-[10px] text-[#888] shrink-0">Chain:</span>
+                            <span className="font-sans text-[10px] text-[#888] shrink-0">
+                              Chain:
+                            </span>
                             <div className="font-mono text-[10px] text-[#888]">
                               {BUSINESS_UNITS.map((bu, i) => {
                                 const activeMode = getActiveMode(bu, mode);
-                                const chain = getChain(token.cssVar, bu, activeMode, source);
+                                const chain = getChain(
+                                  token.cssVar,
+                                  bu,
+                                  activeMode,
+                                  source,
+                                );
                                 return (
                                   <span key={bu}>
                                     {i > 0 && <span className="mx-1.5">·</span>}
-                                    <span className="capitalize" style={{ color: BU_ACCENTS[bu] }}>{bu}</span>
+                                    <span
+                                      className="capitalize"
+                                      style={{ color: BU_ACCENTS[bu] }}
+                                    >
+                                      {bu}
+                                    </span>
                                     {': '}
                                     {chain}
                                   </span>

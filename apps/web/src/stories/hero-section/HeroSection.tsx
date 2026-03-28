@@ -37,8 +37,9 @@ const contentVariants = cva(
   },
 );
 
-export interface HeroSectionProps
-  extends VariantProps<typeof heroSectionVariants> {
+export interface HeroSectionProps extends VariantProps<
+  typeof heroSectionVariants
+> {
   /** Primary headline text */
   heading: ReactNode;
   /** Supporting description below the heading */
@@ -121,10 +122,17 @@ const HeroSection = ({
               <p className="mb-10 landscape:mb-3 lg:landscape:mb-10 font-sans text-lg landscape:text-base lg:landscape:text-lg leading-[1.7] landscape:leading-[1.3] lg:landscape:leading-[1.7] text-muted-foreground max-w-[460px]">
                 {subheading}
               </p>
-              <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{actions}</div>
+              <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">
+                {actions}
+              </div>
             </div>
             {children && (
-              <div className={cn("flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0 landscape:max-w-none lg:landscape:max-w-lg", hideChildrenLandscape && "hidden portrait:block lg:block")}>
+              <div
+                className={cn(
+                  'flex-1 relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-lg mx-auto lg:mx-0 landscape:max-w-none lg:landscape:max-w-lg',
+                  hideChildrenLandscape && 'hidden portrait:block lg:block',
+                )}
+              >
                 {children}
               </div>
             )}

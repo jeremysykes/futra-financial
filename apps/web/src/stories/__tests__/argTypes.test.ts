@@ -297,19 +297,22 @@ describe.each(components)('$name argTypes', (entry) => {
   it('every visible argType has a valid category', () => {
     const visible = getVisibleArgTypes(meta);
     const invalid = visible.filter(
-      ([, config]) => !config?.table?.category || !VALID_CATEGORIES.includes(config.table.category),
+      ([, config]) =>
+        !config?.table?.category ||
+        !VALID_CATEGORIES.includes(config.table.category),
     );
     expect(
-      invalid.map(([name]) => `${name}: ${invalid.find(([n]) => n === name)?.[1]?.table?.category ?? 'none'}`),
+      invalid.map(
+        ([name]) =>
+          `${name}: ${invalid.find(([n]) => n === name)?.[1]?.table?.category ?? 'none'}`,
+      ),
       `categories must be one of: ${VALID_CATEGORIES.join(', ')}`,
     ).toEqual([]);
   });
 
   it('every visible argType has a control type', () => {
     const visible = getVisibleArgTypes(meta);
-    const missing = visible.filter(
-      ([, config]) => !getControlType(config),
-    );
+    const missing = visible.filter(([, config]) => !getControlType(config));
     expect(
       missing.map(([name]) => name),
       'argTypes missing control type',
@@ -323,7 +326,8 @@ describe.each(components)('$name argTypes', (entry) => {
       return controlType === 'inline-radio' || controlType === 'select';
     });
     const missing = needsOptions.filter(
-      ([, config]) => !Array.isArray(config.options) || config.options.length === 0,
+      ([, config]) =>
+        !Array.isArray(config.options) || config.options.length === 0,
     );
     expect(
       missing.map(([name]) => name),
@@ -335,10 +339,7 @@ describe.each(components)('$name argTypes', (entry) => {
     it('CVA variant keys are covered by argTypes', () => {
       const argTypeKeys = Object.keys(argTypes);
       const missing = variantKeys.filter((key) => !argTypeKeys.includes(key));
-      expect(
-        missing,
-        'CVA variants not in argTypes',
-      ).toEqual([]);
+      expect(missing, 'CVA variants not in argTypes').toEqual([]);
     });
   }
 
@@ -374,10 +375,9 @@ describe.each(components)('$name argTypes', (entry) => {
         const config = argTypes[prop];
         return !config?.table?.disable;
       });
-      expect(
-        notHidden,
-        'JSX props should have table.disable: true',
-      ).toEqual([]);
+      expect(notHidden, 'JSX props should have table.disable: true').toEqual(
+        [],
+      );
     });
   }
 });

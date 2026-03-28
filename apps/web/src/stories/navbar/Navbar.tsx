@@ -77,7 +77,10 @@ const Navbar = ({ unitName, links, ctaText, className }: NavbarProps) => {
   }, [mobileOpen]);
 
   return (
-    <nav aria-label="Main navigation" className={cn(navbarVariants({ scrolled }), className)}>
+    <nav
+      aria-label="Main navigation"
+      className={cn(navbarVariants({ scrolled }), className)}
+    >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6 h-full flex items-center justify-between">
         <Logo unitName={unitName} />
 

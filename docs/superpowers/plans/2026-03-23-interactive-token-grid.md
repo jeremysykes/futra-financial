@@ -15,9 +15,11 @@
 ### Task 1: CSS Source Parser — Extract Variable Chains from Raw CSS
 
 **Files:**
+
 - Create: `src/stories/foundation/token-grid/parseCssSource.ts`
 
 This utility imports `tailwind.css` as a raw string and extracts:
+
 1. Default semantic token declarations (e.g., `--color-accent: var(--teal)`)
 2. Per-BU override mappings (e.g., `[data-business-unit='save'] { --color-accent: var(--save-grove) }`)
 3. Dark mode override mappings
@@ -32,7 +34,13 @@ import rawCss from '../../../tailwind.css?raw';
 
 export type BusinessUnit = 'spend' | 'save' | 'credit' | 'plan' | 'together';
 
-export const BUSINESS_UNITS: BusinessUnit[] = ['spend', 'save', 'credit', 'plan', 'together'];
+export const BUSINESS_UNITS: BusinessUnit[] = [
+  'spend',
+  'save',
+  'credit',
+  'plan',
+  'together',
+];
 
 export const BU_DEFAULT_MODES: Record<BusinessUnit, 'light' | 'dark'> = {
   spend: 'dark',
@@ -154,6 +162,7 @@ export function parseCssSource(): CssSourceData {
 - [ ] **Step 3: Verify the parser works in Storybook**
 
 Temporarily add a `console.log(parseCssSource())` at the end of the file, run `npm run storybook`, and check the browser console. Verify that:
+
 - `defaultChains` contains entries like `'--color-accent': 'var(--teal)'`
 - `buChains.save` contains entries like `'--color-accent': 'var(--save-grove)'`
 - Remove the `console.log` after verification.
@@ -170,6 +179,7 @@ git commit -m "feat(token-grid): add CSS source parser for variable chain extrac
 ### Task 2: Token Discovery and Category Grouping
 
 **Files:**
+
 - Create: `src/stories/foundation/token-grid/tokenDiscovery.ts`
 
 Discovers `--color-*` tokens from live stylesheets and groups them into categories via prefix matching.
@@ -194,11 +204,27 @@ export type TokenInfo = {
   category: Category;
 };
 
-const CATEGORY_RULES: Array<{ match: RegExp; category: Category; prefix: string }> = [
-  { match: /^(background|surface|secondary|muted)$/, category: 'Backgrounds', prefix: 'bg' },
+const CATEGORY_RULES: Array<{
+  match: RegExp;
+  category: Category;
+  prefix: string;
+}> = [
+  {
+    match: /^(background|surface|secondary|muted)$/,
+    category: 'Backgrounds',
+    prefix: 'bg',
+  },
   { match: /^(foreground)$/, category: 'Foregrounds', prefix: 'text' },
-  { match: /^(primary|accent|ring)$/, category: 'Brand & Interactive', prefix: 'bg' },
-  { match: /^(positive|negative|caution)$/, category: 'Status', prefix: 'text' },
+  {
+    match: /^(primary|accent|ring)$/,
+    category: 'Brand & Interactive',
+    prefix: 'bg',
+  },
+  {
+    match: /^(positive|negative|caution)$/,
+    category: 'Status',
+    prefix: 'text',
+  },
   { match: /^(destructive)$/, category: 'Status', prefix: 'bg' },
   { match: /^(border)$/, category: 'Borders', prefix: 'border' },
 ];
@@ -280,7 +306,8 @@ export function discoverTokens(): TokenInfo[] {
   ];
 
   tokens.sort((a, b) => {
-    const catDiff = categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
+    const catDiff =
+      categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
     if (catDiff !== 0) return catDiff;
     return a.name.localeCompare(b.name);
   });
@@ -292,10 +319,12 @@ export function discoverTokens(): TokenInfo[] {
 - [ ] **Step 2: Verify discovery in Storybook**
 
 Temporarily import and log in the existing story to confirm tokens are discovered:
+
 ```ts
 import { discoverTokens } from './token-grid/tokenDiscovery';
 console.log(discoverTokens());
 ```
+
 Check the browser console — should list ~19 tokens across 5 categories. Remove after verification.
 
 - [ ] **Step 3: Commit**
@@ -310,6 +339,7 @@ git commit -m "feat(token-grid): add dynamic token discovery with category group
 ### Task 3: Token Resolution Hook — Upfront Resolution of All BU × Mode Combinations
 
 **Files:**
+
 - Create: `src/stories/foundation/token-grid/useResolvedTokens.ts`
 
 A React hook that renders hidden DOM containers, resolves all tokens across 5 BUs × 2 modes, and caches the results.
@@ -396,18 +426,21 @@ export function useResolvedTokens(): UseResolvedTokensResult {
       const result: ResolvedTokens = {};
 
       for (const token of discoveredTokens) {
-        result[token.cssVar] = {} as Record<BusinessUnit, { light: string; dark: string }>;
+        result[token.cssVar] = {} as Record<
+          BusinessUnit,
+          { light: string; dark: string }
+        >;
 
         for (const bu of BUSINESS_UNITS) {
           const lightEl = resolverMap[`${bu}-light`];
           const darkEl = resolverMap[`${bu}-dark`];
 
-          const lightVal = getComputedStyle(lightEl)
-            .getPropertyValue(token.cssVar)
-            .trim() || '—';
-          const darkVal = getComputedStyle(darkEl)
-            .getPropertyValue(token.cssVar)
-            .trim() || '—';
+          const lightVal =
+            getComputedStyle(lightEl).getPropertyValue(token.cssVar).trim() ||
+            '—';
+          const darkVal =
+            getComputedStyle(darkEl).getPropertyValue(token.cssVar).trim() ||
+            '—';
 
           result[token.cssVar][bu] = { light: lightVal, dark: darkVal };
         }
@@ -443,6 +476,7 @@ git commit -m "feat(token-grid): add useResolvedTokens hook for upfront resoluti
 ### Task 4: Token Grid Story — Intro, Mode Toggle, and Matrix Layout
 
 **Files:**
+
 - Modify: `src/stories/foundation/DesignTokens.stories.tsx` (replace entirely)
 
 Build the main story with intro block, mode toggle, and the matrix table (without drill-down yet).
@@ -508,7 +542,11 @@ function toHex(value: string): string {
     ctx.fillStyle = value;
     // If fillStyle is still #000000 and input wasn't black, canvas couldn't parse it
     // (e.g., oklch not supported in canvas). Return the raw value.
-    if (ctx.fillStyle === '#000000' && !value.includes('0, 0, 0') && value !== 'black') {
+    if (
+      ctx.fillStyle === '#000000' &&
+      !value.includes('0, 0, 0') &&
+      value !== 'black'
+    ) {
       return value;
     }
     return ctx.fillStyle; // Returns hex
@@ -524,7 +562,9 @@ function TokenGridPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[200px]">
-        <p className="font-mono text-sm text-muted-foreground">Resolving tokens...</p>
+        <p className="font-mono text-sm text-muted-foreground">
+          Resolving tokens...
+        </p>
       </div>
     );
   }
@@ -540,11 +580,15 @@ function TokenGridPage() {
   return (
     <div className="max-w-[1400px] mx-auto">
       {/* Intro */}
-      <h1 className="font-sans font-bold text-2xl text-foreground mb-2">Design Tokens</h1>
+      <h1 className="font-sans font-bold text-2xl text-foreground mb-2">
+        Design Tokens
+      </h1>
       <p className="font-sans text-sm text-muted-foreground mb-1">
-        Components use semantic tokens (<code className="font-mono text-xs text-[#6c6fe4]">bg-surface</code>,{' '}
-        <code className="font-mono text-xs text-[#6c6fe4]">text-accent</code>) that resolve through
-        primitives to final hex values. Each BU remaps the same semantic tokens to its own palette.
+        Components use semantic tokens (
+        <code className="font-mono text-xs text-[#6c6fe4]">bg-surface</code>,{' '}
+        <code className="font-mono text-xs text-[#6c6fe4]">text-accent</code>)
+        that resolve through primitives to final hex values. Each BU remaps the
+        same semantic tokens to its own palette.
       </p>
       <p className="font-mono text-xs text-muted-foreground mb-8">
         var(--teal) → var(--color-accent) → bg-accent
@@ -552,7 +596,9 @@ function TokenGridPage() {
 
       {/* Mode Toggle */}
       <div className="flex items-center gap-2 mb-6">
-        <span className="font-sans text-xs text-muted-foreground mr-1">Mode:</span>
+        <span className="font-sans text-xs text-muted-foreground mr-1">
+          Mode:
+        </span>
         {(
           [
             { value: 'bu-defaults', label: 'BU Defaults' },
@@ -584,7 +630,10 @@ function TokenGridPage() {
               </th>
               {BUSINESS_UNITS.map((bu) => (
                 <th key={bu} className="text-center py-3 px-2 w-[14.4%]">
-                  <span className="font-sans font-semibold text-xs capitalize" style={{ color: BU_ACCENTS[bu] }}>
+                  <span
+                    className="font-sans font-semibold text-xs capitalize"
+                    style={{ color: BU_ACCENTS[bu] }}
+                  >
                     {bu}
                   </span>
                   <div className="font-sans font-normal text-[10px] text-muted-foreground mt-0.5">
@@ -618,7 +667,8 @@ function TokenGridPage() {
                     </td>
                     {BUSINESS_UNITS.map((bu) => {
                       const activeMode = getActiveMode(bu, mode);
-                      const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+                      const val =
+                        resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
                       const hex = toHex(val);
                       return (
                         <td key={bu} className="text-center py-2.5 px-2">
@@ -661,6 +711,7 @@ export const Default: Story = {};
 Run: `npm run storybook`
 
 Check that:
+
 - The story loads under Foundation/Design Tokens
 - All ~19 semantic tokens appear grouped by category
 - Swatches show correct colors for the default BU modes
@@ -680,6 +731,7 @@ git commit -m "feat(token-grid): interactive matrix with mode toggle and categor
 ### Task 5: Drill-Down Panel — Expandable Token Detail Rows
 
 **Files:**
+
 - Modify: `src/stories/foundation/DesignTokens.stories.tsx` (add drill-down interaction)
 
 Add the expandable drill-down panel that shows larger swatches, hex values, Tailwind classes, and CSS variable chains.
@@ -687,6 +739,7 @@ Add the expandable drill-down panel that shows larger swatches, hex values, Tail
 - [ ] **Step 1: Import the CSS source parser at the top of the story**
 
 Add to imports:
+
 ```tsx
 import { parseCssSource } from './token-grid';
 import type { CssSourceData } from './token-grid';
@@ -756,9 +809,7 @@ Update the token row `<tr>` to call `toggleExpanded` on click, and add expand in
   key={token.cssVar}
   onClick={() => toggleExpanded(token.cssVar)}
   className={`border-b border-border/50 cursor-pointer transition-colors ${
-    expanded.has(token.cssVar)
-      ? 'bg-[#6c6fe4]/5'
-      : 'hover:bg-secondary/50'
+    expanded.has(token.cssVar) ? 'bg-[#6c6fe4]/5' : 'hover:bg-secondary/50'
   }`}
 >
   <td className="py-2.5 px-4 text-muted-foreground">
@@ -774,61 +825,78 @@ Update the token row `<tr>` to call `toggleExpanded` on click, and add expand in
 Add the drill-down row immediately after the token row (inside the same fragment):
 
 ```tsx
-{expanded.has(token.cssVar) && (
-  <tr key={`${token.cssVar}-detail`} className="bg-[#6c6fe4]/5 border-b border-border/50">
-    <td colSpan={6} className="px-6 py-4">
-      {/* Large swatches */}
-      <div className="flex gap-4 mb-3">
-        {BUSINESS_UNITS.map((bu) => {
-          const activeMode = getActiveMode(bu, mode);
-          const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
-          const hex = toHex(val);
-          return (
-            <div key={bu} className="text-center">
-              <div
-                className="w-11 h-11 rounded-lg mx-auto border border-border/50 mb-1"
-                style={{ backgroundColor: val }}
-              />
-              <div className="font-sans text-[10px] font-semibold capitalize" style={{ color: BU_ACCENTS[bu] }}>
-                {bu}
-              </div>
-              <div className="font-mono text-[10px] text-muted-foreground">
-                {hex}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Tailwind class */}
-      <div className="flex items-center gap-2 mb-2">
-        <span className="font-sans text-[10px] text-muted-foreground">Tailwind:</span>
-        <code className="font-mono text-[10px] bg-secondary px-2 py-0.5 rounded text-foreground">
-          {token.tailwind}
-        </code>
-      </div>
-
-      {/* Variable chains */}
-      <div className="flex items-start gap-2">
-        <span className="font-sans text-[10px] text-muted-foreground shrink-0">Chain:</span>
-        <div className="font-mono text-[10px] text-muted-foreground">
-          {BUSINESS_UNITS.map((bu, i) => {
+{
+  expanded.has(token.cssVar) && (
+    <tr
+      key={`${token.cssVar}-detail`}
+      className="bg-[#6c6fe4]/5 border-b border-border/50"
+    >
+      <td colSpan={6} className="px-6 py-4">
+        {/* Large swatches */}
+        <div className="flex gap-4 mb-3">
+          {BUSINESS_UNITS.map((bu) => {
             const activeMode = getActiveMode(bu, mode);
-            const chain = getChain(token.cssVar, bu, activeMode, source);
+            const val = resolved[token.cssVar]?.[bu]?.[activeMode] || '—';
+            const hex = toHex(val);
             return (
-              <span key={bu}>
-                {i > 0 && <span className="mx-1.5">·</span>}
-                <span className="capitalize" style={{ color: BU_ACCENTS[bu] }}>{bu}</span>
-                {': '}
-                {chain}
-              </span>
+              <div key={bu} className="text-center">
+                <div
+                  className="w-11 h-11 rounded-lg mx-auto border border-border/50 mb-1"
+                  style={{ backgroundColor: val }}
+                />
+                <div
+                  className="font-sans text-[10px] font-semibold capitalize"
+                  style={{ color: BU_ACCENTS[bu] }}
+                >
+                  {bu}
+                </div>
+                <div className="font-mono text-[10px] text-muted-foreground">
+                  {hex}
+                </div>
+              </div>
             );
           })}
         </div>
-      </div>
-    </td>
-  </tr>
-)}
+
+        {/* Tailwind class */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="font-sans text-[10px] text-muted-foreground">
+            Tailwind:
+          </span>
+          <code className="font-mono text-[10px] bg-secondary px-2 py-0.5 rounded text-foreground">
+            {token.tailwind}
+          </code>
+        </div>
+
+        {/* Variable chains */}
+        <div className="flex items-start gap-2">
+          <span className="font-sans text-[10px] text-muted-foreground shrink-0">
+            Chain:
+          </span>
+          <div className="font-mono text-[10px] text-muted-foreground">
+            {BUSINESS_UNITS.map((bu, i) => {
+              const activeMode = getActiveMode(bu, mode);
+              const chain = getChain(token.cssVar, bu, activeMode, source);
+              return (
+                <span key={bu}>
+                  {i > 0 && <span className="mx-1.5">·</span>}
+                  <span
+                    className="capitalize"
+                    style={{ color: BU_ACCENTS[bu] }}
+                  >
+                    {bu}
+                  </span>
+                  {': '}
+                  {chain}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </td>
+    </tr>
+  );
+}
 ```
 
 - [ ] **Step 4: Verify drill-down in Storybook**
@@ -836,6 +904,7 @@ Add the drill-down row immediately after the token row (inside the same fragment
 Run: `npm run storybook`
 
 Check that:
+
 - Clicking a token row expands the drill-down panel below it
 - Clicking again collapses it
 - Multiple rows can be expanded simultaneously
@@ -856,6 +925,7 @@ git commit -m "feat(token-grid): add expandable drill-down with chains and Tailw
 ### Task 6: Polish and Final Verification
 
 **Files:**
+
 - Modify: `src/stories/foundation/DesignTokens.stories.tsx` (minor polish)
 
 Final visual polish pass and verification against the spec.
@@ -864,27 +934,28 @@ Final visual polish pass and verification against the spec.
 
 Open the story in Storybook and check each spec requirement:
 
-| Requirement | Check |
-|-------------|-------|
-| Replaces existing Design Tokens story | Same `title: 'Foundation/Design Tokens'` |
-| Intro block with architecture explanation | Visible at top |
-| Mode toggle: BU Defaults / All Light / All Dark | Three buttons, all functional |
-| BU default modes correct (Spend/Plan=dark, others=light) | Column headers show correct mode labels |
-| 5 BU columns with accent-colored headers | All present |
-| Category divider rows in indigo uppercase | All 5+ categories visible |
-| 24px swatches in collapsed rows | Correct size |
-| Hover highlight on rows | Visible cursor + bg change |
-| Expandable drill-down with 44px swatches | Click to expand works |
-| Hex values in drill-down | Displayed per BU |
-| Tailwind class in pill badge | Displayed |
-| CSS variable chain per BU | Displayed from raw CSS parse |
-| Multiple rows expandable | Can open several at once |
-| Dynamic token discovery | No manual token list — all from CSS |
-| Uses withStoryDisplay() decorator | Configured in meta |
+| Requirement                                              | Check                                    |
+| -------------------------------------------------------- | ---------------------------------------- |
+| Replaces existing Design Tokens story                    | Same `title: 'Foundation/Design Tokens'` |
+| Intro block with architecture explanation                | Visible at top                           |
+| Mode toggle: BU Defaults / All Light / All Dark          | Three buttons, all functional            |
+| BU default modes correct (Spend/Plan=dark, others=light) | Column headers show correct mode labels  |
+| 5 BU columns with accent-colored headers                 | All present                              |
+| Category divider rows in indigo uppercase                | All 5+ categories visible                |
+| 24px swatches in collapsed rows                          | Correct size                             |
+| Hover highlight on rows                                  | Visible cursor + bg change               |
+| Expandable drill-down with 44px swatches                 | Click to expand works                    |
+| Hex values in drill-down                                 | Displayed per BU                         |
+| Tailwind class in pill badge                             | Displayed                                |
+| CSS variable chain per BU                                | Displayed from raw CSS parse             |
+| Multiple rows expandable                                 | Can open several at once                 |
+| Dynamic token discovery                                  | No manual token list — all from CSS      |
+| Uses withStoryDisplay() decorator                        | Configured in meta                       |
 
 - [ ] **Step 2: Fix any issues found during verification**
 
 Address any visual or functional issues discovered. Common things to check:
+
 - Light-on-light swatches need a visible border
 - Hex display for oklch() values converts correctly
 - Empty/missing token values show "—" gracefully
@@ -900,10 +971,10 @@ git commit -m "feat(token-grid): polish and final verification"
 
 ## File Map Summary
 
-| File | Action | Purpose |
-|------|--------|---------|
-| `src/stories/foundation/token-grid/parseCssSource.ts` | Create | Parse raw CSS for variable chains |
-| `src/stories/foundation/token-grid/tokenDiscovery.ts` | Create | Discover tokens from live stylesheets, categorize |
-| `src/stories/foundation/token-grid/useResolvedTokens.ts` | Create | Hook: resolve all tokens across BUs × modes |
-| `src/stories/foundation/token-grid/index.ts` | Create | Barrel export |
-| `src/stories/foundation/DesignTokens.stories.tsx` | Replace | New interactive grid story |
+| File                                                     | Action  | Purpose                                           |
+| -------------------------------------------------------- | ------- | ------------------------------------------------- |
+| `src/stories/foundation/token-grid/parseCssSource.ts`    | Create  | Parse raw CSS for variable chains                 |
+| `src/stories/foundation/token-grid/tokenDiscovery.ts`    | Create  | Discover tokens from live stylesheets, categorize |
+| `src/stories/foundation/token-grid/useResolvedTokens.ts` | Create  | Hook: resolve all tokens across BUs × modes       |
+| `src/stories/foundation/token-grid/index.ts`             | Create  | Barrel export                                     |
+| `src/stories/foundation/DesignTokens.stories.tsx`        | Replace | New interactive grid story                        |

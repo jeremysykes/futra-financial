@@ -27,8 +27,9 @@ export interface SplitSegment {
   tokenColor: 'primary' | 'accent';
 }
 
-export interface SplitDisplayProps
-  extends VariantProps<typeof splitDisplayVariants> {
+export interface SplitDisplayProps extends VariantProps<
+  typeof splitDisplayVariants
+> {
   /** Heading text describing the expense category */
   label: string;
   /** Formatted total amount displayed alongside the label */
@@ -77,7 +78,7 @@ const SplitDisplay = ({
 
       <div
         role="img"
-        aria-label={`${label} split: ${splits.map(s => `${s.name} ${s.amount}`).join(', ')}`}
+        aria-label={`${label} split: ${splits.map((s) => `${s.name} ${s.amount}`).join(', ')}`}
         className="flex rounded-full overflow-hidden h-3 mb-3"
       >
         {splits.map((s, i) => (
@@ -92,7 +93,12 @@ const SplitDisplay = ({
       <div className="flex justify-between">
         {splits.map((s, i) => (
           <div key={i} className="flex items-center gap-2">
-            <div className={cn('w-2.5 h-2.5 rounded-full', dotColorMap[s.tokenColor])} />
+            <div
+              className={cn(
+                'w-2.5 h-2.5 rounded-full',
+                dotColorMap[s.tokenColor],
+              )}
+            />
             <span className="text-xs text-muted-foreground font-medium">
               {s.name}
             </span>

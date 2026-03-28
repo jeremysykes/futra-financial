@@ -5,7 +5,13 @@ import rawCss from '../../../tailwind.css?raw';
 
 export type BusinessUnit = 'spend' | 'save' | 'credit' | 'plan' | 'together';
 
-export const BUSINESS_UNITS: BusinessUnit[] = ['spend', 'save', 'credit', 'plan', 'together'];
+export const BUSINESS_UNITS: BusinessUnit[] = [
+  'spend',
+  'save',
+  'credit',
+  'plan',
+  'together',
+];
 
 export const BU_DEFAULT_MODES: Record<BusinessUnit, 'light' | 'dark'> = {
   spend: 'dark',

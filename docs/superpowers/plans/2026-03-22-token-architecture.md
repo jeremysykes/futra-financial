@@ -14,11 +14,11 @@
 
 ## File Map
 
-| File | Change |
-|------|--------|
-| `src/tailwind.css` | Full restructure: add `:root` primitives, rewrite `@theme` and all BU blocks to reference primitives |
-| `src/stories/foundation/DesignTokens.stories.tsx` | Update to show primitive and semantic layers |
-| `DESIGN.md` | Update token architecture description |
+| File                                              | Change                                                                                               |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `src/tailwind.css`                                | Full restructure: add `:root` primitives, rewrite `@theme` and all BU blocks to reference primitives |
+| `src/stories/foundation/DesignTokens.stories.tsx` | Update to show primitive and semantic layers                                                         |
+| `DESIGN.md`                                       | Update token architecture description                                                                |
 
 ---
 
@@ -29,6 +29,7 @@
 - [ ] **Step 1: Screenshot all 5 BUs in light mode**
 
 Use Playwright to navigate to each BU page and take a full-page screenshot:
+
 - `http://localhost:5173/spend` → `before-spend-light.png`
 - `http://localhost:5173/save` → `before-save-light.png`
 - `http://localhost:5173/credit` → `before-credit-light.png`
@@ -38,6 +39,7 @@ Use Playwright to navigate to each BU page and take a full-page screenshot:
 - [ ] **Step 2: Switch to dark mode and screenshot all 5 BUs**
 
 Click the dark mode toggle on each page and screenshot:
+
 - `before-spend-dark.png`
 - `before-save-dark.png`
 - `before-credit-dark.png`
@@ -49,6 +51,7 @@ Click the dark mode toggle on each page and screenshot:
 ## Task 2: Restructure tailwind.css
 
 **Files:**
+
 - Modify: `src/tailwind.css`
 
 This is the core refactor. The entire file is rewritten but the structure is mechanical: extract values into primitives, replace values with `var()` references.
@@ -60,6 +63,7 @@ After `@custom-variant dark` and before `@theme`, add the complete `:root` block
 **Shared palette:** `--white`, `--black`, `--indigo`, `--indigo-hover`, `--indigo-light`, `--teal`, `--coral`, `--amber`, `--destructive-red` (#d40924)
 
 **Default theme primitives** (oklch converted to hex — use a tool or browser devtools to convert):
+
 - `--default-bg`: oklch(1 0 0) → #ffffff (same as `--white`)
 - `--default-fg`: oklch(0.15 0 0) → approximate hex
 - `--default-secondary`: oklch(0.96 0 0) → approximate hex
@@ -76,6 +80,7 @@ After `@custom-variant dark` and before `@theme`, add the complete `:root` block
 - `--default-destructive`: oklch(0.55 0.22 25) → approximate hex
 
 **Default dark primitives** (oklch dark mode values → hex):
+
 - `--default-dark-bg`: oklch(0.13 0 0) → approximate hex
 - `--default-dark-fg`: oklch(0.95 0 0) → approximate hex
 - `--default-dark-surface`: oklch(0.18 0 0) → approximate hex
@@ -193,6 +198,7 @@ Same pattern with Together primitives.
 - [ ] **Step 9: Verify no raw hex/oklch/rgba values remain in semantic or theme blocks**
 
 Search the file. The only raw values should be:
+
 - Inside the `:root` primitives block
 - Animation values (keyframes, durations)
 - The `:focus-visible` rule (references `var(--color-ring)` — correct)
@@ -244,6 +250,7 @@ rm -f before-*.png after-*.png
 ## Task 4: Update Foundation/Design Tokens Story
 
 **Files:**
+
 - Modify: `src/stories/foundation/DesignTokens.stories.tsx`
 
 - [ ] **Step 1: Add a Primitives section to the token table**
@@ -251,6 +258,7 @@ rm -f before-*.png after-*.png
 The DesignTokens story currently shows semantic tokens only. Add a new section at the top showing all primitive tokens read from `:root`. Group them by palette (Shared, Spend, Save, Credit, Plan, Together).
 
 For primitives, show:
+
 - Token name (e.g., `--indigo`)
 - Resolved value (hex)
 - Color swatch
@@ -260,6 +268,7 @@ Primitives don't have Tailwind classes or semantic descriptions — they're just
 - [ ] **Step 2: Add a visual separator between primitive and semantic sections**
 
 Add a heading and description explaining the two layers:
+
 - "Primitives — raw palette values, never referenced by components"
 - "Semantic Tokens — intent-based tokens, referenced via Tailwind classes"
 
@@ -281,6 +290,7 @@ git commit -m "feat: show primitive and semantic token layers in Design Tokens s
 ## Task 5: Update DESIGN.md
 
 **Files:**
+
 - Modify: `DESIGN.md`
 
 - [ ] **Step 1: Update the Token Architecture section**
@@ -295,16 +305,18 @@ The theme system uses a two-layer token structure in `tailwind.css`:
 **Primitives** (`:root`) — Named color values that form the raw palette. Components never reference these directly. Each BU has its own primitive set alongside shared values like `--indigo` and `--teal`.
 
 **Semantic tokens** (`@theme`) — Intent-based tokens (`--color-background`, `--color-primary`, `--color-accent`) that reference primitives via `var()`. Components use Tailwind utility classes mapped to these tokens. BU theme switching overrides semantic values to point at different primitives.
+```
+
+Primitives (raw palette) → --indigo: #6c6fe4
+--save-grove: #4a7c59
+Semantic tokens (intent) → --color-primary: var(--indigo)
+--color-accent: var(--indigo)
+Theme overrides (BU switch) → [data-business-unit='save'] {
+--color-accent: var(--save-grove);
+}
 
 ```
-Primitives (raw palette)     → --indigo: #6c6fe4
-                               --save-grove: #4a7c59
-Semantic tokens (intent)     → --color-primary: var(--indigo)
-                               --color-accent: var(--indigo)
-Theme overrides (BU switch)  → [data-business-unit='save'] {
-                                 --color-accent: var(--save-grove);
-                               }
-```
+
 ```
 
 - [ ] **Step 2: Commit**

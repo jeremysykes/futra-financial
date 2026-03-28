@@ -203,12 +203,14 @@ Plan's `--plan-teal: #1fa88e` is distinct from the shared `--teal: #2abfa3`. In 
 ## What Changes
 
 ### File changes
+
 - `src/tailwind.css` — restructure into `:root` primitives + `@theme` semantic defaults + `@layer base` BU overrides referencing primitives
 - `src/stories/foundation/DesignTokens.stories.tsx` — update to show both layers
 - `src/stories/foundation/Colors.stories.tsx` — no change needed (reads semantic tokens at runtime)
 - `DESIGN.md` — update token architecture description
 
 ### What stays the same
+
 - All Tailwind classes (`bg-background`, `text-accent`, etc.) — unchanged
 - All component code — unchanged, components reference semantic tokens only
 - Visual output — near-identical (minor sub-pixel differences possible from oklch-to-hex normalization in default theme only)
@@ -226,11 +228,13 @@ Plan's `--plan-teal: #1fa88e` is distinct from the shared `--teal: #2abfa3`. In 
 ## Migration Strategy
 
 This is a safe refactor because:
+
 - No component code changes — Tailwind class names don't change
 - Visual output should be identical (with minor oklch-to-hex tolerance for the default theme)
 - Testable with Playwright — screenshot every BU page before and after
 
 ### Steps
+
 1. Take "before" Playwright screenshots (all 5 BUs, light + dark = 10 screenshots)
 2. Define all primitive tokens in `:root` at the top of `tailwind.css`
 3. Rewrite the `@theme` block — semantic tokens reference primitives via `var()`

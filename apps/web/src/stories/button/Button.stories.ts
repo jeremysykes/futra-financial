@@ -79,7 +79,9 @@ export const Medium: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByRole('button', { name: 'Open Your Account' })).toBeInTheDocument();
+    expect(
+      canvas.getByRole('button', { name: 'Open Your Account' }),
+    ).toBeInTheDocument();
   },
 };
 
@@ -91,6 +93,8 @@ export const Small: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByRole('button', { name: 'Get Started' })).toBeInTheDocument();
+    expect(
+      canvas.getByRole('button', { name: 'Get Started' }),
+    ).toBeInTheDocument();
   },
 };

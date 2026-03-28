@@ -17,17 +17,17 @@ Each component must be on its own individually named layer/frame — not collaps
 
 ### Pages (9 total)
 
-| # | Page Name | Contents |
-|---|-----------|----------|
-| 1 | Foundations | Color token swatches, typography scale, logo |
-| 2 | Button | primary/inverse × sm/md across 5 BUs |
-| 3 | Badge | square/rounded/circle × sm/md/lg, icon/text/image content across 5 BUs |
-| 4 | Avatar | sm/md/lg × none/accent/primary ring across 5 BUs |
-| 5 | Card | accent positions (none/left/top/right/bottom) across 5 BUs |
-| 6 | NavLink | sm/base sizes across 5 BUs |
-| 7 | Accordion | default/compact spacing, expanded + collapsed across 5 BUs |
-| 8 | ProgressCard | default/compact at various fill percentages across 5 BUs |
-| 9 | StatItem | foreground/accent value colors across 5 BUs |
+| #   | Page Name    | Contents                                                               |
+| --- | ------------ | ---------------------------------------------------------------------- |
+| 1   | Foundations  | Color token swatches, typography scale, logo                           |
+| 2   | Button       | primary/inverse × sm/md across 5 BUs                                   |
+| 3   | Badge        | square/rounded/circle × sm/md/lg, icon/text/image content across 5 BUs |
+| 4   | Avatar       | sm/md/lg × none/accent/primary ring across 5 BUs                       |
+| 5   | Card         | accent positions (none/left/top/right/bottom) across 5 BUs             |
+| 6   | NavLink      | sm/base sizes across 5 BUs                                             |
+| 7   | Accordion    | default/compact spacing, expanded + collapsed across 5 BUs             |
+| 8   | ProgressCard | default/compact at various fill percentages across 5 BUs               |
+| 9   | StatItem     | foreground/accent value colors across 5 BUs                            |
 
 ### Per-Component Page Layout
 
@@ -42,6 +42,7 @@ Each component page contains **5 top-level named frames**:
 ```
 
 Each frame:
+
 - Uses auto-layout (vertical, 24px gap)
 - Shows the BU in its **default mode** (Spend: dark, Save: light, Credit: light, Plan: dark, Together: light)
 - Uses the correct BU background color for that mode
@@ -52,18 +53,21 @@ Each frame:
 ### Foundations Page Layout
 
 **Colors section:**
+
 - One horizontal row per BU (Spend, Save, Credit, Plan, Together)
 - Colors sourced from `src/tailwind.css` CSS primitives (not DESIGN.md visual tables, since they differ slightly)
 - Each swatch: 80×80 rectangle with rounded corners, hex code label below, color name label
 - Shared colors (Indigo, Teal, Coral, Amber) shown in a separate "Shared" row
 
 **Typography section:**
+
 - Inter: Regular (400), Medium (500), Semibold (600), Bold (700), Black (900 — wordmark only)
 - JetBrains Mono: Medium (500)
 - Each weight shown at heading (24px) and body (16px) sizes
 - Sample text: "Futra Financial" for headings, "The quick brown fox..." for body
 
 **Logo section:**
+
 - FUTRA wordmark on light background
 - FUTRA wordmark on dark background
 
@@ -73,13 +77,13 @@ All values sourced from `src/tailwind.css` CSS variable declarations.
 
 Each BU frame renders in that BU's **default mode**.
 
-| BU | Default Mode | Background | Foreground | Surface | Accent | Primary | Border | Muted | Muted Foreground |
-|----|-------------|-----------|------------|---------|--------|---------|--------|-------|-----------------|
-| Spend | Dark | #0F0F12 | #FFFFFF | #1A1A1F | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #1A1A1F | #8B8B9A |
-| Save | Light | #F7F5F0 | #1C1C1A | #FFFFFF | #4A7C59 | #6C6FE4 | rgba(74,124,89,0.15) | #E8F0EB | #7A7A72 |
-| Credit | Light | #F9F7FF | #1A1830 | #EEEAFF | #9896C8 | #6C6FE4 | rgba(108,111,228,0.15) | #D4D2EE | #6B6880 |
-| Plan | Dark | #0C1017 | #E2E8F0 | #151E2B | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #1F2D3D | #A0AEC0 |
-| Together | Light | #FFF9F5 | #1C1A18 | #FFFFFF | #C4622D | #6C6FE4 | rgba(196,98,45,0.15) | #F2E4DA | #9E8E84 |
+| BU       | Default Mode | Background | Foreground | Surface | Accent  | Primary | Border                 | Muted   | Muted Foreground |
+| -------- | ------------ | ---------- | ---------- | ------- | ------- | ------- | ---------------------- | ------- | ---------------- |
+| Spend    | Dark         | #0F0F12    | #FFFFFF    | #1A1A1F | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #1A1A1F | #8B8B9A          |
+| Save     | Light        | #F7F5F0    | #1C1C1A    | #FFFFFF | #4A7C59 | #6C6FE4 | rgba(74,124,89,0.15)   | #E8F0EB | #7A7A72          |
+| Credit   | Light        | #F9F7FF    | #1A1830    | #EEEAFF | #9896C8 | #6C6FE4 | rgba(108,111,228,0.15) | #D4D2EE | #6B6880          |
+| Plan     | Dark         | #0C1017    | #E2E8F0    | #151E2B | #6C6FE4 | #6C6FE4 | rgba(255,255,255,0.08) | #1F2D3D | #A0AEC0          |
+| Together | Light        | #FFF9F5    | #1C1A18    | #FFFFFF | #C4622D | #6C6FE4 | rgba(196,98,45,0.15)   | #F2E4DA | #9E8E84          |
 
 **Key distinction:** `primary` is always #6C6FE4 (Indigo) for buttons. `accent` varies by BU and is used for decorative/highlight colors. The inverse button uses `text-accent`, so its text color varies per BU.
 
@@ -88,6 +92,7 @@ Each BU frame renders in that BU's **default mode**.
 All values extracted directly from source CVA definitions in `src/stories/`.
 
 ### Button
+
 Source: `src/stories/button/Button.tsx`
 
 - **Variants:** intent (primary, inverse) × size (sm, md)
@@ -99,6 +104,7 @@ Source: `src/stories/button/Button.tsx`
 - Corner radius: **10px**
 
 ### Badge
+
 Source: `src/stories/badge/Badge.tsx`
 
 - **Variants:** shape (square, rounded, circle) × size (sm, md, lg) × content (icon, text, image)
@@ -113,6 +119,7 @@ Source: `src/stories/badge/Badge.tsx`
 - **image content:** `overflow-hidden` (clip to shape)
 
 ### Avatar
+
 Source: `src/stories/avatar/Avatar.tsx` (composes Badge with `shape="circle"`)
 
 - **Variants:** size (sm, md, lg) × ring (none, accent, primary)
@@ -124,6 +131,7 @@ Source: `src/stories/avatar/Avatar.tsx` (composes Badge with `shape="circle"`)
 - Shape: always circle
 
 ### Card
+
 Source: `src/stories/card/Card.tsx`
 
 - **Variants:** accent (none, left, top, right, bottom)
@@ -135,6 +143,7 @@ Source: `src/stories/card/Card.tsx`
 - Note: side accents are 4px, top/bottom accents are 2px (asymmetric by design)
 
 ### NavLink
+
 Source: `src/stories/nav-link/NavLink.tsx`
 
 - **Variants:** size (sm, base)
@@ -144,6 +153,7 @@ Source: `src/stories/nav-link/NavLink.tsx`
 - **base:** `text-base` → 16px
 
 ### Accordion
+
 Source: `src/stories/accordion/Accordion.tsx`, `src/stories/accordion-item/AccordionItem.tsx`
 
 - **Container variants:** spacing (default, compact)
@@ -158,6 +168,7 @@ Source: `src/stories/accordion/Accordion.tsx`, `src/stories/accordion-item/Accor
 - **Expanded content sample text:** "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
 ### ProgressCard
+
 Source: `src/stories/progress-card/ProgressCard.tsx`
 
 - **Variants:** size (default, compact) × percentage (25%, 50%, 75%, 100%)
@@ -172,6 +183,7 @@ Source: `src/stories/progress-card/ProgressCard.tsx`
 - **Target label:** `font-mono font-medium text-[13px] text-muted-foreground` → JetBrains Mono, 13px
 
 ### StatItem
+
 Source: `src/stories/stat-item/StatItem.tsx`
 
 - **Variants:** valueColor (foreground, accent)

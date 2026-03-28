@@ -68,9 +68,7 @@ const Avatar = ({
             className="w-full h-full object-cover"
           />
         )}
-        <RadixAvatar.Fallback
-          className="text-accent"
-        >
+        <RadixAvatar.Fallback className="text-accent">
           {initials ?? alt.charAt(0).toUpperCase()}
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>

@@ -18,17 +18,18 @@
 
 **Color palette (hex → Figma RGB):**
 
-| Token | Hex | Figma RGB |
-|-------|-----|-----------|
-| primary | #6C6FE4 | {r:0.424, g:0.435, b:0.894} |
-| primary-foreground | #FFFFFF | {r:1, g:1, b:1} |
-| foreground | #0B0B0B | {r:0.043, g:0.043, b:0.043} |
-| surface | #FFFFFF | {r:1, g:1, b:1} |
-| muted | #EEEEEE | {r:0.933, g:0.933, b:0.933} |
-| muted-foreground | #717171 | {r:0.443, g:0.443, b:0.443} |
-| border | #D7D7D7 | {r:0.843, g:0.843, b:0.843} |
+| Token              | Hex     | Figma RGB                   |
+| ------------------ | ------- | --------------------------- |
+| primary            | #6C6FE4 | {r:0.424, g:0.435, b:0.894} |
+| primary-foreground | #FFFFFF | {r:1, g:1, b:1}             |
+| foreground         | #0B0B0B | {r:0.043, g:0.043, b:0.043} |
+| surface            | #FFFFFF | {r:1, g:1, b:1}             |
+| muted              | #EEEEEE | {r:0.933, g:0.933, b:0.933} |
+| muted-foreground   | #717171 | {r:0.443, g:0.443, b:0.443} |
+| border             | #D7D7D7 | {r:0.843, g:0.843, b:0.843} |
 
 **Fonts to load in every call:**
+
 ```javascript
 await figma.loadFontAsync({ family: 'Inter', style: 'Semi Bold' });
 await figma.loadFontAsync({ family: 'Inter', style: 'Medium' });
@@ -110,6 +111,7 @@ Use `use_figma` to find the ComponentSet on the Button page. Confirm it has `typ
 Navigate to Badge page. Create 9 components (3 shapes × 3 sizes):
 
 For each combination of Shape (Square/Rounded/Circle) × Size (sm/md/lg):
+
 - Name: `"Shape={shape}, Size={size}"`
 - Fixed dimensions: sm=40, md=56, lg=64
 - Corner radius: Square=0, Rounded=16, Circle=half (20/28/32)
@@ -132,6 +134,7 @@ Confirm 9 children, correct names and types.
 Navigate to Avatar page. Create 9 components (3 sizes × 3 rings):
 
 For each combination of Size (sm/md/lg) × Ring (None/Accent/Primary):
+
 - Name: `"Size={size}, Ring={ring}"`
 - Fixed dimensions: sm=40, md=56, lg=64
 - Always circular: cornerRadius = half (20/28/32)
@@ -156,6 +159,7 @@ Confirm 9 children, correct names.
 Navigate to Card page. Create 5 components (5 accent positions):
 
 For each Accent (None/Left/Top/Right/Bottom):
+
 - Name: `"Accent={accent}"`
 - Width: 260px, vertical auto-layout, 12px gap, 24px padding, r12
 - bg white (#FFFFFF), border 1px #D7D7D7
@@ -163,6 +167,7 @@ For each Accent (None/Left/Top/Right/Bottom):
 - Text nodes: `layoutSizingHorizontal = 'FILL'` to span card width
 
 Accent border approach — use a wrapper frame technique:
+
 - **None**: standard 1px border only
 - **Left**: outer frame bg #6C6FE4, r12, paddingLeft=4 paddingTop/Right/Bottom=0. Inner content frame with surface bg, all card content. The 4px left gap reveals accent color.
 - **Top**: same approach, paddingTop=2, others=0
@@ -170,13 +175,14 @@ Accent border approach — use a wrapper frame technique:
 - **Bottom**: paddingBottom=2, others=0
 
 Alternative simpler approach: since Figma supports `strokeTopWeight`, `strokeBottomWeight`, `strokeLeftWeight`, `strokeRightWeight` on individual sides when `individualStrokeWeights` is set, use:
+
 ```javascript
 comp.strokesIncludedInLayout = true;
-comp.strokes = [{type:'SOLID', color: border_color}];
+comp.strokes = [{ type: 'SOLID', color: border_color }];
 comp.strokeWeight = 1;
 // For accent Left:
 comp.strokeLeftWeight = 4;
-comp.strokes = [{type:'SOLID', color: accent_color}]; // This overrides all sides
+comp.strokes = [{ type: 'SOLID', color: accent_color }]; // This overrides all sides
 ```
 
 Since per-side stroke colors aren't supported, use the wrapper approach for accent variants.
@@ -215,6 +221,7 @@ Confirm 2 children, correct names.
 Navigate to Accordion page. Create 4 components (2 spacings × 2 states):
 
 For each Spacing (Default/Compact) × State (Expanded/Collapsed):
+
 - Name: `"Spacing={spacing}, State={state}"`
 - Width: 500px, vertical auto-layout
 - Gap: Default=12, Compact=8
@@ -222,11 +229,13 @@ For each Spacing (Default/Compact) × State (Expanded/Collapsed):
 Each component contains 2 accordion items stacked:
 
 **Collapsed item:**
+
 - Frame: border 1px #D7D7D7, r12, horizontal auto-layout, pad 24h/16v, space-between
 - Trigger text: "What is Futra?" Inter Semi Bold 16px #0B0B0B
 - Chevron: "▶" 18px #717171
 
 **Expanded item (for State=Expanded, item 1 only):**
+
 - Frame: border 1px #D7D7D7, r12, vertical auto-layout
 - Trigger row: horizontal auto-layout, pad 24h/16v, space-between. Text #6C6FE4, chevron "▼"
 - Content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." Inter Regular 14px #717171, pad 24h/0top/16bottom
@@ -249,6 +258,7 @@ Confirm 4 children, correct names.
 Navigate to ProgressCard page. Create 2 components:
 
 For each Size (Default/Compact):
+
 - Name: `"Size={size}"`
 - Width: 260px, vertical auto-layout, 12px gap
 - bg white, border 1px #D7D7D7, r12
@@ -256,6 +266,7 @@ For each Size (Default/Compact):
 - Default: pad 20. Compact: pad 16.
 
 Content:
+
 1. Header row: horizontal, space-between, `layoutSizingHorizontal='FILL'`
    - "Trip to Japan" Inter Semi Bold 15px #0B0B0B
    - "67%" JetBrains Mono Medium 13px #6C6FE4
@@ -300,6 +311,7 @@ Confirm 2 children, correct names.
 Use `use_figma` to iterate all pages and find nodes of type `COMPONENT_SET`. Print: page name, ComponentSet name, number of variants.
 
 Expected:
+
 - Button: 4 variants
 - Badge: 9 variants
 - Avatar: 9 variants

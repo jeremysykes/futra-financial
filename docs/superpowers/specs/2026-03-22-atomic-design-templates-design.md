@@ -22,66 +22,66 @@ All shared components (atoms, molecules, organisms, templates) live in `src/stor
 
 Smallest building blocks. Single responsibility. No composition.
 
-| Component | Status | CVA | Notes |
-|-----------|--------|-----|-------|
-| Button | Exists | Yes | Has story |
-| Badge | Exists | Yes | Has story |
-| Avatar | Exists | No | Has story |
-| Logo | Exists | Yes | Has story |
-| NavLink | Exists | No | Has story |
+| Component | Status | CVA | Notes     |
+| --------- | ------ | --- | --------- |
+| Button    | Exists | Yes | Has story |
+| Badge     | Exists | Yes | Has story |
+| Avatar    | Exists | No  | Has story |
+| Logo      | Exists | Yes | Has story |
+| NavLink   | Exists | No  | Has story |
 
 ### Molecules
 
 Small combinations of atoms. Reusable. Single purpose.
 
-| Component | Status | CVA | Notes |
-|-----------|--------|-----|-------|
-| Card | Exists | Yes | Has story |
-| ProcessSteps | Exists | Yes | Has story |
-| ProgressCard | Exists (save) | No | BU-specific, stays in src/components/save/ |
-| SplitDisplay | Exists (together) | No | BU-specific, stays in src/components/together/ |
+| Component    | Status            | CVA | Notes                                          |
+| ------------ | ----------------- | --- | ---------------------------------------------- |
+| Card         | Exists            | Yes | Has story                                      |
+| ProcessSteps | Exists            | Yes | Has story                                      |
+| ProgressCard | Exists (save)     | No  | BU-specific, stays in src/components/save/     |
+| SplitDisplay | Exists (together) | No  | BU-specific, stays in src/components/together/ |
 
 ### Organisms
 
 Self-contained, fully realized components. They ARE the content, not a container for it.
 
-| Component | Status | CVA | Notes |
-|-----------|--------|-----|-------|
-| Navbar | Exists (shared) | Yes | Has story |
-| PhoneMockup | Exists (spend) | No | BU-specific, stays in src/components/spend/ |
-| ScoreDisplay | Exists (credit) | No | BU-specific, stays in src/components/credit/ |
-| DashboardPreview | Exists (plan) | No | BU-specific, stays in src/components/plan/ |
-| SplitShowcase | Exists (together) | No | BU-specific, stays in src/components/together/ |
+| Component        | Status            | CVA | Notes                                          |
+| ---------------- | ----------------- | --- | ---------------------------------------------- |
+| Navbar           | Exists (shared)   | Yes | Has story                                      |
+| PhoneMockup      | Exists (spend)    | No  | BU-specific, stays in src/components/spend/    |
+| ScoreDisplay     | Exists (credit)   | No  | BU-specific, stays in src/components/credit/   |
+| DashboardPreview | Exists (plan)     | No  | BU-specific, stays in src/components/plan/     |
+| SplitShowcase    | Exists (together) | No  | BU-specific, stays in src/components/together/ |
 
 ### Templates
 
 Structural section shells. Define layout patterns. Accept content via composition (`children` slots). These are the page sections that BUs fill with their own content and organisms.
 
-| Component | Used By | Status | Phase |
-|-----------|---------|--------|-------|
-| HeroSection | All 5 BUs | Extract & share | **Phase 1** |
-| FeatureSection | Spend, Save, Credit, Together | Extract & share | **Phase 1** |
-| StatsRow | Spend, Save, Plan | Extract & share | **Phase 1** |
-| TestimonialSection | Spend, Save, Plan, Together | Extract & share | **Phase 1** |
-| CTASection | All 5 BUs | Extract & share | **Phase 1** |
-| Footer | All 5 BUs | Extract & share | **Phase 1** |
-| HowItWorks | Save, Together | Already shared (wraps ProcessSteps) | Phase 2 |
-| FAQSection | Credit | BU-specific | Phase 2 |
-| TrustSection | Credit | BU-specific | Phase 2 |
-| ComparisonSection | Plan | BU-specific | Phase 2 |
-| FeatureDeepDive | Plan | BU-specific | Phase 2 |
+| Component          | Used By                       | Status                              | Phase       |
+| ------------------ | ----------------------------- | ----------------------------------- | ----------- |
+| HeroSection        | All 5 BUs                     | Extract & share                     | **Phase 1** |
+| FeatureSection     | Spend, Save, Credit, Together | Extract & share                     | **Phase 1** |
+| StatsRow           | Spend, Save, Plan             | Extract & share                     | **Phase 1** |
+| TestimonialSection | Spend, Save, Plan, Together   | Extract & share                     | **Phase 1** |
+| CTASection         | All 5 BUs                     | Extract & share                     | **Phase 1** |
+| Footer             | All 5 BUs                     | Extract & share                     | **Phase 1** |
+| HowItWorks         | Save, Together                | Already shared (wraps ProcessSteps) | Phase 2     |
+| FAQSection         | Credit                        | BU-specific                         | Phase 2     |
+| TrustSection       | Credit                        | BU-specific                         | Phase 2     |
+| ComparisonSection  | Plan                          | BU-specific                         | Phase 2     |
+| FeatureDeepDive    | Plan                          | BU-specific                         | Phase 2     |
 
 ### Pages
 
 Compose templates with BU-specific data and organisms.
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| SpendPage | Exists | Rewire in Phase 2 |
-| SavePage | Exists | Rewire as proof-of-concept in **Phase 1** |
-| CreditPage | Exists | Rewire in Phase 2 |
-| PlanPage | Exists | Rewire in Phase 2 |
-| TogetherPage | Exists | Rewire in Phase 2 |
+| Component    | Status | Notes                                     |
+| ------------ | ------ | ----------------------------------------- |
+| SpendPage    | Exists | Rewire in Phase 2                         |
+| SavePage     | Exists | Rewire as proof-of-concept in **Phase 1** |
+| CreditPage   | Exists | Rewire in Phase 2                         |
+| PlanPage     | Exists | Rewire in Phase 2                         |
+| TogetherPage | Exists | Rewire in Phase 2                         |
 
 ## Phase 1 Scope
 
@@ -218,6 +218,7 @@ Story: `title: 'Templates/Footer'`
 Rewire `src/stories/save/SavePage.tsx` to import and compose the new shared templates instead of the BU-specific components from `src/components/save/`. The Save BU-specific components (HeroSection, FeatureSection, StatsRow, TestimonialSection, CTASection, Footer) in `src/components/save/` remain untouched until all BUs are migrated — SavePage simply stops importing them.
 
 Components SavePage will continue importing from `src/components/save/`:
+
 - HowItWorks (Phase 2 — already wraps shared ProcessSteps)
 
 ### 4. Storybook sidebar target
@@ -254,6 +255,7 @@ Pages/
 After Phase 1 review, the following work remains:
 
 ### Template extraction
+
 - Extract HowItWorks as a shared template (currently exists in Save and Together, wraps ProcessSteps)
 - Extract FAQSection as a shared template (currently Credit-only, but the pattern is reusable)
 - Extract TrustSection as a shared template (currently Credit-only)
@@ -261,20 +263,24 @@ After Phase 1 review, the following work remains:
 - Extract FeatureDeepDive as a shared template (currently Plan-only)
 
 ### BU page migration
+
 - Rewire SpendPage to use shared templates
 - Rewire CreditPage to use shared templates
 - Rewire PlanPage to use shared templates
 - Rewire TogetherPage to use shared templates
 
 ### Component relocation
+
 - Move BU-specific organisms (PhoneMockup, ScoreDisplay, DashboardPreview, SplitShowcase) from `src/components/{bu}/` into `src/stories/` with their own stories
 - Move BU-specific molecules (ProgressCard, SplitDisplay) from `src/components/{bu}/` into `src/stories/` with their own stories
 
 ### Cleanup
+
 - Slim down or remove `src/components/` once all components live in `src/stories/`
 - Audit all existing components for CVA compliance
 - Audit all existing components for token adherence (no hardcoded values)
 - Document design system principles in DESIGN.md
 
 ### Missing token review
+
 - During Phase 1 implementation, any tokens needed that don't exist in `tailwind.css` will be flagged for discussion before being added

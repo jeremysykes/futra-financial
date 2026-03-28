@@ -88,10 +88,10 @@ Matching uses the **first segment** of the token name after stripping `--color-`
 ```ts
 const CATEGORY_MAP: Record<string, string> = {
   'background|surface|secondary|muted': 'Backgrounds',
-  'foreground': 'Foregrounds',
+  foreground: 'Foregrounds',
   'primary|accent|ring': 'Brand & Interactive',
   'positive|negative|caution|destructive': 'Status',
-  'border': 'Borders',
+  border: 'Borders',
 };
 
 // Special rule: any token ending in '-foreground' goes to Foregrounds
@@ -117,13 +117,13 @@ Tokens that don't match any prefix fall into an "Other" category. This map only 
 
 ## File Changes
 
-| File | Action |
-|------|--------|
-| `src/stories/foundation/DesignTokens.stories.tsx` | Replace entirely |
-| `src/stories/foundation/token-grid/parseCssSource.ts` | Create — CSS source parser for variable chains |
-| `src/stories/foundation/token-grid/tokenDiscovery.ts` | Create — dynamic token discovery and categorization |
-| `src/stories/foundation/token-grid/useResolvedTokens.ts` | Create — hook for upfront token resolution |
-| `src/stories/foundation/token-grid/index.ts` | Create — barrel export |
+| File                                                     | Action                                              |
+| -------------------------------------------------------- | --------------------------------------------------- |
+| `src/stories/foundation/DesignTokens.stories.tsx`        | Replace entirely                                    |
+| `src/stories/foundation/token-grid/parseCssSource.ts`    | Create — CSS source parser for variable chains      |
+| `src/stories/foundation/token-grid/tokenDiscovery.ts`    | Create — dynamic token discovery and categorization |
+| `src/stories/foundation/token-grid/useResolvedTokens.ts` | Create — hook for upfront token resolution          |
+| `src/stories/foundation/token-grid/index.ts`             | Create — barrel export                              |
 
 No changes to `tailwind.css`, decorators, or other stories.
 

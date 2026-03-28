@@ -12,7 +12,8 @@ Every property in an exported props interface gets a `/** */` comment. Use `@def
 
 ```ts
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   /** Render as a child element using Radix Slot */
   asChild?: boolean;
@@ -84,12 +85,12 @@ argTypes: {
 
 ### What argTypes Still Handles
 
-| Concern | Why it stays in argTypes |
-|---------|------------------------|
+| Concern          | Why it stays in argTypes                                                            |
+| ---------------- | ----------------------------------------------------------------------------------- |
 | `table.category` | Storybook UI grouping (Appearance, Layout, Content, Behavior) — no JSDoc equivalent |
-| `table.disable` | Hiding complex JSX props from controls — Storybook-specific |
-| `control` type | Override when Storybook's auto-inference is wrong |
-| `options` | Subset of allowed values for select/radio controls |
+| `table.disable`  | Hiding complex JSX props from controls — Storybook-specific                         |
+| `control` type   | Override when Storybook's auto-inference is wrong                                   |
+| `options`        | Subset of allowed values for select/radio controls                                  |
 
 ## Test Changes
 
@@ -124,11 +125,11 @@ No changes required. `@storybook/addon-docs` with `react-docgen` (default for `@
 
 ## Scope
 
-| Target | Count | Action |
-|--------|-------|--------|
-| Component files | 28 | Add JSDoc to props interface + component export |
-| Story files | 28 | Remove `description` from argTypes |
-| argTypes.test.ts | 1 | Remove the description enforcement test |
-| CLAUDE.md | 1 | Update argTypes and JSDoc guidance |
-| FocalImage.tsx | 1 | Already documented — verify it matches standard |
-| Storybook config | 0 | No changes needed |
+| Target           | Count | Action                                          |
+| ---------------- | ----- | ----------------------------------------------- |
+| Component files  | 28    | Add JSDoc to props interface + component export |
+| Story files      | 28    | Remove `description` from argTypes              |
+| argTypes.test.ts | 1     | Remove the description enforcement test         |
+| CLAUDE.md        | 1     | Update argTypes and JSDoc guidance              |
+| FocalImage.tsx   | 1     | Already documented — verify it matches standard |
+| Storybook config | 0     | No changes needed                               |

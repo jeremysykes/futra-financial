@@ -57,6 +57,7 @@ Every element must be on its own named layer.
 ```
 
 **Critical rules for Claude:**
+
 - Each component gets its own Figma page
 - Each BU gets its own top-level named frame on that page
 - Every sub-element must be individually named (not flattened to one layer)
@@ -106,21 +107,21 @@ If `src/tailwind.css` token values change:
 
 ## MCP Tools Reference
 
-| Tool | Purpose |
-|------|---------|
-| `use_figma` | Execute Plugin API JS against a Figma file — creates/edits components, frames, styles. **Use this for all library work.** |
+| Tool                    | Purpose                                                                                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `use_figma`             | Execute Plugin API JS against a Figma file — creates/edits components, frames, styles. **Use this for all library work.**                  |
 | `generate_figma_design` | Captures a web page into Figma as vectors via Playwright screenshot. **Not suitable for component libraries** — produces flattened output. |
-| `create_new_file` | Creates a blank Figma file. Use if you need a fresh file. |
-| `get_design_context` | Reads design context from a Figma node. Use to inspect existing library components. |
+| `create_new_file`       | Creates a blank Figma file. Use if you need a fresh file.                                                                                  |
+| `get_design_context`    | Reads design context from a Figma node. Use to inspect existing library components.                                                        |
 
 ## File Locations
 
-| File | Purpose |
-|------|---------|
-| `docs/superpowers/specs/2026-03-25-figma-ui-library-design.md` | Component specifications with exact values |
-| `DESIGN.md` | Brand identity and design system (canonical) |
-| `src/tailwind.css` | Token definitions and BU theme overrides |
-| `src/stories/{component}/` | Component source code (CVA definitions) |
+| File                                                           | Purpose                                      |
+| -------------------------------------------------------------- | -------------------------------------------- |
+| `docs/superpowers/specs/2026-03-25-figma-ui-library-design.md` | Component specifications with exact values   |
+| `DESIGN.md`                                                    | Brand identity and design system (canonical) |
+| `src/tailwind.css`                                             | Token definitions and BU theme overrides     |
+| `src/stories/{component}/`                                     | Component source code (CVA definitions)      |
 
 ## Key Lessons
 

@@ -82,9 +82,13 @@ export const LeftRight: Story = {
   globals: { businessUnit: 'save' },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText('Every dollar has a destination')).toBeInTheDocument();
+    expect(
+      canvas.getByText('Every dollar has a destination'),
+    ).toBeInTheDocument();
     expect(canvas.getByText('Goal-based savings')).toBeInTheDocument();
-    expect(canvas.getByRole('button', { name: 'Create Your First Goal' })).toBeInTheDocument();
+    expect(
+      canvas.getByRole('button', { name: 'Create Your First Goal' }),
+    ).toBeInTheDocument();
   },
 };
 
@@ -126,6 +130,8 @@ export const Centered: Story = {
     const canvas = within(canvasElement);
     expect(canvas.getByText('See the full picture')).toBeInTheDocument();
     expect(canvas.getByText('Financial planning')).toBeInTheDocument();
-    expect(canvas.getByRole('button', { name: 'Start Planning' })).toBeInTheDocument();
+    expect(
+      canvas.getByRole('button', { name: 'Start Planning' }),
+    ).toBeInTheDocument();
   },
 };

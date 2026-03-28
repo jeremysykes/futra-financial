@@ -212,13 +212,13 @@ The design system uses **Tailwind's built-in spacing scale** (4px base: `p-4` = 
 
 All components follow atomic design methodology. The Storybook sidebar reflects this hierarchy through the `title` field in stories (e.g., `title: 'Atoms/Button'`). The file system stays flat — all shared components live in `src/stories/{component-name}/` colocated with their stories.
 
-| Tier | Purpose | Examples |
-|------|---------|----------|
-| **Atoms** | Smallest building blocks. Single responsibility. No composition. | Button, Badge, Avatar, Logo, NavLink, StatItem, AccordionItem |
-| **Molecules** | Small combinations of atoms. Reusable. Single purpose. | Card, ProcessSteps, ProgressCard, SplitDisplay, Accordion |
-| **Organisms** | Self-contained, fully realized components. They ARE the content. | Navbar, PhoneMockup, ScoreDisplay, DashboardPreview, ComparisonSection |
+| Tier          | Purpose                                                                            | Examples                                                                                                            |
+| ------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Atoms**     | Smallest building blocks. Single responsibility. No composition.                   | Button, Badge, Avatar, Logo, NavLink, StatItem, AccordionItem                                                       |
+| **Molecules** | Small combinations of atoms. Reusable. Single purpose.                             | Card, ProcessSteps, ProgressCard, SplitDisplay, Accordion                                                           |
+| **Organisms** | Self-contained, fully realized components. They ARE the content.                   | Navbar, PhoneMockup, ScoreDisplay, DashboardPreview, ComparisonSection                                              |
 | **Templates** | Structural section shells. Define layout patterns. Accept content via composition. | HeroSection, FeatureSection, StatsRow, TestimonialSection, CTASection, Footer, HowItWorks, FAQSection, TrustSection |
-| **Pages** | Compose templates with BU-specific data and organisms. | SpendPage, SavePage, CreditPage, PlanPage, TogetherPage |
+| **Pages**     | Compose templates with BU-specific data and organisms.                             | SpendPage, SavePage, CreditPage, PlanPage, TogetherPage                                                             |
 
 **Key distinction:** Organisms are the content (Navbar is always a navbar). Templates are the container (HeroSection defines the layout but BUs fill it with their own content and organisms).
 
@@ -245,8 +245,12 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const componentVariants = cva('base-classes', {
-  variants: { /* ... */ },
-  defaultVariants: { /* ... */ },
+  variants: {
+    /* ... */
+  },
+  defaultVariants: {
+    /* ... */
+  },
 });
 
 // Always merge: cn(variants({ ...props }), className)
@@ -256,6 +260,7 @@ const componentVariants = cva('base-classes', {
 ```
 
 **Rules:**
+
 - CVA `defaultVariants` only affect CSS classes, not prop values. Always add JS default parameters for props used in conditionals.
 - Composition slots (`children`, `actions`) must be hidden from Storybook docs: `argTypes: { children: { table: { disable: true } } }`
 - No speculative variants. If a variant isn't used by any BU, don't add it (YAGNI).
@@ -293,13 +298,13 @@ src/
 
 All interactive components use Radix UI primitives for ARIA management, keyboard navigation, and focus handling. Radix provides the behavior; CVA tokens and Tailwind classes provide the visuals. Before building any new interactive pattern, check the Radix component library at https://www.radix-ui.com/primitives/docs/components for an existing primitive.
 
-| Pattern | Implementation | Provides |
-|---------|---------------|----------|
-| Accordion/Disclosure | `@radix-ui/react-accordion` | `aria-expanded`, `aria-controls`, keyboard nav |
-| Avatar | `@radix-ui/react-avatar` | Image load detection, fallback rendering |
-| Progress bars | `role="progressbar"` with `aria-valuenow/max` | Screen reader progress announcements |
-| Data visualizations | `role="img"` with `aria-label` | Accessible description of chart content |
-| Interactive cards | Conditional `role="button"` when `onClick` present | Keyboard support only when card is actually clickable |
+| Pattern              | Implementation                                     | Provides                                              |
+| -------------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| Accordion/Disclosure | `@radix-ui/react-accordion`                        | `aria-expanded`, `aria-controls`, keyboard nav        |
+| Avatar               | `@radix-ui/react-avatar`                           | Image load detection, fallback rendering              |
+| Progress bars        | `role="progressbar"` with `aria-valuenow/max`      | Screen reader progress announcements                  |
+| Data visualizations  | `role="img"` with `aria-label`                     | Accessible description of chart content               |
+| Interactive cards    | Conditional `role="button"` when `onClick` present | Keyboard support only when card is actually clickable |
 
 ### Focus Indicators
 
@@ -308,6 +313,7 @@ All focusable elements display a visible ring on `:focus-visible` using the `--c
 ### Page Landmarks
 
 Every page includes:
+
 - `<nav aria-label="Main navigation">` — Navbar
 - `<main id="main-content">` — Primary content area
 - `<footer>` — Page footer

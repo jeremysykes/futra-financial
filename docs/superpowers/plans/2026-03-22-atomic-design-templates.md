@@ -16,25 +16,25 @@
 
 ### New Files (Create)
 
-| File | Responsibility |
-|------|---------------|
-| `src/stories/cta-section/CTASection.tsx` | Shared CTA template — gradient/solid background, center/left alignment, children slot for buttons |
-| `src/stories/cta-section/CTASection.stories.tsx` | Stories: variants, per-BU examples |
-| `src/stories/footer/Footer.tsx` | Shared Footer template — columns/simple layout, always-dark, children slot |
-| `src/stories/footer/Footer.stories.tsx` | Stories: variants, per-BU examples |
-| `src/stories/stats-row/StatsRow.tsx` | Shared StatsRow template — 3/4 column grid, children slot |
-| `src/stories/stats-row/StatsRow.stories.tsx` | Stories: variants, per-BU examples |
-| `src/stories/testimonial-section/TestimonialSection.tsx` | Shared TestimonialSection template — 2/3 column grid, children slot |
-| `src/stories/testimonial-section/TestimonialSection.stories.tsx` | Stories: variants, per-BU examples |
-| `src/stories/feature-section/FeatureSection.tsx` | Shared FeatureSection template — heading + children slot for card grid |
-| `src/stories/feature-section/FeatureSection.stories.tsx` | Stories: variants, per-BU examples |
-| `src/stories/hero-section/HeroSection.tsx` | Shared HeroSection template — layout variants, background image, children slots |
-| `src/stories/hero-section/HeroSection.stories.tsx` | Stories: variants, per-BU examples |
+| File                                                             | Responsibility                                                                                    |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `src/stories/cta-section/CTASection.tsx`                         | Shared CTA template — gradient/solid background, center/left alignment, children slot for buttons |
+| `src/stories/cta-section/CTASection.stories.tsx`                 | Stories: variants, per-BU examples                                                                |
+| `src/stories/footer/Footer.tsx`                                  | Shared Footer template — columns/simple layout, always-dark, children slot                        |
+| `src/stories/footer/Footer.stories.tsx`                          | Stories: variants, per-BU examples                                                                |
+| `src/stories/stats-row/StatsRow.tsx`                             | Shared StatsRow template — 3/4 column grid, children slot                                         |
+| `src/stories/stats-row/StatsRow.stories.tsx`                     | Stories: variants, per-BU examples                                                                |
+| `src/stories/testimonial-section/TestimonialSection.tsx`         | Shared TestimonialSection template — 2/3 column grid, children slot                               |
+| `src/stories/testimonial-section/TestimonialSection.stories.tsx` | Stories: variants, per-BU examples                                                                |
+| `src/stories/feature-section/FeatureSection.tsx`                 | Shared FeatureSection template — heading + children slot for card grid                            |
+| `src/stories/feature-section/FeatureSection.stories.tsx`         | Stories: variants, per-BU examples                                                                |
+| `src/stories/hero-section/HeroSection.tsx`                       | Shared HeroSection template — layout variants, background image, children slots                   |
+| `src/stories/hero-section/HeroSection.stories.tsx`               | Stories: variants, per-BU examples                                                                |
 
 ### Modified Files
 
-| File | Change |
-|------|--------|
+| File                            | Change                                                         |
+| ------------------------------- | -------------------------------------------------------------- |
 | `src/stories/save/SavePage.tsx` | Rewire imports from `src/components/save/` to shared templates |
 
 ---
@@ -42,6 +42,7 @@
 ## Task 1: CTASection Template
 
 **Files:**
+
 - Create: `src/stories/cta-section/CTASection.tsx`
 - Create: `src/stories/cta-section/CTASection.stories.tsx`
 
@@ -57,25 +58,22 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const ctaSectionVariants = cva(
-  'relative overflow-hidden py-24 md:py-32',
-  {
-    variants: {
-      background: {
-        gradient: 'bg-gradient-to-br from-muted to-accent/10',
-        solid: 'bg-gradient-to-br from-primary to-primary-hover',
-      },
-      alignment: {
-        center: 'text-center',
-        left: 'text-left',
-      },
+const ctaSectionVariants = cva('relative overflow-hidden py-24 md:py-32', {
+  variants: {
+    background: {
+      gradient: 'bg-gradient-to-br from-muted to-accent/10',
+      solid: 'bg-gradient-to-br from-primary to-primary-hover',
     },
-    defaultVariants: {
-      background: 'gradient',
-      alignment: 'center',
+    alignment: {
+      center: 'text-center',
+      left: 'text-left',
     },
   },
-);
+  defaultVariants: {
+    background: 'gradient',
+    alignment: 'center',
+  },
+});
 
 const ctaTextVariants = cva('', {
   variants: {
@@ -86,8 +84,9 @@ const ctaTextVariants = cva('', {
   },
 });
 
-export interface CTASectionProps
-  extends VariantProps<typeof ctaSectionVariants> {
+export interface CTASectionProps extends VariantProps<
+  typeof ctaSectionVariants
+> {
   heading: ReactNode;
   description?: ReactNode;
   backgroundImage?: string;
@@ -123,21 +122,27 @@ const CTASection = ({
           />
         </div>
       )}
-      <div className={cn(
-        'relative z-10 mx-auto px-6',
-        alignment === 'center' ? 'max-w-[600px]' : 'max-w-[1200px]',
-      )}>
-        <h2 className={cn(
-          'mb-4 font-sans font-bold tracking-[-0.01em] text-[clamp(28px,4vw,40px)]',
-          isSolid ? 'text-primary-foreground' : 'text-foreground',
-        )}>
+      <div
+        className={cn(
+          'relative z-10 mx-auto px-6',
+          alignment === 'center' ? 'max-w-[600px]' : 'max-w-[1200px]',
+        )}
+      >
+        <h2
+          className={cn(
+            'mb-4 font-sans font-bold tracking-[-0.01em] text-[clamp(28px,4vw,40px)]',
+            isSolid ? 'text-primary-foreground' : 'text-foreground',
+          )}
+        >
           {heading}
         </h2>
         {description && (
-          <p className={cn(
-            'mb-10 font-sans text-lg leading-[1.7]',
-            isSolid ? 'text-primary-foreground/80' : 'text-muted-foreground',
-          )}>
+          <p
+            className={cn(
+              'mb-10 font-sans text-lg leading-[1.7]',
+              isSolid ? 'text-primary-foreground/80' : 'text-muted-foreground',
+            )}
+          >
             {description}
           </p>
         )}
@@ -239,6 +244,7 @@ git commit -m "feat: add shared CTASection template component with CVA variants"
 ## Task 2: Footer Template
 
 **Files:**
+
 - Create: `src/stories/footer/Footer.tsx`
 - Create: `src/stories/footer/Footer.stories.tsx`
 
@@ -254,23 +260,19 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const footerVariants = cva(
-  'bg-[#1C1C1A]',
-  {
-    variants: {
-      layout: {
-        columns: 'py-16 md:py-20',
-        simple: 'py-10 md:py-12',
-      },
-    },
-    defaultVariants: {
-      layout: 'columns',
+const footerVariants = cva('bg-[#1C1C1A]', {
+  variants: {
+    layout: {
+      columns: 'py-16 md:py-20',
+      simple: 'py-10 md:py-12',
     },
   },
-);
+  defaultVariants: {
+    layout: 'columns',
+  },
+});
 
-export interface FooterProps
-  extends VariantProps<typeof footerVariants> {
+export interface FooterProps extends VariantProps<typeof footerVariants> {
   children: ReactNode;
   className?: string;
 }
@@ -278,9 +280,7 @@ export interface FooterProps
 const Footer = ({ layout, children, className }: FooterProps) => {
   return (
     <footer className={cn(footerVariants({ layout }), className)}>
-      <div className="max-w-[1200px] mx-auto px-6">
-        {children}
-      </div>
+      <div className="max-w-[1200px] mx-auto px-6">{children}</div>
     </footer>
   );
 };
@@ -388,6 +388,7 @@ git commit -m "feat: add shared Footer template component with CVA layout varian
 ## Task 3: StatsRow Template
 
 **Files:**
+
 - Create: `src/stories/stats-row/StatsRow.tsx`
 - Create: `src/stories/stats-row/StatsRow.stories.tsx`
 
@@ -401,54 +402,52 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const statsRowVariants = cva(
-  'py-20 md:py-28',
-  {
-    variants: {
-      columns: {
-        3: '',
-        4: '',
-      },
-      background: {
-        default: 'bg-background',
-        muted: 'bg-muted',
-      },
+const statsRowVariants = cva('py-20 md:py-28', {
+  variants: {
+    columns: {
+      3: '',
+      4: '',
     },
-    defaultVariants: {
-      columns: 4,
-      background: 'muted',
+    background: {
+      default: 'bg-background',
+      muted: 'bg-muted',
     },
   },
-);
+  defaultVariants: {
+    columns: 4,
+    background: 'muted',
+  },
+});
 
-const statsGridVariants = cva(
-  'grid gap-8 md:gap-12',
-  {
-    variants: {
-      columns: {
-        3: 'grid-cols-1 sm:grid-cols-3',
-        4: 'grid-cols-2 lg:grid-cols-4',
-      },
-    },
-    defaultVariants: {
-      columns: 4,
+const statsGridVariants = cva('grid gap-8 md:gap-12', {
+  variants: {
+    columns: {
+      3: 'grid-cols-1 sm:grid-cols-3',
+      4: 'grid-cols-2 lg:grid-cols-4',
     },
   },
-);
+  defaultVariants: {
+    columns: 4,
+  },
+});
 
-export interface StatsRowProps
-  extends VariantProps<typeof statsRowVariants> {
+export interface StatsRowProps extends VariantProps<typeof statsRowVariants> {
   children: ReactNode;
   className?: string;
 }
 
-const StatsRow = ({ columns, background, children, className }: StatsRowProps) => {
+const StatsRow = ({
+  columns,
+  background,
+  children,
+  className,
+}: StatsRowProps) => {
   return (
-    <section className={cn(statsRowVariants({ columns, background }), className)}>
+    <section
+      className={cn(statsRowVariants({ columns, background }), className)}
+    >
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className={statsGridVariants({ columns })}>
-          {children}
-        </div>
+        <div className={statsGridVariants({ columns })}>{children}</div>
       </div>
     </section>
   );
@@ -553,6 +552,7 @@ git commit -m "feat: add shared StatsRow template component with column and back
 ## Task 4: TestimonialSection Template
 
 **Files:**
+
 - Create: `src/stories/testimonial-section/TestimonialSection.tsx`
 - Create: `src/stories/testimonial-section/TestimonialSection.stories.tsx`
 
@@ -566,38 +566,33 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const testimonialSectionVariants = cva(
-  'py-24 md:py-32 bg-background',
-  {
-    variants: {
-      columns: {
-        2: '',
-        3: '',
-      },
-    },
-    defaultVariants: {
-      columns: 3,
+const testimonialSectionVariants = cva('py-24 md:py-32 bg-background', {
+  variants: {
+    columns: {
+      2: '',
+      3: '',
     },
   },
-);
+  defaultVariants: {
+    columns: 3,
+  },
+});
 
-const testimonialGridVariants = cva(
-  'grid grid-cols-1 gap-6',
-  {
-    variants: {
-      columns: {
-        2: 'md:grid-cols-2',
-        3: 'md:grid-cols-3',
-      },
-    },
-    defaultVariants: {
-      columns: 3,
+const testimonialGridVariants = cva('grid grid-cols-1 gap-6', {
+  variants: {
+    columns: {
+      2: 'md:grid-cols-2',
+      3: 'md:grid-cols-3',
     },
   },
-);
+  defaultVariants: {
+    columns: 3,
+  },
+});
 
-export interface TestimonialSectionProps
-  extends VariantProps<typeof testimonialSectionVariants> {
+export interface TestimonialSectionProps extends VariantProps<
+  typeof testimonialSectionVariants
+> {
   heading?: ReactNode;
   subtitle?: ReactNode;
   children: ReactNode;
@@ -628,9 +623,7 @@ const TestimonialSection = ({
             )}
           </div>
         )}
-        <div className={testimonialGridVariants({ columns })}>
-          {children}
-        </div>
+        <div className={testimonialGridVariants({ columns })}>{children}</div>
       </div>
     </section>
   );
@@ -638,7 +631,11 @@ const TestimonialSection = ({
 
 TestimonialSection.displayName = 'TestimonialSection';
 
-export { TestimonialSection, testimonialSectionVariants, testimonialGridVariants };
+export {
+  TestimonialSection,
+  testimonialSectionVariants,
+  testimonialGridVariants,
+};
 ```
 
 - [ ] **Step 2: Create TestimonialSection stories**
@@ -778,6 +775,7 @@ git commit -m "feat: add shared TestimonialSection template with column variants
 ## Task 5: FeatureSection Template
 
 **Files:**
+
 - Create: `src/stories/feature-section/FeatureSection.tsx`
 - Create: `src/stories/feature-section/FeatureSection.stories.tsx`
 
@@ -791,28 +789,26 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const featureSectionVariants = cva(
-  '',
-  {
-    variants: {
-      background: {
-        default: 'bg-background',
-        muted: 'bg-muted',
-      },
-      padding: {
-        default: 'py-24 md:py-32',
-        compact: 'py-16 md:py-20',
-      },
+const featureSectionVariants = cva('', {
+  variants: {
+    background: {
+      default: 'bg-background',
+      muted: 'bg-muted',
     },
-    defaultVariants: {
-      background: 'default',
-      padding: 'default',
+    padding: {
+      default: 'py-24 md:py-32',
+      compact: 'py-16 md:py-20',
     },
   },
-);
+  defaultVariants: {
+    background: 'default',
+    padding: 'default',
+  },
+});
 
-export interface FeatureSectionProps
-  extends VariantProps<typeof featureSectionVariants> {
+export interface FeatureSectionProps extends VariantProps<
+  typeof featureSectionVariants
+> {
   heading: ReactNode;
   subtitle?: ReactNode;
   sectionId?: string;
@@ -871,7 +867,11 @@ const FeatureCard = ({
   desc,
   delay = 0,
 }: {
-  icon: ComponentType<{ size: number; className: string; strokeWidth?: number }>;
+  icon: ComponentType<{
+    size: number;
+    className: string;
+    strokeWidth?: number;
+  }>;
   title: string;
   desc: string;
   delay?: number;
@@ -913,10 +913,30 @@ export const Default: Story = {
     heading: 'Tools that fit your life',
     children: (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <FeatureCard icon={CircleDot} title="Visual goal tracking" desc="See every goal at a glance with progress rings and bars." delay={0} />
-        <FeatureCard icon={Coins} title="Smart round-ups" desc="Every purchase rounds up to the nearest dollar." delay={100} />
-        <FeatureCard icon={CalendarClock} title="Scheduled transfers" desc="Set it and forget it. Automatic transfers keep you on track." delay={200} />
-        <FeatureCard icon={Trophy} title="Milestones & streaks" desc="Celebrate each milestone. Streaks reward your consistency." delay={300} />
+        <FeatureCard
+          icon={CircleDot}
+          title="Visual goal tracking"
+          desc="See every goal at a glance with progress rings and bars."
+          delay={0}
+        />
+        <FeatureCard
+          icon={Coins}
+          title="Smart round-ups"
+          desc="Every purchase rounds up to the nearest dollar."
+          delay={100}
+        />
+        <FeatureCard
+          icon={CalendarClock}
+          title="Scheduled transfers"
+          desc="Set it and forget it. Automatic transfers keep you on track."
+          delay={200}
+        />
+        <FeatureCard
+          icon={Trophy}
+          title="Milestones & streaks"
+          desc="Celebrate each milestone. Streaks reward your consistency."
+          delay={300}
+        />
       </div>
     ),
   },
@@ -929,10 +949,30 @@ export const MutedBackground: Story = {
     heading: 'Everything you need',
     children: (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <FeatureCard icon={CircleDot} title="Feature one" desc="Description of the feature." delay={0} />
-        <FeatureCard icon={Coins} title="Feature two" desc="Description of the feature." delay={100} />
-        <FeatureCard icon={CalendarClock} title="Feature three" desc="Description of the feature." delay={200} />
-        <FeatureCard icon={Trophy} title="Feature four" desc="Description of the feature." delay={300} />
+        <FeatureCard
+          icon={CircleDot}
+          title="Feature one"
+          desc="Description of the feature."
+          delay={0}
+        />
+        <FeatureCard
+          icon={Coins}
+          title="Feature two"
+          desc="Description of the feature."
+          delay={100}
+        />
+        <FeatureCard
+          icon={CalendarClock}
+          title="Feature three"
+          desc="Description of the feature."
+          delay={200}
+        />
+        <FeatureCard
+          icon={Trophy}
+          title="Feature four"
+          desc="Description of the feature."
+          delay={300}
+        />
       </div>
     ),
   },
@@ -945,9 +985,24 @@ export const Compact: Story = {
     heading: 'Key features',
     children: (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <FeatureCard icon={CircleDot} title="Feature one" desc="Description." delay={0} />
-        <FeatureCard icon={Coins} title="Feature two" desc="Description." delay={100} />
-        <FeatureCard icon={CalendarClock} title="Feature three" desc="Description." delay={200} />
+        <FeatureCard
+          icon={CircleDot}
+          title="Feature one"
+          desc="Description."
+          delay={0}
+        />
+        <FeatureCard
+          icon={Coins}
+          title="Feature two"
+          desc="Description."
+          delay={100}
+        />
+        <FeatureCard
+          icon={CalendarClock}
+          title="Feature three"
+          desc="Description."
+          delay={200}
+        />
       </div>
     ),
   },
@@ -973,6 +1028,7 @@ git commit -m "feat: add shared FeatureSection template with background and padd
 ## Task 6: HeroSection Template
 
 **Files:**
+
 - Create: `src/stories/hero-section/HeroSection.tsx`
 - Create: `src/stories/hero-section/HeroSection.stories.tsx`
 
@@ -1023,8 +1079,9 @@ const contentVariants = cva(
   },
 );
 
-export interface HeroSectionProps
-  extends VariantProps<typeof heroSectionVariants> {
+export interface HeroSectionProps extends VariantProps<
+  typeof heroSectionVariants
+> {
   heading: ReactNode;
   subheading: ReactNode;
   eyebrow?: ReactNode;
@@ -1211,6 +1268,7 @@ git commit -m "feat: add shared HeroSection template with layout, size, and back
 ## Task 7: Rewire SavePage
 
 **Files:**
+
 - Modify: `src/stories/save/SavePage.tsx`
 
 Proof-of-concept: rewire SavePage to use the new shared templates instead of BU-specific components.
@@ -1309,11 +1367,7 @@ export function SavePage() {
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="w-12 h-12 rounded-xl mb-5 flex items-center justify-center bg-muted">
-                <f.icon
-                  size={22}
-                  className="text-accent"
-                  strokeWidth={1.5}
-                />
+                <f.icon size={22} className="text-accent" strokeWidth={1.5} />
               </div>
               <h4 className="mb-2 font-sans font-semibold text-[17px] text-foreground">
                 {f.title}
@@ -1423,6 +1477,7 @@ export function SavePage() {
 Run: `npm run storybook`
 
 Navigate to `Pages/Futra Save`. Verify:
+
 - All sections render identically to the previous version
 - Background images load correctly
 - Animations work (fade-in-up with stagger)
@@ -1451,6 +1506,7 @@ git commit -m "refactor: rewire SavePage to use shared template components"
 Run: `npm run storybook`
 
 Expected sidebar structure:
+
 ```
 Atoms/
   Avatar
@@ -1487,6 +1543,7 @@ Expected: Both builds succeed with no errors.
 - [ ] **Step 3: Final commit**
 
 If any fixes were needed, commit them:
+
 ```bash
 git commit -m "fix: resolve build issues from template migration"
 ```

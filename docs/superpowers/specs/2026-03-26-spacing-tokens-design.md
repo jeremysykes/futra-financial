@@ -7,6 +7,7 @@
 The Futra Financial design system currently handles **color tokens only** — 118 DTCG primitives flowing through Style Dictionary into a two-layer semantic architecture (primitives → semantic overrides per BU). All spacing uses Tailwind defaults or hardcoded values, with no centralized control, no BU-specific density, and no Figma alignment.
 
 This spec adds spacing tokens to the existing pipeline, enabling:
+
 - **Cross-BU consistency** — a single spacing scale as the source of truth
 - **BU-specific spacing density** — Plan (data-dense) tightens, Together (warm) loosens
 - **Design-code alignment** — Figma consumes the same DTCG spacing tokens as code
@@ -29,18 +30,18 @@ Components (use Tailwind utilities: gap-md, p-lg, m-sm)
 
 Added as a `spacing` group in `packages/tokens/src/tokens.json` using DTCG `$type: "dimension"`:
 
-| Token | Value | Pixels | Use case |
-|-------|-------|--------|----------|
-| `spacing-1` | `0.25rem` | 4px | Tight inline gaps, icon padding |
-| `spacing-2` | `0.5rem` | 8px | Input padding, compact list gaps |
-| `spacing-3` | `0.75rem` | 12px | Button padding, small card gaps |
-| `spacing-4` | `1rem` | 16px | Standard content gaps |
-| `spacing-5` | `1.25rem` | 20px | Card padding |
-| `spacing-6` | `1.5rem` | 24px | Section gaps |
-| `spacing-8` | `2rem` | 32px | Large section gaps |
-| `spacing-10` | `2.5rem` | 40px | Page gutters |
-| `spacing-12` | `3rem` | 48px | Hero spacing |
-| `spacing-16` | `4rem` | 64px | Major section breaks |
+| Token        | Value     | Pixels | Use case                         |
+| ------------ | --------- | ------ | -------------------------------- |
+| `spacing-1`  | `0.25rem` | 4px    | Tight inline gaps, icon padding  |
+| `spacing-2`  | `0.5rem`  | 8px    | Input padding, compact list gaps |
+| `spacing-3`  | `0.75rem` | 12px   | Button padding, small card gaps  |
+| `spacing-4`  | `1rem`    | 16px   | Standard content gaps            |
+| `spacing-5`  | `1.25rem` | 20px   | Card padding                     |
+| `spacing-6`  | `1.5rem`  | 24px   | Section gaps                     |
+| `spacing-8`  | `2rem`    | 32px   | Large section gaps               |
+| `spacing-10` | `2.5rem`  | 40px   | Page gutters                     |
+| `spacing-12` | `3rem`    | 48px   | Hero spacing                     |
+| `spacing-16` | `4rem`    | 64px   | Major section breaks             |
 
 4px base, Tailwind-aligned numbering (number × 4px = pixel value). Skips 7, 9, 11, 13-15 to keep the scale practical.
 
@@ -49,16 +50,16 @@ Added as a `spacing` group in `packages/tokens/src/tokens.json` using DTCG `$typ
 ```json
 {
   "spacing": {
-    "1":  { "$value": "0.25rem", "$type": "dimension" },
-    "2":  { "$value": "0.5rem",  "$type": "dimension" },
-    "3":  { "$value": "0.75rem", "$type": "dimension" },
-    "4":  { "$value": "1rem",    "$type": "dimension" },
-    "5":  { "$value": "1.25rem", "$type": "dimension" },
-    "6":  { "$value": "1.5rem",  "$type": "dimension" },
-    "8":  { "$value": "2rem",    "$type": "dimension" },
-    "10": { "$value": "2.5rem",  "$type": "dimension" },
-    "12": { "$value": "3rem",    "$type": "dimension" },
-    "16": { "$value": "4rem",    "$type": "dimension" }
+    "1": { "$value": "0.25rem", "$type": "dimension" },
+    "2": { "$value": "0.5rem", "$type": "dimension" },
+    "3": { "$value": "0.75rem", "$type": "dimension" },
+    "4": { "$value": "1rem", "$type": "dimension" },
+    "5": { "$value": "1.25rem", "$type": "dimension" },
+    "6": { "$value": "1.5rem", "$type": "dimension" },
+    "8": { "$value": "2rem", "$type": "dimension" },
+    "10": { "$value": "2.5rem", "$type": "dimension" },
+    "12": { "$value": "3rem", "$type": "dimension" },
+    "16": { "$value": "4rem", "$type": "dimension" }
   }
 }
 ```
@@ -85,13 +86,13 @@ Generated output in `primitives.css`:
 
 Role-based tokens in `apps/web/src/tailwind.css` `@theme` block. Components reference these; BUs override them.
 
-| Semantic Token | Default Mapping | Intent |
-|----------------|-----------------|--------|
-| `--spacing-xs` | `var(--spacing-1)` (4px) | Tight gaps: icon-to-label, inline elements |
-| `--spacing-sm` | `var(--spacing-2)` (8px) | Compact: input padding, list item gaps |
-| `--spacing-md` | `var(--spacing-4)` (16px) | Standard: card padding, content gaps |
-| `--spacing-lg` | `var(--spacing-6)` (24px) | Generous: section gaps, modal padding |
-| `--spacing-xl` | `var(--spacing-8)` (32px) | Large: page gutters, hero sections |
+| Semantic Token  | Default Mapping            | Intent                                                |
+| --------------- | -------------------------- | ----------------------------------------------------- |
+| `--spacing-xs`  | `var(--spacing-1)` (4px)   | Tight gaps: icon-to-label, inline elements            |
+| `--spacing-sm`  | `var(--spacing-2)` (8px)   | Compact: input padding, list item gaps                |
+| `--spacing-md`  | `var(--spacing-4)` (16px)  | Standard: card padding, content gaps                  |
+| `--spacing-lg`  | `var(--spacing-6)` (24px)  | Generous: section gaps, modal padding                 |
+| `--spacing-xl`  | `var(--spacing-8)` (32px)  | Large: page gutters, hero sections                    |
 | `--spacing-2xl` | `var(--spacing-12)` (48px) | Major breaks: section dividers, page-level separation |
 
 ### Tailwind integration
@@ -120,8 +121,8 @@ Each BU remaps semantic tokens to different primitives in `@layer base`, using t
 
 ```css
 [data-business-unit='spend'] {
-  --spacing-sm: var(--spacing-1);   /* 4px — tighter compact spacing */
-  --spacing-md: var(--spacing-3);   /* 12px — slightly tighter standard */
+  --spacing-sm: var(--spacing-1); /* 4px — tighter compact spacing */
+  --spacing-md: var(--spacing-3); /* 12px — slightly tighter standard */
 }
 ```
 
@@ -133,8 +134,8 @@ No overrides — uses defaults.
 
 ```css
 [data-business-unit='credit'] {
-  --spacing-sm: var(--spacing-1);   /* 4px — clinical precision */
-  --spacing-md: var(--spacing-3);   /* 12px — tighter data tables */
+  --spacing-sm: var(--spacing-1); /* 4px — clinical precision */
+  --spacing-md: var(--spacing-3); /* 12px — tighter data tables */
 }
 ```
 
@@ -142,10 +143,10 @@ No overrides — uses defaults.
 
 ```css
 [data-business-unit='plan'] {
-  --spacing-sm: var(--spacing-1);   /* 4px — very tight */
-  --spacing-md: var(--spacing-3);   /* 12px — compact standard */
-  --spacing-lg: var(--spacing-4);   /* 16px — tighter sections */
-  --spacing-xl: var(--spacing-6);   /* 24px — reduced page gutters */
+  --spacing-sm: var(--spacing-1); /* 4px — very tight */
+  --spacing-md: var(--spacing-3); /* 12px — compact standard */
+  --spacing-lg: var(--spacing-4); /* 16px — tighter sections */
+  --spacing-xl: var(--spacing-6); /* 24px — reduced page gutters */
 }
 ```
 
@@ -153,9 +154,9 @@ No overrides — uses defaults.
 
 ```css
 [data-business-unit='together'] {
-  --spacing-md: var(--spacing-5);   /* 20px — roomier standard */
-  --spacing-lg: var(--spacing-8);   /* 32px — generous sections */
-  --spacing-xl: var(--spacing-10);  /* 40px — wide gutters */
+  --spacing-md: var(--spacing-5); /* 20px — roomier standard */
+  --spacing-lg: var(--spacing-8); /* 32px — generous sections */
+  --spacing-xl: var(--spacing-10); /* 40px — wide gutters */
 }
 ```
 
@@ -163,20 +164,20 @@ No overrides — uses defaults.
 
 ### Files modified
 
-| File | Change |
-|------|--------|
-| `packages/tokens/src/tokens.json` | Add `spacing` group with 10 dimension primitives |
-| `apps/web/src/tailwind.css` | Add 6 semantic spacing tokens to `@theme`, add BU overrides to `@layer base` |
-| `DESIGN.md` | Document spacing scale, semantic tokens, and BU density patterns |
-| `docs/design-token-pipeline.md` | Add dimension token flow documentation |
+| File                              | Change                                                                       |
+| --------------------------------- | ---------------------------------------------------------------------------- |
+| `packages/tokens/src/tokens.json` | Add `spacing` group with 10 dimension primitives                             |
+| `apps/web/src/tailwind.css`       | Add 6 semantic spacing tokens to `@theme`, add BU overrides to `@layer base` |
+| `DESIGN.md`                       | Document spacing scale, semantic tokens, and BU density patterns             |
+| `docs/design-token-pipeline.md`   | Add dimension token flow documentation                                       |
 
 ### Files unchanged
 
-| File | Why |
-|------|-----|
+| File                                                | Why                                                                                |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `packages/tokens/config/style-dictionary.config.ts` | Default `css/variables` format handles `$type: "dimension"` with no config changes |
-| `turbo.json` | Same `^build` dependency chain works |
-| `packages/tokens/package.json` | Same `primitives.css` export |
+| `turbo.json`                                        | Same `^build` dependency chain works                                               |
+| `packages/tokens/package.json`                      | Same `primitives.css` export                                                       |
 
 ## Component Usage
 

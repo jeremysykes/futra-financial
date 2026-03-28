@@ -21,6 +21,8 @@ export const Default: Story = {
   globals: { businessUnit: 'spend' },
   play: async ({ canvasElement }) => {
     // Verify the phone mockup renders its container
-    expect(canvasElement.querySelector('[class*="rounded"]')).toBeInTheDocument();
+    expect(
+      canvasElement.querySelector('[class*="rounded"]'),
+    ).toBeInTheDocument();
   },
 };

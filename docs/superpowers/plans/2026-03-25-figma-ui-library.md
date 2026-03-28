@@ -20,11 +20,61 @@ These values are used across all tasks. The executing agent should reference the
 const FILE_KEY = 'pMroF1oVmzBSUY99ZnmeIl';
 
 const BU_THEMES = {
-  Spend:    { mode: 'dark',  bg: '#0F0F12', fg: '#FFFFFF', surface: '#1A1A1F', accent: '#6C6FE4', primary: '#6C6FE4', border: [255,255,255,0.08], muted: '#1A1A1F', mutedFg: '#8B8B9A' },
-  Save:     { mode: 'light', bg: '#F7F5F0', fg: '#1C1C1A', surface: '#FFFFFF', accent: '#4A7C59', primary: '#6C6FE4', border: [74,124,89,0.15],    muted: '#E8F0EB', mutedFg: '#7A7A72' },
-  Credit:   { mode: 'light', bg: '#F9F7FF', fg: '#1A1830', surface: '#EEEAFF', accent: '#9896C8', primary: '#6C6FE4', border: [108,111,228,0.15],  muted: '#D4D2EE', mutedFg: '#6B6880' },
-  Plan:     { mode: 'dark',  bg: '#0C1017', fg: '#E2E8F0', surface: '#151E2B', accent: '#6C6FE4', primary: '#6C6FE4', border: [255,255,255,0.08], muted: '#1F2D3D', mutedFg: '#A0AEC0' },
-  Together: { mode: 'light', bg: '#FFF9F5', fg: '#1C1A18', surface: '#FFFFFF', accent: '#C4622D', primary: '#6C6FE4', border: [196,98,45,0.15],   muted: '#F2E4DA', mutedFg: '#9E8E84' },
+  Spend: {
+    mode: 'dark',
+    bg: '#0F0F12',
+    fg: '#FFFFFF',
+    surface: '#1A1A1F',
+    accent: '#6C6FE4',
+    primary: '#6C6FE4',
+    border: [255, 255, 255, 0.08],
+    muted: '#1A1A1F',
+    mutedFg: '#8B8B9A',
+  },
+  Save: {
+    mode: 'light',
+    bg: '#F7F5F0',
+    fg: '#1C1C1A',
+    surface: '#FFFFFF',
+    accent: '#4A7C59',
+    primary: '#6C6FE4',
+    border: [74, 124, 89, 0.15],
+    muted: '#E8F0EB',
+    mutedFg: '#7A7A72',
+  },
+  Credit: {
+    mode: 'light',
+    bg: '#F9F7FF',
+    fg: '#1A1830',
+    surface: '#EEEAFF',
+    accent: '#9896C8',
+    primary: '#6C6FE4',
+    border: [108, 111, 228, 0.15],
+    muted: '#D4D2EE',
+    mutedFg: '#6B6880',
+  },
+  Plan: {
+    mode: 'dark',
+    bg: '#0C1017',
+    fg: '#E2E8F0',
+    surface: '#151E2B',
+    accent: '#6C6FE4',
+    primary: '#6C6FE4',
+    border: [255, 255, 255, 0.08],
+    muted: '#1F2D3D',
+    mutedFg: '#A0AEC0',
+  },
+  Together: {
+    mode: 'light',
+    bg: '#FFF9F5',
+    fg: '#1C1A18',
+    surface: '#FFFFFF',
+    accent: '#C4622D',
+    primary: '#6C6FE4',
+    border: [196, 98, 45, 0.15],
+    muted: '#F2E4DA',
+    mutedFg: '#9E8E84',
+  },
 };
 
 // Shared palette
@@ -48,10 +98,18 @@ function hexToRgb(hex) {
 }
 
 // Helper: create a text node with specific properties
-async function createText(parent, name, content, { fontSize, fontWeight, fontFamily, fill, letterSpacing, textCase, x, y }) {
+async function createText(
+  parent,
+  name,
+  content,
+  { fontSize, fontWeight, fontFamily, fill, letterSpacing, textCase, x, y },
+) {
   const text = figma.createText();
   text.name = name;
-  await figma.loadFontAsync({ family: fontFamily || 'Inter', style: fontWeight || 'Regular' });
+  await figma.loadFontAsync({
+    family: fontFamily || 'Inter',
+    style: fontWeight || 'Regular',
+  });
   text.characters = content;
   text.fontSize = fontSize || 16;
   if (fill) text.fills = [{ type: 'SOLID', color: hexToRgb(fill) }];
@@ -65,6 +123,7 @@ async function createText(parent, name, content, { fontSize, fontWeight, fontFam
 ```
 
 **Important execution notes:**
+
 - Each `use_figma` call is self-contained JS — helpers must be redefined in each call (Figma Plugin API has no persistent state between calls)
 - Font loading is async — always `await figma.loadFontAsync(...)` before setting text
 - Figma colors are `{r, g, b}` in 0–1 range, not 0–255
@@ -80,6 +139,7 @@ Create all 9 pages in the Figma file. Remove the default "Page 1" if it exists.
 - [ ] **Step 1: Create all pages via `use_figma`**
 
 Use `use_figma` with file key `pMroF1oVmzBSUY99ZnmeIl`. The code should:
+
 1. Get existing pages and remove any default empty page
 2. Create 9 pages named: "Foundations", "Button", "Badge", "Avatar", "Card", "NavLink", "Accordion", "ProgressCard", "StatItem"
 
@@ -104,6 +164,7 @@ On the "Foundations" page, create a frame named "Colors / Shared" with horizonta
 - [ ] **Step 1: Create Spend color row**
 
 Create frame "Colors / Spend" with horizontal auto-layout (16px gap). Add 80×80 rounded (8px radius) swatches for each Spend primitive from `src/tailwind.css`:
+
 - Void (#0F0F12), Surface (#1A1A1F), Indigo (#6C6FE4), White (#FFFFFF), Muted (#8B8B9A), Debit/Coral (#E4746C), Credit/Teal (#2ABFA3)
 
 Same swatch format as Task 2: named frame, 80×80 rect, hex label, color name. Labels in Inter Regular 12px, color #717171.
@@ -161,6 +222,7 @@ All text in #0B0B0B (default foreground). Weight label in Inter Medium 12px #717
 - [ ] **Step 1: Create logo section**
 
 Create frame "Logo" with horizontal auto-layout (48px gap). Two sub-frames:
+
 - "Logo / Light" — white (#FFFFFF) bg, padding 32px, "FUTRA" in Inter Black 28px, text #0F0F12
 - "Logo / Dark" — #0F0F12 bg, padding 32px, "FUTRA" in Inter Black 28px, text #FFFFFF
 
@@ -173,10 +235,12 @@ Build the Button page to validate the approach before proceeding.
 - [ ] **Step 1: Create "Button / Spend" frame**
 
 On the "Button" page, create top-level frame "Button / Spend":
+
 - Width: 1200px, auto-layout vertical, 24px gap, padding 48px
 - Background: #0F0F12 (Spend dark)
 
 Inside, create labeled rows:
+
 - **Row "Primary":** horizontal auto-layout, 16px gap
   - "Button / Primary / md" — frame with bg #6C6FE4, rounded 10px, padding 32px h / 12px v, text "Get Started" in Inter Semibold 16px white
   - "Button / Primary / sm" — same but padding 20px h / 8px v, text 14px
@@ -225,6 +289,7 @@ For each BU, create a frame "Badge / {BU}" showing a grid of variants. Showing t
 Frame: 1200px wide, bg #0F0F12, padding 48px, vertical auto-layout 24px gap.
 
 Rows by shape, each with 3 sizes (horizontal auto-layout, 16px gap):
+
 - **Row "Square"**: label "Square" (Inter Medium 12px #8B8B9A uppercase), then 3 badges (sm 40×40 r0, md 56×56 r0, lg 64×64 r0), bg #1A1A1F (muted), text content "A" in JetBrains Mono Semibold, text color #FFFFFF
 - **Row "Rounded"**: label + 3 badges (sm 40×40 r16, md 56×56 r16, lg 64×64 r16), bg #1A1A1F
 - **Row "Circle"**: label + 3 badges (sm r=20, md r=28, lg r=32 — half of width for circle), bg #1A1A1F
@@ -258,6 +323,7 @@ For each BU, create "Avatar / {BU}" with a grid: 3 sizes × 3 ring variants = 9 
 Frame: 1200px, bg #0F0F12, padding 48px, vertical auto-layout 24px gap.
 
 Rows by ring type (horizontal auto-layout, 24px gap):
+
 - **Row "No Ring"**: label "No Ring" (Inter Medium 12px #8B8B9A uppercase), then 3 circles (40, 56, 64px), bg #1A1A1F (muted), initials "JS" in accent color #6C6FE4
 - **Row "Accent Ring"**: label + same circles with 2px ring in #6C6FE4
 - **Row "Primary Ring"**: label + same circles with 2px ring in #6C6FE4
@@ -291,6 +357,7 @@ For each BU, create "Card / {BU}" showing 5 accent variants.
 Frame: 1200px, bg #0F0F12, padding 48px. Horizontal auto-layout, 24px gap.
 
 5 cards, each 220px wide:
+
 - "Card / none" — bg #1A1A1F, border 1px rgba(255,255,255,0.08), radius 12px, padding 24px. Sample content: title "Card Title" Inter Semibold 16px #FFFFFF, body "Sample content for the card component." Inter Regular 14px #8B8B9A
 - "Card / left" — same + 4px left border #6C6FE4
 - "Card / top" — same + 2px top border #6C6FE4
@@ -322,6 +389,7 @@ For each BU, create "NavLink / {BU}" showing sm and base variants.
 - [ ] **Step 1: Create "NavLink / Spend"**
 
 Frame: 1200px, bg #0F0F12, padding 48px. Horizontal auto-layout, 32px gap.
+
 - "NavLink / sm" — "Dashboard" in Inter Medium 14px, color #8B8B9A
 - "NavLink / base" — "Dashboard" in Inter Medium 16px, color #8B8B9A
 
@@ -352,10 +420,12 @@ For each BU, show default and compact spacing, each with expanded + collapsed it
 Frame: 1200px, bg #0F0F12, padding 48px. Two columns side by side (horizontal auto-layout, 48px gap):
 
 **Column "Default Spacing"** (vertical, 12px gap, width 500px):
+
 - "Item / Collapsed" — frame: border 1px rgba(255,255,255,0.08), radius 12px, padding 24px/16px. Trigger: "What is Futra?" Inter Semibold 16px #FFFFFF, chevron "▸" 18px #8B8B9A
 - "Item / Expanded" — same border/radius. Trigger: text in #6C6FE4 (primary), chevron "▾" rotated. Content area below: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." Inter Regular 14px #8B8B9A, padding 24px h / 16px bottom
 
 **Column "Compact Spacing"** (vertical, 8px gap, width 500px):
+
 - Same two items
 
 - [ ] **Step 2: Create "Accordion / Save"**
@@ -386,6 +456,7 @@ Frame: 1200px, bg #0F0F12, padding 48px.
 
 **Row "Default"** (horizontal, 16px gap):
 4 cards at 25/50/75/100%, each 260px wide:
+
 - Frame: bg #1A1A1F, border 1px rgba(255,255,255,0.08), radius 12px, padding 20px, shadow 0 2px 8px rgba(0,0,0,0.04)
 - "Goal Name" row: "Vacation Fund" Inter Semibold 15px #FFFFFF + "75%" JetBrains Mono Medium 13px #6C6FE4
 - Progress track: 100% width, 8px height, bg #1A1A1F (muted), radius full. Fill: 75% width, 8px height, bg #6C6FE4, radius full

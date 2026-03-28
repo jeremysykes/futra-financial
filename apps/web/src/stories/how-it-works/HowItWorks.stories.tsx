@@ -60,9 +60,25 @@ export const Save: Story = {
         badgeShape="rounded"
         iconStrokeWidth={1.5}
         steps={[
-          { icon: Target, label: 'Step 01', title: 'Name your goal', description: 'Set a target amount and a timeline that works for you.' },
-          { icon: Repeat, label: 'Step 02', title: 'Automate it', description: 'Round-ups, scheduled transfers, or manual deposits.' },
-          { icon: TrendingUp, label: 'Step 03', title: 'Watch it grow', description: 'Visual progress tracking that keeps you motivated.' },
+          {
+            icon: Target,
+            label: 'Step 01',
+            title: 'Name your goal',
+            description:
+              'Set a target amount and a timeline that works for you.',
+          },
+          {
+            icon: Repeat,
+            label: 'Step 02',
+            title: 'Automate it',
+            description: 'Round-ups, scheduled transfers, or manual deposits.',
+          },
+          {
+            icon: TrendingUp,
+            label: 'Step 03',
+            title: 'Watch it grow',
+            description: 'Visual progress tracking that keeps you motivated.',
+          },
         ]}
         animated
       />
@@ -90,9 +106,27 @@ export const Together: Story = {
         badgeShape="circle"
         badgeClassName="bg-surface border border-border"
         steps={[
-          { icon: Link, label: '01', title: 'Connect your accounts', description: 'Link your bank accounts. Both of you. Takes two minutes.' },
-          { icon: Settings, label: '02', title: 'Set up your splits', description: "Choose what's shared, how to split it, and who pays what." },
-          { icon: Eye, label: '03', title: 'Live transparently', description: 'See every shared expense, goal, and payment in real time.' },
+          {
+            icon: Link,
+            label: '01',
+            title: 'Connect your accounts',
+            description:
+              'Link your bank accounts. Both of you. Takes two minutes.',
+          },
+          {
+            icon: Settings,
+            label: '02',
+            title: 'Set up your splits',
+            description:
+              "Choose what's shared, how to split it, and who pays what.",
+          },
+          {
+            icon: Eye,
+            label: '03',
+            title: 'Live transparently',
+            description:
+              'See every shared expense, goal, and payment in real time.',
+          },
         ]}
         animated
       />

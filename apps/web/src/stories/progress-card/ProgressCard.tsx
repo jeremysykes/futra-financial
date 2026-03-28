@@ -16,8 +16,9 @@ const progressCardVariants = cva(
   },
 );
 
-export interface ProgressCardProps
-  extends VariantProps<typeof progressCardVariants> {
+export interface ProgressCardProps extends VariantProps<
+  typeof progressCardVariants
+> {
   /** Display name for the savings goal */
   goalName: string;
   /** Formatted target amount string (e.g. "$4,500") */

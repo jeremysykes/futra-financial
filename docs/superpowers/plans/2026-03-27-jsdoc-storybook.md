@@ -16,33 +16,33 @@
 
 **Components to add JSDoc (26 files — FocalImage already done, ComparisonSection and PhoneMockup have no props):**
 
-| File | Props Interface |
-|------|----------------|
-| `apps/web/src/stories/accordion/Accordion.tsx` | `AccordionProps` |
-| `apps/web/src/stories/accordion-item/AccordionItem.tsx` | `AccordionItemProps` |
-| `apps/web/src/stories/avatar/Avatar.tsx` | `AvatarProps` |
-| `apps/web/src/stories/badge/Badge.tsx` | `BadgeProps` |
-| `apps/web/src/stories/button/Button.tsx` | `ButtonProps` |
-| `apps/web/src/stories/card/Card.tsx` | `CardProps` |
-| `apps/web/src/stories/cta-section/CTASection.tsx` | `CTASectionProps` |
-| `apps/web/src/stories/dashboard-preview/DashboardPreview.tsx` | `DashboardPreviewProps` |
-| `apps/web/src/stories/faq-section/FAQSection.tsx` | `FAQSectionProps` |
-| `apps/web/src/stories/feature-deep-dive/FeatureDeepDive.tsx` | `FeatureDeepDiveProps` |
-| `apps/web/src/stories/feature-section/FeatureSection.tsx` | `FeatureSectionProps` |
-| `apps/web/src/stories/footer/Footer.tsx` | `FooterProps` |
-| `apps/web/src/stories/hero-section/HeroSection.tsx` | `HeroSectionProps` |
-| `apps/web/src/stories/how-it-works/HowItWorks.tsx` | `HowItWorksProps` |
-| `apps/web/src/stories/logo/Logo.tsx` | `LogoProps` |
-| `apps/web/src/stories/navbar/Navbar.tsx` | `NavbarProps` |
-| `apps/web/src/stories/nav-link/NavLink.tsx` | `NavLinkProps` |
-| `apps/web/src/stories/process-steps/ProcessSteps.tsx` | `ProcessStepsProps` |
-| `apps/web/src/stories/progress-card/ProgressCard.tsx` | `ProgressCardProps` |
-| `apps/web/src/stories/score-display/ScoreDisplay.tsx` | `ScoreDisplayProps` |
-| `apps/web/src/stories/split-display/SplitDisplay.tsx` | `SplitDisplayProps` |
-| `apps/web/src/stories/stat-item/StatItem.tsx` | `StatItemProps` |
-| `apps/web/src/stories/stats-row/StatsRow.tsx` | `StatsRowProps` |
+| File                                                              | Props Interface           |
+| ----------------------------------------------------------------- | ------------------------- |
+| `apps/web/src/stories/accordion/Accordion.tsx`                    | `AccordionProps`          |
+| `apps/web/src/stories/accordion-item/AccordionItem.tsx`           | `AccordionItemProps`      |
+| `apps/web/src/stories/avatar/Avatar.tsx`                          | `AvatarProps`             |
+| `apps/web/src/stories/badge/Badge.tsx`                            | `BadgeProps`              |
+| `apps/web/src/stories/button/Button.tsx`                          | `ButtonProps`             |
+| `apps/web/src/stories/card/Card.tsx`                              | `CardProps`               |
+| `apps/web/src/stories/cta-section/CTASection.tsx`                 | `CTASectionProps`         |
+| `apps/web/src/stories/dashboard-preview/DashboardPreview.tsx`     | `DashboardPreviewProps`   |
+| `apps/web/src/stories/faq-section/FAQSection.tsx`                 | `FAQSectionProps`         |
+| `apps/web/src/stories/feature-deep-dive/FeatureDeepDive.tsx`      | `FeatureDeepDiveProps`    |
+| `apps/web/src/stories/feature-section/FeatureSection.tsx`         | `FeatureSectionProps`     |
+| `apps/web/src/stories/footer/Footer.tsx`                          | `FooterProps`             |
+| `apps/web/src/stories/hero-section/HeroSection.tsx`               | `HeroSectionProps`        |
+| `apps/web/src/stories/how-it-works/HowItWorks.tsx`                | `HowItWorksProps`         |
+| `apps/web/src/stories/logo/Logo.tsx`                              | `LogoProps`               |
+| `apps/web/src/stories/navbar/Navbar.tsx`                          | `NavbarProps`             |
+| `apps/web/src/stories/nav-link/NavLink.tsx`                       | `NavLinkProps`            |
+| `apps/web/src/stories/process-steps/ProcessSteps.tsx`             | `ProcessStepsProps`       |
+| `apps/web/src/stories/progress-card/ProgressCard.tsx`             | `ProgressCardProps`       |
+| `apps/web/src/stories/score-display/ScoreDisplay.tsx`             | `ScoreDisplayProps`       |
+| `apps/web/src/stories/split-display/SplitDisplay.tsx`             | `SplitDisplayProps`       |
+| `apps/web/src/stories/stat-item/StatItem.tsx`                     | `StatItemProps`           |
+| `apps/web/src/stories/stats-row/StatsRow.tsx`                     | `StatsRowProps`           |
 | `apps/web/src/stories/testimonial-section/TestimonialSection.tsx` | `TestimonialSectionProps` |
-| `apps/web/src/stories/trust-section/TrustSection.tsx` | `TrustSectionProps` |
+| `apps/web/src/stories/trust-section/TrustSection.tsx`             | `TrustSectionProps`       |
 
 **Stories to strip descriptions (26 files — ComparisonSection and PhoneMockup have empty argTypes):**
 Same directories as above, the `.stories.ts(x)` files.
@@ -56,6 +56,7 @@ Same directories as above, the `.stories.ts(x)` files.
 ### Task 1: Add JSDoc to Atom Components (Button, Badge, Avatar, NavLink)
 
 **Files:**
+
 - Modify: `apps/web/src/stories/button/Button.tsx`
 - Modify: `apps/web/src/stories/badge/Badge.tsx`
 - Modify: `apps/web/src/stories/avatar/Avatar.tsx`
@@ -181,6 +182,7 @@ git commit -m "docs: add JSDoc to atom components (Button, Badge, Avatar, NavLin
 ### Task 2: Add JSDoc to Atom Components (Card, Logo, Accordion, AccordionItem)
 
 **Files:**
+
 - Modify: `apps/web/src/stories/card/Card.tsx`
 - Modify: `apps/web/src/stories/logo/Logo.tsx`
 - Modify: `apps/web/src/stories/accordion/Accordion.tsx`
@@ -287,6 +289,7 @@ git commit -m "docs: add JSDoc to atom components (Card, Logo, Accordion, Accord
 ### Task 3: Add JSDoc to Molecule Components (FocalImage verify, StatItem, ProgressCard, ScoreDisplay, SplitDisplay, DashboardPreview)
 
 **Files:**
+
 - Verify: `apps/web/src/stories/focal-image/FocalImage.tsx` (already has JSDoc)
 - Modify: `apps/web/src/stories/stat-item/StatItem.tsx`
 - Modify: `apps/web/src/stories/progress-card/ProgressCard.tsx`
@@ -457,6 +460,7 @@ git commit -m "docs: add JSDoc to molecule components (StatItem, ProgressCard, S
 ### Task 4: Add JSDoc to Organism Components (Navbar, Footer, ProcessSteps, StatsRow)
 
 **Files:**
+
 - Modify: `apps/web/src/stories/navbar/Navbar.tsx`
 - Modify: `apps/web/src/stories/footer/Footer.tsx`
 - Modify: `apps/web/src/stories/process-steps/ProcessSteps.tsx`
@@ -602,6 +606,7 @@ git commit -m "docs: add JSDoc to organism components (Navbar, Footer, ProcessSt
 ### Task 5: Add JSDoc to Section Components (HeroSection, FeatureSection, FeatureDeepDive, CTASection)
 
 **Files:**
+
 - Modify: `apps/web/src/stories/hero-section/HeroSection.tsx`
 - Modify: `apps/web/src/stories/feature-section/FeatureSection.tsx`
 - Modify: `apps/web/src/stories/feature-deep-dive/FeatureDeepDive.tsx`
@@ -766,6 +771,7 @@ git commit -m "docs: add JSDoc to section components (HeroSection, FeatureSectio
 ### Task 6: Add JSDoc to Remaining Section Components (FAQSection, HowItWorks, TestimonialSection, TrustSection)
 
 **Files:**
+
 - Modify: `apps/web/src/stories/faq-section/FAQSection.tsx`
 - Modify: `apps/web/src/stories/how-it-works/HowItWorks.tsx`
 - Modify: `apps/web/src/stories/testimonial-section/TestimonialSection.tsx`
@@ -927,6 +933,7 @@ git commit -m "docs: add JSDoc to section components (FAQSection, HowItWorks, Te
 ### Task 7: Remove descriptions from Atom story argTypes
 
 **Files:**
+
 - Modify: `apps/web/src/stories/button/Button.stories.ts`
 - Modify: `apps/web/src/stories/badge/Badge.stories.tsx`
 - Modify: `apps/web/src/stories/avatar/Avatar.stories.tsx`
@@ -1150,6 +1157,7 @@ git commit -m "refactor: remove descriptions from atom story argTypes (now in JS
 ### Task 8: Remove descriptions from Molecule story argTypes
 
 **Files:**
+
 - Modify: `apps/web/src/stories/focal-image/FocalImage.stories.ts`
 - Modify: `apps/web/src/stories/stat-item/StatItem.stories.tsx`
 - Modify: `apps/web/src/stories/progress-card/ProgressCard.stories.tsx`
@@ -1317,6 +1325,7 @@ git commit -m "refactor: remove descriptions from molecule story argTypes (now i
 ### Task 9: Remove descriptions from Organism story argTypes
 
 **Files:**
+
 - Modify: `apps/web/src/stories/navbar/Navbar.stories.tsx`
 - Modify: `apps/web/src/stories/footer/Footer.stories.tsx`
 - Modify: `apps/web/src/stories/process-steps/ProcessSteps.stories.tsx`
@@ -1438,6 +1447,7 @@ git commit -m "refactor: remove descriptions from organism story argTypes (now i
 ### Task 10: Remove descriptions from Section story argTypes
 
 **Files:**
+
 - Modify: `apps/web/src/stories/hero-section/HeroSection.stories.tsx`
 - Modify: `apps/web/src/stories/feature-section/FeatureSection.stories.tsx`
 - Modify: `apps/web/src/stories/feature-deep-dive/FeatureDeepDive.stories.tsx`
@@ -1731,6 +1741,7 @@ git commit -m "refactor: remove descriptions from section story argTypes (now in
 ### Task 11: Update argTypes test
 
 **Files:**
+
 - Modify: `apps/web/src/stories/__tests__/argTypes.test.ts`
 
 - [ ] **Step 1: Remove the description enforcement test**
@@ -1768,22 +1779,26 @@ git commit -m "test: remove argTypes description requirement (descriptions now i
 ### Task 12: Update CLAUDE.md
 
 **Files:**
+
 - Modify: `CLAUDE.md`
 
 - [ ] **Step 1: Update the Storybook/argTypes guidance in CLAUDE.md**
 
 Find the line:
+
 ```
 - Every story must include `argTypes` with `description`, `table.category`, and `control` for each meaningful prop
 ```
 
 Replace with:
+
 ```
 - Every exported props interface and component must have JSDoc comments (see `FocalImage.tsx` as the reference standard)
 - Every story must include `argTypes` with `table.category` and `control` for each meaningful prop (descriptions come from JSDoc on the component, not argTypes)
 ```
 
 Find the line:
+
 ```
 - Categories: `Appearance` (variants, className), `Layout` (layout, size, positioning), `Content` (text, data, labels), `Behavior` (interactive flags, event handlers)
 ```

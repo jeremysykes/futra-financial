@@ -29,23 +29,21 @@ const dashboardVariants = cva(
   },
 );
 
-const panelVariants = cva(
-  'rounded-lg bg-secondary border border-border',
-  {
-    variants: {
-      padding: {
-        default: 'p-2 sm:p-3 md:p-4',
-        compact: 'p-1.5 sm:p-2 md:p-3',
-      },
-    },
-    defaultVariants: {
-      padding: 'default',
+const panelVariants = cva('rounded-lg bg-secondary border border-border', {
+  variants: {
+    padding: {
+      default: 'p-2 sm:p-3 md:p-4',
+      compact: 'p-1.5 sm:p-2 md:p-3',
     },
   },
-);
+  defaultVariants: {
+    padding: 'default',
+  },
+});
 
-export interface DashboardPreviewProps
-  extends VariantProps<typeof dashboardVariants> {
+export interface DashboardPreviewProps extends VariantProps<
+  typeof dashboardVariants
+> {
   /** Additional CSS classes for the dashboard container */
   className?: string;
 }
@@ -66,7 +64,9 @@ const MetricCard = ({
     <div className="mt-1 font-mono font-medium text-foreground text-[clamp(16px,2.5vw,32px)]">
       {value}
     </div>
-    <div className="mt-0.5 font-mono text-[10px] sm:text-xs text-positive truncate">↑ {trend}</div>
+    <div className="mt-0.5 font-mono text-[10px] sm:text-xs text-positive truncate">
+      ↑ {trend}
+    </div>
   </div>
 );
 
@@ -149,7 +149,12 @@ const DashboardPreview = ({ size, className }: DashboardPreviewProps) => {
           <div className="mb-3 font-sans font-medium text-[11px] tracking-[0.08em] uppercase text-muted-foreground">
             Net Worth — 12 Month Trend
           </div>
-          <div role="img" aria-label="Net worth trend chart showing 12-month growth" className="w-full min-w-0" style={{ height: 180 }}>
+          <div
+            role="img"
+            aria-label="Net worth trend chart showing 12-month growth"
+            className="w-full min-w-0"
+            style={{ height: 180 }}
+          >
             <ResponsiveContainer width="100%" height={180}>
               <AreaChart data={PlanNetWorthData}>
                 <defs>

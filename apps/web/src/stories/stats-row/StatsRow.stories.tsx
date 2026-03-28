@@ -63,8 +63,16 @@ export const ThreeColumns: Story = {
     children: (
       <>
         <StatItem value="2.4M" label="Active users" valueColor="foreground" />
-        <StatItem value="$18B" label="Transactions processed" valueColor="foreground" />
-        <StatItem value="<1s" label="Average transaction time" valueColor="foreground" />
+        <StatItem
+          value="$18B"
+          label="Transactions processed"
+          valueColor="foreground"
+        />
+        <StatItem
+          value="<1s"
+          label="Average transaction time"
+          valueColor="foreground"
+        />
       </>
     ),
   },

@@ -65,7 +65,9 @@ export const GradientCenter: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText('Your first goal is waiting')).toBeInTheDocument();
-    expect(canvas.getByRole('button', { name: 'Start Saving' })).toBeInTheDocument();
+    expect(
+      canvas.getByRole('button', { name: 'Start Saving' }),
+    ).toBeInTheDocument();
   },
 };
 

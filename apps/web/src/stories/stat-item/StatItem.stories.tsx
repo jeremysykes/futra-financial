@@ -62,8 +62,16 @@ export const AllVariants: StoryObj<typeof StatItem> = {
   decorators: [withStoryDisplay({ layout: 'grid', columns: 4, gap: '2rem' })],
   render: () => (
     <>
-      <StatItem value="<300ms" label="Transaction Speed" valueColor="foreground" />
-      <StatItem value="99.99%" label="Platform Uptime" valueColor="foreground" />
+      <StatItem
+        value="<300ms"
+        label="Transaction Speed"
+        valueColor="foreground"
+      />
+      <StatItem
+        value="99.99%"
+        label="Platform Uptime"
+        valueColor="foreground"
+      />
       <StatItem value="2.4M+" label="Active Users" />
       <StatItem value="38" label="Countries Supported" />
     </>

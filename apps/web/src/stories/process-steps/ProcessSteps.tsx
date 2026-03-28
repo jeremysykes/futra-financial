@@ -27,24 +27,27 @@ const processStepsVariants = cva('grid grid-cols-1 relative list-none', {
   },
 });
 
-const connectorVariants = cva('hidden md:block absolute left-[16.67%] right-[16.67%]', {
-  variants: {
-    size: {
-      sm: 'top-5',
-      md: 'top-8',
-      lg: 'top-8',
+const connectorVariants = cva(
+  'hidden md:block absolute left-[16.67%] right-[16.67%]',
+  {
+    variants: {
+      size: {
+        sm: 'top-5',
+        md: 'top-8',
+        lg: 'top-8',
+      },
+      connector: {
+        dashed: '',
+        solid: 'h-px bg-border',
+        none: '',
+      },
     },
-    connector: {
-      dashed: '',
-      solid: 'h-px bg-border',
-      none: '',
+    defaultVariants: {
+      size: 'md',
+      connector: 'dashed',
     },
   },
-  defaultVariants: {
-    size: 'md',
-    connector: 'dashed',
-  },
-});
+);
 
 const labelVariants = cva('block mb-2 font-mono text-accent', {
   variants: {
@@ -196,10 +199,7 @@ const ProcessSteps = ({
           <Badge
             shape={badgeShape}
             size={badgeSizeMap[resolvedSize]}
-            className={cn(
-              badgeWrapperVariants({ size }),
-              badgeClassName,
-            )}
+            className={cn(badgeWrapperVariants({ size }), badgeClassName)}
           >
             <step.icon
               size={iconSizeMap[resolvedSize]}
@@ -210,18 +210,12 @@ const ProcessSteps = ({
             />
           </Badge>
 
-          <span className={labelVariants({ size })}>
-            {step.label}
-          </span>
+          <span className={labelVariants({ size })}>{step.label}</span>
 
-          <h3 className={titleVariants({ size })}>
-            {step.title}
-          </h3>
+          <h3 className={titleVariants({ size })}>{step.title}</h3>
 
           {step.description && (
-            <p className={descriptionVariants({ size })}>
-              {step.description}
-            </p>
+            <p className={descriptionVariants({ size })}>{step.description}</p>
           )}
         </li>
       ))}

@@ -2,28 +2,26 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const howItWorksVariants = cva(
-  '',
-  {
-    variants: {
-      background: {
-        default: 'bg-muted/40',
-        muted: 'bg-secondary/40',
-      },
-      padding: {
-        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
-        compact: 'py-12 sm:py-16 md:py-20',
-      },
+const howItWorksVariants = cva('', {
+  variants: {
+    background: {
+      default: 'bg-muted/40',
+      muted: 'bg-secondary/40',
     },
-    defaultVariants: {
-      background: 'default',
-      padding: 'default',
+    padding: {
+      default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+      compact: 'py-12 sm:py-16 md:py-20',
     },
   },
-);
+  defaultVariants: {
+    background: 'default',
+    padding: 'default',
+  },
+});
 
-export interface HowItWorksProps
-  extends VariantProps<typeof howItWorksVariants> {
+export interface HowItWorksProps extends VariantProps<
+  typeof howItWorksVariants
+> {
   /** Small label displayed above the heading */
   eyebrow?: ReactNode;
   /** Section heading text */
@@ -58,7 +56,10 @@ const HowItWorks = ({
   className,
 }: HowItWorksProps) => {
   return (
-    <section id={sectionId} className={cn(howItWorksVariants({ background, padding }), className)}>
+    <section
+      id={sectionId}
+      className={cn(howItWorksVariants({ background, padding }), className)}
+    >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         {(eyebrow || heading) && (
           <div className="text-center mb-10 md:mb-16">

@@ -121,7 +121,8 @@ export const WithoutImage: Story = {
       },
       {
         question: 'Is my data secure?',
-        answer: 'Yes, we use bank-level encryption to protect your information.',
+        answer:
+          'Yes, we use bank-level encryption to protect your information.',
       },
     ],
   },

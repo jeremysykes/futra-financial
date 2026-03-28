@@ -22,8 +22,9 @@ const gridClasses: Record<number, string> = {
   3: 'sm:grid-cols-2 md:grid-cols-3',
 };
 
-export interface TestimonialSectionProps
-  extends VariantProps<typeof testimonialSectionVariants> {
+export interface TestimonialSectionProps extends VariantProps<
+  typeof testimonialSectionVariants
+> {
   /** Section heading text */
   heading?: ReactNode;
   /** Eyebrow label displayed above the heading */
@@ -67,7 +68,9 @@ const TestimonialSection = ({
             )}
           </div>
         )}
-        <div className={cn('grid grid-cols-1 gap-6 sm:gap-8', gridClasses[cols])}>
+        <div
+          className={cn('grid grid-cols-1 gap-6 sm:gap-8', gridClasses[cols])}
+        >
           {children}
         </div>
       </div>

@@ -22,8 +22,9 @@ const trustSectionVariants = cva(
   },
 );
 
-export interface TrustSectionProps
-  extends VariantProps<typeof trustSectionVariants> {
+export interface TrustSectionProps extends VariantProps<
+  typeof trustSectionVariants
+> {
   /** URL for the background image */
   backgroundImage?: string;
   /**
@@ -56,7 +57,9 @@ const TrustSection = ({
   className,
 }: TrustSectionProps) => {
   return (
-    <section className={cn(trustSectionVariants({ background, padding }), className)}>
+    <section
+      className={cn(trustSectionVariants({ background, padding }), className)}
+    >
       {backgroundImage && (
         <div className="absolute inset-0 z-0">
           <img

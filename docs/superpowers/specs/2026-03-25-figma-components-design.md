@@ -18,16 +18,16 @@ The Figma UI library (file key `pMroF1oVmzBSUY99ZnmeIl`) currently contains regu
 
 All components use these values (light background, shared Indigo primary):
 
-| Token | Hex | Usage |
-|-------|-----|-------|
-| primary | #6C6FE4 | Button bg, active states |
-| primary-foreground | #FFFFFF | Text on primary bg |
-| accent | #6C6FE4 | Decorative highlights, accent borders |
-| foreground | #0B0B0B | Body text, headings |
-| surface | #FFFFFF | Card/component backgrounds |
-| muted | #EEEEEE | Badge bg, progress track, subtle fills |
-| muted-foreground | #717171 | Secondary text, labels, captions |
-| border | #D7D7D7 | Card borders, accordion item borders |
+| Token              | Hex     | Usage                                  |
+| ------------------ | ------- | -------------------------------------- |
+| primary            | #6C6FE4 | Button bg, active states               |
+| primary-foreground | #FFFFFF | Text on primary bg                     |
+| accent             | #6C6FE4 | Decorative highlights, accent borders  |
+| foreground         | #0B0B0B | Body text, headings                    |
+| surface            | #FFFFFF | Card/component backgrounds             |
+| muted              | #EEEEEE | Badge bg, progress track, subtle fills |
+| muted-foreground   | #717171 | Secondary text, labels, captions       |
+| border             | #D7D7D7 | Card borders, accordion item borders   |
 
 ## Component Specifications
 
@@ -35,12 +35,12 @@ All components use these values (light background, shared Indigo primary):
 
 Properties: `Intent` (Primary, Inverse) × `Size` (sm, md)
 
-| Variant | Background | Text Color | Padding | Font Size |
-|---------|-----------|------------|---------|-----------|
-| Intent=Primary, Size=md | #6C6FE4 | #FFFFFF | 32h / 12v | 16px |
-| Intent=Primary, Size=sm | #6C6FE4 | #FFFFFF | 20h / 8v | 14px |
-| Intent=Inverse, Size=md | #FFFFFF | #6C6FE4 | 32h / 12v | 16px |
-| Intent=Inverse, Size=sm | #FFFFFF | #6C6FE4 | 20h / 8v | 14px |
+| Variant                 | Background | Text Color | Padding   | Font Size |
+| ----------------------- | ---------- | ---------- | --------- | --------- |
+| Intent=Primary, Size=md | #6C6FE4    | #FFFFFF    | 32h / 12v | 16px      |
+| Intent=Primary, Size=sm | #6C6FE4    | #FFFFFF    | 20h / 8v  | 14px      |
+| Intent=Inverse, Size=md | #FFFFFF    | #6C6FE4    | 32h / 12v | 16px      |
+| Intent=Inverse, Size=sm | #FFFFFF    | #6C6FE4    | 20h / 8v  | 14px      |
 
 Base: rounded 10px, Inter Semi Bold, auto-layout horizontal, center-aligned. Width: hug contents.
 Primary text: "Get Started". Inverse text: "Learn More".
@@ -52,16 +52,16 @@ Note: Inverse text uses `text-accent` in code, which varies per BU. Here it reso
 Properties: `Shape` (Square, Rounded, Circle) × `Size` (sm, md, lg)
 
 | Size | Dimensions | Font Size |
-|------|-----------|-----------|
-| sm | 40×40 | 14px |
-| md | 56×56 | 18px |
-| lg | 64×64 | 22px |
+| ---- | ---------- | --------- |
+| sm   | 40×40      | 14px      |
+| md   | 56×56      | 18px      |
+| lg   | 64×64      | 22px      |
 
-| Shape | Corner Radius |
-|-------|--------------|
-| Square | 0px |
-| Rounded | 16px |
-| Circle | half width (20/28/32) |
+| Shape   | Corner Radius         |
+| ------- | --------------------- |
+| Square  | 0px                   |
+| Rounded | 16px                  |
+| Circle  | half width (20/28/32) |
 
 Base: bg #EEEEEE, text "A" in JetBrains Mono Semi Bold (600) #0B0B0B, center-aligned both axes. Fixed dimensions per size.
 
@@ -74,10 +74,10 @@ Properties: `Size` (sm, md, lg) × `Ring` (None, Accent, Primary)
 Sizes: sm=40, md=56, lg=64. Always circular. bg #EEEEEE, initials "JS" in JetBrains Mono Medium #6C6FE4. Fixed dimensions per size.
 Font sizes: sm=12px, md=16px, lg=20px.
 
-| Ring | Stroke |
-|------|--------|
-| None | no stroke |
-| Accent | 2px outside, #6C6FE4 |
+| Ring    | Stroke               |
+| ------- | -------------------- |
+| None    | no stroke            |
+| Accent  | 2px outside, #6C6FE4 |
 | Primary | 2px outside, #6C6FE4 |
 
 Note: Accent and Primary resolve to the same color in the shared theme. They are kept as separate variants because they map to different semantic tokens in code (`ring-accent` vs `ring-primary`) which differ per BU.
@@ -89,12 +89,12 @@ Properties: `Accent` (None, Left, Top, Right, Bottom)
 Base: bg #FFFFFF, border 1px #D7D7D7, radius 12px, padding 24px, vertical auto-layout 12px gap. Width: 260px.
 Content: "Card Title" Inter Semi Bold 16px #0B0B0B + "Sample content for the card component." Inter Regular 14px #717171.
 
-| Accent | Border |
-|--------|--------|
-| None | standard 1px all sides |
-| Left | + 4px left border #6C6FE4 |
-| Top | + 2px top border #6C6FE4 |
-| Right | + 4px right border #6C6FE4 |
+| Accent | Border                      |
+| ------ | --------------------------- |
+| None   | standard 1px all sides      |
+| Left   | + 4px left border #6C6FE4   |
+| Top    | + 2px top border #6C6FE4    |
+| Right  | + 4px right border #6C6FE4  |
 | Bottom | + 2px bottom border #6C6FE4 |
 
 Note: Accent border uses `border-*-accent` in code, which varies per BU. Here it resolves to #6C6FE4.
@@ -116,6 +116,7 @@ Content (expanded only): Inter Regular 14px #717171, padding 24h/16v bottom.
 Sample: trigger "What is Futra?", content "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
 Each variant shows 2 accordion items stacked. For `State=Expanded`, item 1 is expanded and item 2 is collapsed, showing both states. For `State=Collapsed`, both items are collapsed.
+
 - Default spacing: 12px gap
 - Compact spacing: 8px gap
 
@@ -154,12 +155,15 @@ Container: center-aligned, vertical auto-layout, 8px gap. Width: hug contents.
 ```javascript
 // Create a component from scratch
 const comp = figma.createComponent();
-comp.name = "Intent=Primary, Size=md";
+comp.name = 'Intent=Primary, Size=md';
 // ... set up the component's visual properties ...
 
 // Combine variants into a ComponentSet
-const componentSet = figma.combineAsVariants([comp1, comp2, comp3, comp4], page);
-componentSet.name = "Button";
+const componentSet = figma.combineAsVariants(
+  [comp1, comp2, comp3, comp4],
+  page,
+);
+componentSet.name = 'Button';
 // ComponentSet appears at (0,0) — reposition existing BU frames below it
 ```
 

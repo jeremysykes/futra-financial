@@ -3,23 +3,21 @@ import type { ReactNode } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const statItemVariants = cva(
-  'text-center',
-  {
-    variants: {
-      valueColor: {
-        foreground: 'text-foreground',
-        accent: 'text-accent',
-      },
-    },
-    defaultVariants: {
-      valueColor: 'accent',
+const statItemVariants = cva('text-center', {
+  variants: {
+    valueColor: {
+      foreground: 'text-foreground',
+      accent: 'text-accent',
     },
   },
-);
+  defaultVariants: {
+    valueColor: 'accent',
+  },
+});
 
 export interface StatItemProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof statItemVariants> {
   /** The statistic value to display */
   value: ReactNode;
@@ -35,7 +33,13 @@ export interface StatItemProps
  *
  * @default valueColor "accent"
  */
-const StatItem = ({ value, label, valueColor, className, ...props }: StatItemProps) => {
+const StatItem = ({
+  value,
+  label,
+  valueColor,
+  className,
+  ...props
+}: StatItemProps) => {
   return (
     <div className={cn(statItemVariants({ valueColor }), className)} {...props}>
       <span className="block mb-2 font-mono font-medium text-[clamp(28px,4vw,40px)]">

@@ -104,7 +104,9 @@ export const Hover: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const card = canvas.getByText('Feature Title').closest('[class*="cursor-pointer"]');
+    const card = canvas
+      .getByText('Feature Title')
+      .closest('[class*="cursor-pointer"]');
     expect(card).toBeInTheDocument();
   },
 };
@@ -118,7 +120,9 @@ export const Disabled: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const card = canvas.getByText('Feature Title').closest('[class*="cursor-not-allowed"]');
+    const card = canvas
+      .getByText('Feature Title')
+      .closest('[class*="cursor-not-allowed"]');
     expect(card).toBeInTheDocument();
   },
 };

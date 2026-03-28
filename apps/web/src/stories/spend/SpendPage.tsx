@@ -25,131 +25,139 @@ export function SpendPage() {
       <Navbar unitName="spend" links={SpendLinks} ctaText="Get Started" />
 
       <>
-      <HeroSection
-        heading={
-          <>
-            Your money,
-            <br />
-            <span className="text-accent">in real time.</span>
-          </>
-        }
-        subheading="Instant transactions, zero fees, total control. See every dollar the second it moves — not hours later."
-        backgroundImage={`${import.meta.env.BASE_URL}images/IMG-SPEND-01.png`}
-        backgroundOpacity="opacity-30"
-        overlayOpacity="bg-gradient-to-r from-background/70 via-background/50 to-background/30"
-        actions={
-          <Button asChild>
-            <a href="#cta">Open Your Account</a>
-          </Button>
-        }
-      >
-        <PhoneMockup />
-      </HeroSection>
+        <HeroSection
+          heading={
+            <>
+              Your money,
+              <br />
+              <span className="text-accent">in real time.</span>
+            </>
+          }
+          subheading="Instant transactions, zero fees, total control. See every dollar the second it moves — not hours later."
+          backgroundImage={`${import.meta.env.BASE_URL}images/IMG-SPEND-01.png`}
+          backgroundOpacity="opacity-30"
+          overlayOpacity="bg-gradient-to-r from-background/70 via-background/50 to-background/30"
+          actions={
+            <Button asChild>
+              <a href="#cta">Open Your Account</a>
+            </Button>
+          }
+        >
+          <PhoneMockup />
+        </HeroSection>
 
-      <StatsRow background="default" className="bg-primary/[0.04] border-y border-border py-16">
-        {SpendStats.map((s, i) => (
-          <StatItem
-            key={s.label}
-            value={s.value}
-            label={s.label}
-            valueColor="foreground"
-            data-animate="fade-in-up"
-            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
-          />
-        ))}
-      </StatsRow>
-
-      <FeatureSection
-        subtitle="Built for your day"
-        heading={
-          <>
-            Everything you need,
-            <br />
-            nothing you don&apos;t.
-          </>
-        }
-      >
-        <div className="mb-12 relative">
-          <FocalImage
-            src={`${import.meta.env.BASE_URL}images/IMG-SPEND-02.png`}
-            alt="Contactless payment"
-            focusX={55}
-            focusY={38}
-            className="w-full h-[200px] rounded-xl"
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent rounded-xl" />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {SpendFeatures.map((f, i) => (
-            <Card
-              key={f.title}
-              variant="left"
-              interactive
+        <StatsRow
+          background="default"
+          className="bg-primary/[0.04] border-y border-border py-16"
+        >
+          {SpendStats.map((s, i) => (
+            <StatItem
+              key={s.label}
+              value={s.value}
+              label={s.label}
+              valueColor="foreground"
               data-animate="fade-in-up"
-              style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
+              style={
+                { '--animate-delay': `${i * 100}ms` } as React.CSSProperties
+              }
+            />
+          ))}
+        </StatsRow>
+
+        <FeatureSection
+          subtitle="Built for your day"
+          heading={
+            <>
+              Everything you need,
+              <br />
+              nothing you don&apos;t.
+            </>
+          }
+        >
+          <div className="mb-12 relative">
+            <FocalImage
+              src={`${import.meta.env.BASE_URL}images/IMG-SPEND-02.png`}
+              alt="Contactless payment"
+              focusX={55}
+              focusY={38}
+              className="w-full h-[200px] rounded-xl"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent rounded-xl" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {SpendFeatures.map((f, i) => (
+              <Card
+                key={f.title}
+                variant="left"
+                interactive
+                data-animate="fade-in-up"
+                style={
+                  { '--animate-delay': `${i * 100}ms` } as React.CSSProperties
+                }
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <f.icon size={20} className="text-accent" />
+                </div>
+                <h4 className="text-[18px] text-foreground mb-2 font-sans font-semibold">
+                  {f.title}
+                </h4>
+                <p className="text-[15px] text-muted-foreground leading-[1.6] font-sans font-normal">
+                  {f.desc}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <TestimonialSection
+          subtitle="What people say"
+          heading="Real users, real talk."
+          className="relative overflow-hidden bg-secondary"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}images/IMG-SPEND-03.png`}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-[0.06] z-0"
+          />
+          {SpendTestimonials.map((t, i) => (
+            <Card
+              key={t.name}
+              interactive
+              className="relative z-10"
+              data-animate="fade-in-up"
+              style={
+                { '--animate-delay': `${i * 100}ms` } as React.CSSProperties
+              }
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <f.icon size={20} className="text-accent" />
-              </div>
-              <h4 className="text-[18px] text-foreground mb-2 font-sans font-semibold">
-                {f.title}
-              </h4>
-              <p className="text-[15px] text-muted-foreground leading-[1.6] font-sans font-normal">
-                {f.desc}
+              <p className="text-[15px] text-muted-foreground leading-[1.6] italic mb-6 font-sans font-normal">
+                &ldquo;{t.quote}&rdquo;
               </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-[13px] text-accent font-sans font-semibold">
+                  {t.initials}
+                </div>
+                <div>
+                  <p className="text-[14px] text-foreground font-sans font-semibold">
+                    {t.name}
+                  </p>
+                  <p className="text-[12px] text-muted-foreground font-sans font-medium">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
             </Card>
           ))}
-        </div>
-      </FeatureSection>
+        </TestimonialSection>
 
-      <TestimonialSection
-        subtitle="What people say"
-        heading="Real users, real talk."
-        className="relative overflow-hidden bg-secondary"
-      >
-        <img
-          src={`${import.meta.env.BASE_URL}images/IMG-SPEND-03.png`}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.06] z-0"
-        />
-        {SpendTestimonials.map((t, i) => (
-          <Card
-            key={t.name}
-            interactive
-            className="relative z-10"
-            data-animate="fade-in-up"
-            style={{ '--animate-delay': `${i * 100}ms` } as React.CSSProperties}
-          >
-            <p className="text-[15px] text-muted-foreground leading-[1.6] italic mb-6 font-sans font-normal">
-              &ldquo;{t.quote}&rdquo;
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-[13px] text-accent font-sans font-semibold">
-                {t.initials}
-              </div>
-              <div>
-                <p className="text-[14px] text-foreground font-sans font-semibold">
-                  {t.name}
-                </p>
-                <p className="text-[12px] text-muted-foreground font-sans font-medium">
-                  {t.role}
-                </p>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </TestimonialSection>
-
-      <CTASection
-        background="solid"
-        heading="Start spending smarter today."
-        description="No minimum balance. No hidden fees. No waiting. Open your account in under two minutes."
-      >
-        <Button variant="inverse" asChild>
-          <a href="#">Download the App</a>
-        </Button>
-      </CTASection>
-
+        <CTASection
+          background="solid"
+          heading="Start spending smarter today."
+          description="No minimum balance. No hidden fees. No waiting. Open your account in under two minutes."
+        >
+          <Button variant="inverse" asChild>
+            <a href="#">Download the App</a>
+          </Button>
+        </CTASection>
       </>
 
       <Footer className="border-t border-border">

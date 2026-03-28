@@ -15,6 +15,7 @@
 ### Task 1: Remove gitignore rules
 
 **Files:**
+
 - Modify: `.gitignore` (lines 34-36)
 
 - [ ] **Step 1: Remove the AI workflow artifacts block**
@@ -37,6 +38,7 @@ Expected: Shows the three lines removed, nothing else changed.
 ### Task 2: Move files from `docs/specs/` to canonical locations
 
 **Files:**
+
 - Move: `docs/specs/2026-03-23-page-transitions-design.md` → `docs/superpowers/specs/`
 - Move: `docs/specs/2026-03-23-interactive-token-grid-design.md` → `docs/superpowers/specs/`
 - Move: `docs/specs/2026-03-23-page-transitions-plan.md` → `docs/superpowers/plans/2026-03-23-page-transitions.md`
@@ -73,6 +75,7 @@ Expected: Four renamed files, `docs/specs/` gone.
 ### Task 3: Delete low-signal files
 
 **Files:**
+
 - Delete: `docs/superpowers/specs/2026-03-22-process-steps-design.md`
 - Delete: `docs/superpowers/plans/2026-03-22-process-steps-plan.md`
 
@@ -93,6 +96,7 @@ Expected: No process-steps files in either directory.
 ### Task 4: Track all remaining files
 
 **Files:**
+
 - Stage: everything in `docs/superpowers/` and `docs/prompts/`
 
 - [ ] **Step 1: Add all files in both directories**
@@ -111,15 +115,19 @@ Expected: All specs, plans, and prompts appear as new or renamed files. No untra
 ### Task 5: Update CLAUDE.md
 
 **Files:**
+
 - Modify: `CLAUDE.md` (lines 12, 32-37)
 
 - [ ] **Step 1: Update Canonical Documents example**
 
 Replace line 12:
+
 ```
 - Operational docs belong in `docs/` (e.g., `docs/design-audit.md`, `docs/image-requirements.md`)
 ```
+
 With:
+
 ```
 - Operational docs belong in `docs/` (e.g., `docs/image-requirements.md`, `docs/testing.md`)
 ```
@@ -127,6 +135,7 @@ With:
 - [ ] **Step 2: Update Project Structure section**
 
 Replace lines 32-37:
+
 ```
 - `src/components/{bu}/` — BU-specific page components
 - `src/components/AppShell.tsx` — Router, theme state, DemoSwitcher wrapper
@@ -135,7 +144,9 @@ Replace lines 32-37:
 - `docs/` — Operational documents (audit, specs, plans, image requirements)
 - `.claude/skills/` — Project-specific Claude skills
 ```
+
 With:
+
 ```
 - `src/components/{bu}/` — BU-specific page components
 - `src/components/AppShell.tsx` — Router, theme state, DemoSwitcher wrapper

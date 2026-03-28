@@ -18,40 +18,40 @@
 
 ### Phase A — Modified Files
 
-| File | Change |
-|------|--------|
-| `src/tailwind.css` | Add global `:focus-visible` ring style |
-| `src/components/AppShell.tsx` | Add skip-to-main link |
-| `src/stories/spend/SpendPage.tsx` | Add `<main>` landmark |
-| `src/stories/save/SavePage.tsx` | Add `<main>` landmark |
-| `src/stories/credit/CreditPage.tsx` | Add `<main>` landmark |
-| `src/stories/plan/PlanPage.tsx` | Add `<main>` landmark |
-| `src/stories/together/TogetherPage.tsx` | Add `<main>` landmark |
-| `src/stories/accordion-item/AccordionItem.tsx` | Rewrite with Radix Accordion.Item |
-| `src/stories/accordion-item/AccordionItem.stories.tsx` | Update for new API |
-| `src/stories/accordion/Accordion.tsx` | Rewrite with Radix Accordion.Root |
-| `src/stories/accordion/Accordion.stories.tsx` | Update for new API |
-| `src/stories/faq-section/FAQSection.tsx` | Update Accordion usage if API changed |
+| File                                                   | Change                                 |
+| ------------------------------------------------------ | -------------------------------------- |
+| `src/tailwind.css`                                     | Add global `:focus-visible` ring style |
+| `src/components/AppShell.tsx`                          | Add skip-to-main link                  |
+| `src/stories/spend/SpendPage.tsx`                      | Add `<main>` landmark                  |
+| `src/stories/save/SavePage.tsx`                        | Add `<main>` landmark                  |
+| `src/stories/credit/CreditPage.tsx`                    | Add `<main>` landmark                  |
+| `src/stories/plan/PlanPage.tsx`                        | Add `<main>` landmark                  |
+| `src/stories/together/TogetherPage.tsx`                | Add `<main>` landmark                  |
+| `src/stories/accordion-item/AccordionItem.tsx`         | Rewrite with Radix Accordion.Item      |
+| `src/stories/accordion-item/AccordionItem.stories.tsx` | Update for new API                     |
+| `src/stories/accordion/Accordion.tsx`                  | Rewrite with Radix Accordion.Root      |
+| `src/stories/accordion/Accordion.stories.tsx`          | Update for new API                     |
+| `src/stories/faq-section/FAQSection.tsx`               | Update Accordion usage if API changed  |
 
 ### Phase B — Modified Files
 
-| File | Change |
-|------|--------|
-| `src/stories/score-display/ScoreDisplay.tsx` | Add `role="img"`, `aria-label` to SVG |
-| `src/stories/card/Card.tsx` | Conditional `role="button"` + keyboard handler when `onClick` present |
-| `src/stories/navbar/Navbar.tsx` | `aria-expanded`, `aria-label`, Escape key, focus trap |
-| `src/stories/process-steps/ProcessSteps.tsx` | Change to `<ol>`/`<li>` semantics |
-| `src/stories/split-display/SplitDisplay.tsx` | Add `role="img"`, `aria-label` |
-| `src/stories/dashboard-preview/DashboardPreview.tsx` | Budget bars: Radix Progress or `role="progressbar"`, status text |
-| `src/stories/feature-deep-dive/FeatureDeepDive.tsx` | Chart `aria-label`s |
+| File                                                 | Change                                                                |
+| ---------------------------------------------------- | --------------------------------------------------------------------- |
+| `src/stories/score-display/ScoreDisplay.tsx`         | Add `role="img"`, `aria-label` to SVG                                 |
+| `src/stories/card/Card.tsx`                          | Conditional `role="button"` + keyboard handler when `onClick` present |
+| `src/stories/navbar/Navbar.tsx`                      | `aria-expanded`, `aria-label`, Escape key, focus trap                 |
+| `src/stories/process-steps/ProcessSteps.tsx`         | Change to `<ol>`/`<li>` semantics                                     |
+| `src/stories/split-display/SplitDisplay.tsx`         | Add `role="img"`, `aria-label`                                        |
+| `src/stories/dashboard-preview/DashboardPreview.tsx` | Budget bars: Radix Progress or `role="progressbar"`, status text      |
+| `src/stories/feature-deep-dive/FeatureDeepDive.tsx`  | Chart `aria-label`s                                                   |
 
 ### Phase C — Modified/Created Files
 
-| File | Change |
-|------|--------|
-| `eslint.config.js` | Add jsx-a11y plugin |
-| `DESIGN.md` | Add Accessibility Standards section |
-| `.storybook/preview.tsx` | Verify a11y addon active |
+| File                     | Change                              |
+| ------------------------ | ----------------------------------- |
+| `eslint.config.js`       | Add jsx-a11y plugin                 |
+| `DESIGN.md`              | Add Accessibility Standards section |
+| `.storybook/preview.tsx` | Verify a11y addon active            |
 
 ---
 
@@ -60,6 +60,7 @@
 ### Task 1: Global Focus Indicators
 
 **Files:**
+
 - Modify: `src/tailwind.css`
 
 - [ ] **Step 1: Add focus-visible style to tailwind.css**
@@ -89,6 +90,7 @@ git commit -m "feat(a11y): add global focus-visible indicators using --color-rin
 ### Task 2: Skip-to-Main Link + Main Landmark
 
 **Files:**
+
 - Modify: `src/components/AppShell.tsx`
 - Modify: `src/stories/spend/SpendPage.tsx`
 - Modify: `src/stories/save/SavePage.tsx`
@@ -151,6 +153,7 @@ git commit -m "feat(a11y): add skip-to-main link and <main> landmark to all page
 ### Task 3: Migrate Accordion to Radix
 
 **Files:**
+
 - Modify: `src/stories/accordion-item/AccordionItem.tsx`
 - Modify: `src/stories/accordion-item/AccordionItem.stories.tsx`
 - Modify: `src/stories/accordion/Accordion.tsx`
@@ -158,11 +161,13 @@ git commit -m "feat(a11y): add skip-to-main link and <main> landmark to all page
 - Modify: `src/stories/faq-section/FAQSection.tsx`
 
 **Before starting:**
+
 1. Fetch Radix Accordion docs at https://www.radix-ui.com/primitives/docs/components/accordion to verify the API
 2. Take a Playwright screenshot of the Credit page FAQ section for visual comparison after migration
 3. Install the Radix accordion package: `npm install @radix-ui/react-accordion`
 
 **Radix Accordion API (verified):**
+
 - `Accordion.Root` — container, `type="single"|"multiple"`, `collapsible` prop
 - `Accordion.Item` — wraps each section, requires `value` string
 - `Accordion.Header` — wraps trigger, use `asChild` for heading level
@@ -187,9 +192,7 @@ import { ChevronDown } from 'lucide-react';
 import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const accordionItemVariants = cva(
-  'border border-border rounded-xl',
-);
+const accordionItemVariants = cva('border border-border rounded-xl');
 
 const triggerVariants = cva(
   'w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer bg-transparent',
@@ -209,7 +212,10 @@ const AccordionItem = ({
   className,
 }: AccordionItemProps) => {
   return (
-    <Accordion.Item value={value} className={cn(accordionItemVariants(), className)}>
+    <Accordion.Item
+      value={value}
+      className={cn(accordionItemVariants(), className)}
+    >
       <Accordion.Header asChild>
         <h3>
           <Accordion.Trigger className={cn(triggerVariants(), 'group')}>
@@ -225,9 +231,7 @@ const AccordionItem = ({
         </h3>
       </Accordion.Header>
       <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-        <div className="px-6 pb-4">
-          {children}
-        </div>
+        <div className="px-6 pb-4">{children}</div>
       </Accordion.Content>
     </Accordion.Item>
   );
@@ -242,13 +246,21 @@ export { AccordionItem, accordionItemVariants };
 
 ```css
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 ```
 
@@ -269,20 +281,17 @@ import { Accordion as RadixAccordion } from 'radix-ui';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const accordionVariants = cva(
-  '',
-  {
-    variants: {
-      spacing: {
-        default: 'space-y-3',
-        compact: 'space-y-2',
-      },
-    },
-    defaultVariants: {
-      spacing: 'default',
+const accordionVariants = cva('', {
+  variants: {
+    spacing: {
+      default: 'space-y-3',
+      compact: 'space-y-2',
     },
   },
-);
+  defaultVariants: {
+    spacing: 'default',
+  },
+});
 
 export interface AccordionItemData {
   value: string;
@@ -290,8 +299,7 @@ export interface AccordionItemData {
   content: ReactNode;
 }
 
-export interface AccordionProps
-  extends VariantProps<typeof accordionVariants> {
+export interface AccordionProps extends VariantProps<typeof accordionVariants> {
   items: AccordionItemData[];
   multiple?: boolean;
   className?: string;
@@ -314,7 +322,11 @@ const Accordion = ({
       className={cn(accordionVariants({ spacing }), className)}
     >
       {items.map((item) => (
-        <AccordionItemWrapper key={item.value} value={item.value} trigger={item.trigger}>
+        <AccordionItemWrapper
+          key={item.value}
+          value={item.value}
+          trigger={item.trigger}
+        >
           {item.content}
         </AccordionItemWrapper>
       ))}
@@ -419,7 +431,8 @@ const faqItems = [
     trigger: 'Will this affect my credit score?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        No. We use a soft inquiry to check your score, which has zero impact on your credit.
+        No. We use a soft inquiry to check your score, which has zero impact on
+        your credit.
       </p>
     ),
   },
@@ -452,6 +465,7 @@ Use Playwright to screenshot the Credit page FAQ section. Compare with the "befo
 - [ ] **Step 10: Verify keyboard behavior**
 
 Navigate to the Credit FAQ section, tab to the first accordion trigger. Verify:
+
 - Enter/Space toggles the accordion item
 - Arrow keys move between triggers
 - Content is announced by screen reader with proper expanded/collapsed state
@@ -474,6 +488,7 @@ git commit -m "feat(a11y): migrate Accordion to Radix UI with full ARIA complian
 ### Task 4: ScoreDisplay SVG Accessibility
 
 **Files:**
+
 - Modify: `src/stories/score-display/ScoreDisplay.tsx`
 
 **Radix check:** No Radix primitive for SVG data visualizations. Use manual ARIA.
@@ -505,6 +520,7 @@ git commit -m "feat(a11y): add accessible label to ScoreDisplay SVG"
 ### Task 5: Card Interactive Variant Accessibility
 
 **Files:**
+
 - Modify: `src/stories/card/Card.tsx`
 
 **Radix check:** No Radix primitive for generic card containers. Use conditional manual ARIA.
@@ -559,6 +575,7 @@ git commit -m "feat(a11y): add conditional keyboard support to Card interactive 
 ### Task 6: Navbar Mobile Menu Accessibility
 
 **Files:**
+
 - Modify: `src/stories/navbar/Navbar.tsx`
 
 **Radix check:** Check `@radix-ui/react-navigation-menu` and `@radix-ui/react-dialog` docs. The mobile menu is a simple toggle overlay — Dialog is most appropriate for focus trapping if needed. For now, add manual ARIA + Escape key as the minimal fix. Consider Radix Dialog in a future pass if focus trapping proves insufficient.
@@ -609,6 +626,7 @@ git commit -m "feat(a11y): add aria-expanded, aria-label, and Escape key to Navb
 ### Task 7: ProcessSteps Ordered List Semantics
 
 **Files:**
+
 - Modify: `src/stories/process-steps/ProcessSteps.tsx`
 
 **Radix check:** No Radix primitive for static ordered lists.
@@ -616,6 +634,7 @@ git commit -m "feat(a11y): add aria-expanded, aria-label, and Escape key to Navb
 - [ ] **Step 1: Change root element to `<ol>` and steps to `<li>`**
 
 Update the ProcessSteps component:
+
 - Change the outer wrapper `<div>` to `<ol>` with `aria-label="Steps"` and `className` including `list-none` (to suppress default list styling)
 - Change each step wrapper `<div>` to `<li>`
 - Update the TypeScript interface to extend `HTMLAttributes<HTMLOListElement>` instead of `HTMLDivElement`
@@ -640,6 +659,7 @@ git commit -m "feat(a11y): change ProcessSteps to ordered list semantics"
 ### Task 8: SplitDisplay Accessible Label
 
 **Files:**
+
 - Modify: `src/stories/split-display/SplitDisplay.tsx`
 
 **Radix check:** SplitDisplay shows proportional breakdown, not progress. Radix Progress is for progress bars. Use manual `role="img"` with descriptive label.
@@ -669,6 +689,7 @@ git commit -m "feat(a11y): add accessible label to SplitDisplay split bar"
 ### Task 9: DashboardPreview Budget Bars + Recharts Labels
 
 **Files:**
+
 - Modify: `src/stories/dashboard-preview/DashboardPreview.tsx`
 - Modify: `src/stories/feature-deep-dive/FeatureDeepDive.tsx`
 
@@ -710,6 +731,7 @@ In DashboardPreview, add `role="img"` and `aria-label` to the chart wrapper div:
 ```
 
 In FeatureDeepDive, add `aria-label` to each FeatureBlock chart wrapper. The labels should describe the data:
+
 - Net worth chart: "Net worth growth from $98K in 2020 to $184K in 2025"
 - Budget chart: "Budget vs actuals comparison by category"
 - Projection chart: "Cash flow projections with optimistic, projected, and conservative scenarios"
@@ -734,6 +756,7 @@ git commit -m "feat(a11y): add progressbar roles to budget bars and aria-labels 
 ### Task 10: Install eslint-plugin-jsx-a11y
 
 **Files:**
+
 - Modify: `eslint.config.js`
 
 - [ ] **Step 1: Install the plugin**
@@ -773,6 +796,7 @@ git commit -m "feat(a11y): add eslint-plugin-jsx-a11y for static accessibility a
 ### Task 11: Document Accessibility Standards in DESIGN.md
 
 **Files:**
+
 - Modify: `DESIGN.md`
 
 - [ ] **Step 1: Add Accessibility Standards section**
@@ -786,12 +810,12 @@ Add after the "Component Architecture" section and before "Storybook Presentatio
 
 All interactive components use Radix UI primitives for ARIA management, keyboard navigation, and focus handling. Radix provides the behavior; our CVA tokens and Tailwind classes provide the visuals. Before building any new interactive pattern, check the Radix component library at https://www.radix-ui.com/primitives/docs/components for an existing primitive.
 
-| Pattern | Implementation | Provides |
-|---------|---------------|----------|
-| Accordion/Disclosure | `@radix-ui/react-accordion` | `aria-expanded`, `aria-controls`, keyboard nav |
-| Progress bars | `role="progressbar"` with `aria-valuenow/max` | Screen reader progress announcements |
-| Data visualizations | `role="img"` with `aria-label` | Accessible description of chart content |
-| Interactive cards | Conditional `role="button"` when `onClick` present | Keyboard support only when card is actually clickable |
+| Pattern              | Implementation                                     | Provides                                              |
+| -------------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| Accordion/Disclosure | `@radix-ui/react-accordion`                        | `aria-expanded`, `aria-controls`, keyboard nav        |
+| Progress bars        | `role="progressbar"` with `aria-valuenow/max`      | Screen reader progress announcements                  |
+| Data visualizations  | `role="img"` with `aria-label`                     | Accessible description of chart content               |
+| Interactive cards    | Conditional `role="button"` when `onClick` present | Keyboard support only when card is actually clickable |
 
 ### Focus Indicators
 
@@ -800,6 +824,7 @@ All focusable elements display a visible ring on `:focus-visible` using the `--c
 ### Page Landmarks
 
 Every page includes:
+
 - `<nav aria-label="Main navigation">` — Navbar
 - `<main id="main-content">` — Primary content area
 - `<footer>` — Page footer
@@ -822,6 +847,7 @@ git commit -m "docs: add Accessibility Standards section to DESIGN.md"
 ### Task 12: Verify Storybook A11y Addon
 
 **Files:**
+
 - Modify: `.storybook/preview.tsx` (if needed)
 
 - [ ] **Step 1: Verify addon is registered**

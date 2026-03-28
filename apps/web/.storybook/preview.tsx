@@ -9,7 +9,14 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['Foundation', 'Atoms', 'Molecules', 'Organisms', 'Templates', 'Pages'],
+        order: [
+          'Foundation',
+          'Atoms',
+          'Molecules',
+          'Organisms',
+          'Templates',
+          'Pages',
+        ],
       },
     },
     controls: {

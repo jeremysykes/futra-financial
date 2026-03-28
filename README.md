@@ -199,15 +199,15 @@ Components render in real Chromium (not JSDOM) because CSS custom property resol
 
 ### Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | React 19 + TypeScript |
-| Build | Vite 7, Turborepo monorepo |
-| Styling | Tailwind CSS 4, CSS custom properties |
-| Tokens | W3C DTCG JSON + Style Dictionary 4 |
-| Components | CVA + Radix UI primitives |
-| Component dev | Storybook 10 + Chromatic |
-| Testing | Vitest + Playwright (browser) |
+| Layer         | Technology                            |
+| ------------- | ------------------------------------- |
+| Framework     | React 19 + TypeScript                 |
+| Build         | Vite 7, Turborepo monorepo            |
+| Styling       | Tailwind CSS 4, CSS custom properties |
+| Tokens        | W3C DTCG JSON + Style Dictionary 4    |
+| Components    | CVA + Radix UI primitives             |
+| Component dev | Storybook 10 + Chromatic              |
+| Testing       | Vitest + Playwright (browser)         |
 
 The [Figma component library](docs/figma-library-workflow.md) is generated from code specs via Figma MCP, keeping design and implementation in sync.
 
@@ -215,17 +215,17 @@ The [Figma component library](docs/figma-library-workflow.md) is generated from 
 
 ## DOCUMENTATION
 
-| Document | Covers | Audience |
-|----------|--------|----------|
-| [Design Principles](PRINCIPLES.md) | Facilitate over configure, compose don't configure, tokens are the contract | All |
-| [Brand & Design Identity](DESIGN.md) | Palettes, typography, token architecture, component patterns | Design, PM |
-| [Architecture](ARCHITECTURE.md) | Tech stack, monorepo structure, routing, build commands | Engineering |
-| [Design Token Pipeline](docs/design-token-pipeline.md) | DTCG JSON → Style Dictionary → CSS → components | Engineering, Design |
-| [Testing Strategy](docs/testing.md) | Vitest browser tests, documentation tests, Chromatic | Engineering |
-| [Token Architecture Diagram](docs/diagrams/token-architecture.md) | Mermaid diagram of full token flow from source to consumers | Engineering, Design |
-| [Figma Library Workflow](docs/figma-library-workflow.md) | How the Figma component library is generated from code | Design |
-| [Image Requirements](docs/image-requirements.md) | Image specs and generation prompts per BU | Design, PM |
-| [Spacing Tokens Decision](docs/decisions/spacing-tokens.md) | Why we use Tailwind defaults instead of custom spacing tokens | Engineering, Design |
+| Document                                                          | Covers                                                                      | Audience            |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------- |
+| [Design Principles](PRINCIPLES.md)                                | Facilitate over configure, compose don't configure, tokens are the contract | All                 |
+| [Brand & Design Identity](DESIGN.md)                              | Palettes, typography, token architecture, component patterns                | Design, PM          |
+| [Architecture](ARCHITECTURE.md)                                   | Tech stack, monorepo structure, routing, build commands                     | Engineering         |
+| [Design Token Pipeline](docs/design-token-pipeline.md)            | DTCG JSON → Style Dictionary → CSS → components                             | Engineering, Design |
+| [Testing Strategy](docs/testing.md)                               | Vitest browser tests, documentation tests, Chromatic                        | Engineering         |
+| [Token Architecture Diagram](docs/diagrams/token-architecture.md) | Mermaid diagram of full token flow from source to consumers                 | Engineering, Design |
+| [Figma Library Workflow](docs/figma-library-workflow.md)          | How the Figma component library is generated from code                      | Design              |
+| [Image Requirements](docs/image-requirements.md)                  | Image specs and generation prompts per BU                                   | Design, PM          |
+| [Spacing Tokens Decision](docs/decisions/spacing-tokens.md)       | Why we use Tailwind defaults instead of custom spacing tokens               | Engineering, Design |
 
 ---
 

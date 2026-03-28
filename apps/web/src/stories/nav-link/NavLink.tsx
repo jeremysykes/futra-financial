@@ -1,25 +1,22 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
-const navLinkVariants = cva(
-  'font-sans font-medium transition-colors',
-  {
-    variants: {
-      size: {
-        sm: 'text-sm',
-        base: 'text-base',
-      },
-      disabled: {
-        true: 'opacity-50 cursor-not-allowed text-muted-foreground',
-        false: 'text-muted-foreground hover:text-accent',
-      },
+const navLinkVariants = cva('font-sans font-medium transition-colors', {
+  variants: {
+    size: {
+      sm: 'text-sm',
+      base: 'text-base',
     },
-    defaultVariants: {
-      size: 'sm',
-      disabled: false,
+    disabled: {
+      true: 'opacity-50 cursor-not-allowed text-muted-foreground',
+      false: 'text-muted-foreground hover:text-accent',
     },
   },
-);
+  defaultVariants: {
+    size: 'sm',
+    disabled: false,
+  },
+});
 
 export interface NavLinkProps
   extends

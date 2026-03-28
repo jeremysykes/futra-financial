@@ -11,6 +11,7 @@ Bring the Futra Financial design system to professional-grade ARIA compliance. T
 ## Current State
 
 ### What works
+
 - Good semantic HTML foundation (section, nav, footer, heading hierarchy)
 - Storybook a11y addon installed (`@storybook/addon-a11y`)
 - Radix `@radix-ui/react-slot` already in use (Button)
@@ -18,6 +19,7 @@ Bring the Futra Financial design system to professional-grade ARIA compliance. T
 - Native `<button>` and `<a>` elements used where appropriate
 
 ### Critical gaps
+
 - AccordionItem: no `aria-expanded`, `aria-controls`, or disclosure pattern
 - Card (interactive variant): div with cursor:pointer, no keyboard access or role
 - ScoreDisplay SVG: no accessible label for credit score
@@ -28,6 +30,7 @@ Bring the Futra Financial design system to professional-grade ARIA compliance. T
 - ProcessSteps: not using ordered list semantics
 
 ### Radix UI opportunity
+
 Radix is already a dependency but only used for Slot. The Accordion, NavigationMenu, and VisuallyHidden primitives are directly applicable. Each component decision must be validated against the current Radix documentation before implementation.
 
 ## Implementation Phases
@@ -56,7 +59,10 @@ This applies globally to all focusable elements. Components should not suppress 
 Add a visually-hidden skip link to AppShell that becomes visible on focus:
 
 ```tsx
-<a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-background focus:px-4 focus:py-2 focus:rounded-lg focus:text-foreground focus:font-sans focus:font-medium focus:shadow-lg">
+<a
+  href="#main-content"
+  className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-background focus:px-4 focus:py-2 focus:rounded-lg focus:text-foreground focus:font-sans focus:font-medium focus:shadow-lg"
+>
   Skip to main content
 </a>
 ```
@@ -98,7 +104,8 @@ Check if `@radix-ui/react-visually-hidden` is useful here for providing alternat
 
 #### B2. Card (interactive variant)
 
-The `interactive` variant is a *visual* variant (hover effect). ARIA treatment depends on whether a click handler is attached:
+The `interactive` variant is a _visual_ variant (hover effect). ARIA treatment depends on whether a click handler is attached:
+
 - Card with `interactive={true}` AND `onClick`: add `role="button"`, `tabIndex={0}`, `onKeyDown` for Enter/Space — conditionally, only when `onClick` is present
 - Card with `interactive={true}` but no `onClick`: no role or tabIndex needed — it's a decorative hover effect
 
@@ -124,7 +131,7 @@ Check Radix docs for any relevant primitive.
 
 #### B5. SplitDisplay
 
-SplitDisplay shows a *proportion breakdown* (e.g., "You: 60%, Partner: 40%"), not progress toward completion. Use `role="img"` with a descriptive `aria-label` on the split bar container rather than `role="progressbar"`:
+SplitDisplay shows a _proportion breakdown_ (e.g., "You: 60%, Partner: 40%"), not progress toward completion. Use `role="img"` with a descriptive `aria-label` on the split bar container rather than `role="progressbar"`:
 
 ```tsx
 <div role="img" aria-label={`Split: ${splits.map(s => `${s.name} ${s.amount}`).join(', ')}`}>
@@ -155,6 +162,7 @@ Add to dev dependencies and ESLint config. This catches a11y issues at developme
 #### C2. Document accessibility conventions in DESIGN.md
 
 Add an Accessibility section written as established standards (not aspirational goals, per CLAUDE.md rules for DESIGN.md):
+
 - Radix-first principle for interactive patterns
 - Required ARIA attributes per component type
 - Focus indicator standards
@@ -169,6 +177,7 @@ Run axe checks across all stories. The addon is already installed — verify it'
 ## Radix Documentation Check Requirement
 
 **Every component decision in Phase B must include:**
+
 1. Search Radix docs for a matching primitive
 2. If found: use Radix, style with CVA + data attributes
 3. If not found: add manual ARIA attributes

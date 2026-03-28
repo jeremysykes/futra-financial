@@ -12,7 +12,11 @@ const FeatureCard = ({
   desc,
   delay = 0,
 }: {
-  icon: ComponentType<{ size: number; className: string; strokeWidth?: number }>;
+  icon: ComponentType<{
+    size: number;
+    className: string;
+    strokeWidth?: number;
+  }>;
   title: string;
   desc: string;
   delay?: number;
@@ -85,10 +89,30 @@ export const Default: Story = {
     heading: 'Tools that fit your life',
     children: (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <FeatureCard icon={CircleDot} title="Visual goal tracking" desc="See every goal at a glance with progress rings and bars." delay={0} />
-        <FeatureCard icon={Coins} title="Smart round-ups" desc="Every purchase rounds up to the nearest dollar." delay={100} />
-        <FeatureCard icon={CalendarClock} title="Scheduled transfers" desc="Set it and forget it. Automatic transfers keep you on track." delay={200} />
-        <FeatureCard icon={Trophy} title="Milestones & streaks" desc="Celebrate each milestone. Streaks reward your consistency." delay={300} />
+        <FeatureCard
+          icon={CircleDot}
+          title="Visual goal tracking"
+          desc="See every goal at a glance with progress rings and bars."
+          delay={0}
+        />
+        <FeatureCard
+          icon={Coins}
+          title="Smart round-ups"
+          desc="Every purchase rounds up to the nearest dollar."
+          delay={100}
+        />
+        <FeatureCard
+          icon={CalendarClock}
+          title="Scheduled transfers"
+          desc="Set it and forget it. Automatic transfers keep you on track."
+          delay={200}
+        />
+        <FeatureCard
+          icon={Trophy}
+          title="Milestones & streaks"
+          desc="Celebrate each milestone. Streaks reward your consistency."
+          delay={300}
+        />
       </div>
     ),
   },
@@ -110,10 +134,30 @@ export const MutedBackground: Story = {
     heading: 'Everything you need',
     children: (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <FeatureCard icon={CircleDot} title="Feature one" desc="Description of the feature." delay={0} />
-        <FeatureCard icon={Coins} title="Feature two" desc="Description of the feature." delay={100} />
-        <FeatureCard icon={CalendarClock} title="Feature three" desc="Description of the feature." delay={200} />
-        <FeatureCard icon={Trophy} title="Feature four" desc="Description of the feature." delay={300} />
+        <FeatureCard
+          icon={CircleDot}
+          title="Feature one"
+          desc="Description of the feature."
+          delay={0}
+        />
+        <FeatureCard
+          icon={Coins}
+          title="Feature two"
+          desc="Description of the feature."
+          delay={100}
+        />
+        <FeatureCard
+          icon={CalendarClock}
+          title="Feature three"
+          desc="Description of the feature."
+          delay={200}
+        />
+        <FeatureCard
+          icon={Trophy}
+          title="Feature four"
+          desc="Description of the feature."
+          delay={300}
+        />
       </div>
     ),
   },
@@ -126,9 +170,24 @@ export const Compact: Story = {
     heading: 'Key features',
     children: (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <FeatureCard icon={CircleDot} title="Feature one" desc="Description." delay={0} />
-        <FeatureCard icon={Coins} title="Feature two" desc="Description." delay={100} />
-        <FeatureCard icon={CalendarClock} title="Feature three" desc="Description." delay={200} />
+        <FeatureCard
+          icon={CircleDot}
+          title="Feature one"
+          desc="Description."
+          delay={0}
+        />
+        <FeatureCard
+          icon={Coins}
+          title="Feature two"
+          desc="Description."
+          delay={100}
+        />
+        <FeatureCard
+          icon={CalendarClock}
+          title="Feature three"
+          desc="Description."
+          delay={200}
+        />
       </div>
     ),
   },

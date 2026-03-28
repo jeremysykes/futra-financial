@@ -9,7 +9,8 @@ const faqItems = [
     trigger: 'Is checking my score really free?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        Yes, completely free. We never charge for credit score access. Our service is funded through personalized recommendations, not hidden fees.
+        Yes, completely free. We never charge for credit score access. Our
+        service is funded through personalized recommendations, not hidden fees.
       </p>
     ),
   },
@@ -18,7 +19,8 @@ const faqItems = [
     trigger: 'Will this affect my credit score?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        No. We use a soft inquiry to check your score, which has zero impact on your credit. You can check as often as you like without any effect.
+        No. We use a soft inquiry to check your score, which has zero impact on
+        your credit. You can check as often as you like without any effect.
       </p>
     ),
   },
@@ -27,7 +29,8 @@ const faqItems = [
     trigger: 'How often is my score updated?',
     content: (
       <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-        Your credit score is updated weekly. We pull the latest data every seven days so you always have a current picture of where you stand.
+        Your credit score is updated weekly. We pull the latest data every seven
+        days so you always have a current picture of where you stand.
       </p>
     ),
   },
@@ -127,4 +130,3 @@ export const CompactSpacing: Story = {
     expect(triggers[2]).toHaveAttribute('data-state', 'open');
   },
 };
-

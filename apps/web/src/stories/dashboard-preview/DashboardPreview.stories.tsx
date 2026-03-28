@@ -34,6 +34,8 @@ export const Default: Story = {
   globals: { businessUnit: 'plan' },
   play: async ({ canvasElement }) => {
     // Verify the dashboard renders its container
-    expect(canvasElement.querySelector('[class*="rounded"]')).toBeInTheDocument();
+    expect(
+      canvasElement.querySelector('[class*="rounded"]'),
+    ).toBeInTheDocument();
   },
 };

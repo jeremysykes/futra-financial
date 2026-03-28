@@ -383,13 +383,21 @@
 }
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 /* ─── Scroll-triggered animations ─── */
@@ -431,8 +439,12 @@
 /* ─── Page Transitions ─── */
 
 @keyframes page-enter {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .page-transition {
@@ -442,7 +454,10 @@
 @media (prefers-reduced-motion: no-preference) {
   body,
   [data-business-unit] * {
-    transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+    transition:
+      background-color 300ms ease,
+      color 300ms ease,
+      border-color 300ms ease;
   }
 }
 

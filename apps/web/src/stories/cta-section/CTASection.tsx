@@ -22,8 +22,9 @@ const ctaSectionVariants = cva(
   },
 );
 
-export interface CTASectionProps
-  extends VariantProps<typeof ctaSectionVariants> {
+export interface CTASectionProps extends VariantProps<
+  typeof ctaSectionVariants
+> {
   /** Primary headline text */
   heading: ReactNode;
   /** Supporting description below the heading */
@@ -81,25 +82,33 @@ const CTASection = ({
           />
         </div>
       )}
-      <div className={cn(
-        'relative z-10 mx-auto px-5 sm:px-6',
-        alignment === 'center' ? 'max-w-[600px]' : 'max-w-[1200px]',
-      )}>
-        <h2 className={cn(
-          'mb-6 md:mb-8 font-sans font-bold tracking-[-0.01em] text-[clamp(28px,4vw,40px)]',
-          isSolid ? 'text-primary-foreground' : 'text-foreground',
-        )}>
+      <div
+        className={cn(
+          'relative z-10 mx-auto px-5 sm:px-6',
+          alignment === 'center' ? 'max-w-[600px]' : 'max-w-[1200px]',
+        )}
+      >
+        <h2
+          className={cn(
+            'mb-6 md:mb-8 font-sans font-bold tracking-[-0.01em] text-[clamp(28px,4vw,40px)]',
+            isSolid ? 'text-primary-foreground' : 'text-foreground',
+          )}
+        >
           {heading}
         </h2>
         {description && (
-          <p className={cn(
-            'mb-10 font-sans text-lg leading-[1.7]',
-            isSolid ? 'text-primary-foreground/80' : 'text-muted-foreground',
-          )}>
+          <p
+            className={cn(
+              'mb-10 font-sans text-lg leading-[1.7]',
+              isSolid ? 'text-primary-foreground/80' : 'text-muted-foreground',
+            )}
+          >
             {description}
           </p>
         )}
-        <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">{children}</div>
+        <div className="w-full sm:w-auto [&>*]:w-full sm:[&>*]:w-auto">
+          {children}
+        </div>
       </div>
     </section>
   );

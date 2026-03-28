@@ -23,21 +23,26 @@ Add `transition` declarations in `@layer base` within `tailwind.css`. These targ
 @media (prefers-reduced-motion: no-preference) {
   body,
   [data-business-unit] * {
-    transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+    transition:
+      background-color 300ms ease,
+      color 300ms ease,
+      border-color 300ms ease;
   }
 }
 ```
 
 **What transitions:**
+
 - `background-color` — Page background, card surfaces, buttons, secondary fills
 - `color` — All text including headings, body, muted, accent
 - `border-color` — Card borders, dividers, input outlines
 
 **What does NOT transition:**
+
 - `box-shadow`, `fill`, `stroke`, SVG elements, `outline` — Kept out to avoid unexpected flickers
 - Any property not in the transition list — Instant switch as before
 
-**How it works:** The underlying CSS custom properties (`--color-background`, etc.) still change instantly when `data-business-unit` is updated. But the *rendered* properties (`background-color`, `color`, `border-color`) on the consuming elements transition smoothly because of the CSS `transition` declaration.
+**How it works:** The underlying CSS custom properties (`--color-background`, etc.) still change instantly when `data-business-unit` is updated. But the _rendered_ properties (`background-color`, `color`, `border-color`) on the consuming elements transition smoothly because of the CSS `transition` declaration.
 
 **Selector scope:** `[data-business-unit] *` targets all descendants of the element carrying the attribute (which is `<html>`), so every element in the page gets the transition. The `body` selector ensures the page background itself transitions.
 
@@ -62,8 +67,12 @@ The old page disappears instantly (React unmount), but the simultaneous color tr
 
 ```css
 @keyframes page-enter {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 ```
 
@@ -110,7 +119,7 @@ useEffect(() => {
   style={{ '--nav-top': '36px' } as React.CSSProperties}
 >
   <Routes>...</Routes>
-</main>
+</main>;
 ```
 
 **Migration:** Remove `<main id="main-content">` from all 5 BU page components (SpendPage, SavePage, CreditPage, PlanPage, TogetherPage). Each page's content moves up to be a direct child of fragments or wrapper divs — they no longer own a `<main>` element.
@@ -118,6 +127,7 @@ useEffect(() => {
 ## Reduced Motion
 
 All transitions respect `prefers-reduced-motion`:
+
 - Color transitions: wrapped in `@media (prefers-reduced-motion: no-preference)` — disabled means instant color switch (current behavior)
 - Page-enter animation: wrapped in `@media (prefers-reduced-motion: reduce)` with `animation: none` — disabled means instant page swap (current behavior)
 
@@ -130,15 +140,15 @@ All transitions respect `prefers-reduced-motion`:
 
 ## File Changes
 
-| File | Action |
-|------|--------|
-| `src/tailwind.css` | Add `page-enter` keyframe, `.page-transition` class, color transition declarations, reduced motion wrappers |
-| `src/components/AppShell.tsx` | Add `transitionKey` state with `prevUnit` ref guard, wrap routes in keyed `<main class="page-transition">`, preserve `--nav-top` style |
-| `src/stories/spend/SpendPage.tsx` | Remove `<main id="main-content">` wrapper |
-| `src/stories/save/SavePage.tsx` | Remove `<main id="main-content">` wrapper |
-| `src/stories/credit/CreditPage.tsx` | Remove `<main id="main-content">` wrapper |
-| `src/stories/plan/PlanPage.tsx` | Remove `<main id="main-content">` wrapper |
-| `src/stories/together/TogetherPage.tsx` | Remove `<main id="main-content">` wrapper |
+| File                                    | Action                                                                                                                                 |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/tailwind.css`                      | Add `page-enter` keyframe, `.page-transition` class, color transition declarations, reduced motion wrappers                            |
+| `src/components/AppShell.tsx`           | Add `transitionKey` state with `prevUnit` ref guard, wrap routes in keyed `<main class="page-transition">`, preserve `--nav-top` style |
+| `src/stories/spend/SpendPage.tsx`       | Remove `<main id="main-content">` wrapper                                                                                              |
+| `src/stories/save/SavePage.tsx`         | Remove `<main id="main-content">` wrapper                                                                                              |
+| `src/stories/credit/CreditPage.tsx`     | Remove `<main id="main-content">` wrapper                                                                                              |
+| `src/stories/plan/PlanPage.tsx`         | Remove `<main id="main-content">` wrapper                                                                                              |
+| `src/stories/together/TogetherPage.tsx` | Remove `<main id="main-content">` wrapper                                                                                              |
 
 No new files. No new dependencies.
 

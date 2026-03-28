@@ -40,6 +40,7 @@ futra-financial/
 ```
 
 **Why a monorepo?** Tokens are a shared concern. By isolating them in `@futra/tokens`, we get:
+
 - A single source of truth that multiple apps/packages can depend on
 - A clear build dependency: tokens build first, then consumers
 - The ability to add future output formats (iOS, Android, Figma sync) without touching the web app
@@ -64,6 +65,7 @@ These are the actual color values — hex codes and rgba values. They live in `p
 ```
 
 **Key design decisions:**
+
 - **DTCG format** (`$value`, `$type`) is the W3C standard for design tokens. It's tool-agnostic — Figma, Style Dictionary, and other tools all understand it.
 - **Structured to match output.** Shared tokens (indigo, teal, coral) sit at root level — Style Dictionary generates flat names like `--indigo`. BU tokens are nested under their group — generating prefixed names like `--spend-void`. This means zero custom configuration.
 - **Grouped by palette**, not by usage. Each BU (`spend`, `save`, `credit`, `plan`, `together`) has its own group. `default` holds the white-label theme.
@@ -153,7 +155,8 @@ const buttonVariants = cva('rounded-lg font-medium', {
   variants: {
     variant: {
       primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
-      secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
+      secondary:
+        'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
     },
   },
 });
@@ -209,7 +212,7 @@ The `@custom-variant dark (&:where(.dark, .dark *))` directive tells Tailwind th
 3. `web` builds second (TypeScript check -> Vite build, which can now resolve the import)
 
 Turborepo also provides:
+
 - **Task caching**: If `tokens.json` and the Style Dictionary config haven't changed, the tokens build is skipped entirely (cache hit)
 - **Parallel execution**: Independent tasks run concurrently across all CPU cores
 - **Remote caching** (optional): Share build caches across CI machines via Vercel
-

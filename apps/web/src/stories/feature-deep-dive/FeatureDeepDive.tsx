@@ -79,23 +79,21 @@ function FeatureBlock({
 
 const monoFont = 'JetBrains Mono, monospace';
 
-const featureDeepDiveVariants = cva(
-  'relative overflow-hidden bg-background',
-  {
-    variants: {
-      padding: {
-        default: 'py-16 sm:py-20 md:py-28 lg:py-32',
-        compact: 'py-12 sm:py-16 md:py-24',
-      },
-    },
-    defaultVariants: {
-      padding: 'default',
+const featureDeepDiveVariants = cva('relative overflow-hidden bg-background', {
+  variants: {
+    padding: {
+      default: 'py-16 sm:py-20 md:py-28 lg:py-32',
+      compact: 'py-12 sm:py-16 md:py-24',
     },
   },
-);
+  defaultVariants: {
+    padding: 'default',
+  },
+});
 
-export interface FeatureDeepDiveProps
-  extends VariantProps<typeof featureDeepDiveVariants> {
+export interface FeatureDeepDiveProps extends VariantProps<
+  typeof featureDeepDiveVariants
+> {
   /** Additional CSS classes for the root element */
   className?: string;
 }
@@ -134,17 +132,35 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Net worth, tracked over time."
           desc="Watch your wealth compound with a precise, annotated timeline. Every asset, every liability, one clean chart you'll actually want to check."
           chart={
-            <div role="img" aria-label="Net worth growth from $98K in 2020 to $184K in 2025" className="w-full" style={{ height: 200 }}>
+            <div
+              role="img"
+              aria-label="Net worth growth from $98K in 2020 to $184K in 2025"
+              className="w-full"
+              style={{ height: 200 }}
+            >
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={PlanNetWorthLong}>
                   <defs>
                     <linearGradient id="nwg2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor={c.accent} stopOpacity={0.25} />
-                      <stop offset="100%" stopColor={c.accent} stopOpacity={0} />
+                      <stop
+                        offset="0%"
+                        stopColor={c.accent}
+                        stopOpacity={0.25}
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor={c.accent}
+                        stopOpacity={0}
+                      />
                     </linearGradient>
                   </defs>
                   <CartesianGrid stroke={gridStroke} vertical={false} />
-                  <XAxis dataKey="year" tick={tickStyle} axisLine={false} tickLine={false} />
+                  <XAxis
+                    dataKey="year"
+                    tick={tickStyle}
+                    axisLine={false}
+                    tickLine={false}
+                  />
                   <YAxis
                     tick={tickStyle}
                     axisLine={false}
@@ -152,7 +168,14 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                     tickFormatter={(v: number) => `$${(v / 1000).toFixed(0)}k`}
                     width={50}
                   />
-                  <Area type="monotone" dataKey="value" stroke={c.accent} strokeWidth={2} fill="url(#nwg2)" isAnimationActive={false} />
+                  <Area
+                    type="monotone"
+                    dataKey="value"
+                    stroke={c.accent}
+                    strokeWidth={2}
+                    fill="url(#nwg2)"
+                    isAnimationActive={false}
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -165,9 +188,19 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Budget vs actuals, no surprises."
           desc="See exactly where you overspend and where you save. Horizontal breakdowns by category with instant variance highlighting — Teal when you're under, Amber when you're over."
           chart={
-            <div role="img" aria-label="Budget vs actuals comparison by category" className="w-full" style={{ height: 220 }}>
+            <div
+              role="img"
+              aria-label="Budget vs actuals comparison by category"
+              className="w-full"
+              style={{ height: 220 }}
+            >
               <ResponsiveContainer width="100%" height={220}>
-                <BarChart data={PlanBudgetData} layout="vertical" barGap={2} barSize={10}>
+                <BarChart
+                  data={PlanBudgetData}
+                  layout="vertical"
+                  barGap={2}
+                  barSize={10}
+                >
                   <CartesianGrid stroke={gridStroke} horizontal={false} />
                   <XAxis
                     type="number"
@@ -179,13 +212,27 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                   <YAxis
                     dataKey="cat"
                     type="category"
-                    tick={{ fill: tickFill, fontFamily: 'Inter, sans-serif', fontSize: 11 }}
+                    tick={{
+                      fill: tickFill,
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: 11,
+                    }}
                     axisLine={false}
                     tickLine={false}
                     width={70}
                   />
-                  <Bar dataKey="budget" fill={c.accent} radius={[0, 4, 4, 0]} isAnimationActive={false} />
-                  <Bar dataKey="actual" fill={c.positive} radius={[0, 4, 4, 0]} isAnimationActive={false} />
+                  <Bar
+                    dataKey="budget"
+                    fill={c.accent}
+                    radius={[0, 4, 4, 0]}
+                    isAnimationActive={false}
+                  />
+                  <Bar
+                    dataKey="actual"
+                    fill={c.positive}
+                    radius={[0, 4, 4, 0]}
+                    isAnimationActive={false}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -197,21 +244,56 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Cash flow projections with confidence bands."
           desc="See your financial trajectory across optimistic, projected, and conservative scenarios. Data-driven projections that update as your habits evolve."
           chart={
-            <div role="img" aria-label="Cash flow projections with optimistic, projected, and conservative scenarios" className="w-full" style={{ height: 200 }}>
+            <div
+              role="img"
+              aria-label="Cash flow projections with optimistic, projected, and conservative scenarios"
+              className="w-full"
+              style={{ height: 200 }}
+            >
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={PlanProjectionData}>
                   <CartesianGrid stroke={gridStroke} vertical={false} />
-                  <XAxis dataKey="year" tick={tickStyle} axisLine={false} tickLine={false} />
+                  <XAxis
+                    dataKey="year"
+                    tick={tickStyle}
+                    axisLine={false}
+                    tickLine={false}
+                  />
                   <YAxis
                     tick={tickStyle}
                     axisLine={false}
                     tickLine={false}
-                    tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`}
+                    tickFormatter={(v: number) =>
+                      `$${(v / 1000000).toFixed(1)}M`
+                    }
                     width={50}
                   />
-                  <Line type="monotone" dataKey="optimistic" stroke={c.positive} strokeWidth={1.5} strokeDasharray="6 3" dot={false} isAnimationActive={false} />
-                  <Line type="monotone" dataKey="projected" stroke={c.accent} strokeWidth={2} dot={false} isAnimationActive={false} />
-                  <Line type="monotone" dataKey="conservative" stroke={c.mutedFg} strokeWidth={1.5} strokeDasharray="4 4" dot={false} isAnimationActive={false} />
+                  <Line
+                    type="monotone"
+                    dataKey="optimistic"
+                    stroke={c.positive}
+                    strokeWidth={1.5}
+                    strokeDasharray="6 3"
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="projected"
+                    stroke={c.accent}
+                    strokeWidth={2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="conservative"
+                    stroke={c.mutedFg}
+                    strokeWidth={1.5}
+                    strokeDasharray="4 4"
+                    dot={false}
+                    isAnimationActive={false}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -224,9 +306,14 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
           title="Retirement runway, quantified."
           desc="One number that matters: years until financial independence. Watch it update in real-time as you adjust savings rate, expected returns, and target spending."
           chart={
-            <div role="img" aria-label="Retirement runway projection reaching $3.2M by 2059">
+            <div
+              role="img"
+              aria-label="Retirement runway projection reaching $3.2M by 2059"
+            >
               <div className="text-center mb-4">
-                <span className="font-mono text-5xl font-medium text-positive">34</span>
+                <span className="font-mono text-5xl font-medium text-positive">
+                  34
+                </span>
                 <span className="block font-sans font-medium text-xs text-muted-foreground tracking-[0.08em] uppercase mt-1">
                   Years to financial independence
                 </span>
@@ -236,20 +323,42 @@ const FeatureDeepDive = ({ padding, className }: FeatureDeepDiveProps) => {
                   <AreaChart data={PlanRetirementData}>
                     <defs>
                       <linearGradient id="retG" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={c.positive} stopOpacity={0.2} />
-                        <stop offset="100%" stopColor={c.positive} stopOpacity={0} />
+                        <stop
+                          offset="0%"
+                          stopColor={c.positive}
+                          stopOpacity={0.2}
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor={c.positive}
+                          stopOpacity={0}
+                        />
                       </linearGradient>
                     </defs>
                     <CartesianGrid stroke={gridStroke} vertical={false} />
-                    <XAxis dataKey="year" tick={tickStyle} axisLine={false} tickLine={false} />
+                    <XAxis
+                      dataKey="year"
+                      tick={tickStyle}
+                      axisLine={false}
+                      tickLine={false}
+                    />
                     <YAxis
                       tick={tickStyle}
                       axisLine={false}
                       tickLine={false}
-                      tickFormatter={(v: number) => `$${(v / 1000000).toFixed(1)}M`}
+                      tickFormatter={(v: number) =>
+                        `$${(v / 1000000).toFixed(1)}M`
+                      }
                       width={50}
                     />
-                    <Area type="monotone" dataKey="balance" stroke={c.positive} strokeWidth={2} fill="url(#retG)" isAnimationActive={false} />
+                    <Area
+                      type="monotone"
+                      dataKey="balance"
+                      stroke={c.positive}
+                      strokeWidth={2}
+                      fill="url(#retG)"
+                      isAnimationActive={false}
+                    />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>

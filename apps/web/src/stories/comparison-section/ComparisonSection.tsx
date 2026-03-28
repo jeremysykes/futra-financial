@@ -4,7 +4,10 @@ import { cn } from '../../lib/utils';
 
 export function ComparisonSection() {
   return (
-    <section id="compare" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-surface">
+    <section
+      id="compare"
+      className="py-16 sm:py-20 md:py-28 lg:py-32 bg-surface"
+    >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         <p className="mb-3 uppercase text-center font-sans font-medium text-xs tracking-[0.08em] text-muted-foreground">
           How we compare
